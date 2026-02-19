@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- BASIC META -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synckraft Technologies | Building Scalable Digital Capablities.</title>
-    <meta name="description" content="Synckraft Technologies architects, launches, and scales high-potential technology platforms through precision framework execution." />
-    <link rel="canonical" href="https://synckraft.me/" />
-    <!-- Open Graph -->
-    <meta property="og:title" content="Synckraft Technologies | Building Scalable Digital Capablities" />
-    <meta property="og:description" content="Synckraft Technologies architects, launches, and scales high-potential technology platforms through precision framework execution." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://synckraft.me/" />
-    <meta property="og:image" content="/og-image.png" />
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Synckraft Technologies | Building Scalable Digital Capablities" />
-    <meta name="twitter:description" content="Synckraft Technologies architects, launches, and scales high-potential technology platforms through precision framework execution." />
-    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- PRIMARY SEO (VERY IMPORTANT) -->
+    <title>Synckraft Technologies | AI Development & Web Solutions in India</title>
+    <meta name="description" content="Synckraft Technologies builds AI-powered websites, scalable digital platforms, and modern web solutions for startups and businesses." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Synckraft Technologies" />
+
+    <!-- CANONICAL (FIXED DOMAIN) -->
+    <link rel="canonical" href="https://synckraft.in/" />
+
+    <!-- SITEMAP -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- OPEN GRAPH (SOCIAL + GOOGLE SEO) -->
+    <meta property="og:title" content="Synckraft Technologies | AI Development & Web Solutions" />
+    <meta property="og:description" content="We design and develop AI websites, scalable digital products, and high-performance web platforms." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://synckraft.in/" />
+    <meta property="og:image" content="https://synckraft.in/og-image.png" />
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Synckraft Technologies | AI Development & Web Solutions" />
+    <meta name="twitter:description" content="AI websites, development & scalable digital solutions by Synckraft Technologies." />
+    <meta name="twitter:image" content="https://synckraft.in/og-image.png" />
+
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -44,17 +60,18 @@
         }
       }
     </script>
-    <!-- Pre-render theme setter: ensures correct .dark class before React mounts -->
+
+    <!-- PRE-RENDER THEME -->
     <script>
       (function(){
         try {
           var t = localStorage.getItem('theme') || localStorage.getItem('synckraft-theme') || 'dark';
           document.documentElement.classList.toggle('dark', t === 'dark');
-        } catch (e) {
-          /* ignore */
-        }
+        } catch (e) {}
       })();
     </script>
+
+    <!-- CUSTOM STYLES -->
     <style>
       :root {
         --synckraft-blue: #2563EB;
@@ -62,7 +79,6 @@
       body {
         transition: background-color 0.3s ease, color 0.3s ease;
       }
-      /* Reveal defaults (overridden by index.css for finer control) */
       .reveal { opacity: 0; transform: translateY(20px); }
       .reveal.active { opacity: 1; transform: translateY(0); }
       .card-glow:hover {
@@ -89,27 +105,38 @@
         background: #2563EB;
       }
     </style>
-    <!-- JSON-LD structured data -->
+
+    <!-- CORRECT SEO SCHEMA (FIXED DOMAIN) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Synckraft Technologies",
-      "url": "https://synckraft.me/",
-      "logo": "https://synckraft.me/logo.png",
-      "sameAs": ["https://www.linkedin.com/","https://twitter.com/"],
-      "contactPoint": [{"@type":"ContactPoint","contactType":"customer support","email":"grow@synckraft.in"}]
+      "url": "https://synckraft.in/",
+      "logo": "https://synckraft.in/logo.png",
+      "email": "grow@synckraft.in",
+      "sameAs": [
+        "https://www.linkedin.com/",
+        "https://twitter.com/"
+      ]
     }
     </script>
+
     <script type="application/ld+json">
     {
       "@context":"https://schema.org",
       "@type":"WebSite",
-      "url":"https://synckraft.me/",
+      "url":"https://synckraft.in/",
       "name":"Synckraft Technologies",
-      "potentialAction": {"@type":"SearchAction","target":"https://synckraft.me/?s={search_term_string}","query-input":"required name=search_term_string"}
+      "potentialAction": {
+        "@type":"SearchAction",
+        "target":"https://synckraft.in/?s={search_term_string}",
+        "query-input":"required name=search_term_string"
+      }
     }
     </script>
+
+    <!-- REACT IMPORT MAP (KEEP) -->
     <script type="importmap">
     {
       "imports": {
@@ -120,10 +147,12 @@
       }
     }
     </script>
-  <link rel="stylesheet" href="/index.css">
-</head>
+
+    <link rel="stylesheet" href="/index.css">
+  </head>
+
   <body class="dark bg-[#0A0A0B]">
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
