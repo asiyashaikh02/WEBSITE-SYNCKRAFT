@@ -248,13 +248,137 @@
 //   );
 // }
 
+// import React, { useEffect, useState } from 'react';
+// import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+
+// // Existing Components from 'components' folder
+// import { Navbar } from './components/Navbar';
+// import { Hero } from './components/Hero';
+// import { About } from './components/About';
+// import { Pillars } from './components/Pillars';
+// import { Ecosystem } from './components/Ecosystem';
+// import { Metrics } from './components/Metrics';
+// import { Testimonials } from './components/Testimonials';
+// import { ContactForm } from './components/ContactForm';
+// import { CTA } from './components/CTA';
+// import { Footer } from './components/Footer';
+
+// // New Legal & Contact Pages from 'pages' folder
+// import PrivacyPolicy from './pages/PrivacyPolicy';
+// import TermsOfService from './pages/TermsOfService';
+// import RefundPolicy from './pages/RefundPolicy';
+// import ContactPage from './pages/Contact'; 
+
+// // Helper component to scroll to top on every route change
+// const ScrollToTop = () => {
+//   const { pathname } = useLocation();
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [pathname]);
+//   return null;
+// };
+
+// // Animation Logic: Iske bina content nahi dikhega!
+// const useRevealAnimations = () => {
+//   const location = useLocation();
+  
+//   useEffect(() => {
+//     const observerOptions = {
+//       root: null,
+//       rootMargin: '0px 0px -10% 0px',
+//       threshold: 0.06
+//     };
+
+//     const observer = new IntersectionObserver((entries) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//           entry.target.classList.add('active');
+//         }
+//       });
+//     }, observerOptions);
+
+//     const reveals = document.querySelectorAll('.reveal');
+//     reveals.forEach((el) => observer.observe(el));
+
+//     return () => observer.disconnect();
+//   }, [location]); // Har page change par check karega
+// };
+
+// // Main Landing Page Sections
+// const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
+//   useRevealAnimations(); // Home page par animations trigger karein
+//   return (
+//     <main role="main">
+//       <Hero theme={theme} />
+//       <About theme={theme} />
+//       <Pillars theme={theme} />
+//       <Ecosystem theme={theme} />
+//       <Metrics theme={theme} />
+//       <Testimonials />
+//       <ContactForm theme={theme} />
+//       <CTA theme={theme} />
+//     </main>
+//   );
+// };
+
+// export default function App() {
+//   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+//     try {
+//       if (typeof window === 'undefined') return 'dark';
+//       return (localStorage.getItem('theme') || 'dark') as 'dark' | 'light';
+//     } catch (e) {
+//       return 'dark';
+//     }
+//   });
+
+//   // Theme Sync Logic
+//   useEffect(() => {
+//     document.documentElement.classList.toggle('dark', theme === 'dark');
+//     if (document.body) document.body.classList.toggle('dark', theme === 'dark');
+//     localStorage.setItem('theme', theme);
+//   }, [theme]);
+
+//   const toggleTheme = () => {
+//     const newTheme = theme === 'dark' ? 'light' : 'dark';
+//     setTheme(newTheme);
+//   };
+
+//   return (
+//     <Router>
+//       <ScrollToTop />
+//       <div className={`min-h-full transition-colors duration-300 ${
+//         theme === 'dark' ? 'bg-[#0A0A0B] text-slate-100' : 'bg-white text-slate-900'
+//       } selection:bg-blue-600/20`}>
+        
+//         <Navbar theme={theme} toggleTheme={toggleTheme} />
+        
+//         <Routes>
+//           {/* Home Route */}
+//           <Route path="/" element={<MainLanding theme={theme} />} />
+
+//           {/* About link (Home page par hi redirect karega) */}
+//           <Route path="/about" element={<MainLanding theme={theme} />} />
+
+//           {/* Legal Pages with Animation Support */}
+//           <Route path="/privacy-policy" element={<div className="reveal-fix"><PrivacyPolicy theme={theme} /></div>} />
+//           <Route path="/terms-of-service" element={<div className="reveal-fix"><TermsOfService theme={theme} /></div>} />
+//           <Route path="/refund-policy" element={<div className="reveal-fix"><RefundPolicy theme={theme} /></div>} />
+//           <Route path="/contact" element={<ContactPage theme={theme} toggleTheme={toggleTheme} />} />
+//         </Routes>
+
+//         <Footer theme={theme} />
+//       </div>
+//     </Router>
+//   );
+// }
+
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-// Existing Components from 'components' folder
+// Components
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
+import { About as AboutSection } from './components/About'; // Changed name to avoid conflict
 import { Pillars } from './components/Pillars';
 import { Ecosystem } from './components/Ecosystem';
 import { Metrics } from './components/Metrics';
@@ -263,13 +387,12 @@ import { ContactForm } from './components/ContactForm';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 
-// New Legal & Contact Pages from 'pages' folder
+// Pages
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import RefundPolicy from './pages/RefundPolicy';
-import ContactPage from './pages/Contact'; 
+import ContactPage from './pages/Contact';
 
-// Helper component to scroll to top on every route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -278,39 +401,28 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Animation Logic: Iske bina content nahi dikhega!
 const useRevealAnimations = () => {
   const location = useLocation();
-  
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -10% 0px',
-      threshold: 0.06
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.06 });
 
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach((el) => observer.observe(el));
-
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [location]); // Har page change par check karega
+  }, [location]);
 };
 
-// Main Landing Page Sections
 const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
-  useRevealAnimations(); // Home page par animations trigger karein
+  useRevealAnimations();
   return (
     <main role="main">
       <Hero theme={theme} />
-      <About theme={theme} />
+      <AboutSection theme={theme} />
       <Pillars theme={theme} />
       <Ecosystem theme={theme} />
       <Metrics theme={theme} />
@@ -324,48 +436,32 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
 export default function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     try {
-      if (typeof window === 'undefined') return 'dark';
       return (localStorage.getItem('theme') || 'dark') as 'dark' | 'light';
-    } catch (e) {
-      return 'dark';
-    }
+    } catch (e) { return 'dark'; }
   });
 
-  // Theme Sync Logic
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
-    if (document.body) document.body.classList.toggle('dark', theme === 'dark');
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-  };
+  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
   return (
     <Router>
       <ScrollToTop />
       <div className={`min-h-full transition-colors duration-300 ${
         theme === 'dark' ? 'bg-[#0A0A0B] text-slate-100' : 'bg-white text-slate-900'
-      } selection:bg-blue-600/20`}>
-        
+      }`}>
         <Navbar theme={theme} toggleTheme={toggleTheme} />
-        
         <Routes>
-          {/* Home Route */}
           <Route path="/" element={<MainLanding theme={theme} />} />
-
-          {/* About link (Home page par hi redirect karega) */}
           <Route path="/about" element={<MainLanding theme={theme} />} />
-
-          {/* Legal Pages with Animation Support */}
-          <Route path="/privacy-policy" element={<div className="reveal-fix"><PrivacyPolicy theme={theme} /></div>} />
-          <Route path="/terms-of-service" element={<div className="reveal-fix"><TermsOfService theme={theme} /></div>} />
-          <Route path="/refund-policy" element={<div className="reveal-fix"><RefundPolicy theme={theme} /></div>} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy theme={theme} toggleTheme={toggleTheme} />} />
+          <Route path="/terms-of-service" element={<TermsOfService theme={theme} toggleTheme={toggleTheme} />} />
+          <Route path="/refund-policy" element={<RefundPolicy theme={theme} toggleTheme={toggleTheme} />} />
           <Route path="/contact" element={<ContactPage theme={theme} toggleTheme={toggleTheme} />} />
         </Routes>
-
         <Footer theme={theme} />
       </div>
     </Router>
