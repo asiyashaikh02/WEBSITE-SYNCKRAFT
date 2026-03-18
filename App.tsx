@@ -248,14 +248,13 @@
 //   );
 // }
 
-
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 // Existing Components from 'components' folder
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { About } from './components/About'; // Ye components wala About hai
+import { About } from './components/About';
 import { Pillars } from './components/Pillars';
 import { Ecosystem } from './components/Ecosystem';
 import { Metrics } from './components/Metrics';
@@ -279,19 +278,48 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Animation Logic: Iske bina content nahi dikhega!
+const useRevealAnimations = () => {
+  const location = useLocation();
+  
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.06
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [location]); // Har page change par check karega
+};
+
 // Main Landing Page Sections
-const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => (
-  <main role="main">
-    <Hero theme={theme} />
-    <About theme={theme} />
-    <Pillars theme={theme} />
-    <Ecosystem theme={theme} />
-    <Metrics theme={theme} />
-    <Testimonials />
-    <ContactForm theme={theme} />
-    <CTA theme={theme} />
-  </main>
-);
+const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
+  useRevealAnimations(); // Home page par animations trigger karein
+  return (
+    <main role="main">
+      <Hero theme={theme} />
+      <About theme={theme} />
+      <Pillars theme={theme} />
+      <Ecosystem theme={theme} />
+      <Metrics theme={theme} />
+      <Testimonials />
+      <ContactForm theme={theme} />
+      <CTA theme={theme} />
+    </main>
+  );
+};
 
 export default function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -307,12 +335,12 @@ export default function App() {
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
     if (document.body) document.body.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
   };
 
   return (
@@ -325,16 +353,16 @@ export default function App() {
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         
         <Routes>
-          {/* Main Website Route */}
+          {/* Home Route */}
           <Route path="/" element={<MainLanding theme={theme} />} />
 
-          {/* About Us link will now just scroll to the About section on home page */}
+          {/* About link (Home page par hi redirect karega) */}
           <Route path="/about" element={<MainLanding theme={theme} />} />
 
-          {/* Legal Pages for Meta/Google Verification */}
-          <Route path="/privacy-policy" element={<PrivacyPolicy theme={theme} />} />
-          <Route path="/terms-of-service" element={<TermsOfService theme={theme} />} />
-          <Route path="/refund-policy" element={<RefundPolicy theme={theme} />} />
+          {/* Legal Pages with Animation Support */}
+          <Route path="/privacy-policy" element={<div className="reveal-fix"><PrivacyPolicy theme={theme} /></div>} />
+          <Route path="/terms-of-service" element={<div className="reveal-fix"><TermsOfService theme={theme} /></div>} />
+          <Route path="/refund-policy" element={<div className="reveal-fix"><RefundPolicy theme={theme} /></div>} />
           <Route path="/contact" element={<ContactPage theme={theme} toggleTheme={toggleTheme} />} />
         </Routes>
 
