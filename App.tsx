@@ -133,12 +133,129 @@
     //     </div>
     //   );
     // }
+// import React, { useEffect, useState } from 'react';
+// import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+// import { Navbar } from './components/Navbar';
+// import { Hero } from './components/Hero';
+// import { About } from './components/About';
+// import { Pillars } from './components/Pillars';
+// import { Ecosystem } from './components/Ecosystem';
+// import { Metrics } from './components/Metrics';
+// import { Testimonials } from './components/Testimonials';
+// import { ContactForm } from './components/ContactForm';
+// import { CTA } from './components/CTA';
+// import { Footer } from './components/Footer';
+
+// // Import your new manual pages
+// import PrivacyPolicy from './pages/PrivacyPolicy';
+// import TermsOfService from './pages/TermsOfService';
+// import RefundPolicy from './pages/RefundPolicy';
+// import ContactPage from './pages/Contact'; 
+// import About from './components/About'; // Make sure to import the AboutPage we discussed
+
+// // Helper component to scroll to top on every route change
+// const ScrollToTop = () => {
+//   const { pathname } = useLocation();
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [pathname]);
+//   return null;
+// };
+
+// // Component for the main landing page sections
+// const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => (
+//   <main role="main">
+//     <Hero theme={theme} />
+//     <About theme={theme} />
+//     <Pillars theme={theme} />
+//     <Ecosystem theme={theme} />
+//     <Metrics theme={theme} />
+//     <Testimonials />
+//     <ContactForm theme={theme} />
+//     <CTA theme={theme} />
+//   </main>
+// );
+
+// export default function App() {
+//   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+//     try {
+//       if (typeof window === 'undefined') return 'dark';
+//       return (localStorage.getItem('theme') || localStorage.getItem('synckraft-theme') || 'dark') as 'dark' | 'light';
+//     } catch (e) {
+//       return 'dark';
+//     }
+//   });
+
+//   useEffect(() => {
+//     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+//     const reveals = Array.from(document.querySelectorAll('.reveal')) as HTMLElement[];
+    
+//     if (prefersReduced) {
+//       reveals.forEach((el) => el.classList.add('active'));
+//     } else {
+//       const observer = new IntersectionObserver((entries, obs) => {
+//         entries.forEach((entry) => {
+//           if (entry.isIntersecting) {
+//             const el = entry.target as HTMLElement;
+//             el.classList.add('active');
+//             obs.unobserve(el);
+//           }
+//         });
+//       }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+
+//       reveals.forEach((el) => observer.observe(el));
+//       return () => observer.disconnect();
+//     }
+//   }, [theme]); 
+
+//   useEffect(() => {
+//     document.documentElement.classList.toggle('dark', theme === 'dark');
+//     if (document.body) document.body.classList.toggle('dark', theme === 'dark');
+//   }, [theme]);
+
+//   const toggleTheme = () => {
+//     const newTheme = theme === 'dark' ? 'light' : 'dark';
+//     setTheme(newTheme);
+//     try {
+//       localStorage.setItem('theme', newTheme);
+//     } catch (e) {}
+//   };
+
+//   return (
+//     <Router>
+//       <ScrollToTop />
+//       <div className={`min-h-full transition-colors duration-300 ${
+//         theme === 'dark' ? 'bg-[#0A0A0B] text-slate-100' : 'bg-white text-slate-900'
+//       } selection:bg-blue-600/20`}>
+        
+//         <Navbar theme={theme} toggleTheme={toggleTheme} />
+        
+//         <Routes>
+//           {/* Main Landing Page */}
+//           <Route path="/" element={<MainLanding theme={theme} />} />
+
+//           {/* Legal Pages - Passing toggleTheme ensures Navbar works on these pages */}
+//           <Route path="/about" element={<AboutPage theme={theme} toggleTheme={toggleTheme} />} />
+//           <Route path="/privacy-policy" element={<PrivacyPolicy theme={theme} toggleTheme={toggleTheme} />} />
+//           <Route path="/terms-of-service" element={<TermsOfService theme={theme} toggleTheme={toggleTheme} />} />
+//           <Route path="/refund-policy" element={<RefundPolicy theme={theme} toggleTheme={toggleTheme} />} />
+//           <Route path="/contact" element={<ContactPage theme={theme} toggleTheme={toggleTheme} />} />
+//         </Routes>
+
+//         <Footer theme={theme} />
+//       </div>
+//     </Router>
+//   );
+// }
+
 
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+
+// Existing Components from 'components' folder
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
+import { About } from './components/About'; // Ye components wala About hai
 import { Pillars } from './components/Pillars';
 import { Ecosystem } from './components/Ecosystem';
 import { Metrics } from './components/Metrics';
@@ -147,11 +264,11 @@ import { ContactForm } from './components/ContactForm';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 
-// Import your new manual pages
+// New Legal & Contact Pages from 'pages' folder
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import RefundPolicy from './pages/RefundPolicy';
-import ContactPage from './pages/Contact'; // Bina curly braces ke
+import ContactPage from './pages/Contact'; 
 
 // Helper component to scroll to top on every route change
 const ScrollToTop = () => {
@@ -162,7 +279,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Component for the main landing page sections
+// Main Landing Page Sections
 const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => (
   <main role="main">
     <Hero theme={theme} />
@@ -180,36 +297,14 @@ export default function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     try {
       if (typeof window === 'undefined') return 'dark';
-      return (localStorage.getItem('theme') || localStorage.getItem('synckraft-theme') || 'dark') as 'dark' | 'light';
+      return (localStorage.getItem('theme') || 'dark') as 'dark' | 'light';
     } catch (e) {
       return 'dark';
     }
   });
 
+  // Theme Sync Logic
   useEffect(() => {
-    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const reveals = Array.from(document.querySelectorAll('.reveal')) as HTMLElement[];
-    
-    if (prefersReduced) {
-      reveals.forEach((el) => el.classList.add('active'));
-    } else {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            el.classList.add('active');
-            obs.unobserve(el);
-          }
-        });
-      }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
-
-      reveals.forEach((el) => observer.observe(el));
-      return () => observer.disconnect();
-    }
-  }, [theme]); // Re-run observer if theme changes and re-renders occur
-
-  useEffect(() => {
-    // Theme application logic
     document.documentElement.classList.toggle('dark', theme === 'dark');
     if (document.body) document.body.classList.toggle('dark', theme === 'dark');
   }, [theme]);
@@ -217,9 +312,7 @@ export default function App() {
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
-    try {
-      localStorage.setItem('theme', newTheme);
-    } catch (e) {}
+    localStorage.setItem('theme', newTheme);
   };
 
   return (
@@ -232,14 +325,17 @@ export default function App() {
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         
         <Routes>
-          {/* Main Landing Page */}
+          {/* Main Website Route */}
           <Route path="/" element={<MainLanding theme={theme} />} />
+
+          {/* About Us link will now just scroll to the About section on home page */}
+          <Route path="/about" element={<MainLanding theme={theme} />} />
 
           {/* Legal Pages for Meta/Google Verification */}
           <Route path="/privacy-policy" element={<PrivacyPolicy theme={theme} />} />
           <Route path="/terms-of-service" element={<TermsOfService theme={theme} />} />
           <Route path="/refund-policy" element={<RefundPolicy theme={theme} />} />
-          <Route path="/contact" element={<ContactPage theme={theme} />} />
+          <Route path="/contact" element={<ContactPage theme={theme} toggleTheme={toggleTheme} />} />
         </Routes>
 
         <Footer theme={theme} />
@@ -247,5 +343,3 @@ export default function App() {
     </Router>
   );
 }
-
-

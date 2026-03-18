@@ -136,7 +136,6 @@
 //     </footer>
 //   );
 // };
-
 import React from 'react';
 import { Linkedin, Instagram, Facebook, MapPin, ChevronRight, Twitter, ExternalLink } from 'lucide-react';
 
@@ -163,17 +162,19 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
       
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-20 mb-32">
+          
+          {/* Logo & Description */}
           <div className="lg:col-span-6">
             <div className="flex items-center gap-5 mb-12 group cursor-pointer">
               <a href="/" className="inline-flex items-center gap-3 focus:outline-none" aria-label="Homepage">
-              <img
-                src={theme === 'dark' ? '/logos/synckraft-dark.png' : '/logos/synckraft-light.png'}
-                alt="Synckraft Logo"
-                className="h-auto w-[180px] sm:w-[200px] md:w-[220px] lg:w-[240px] transition-all"
-                width={600}
-                height={120}
-                loading="lazy"
-              />
+                <img
+                  src={theme === 'dark' ? '/logos/synckraft-dark.png' : '/logos/synckraft-light.png'}
+                  alt="Synckraft Logo"
+                  className="h-auto w-[180px] sm:w-[200px] md:w-[220px] lg:w-[240px] transition-all"
+                  width={600}
+                  height={120}
+                  loading="lazy"
+                />
               </a>
             </div> 
             
@@ -189,25 +190,30 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
             </div>
           </div>
 
+          {/* Ecosystem Section */}
           <div className="lg:col-span-3 lg:col-start-8">
             <h4 className="text-white font-black uppercase tracking-[0.3em] text-[11px] mb-12 opacity-40">Ecosystem</h4>
             <ul className="space-y-7 text-blue-100 font-bold text-sm tracking-wide">
-              <li><a href="https://solaroft.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 flex items-center gap-2 transition-colors">Solaroft <ExternalLink size={14} className="opacity-30" /></a></li>
+              <li>
+                <a href="https://solaroft.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 flex items-center gap-2 transition-colors">
+                  Solaroft <ExternalLink size={14} className="opacity-30" />
+                </a>
+              </li>
               <li><a href="#ecosystem" className="hover:text-blue-400 transition-colors">SolveItIndia</a></li>
               <li><a href="#ecosystem" className="hover:text-blue-400 transition-colors">Internal Labs</a></li>
               <li><a href="#pillars" className="hover:text-blue-400 transition-colors">Venture Strategy</a></li>
             </ul>
           </div>
 
-          {/* CRITICAL FOR META VERIFICATION */}
+          {/* Legal Section - CRITICAL FOR META VERIFICATION */}
           <div className="lg:col-span-2">
             <h4 className="text-white font-black uppercase tracking-[0.3em] text-[11px] mb-12 opacity-40">Legal & Corporate</h4>
             <ul className="space-y-7 text-blue-100 font-bold text-sm tracking-wide">
-              <li><a href="about.txt" className="hover:text-blue-400 transition-colors">About Us</a></li>
-              <li><a href="contact.txt" className="hover:text-blue-400 transition-colors">Contact Us</a></li>
-              <li><a href="privacy-policy.txt" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="terms-of-service.txt" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-              <li><a href="refund-policy.txt" className="hover:text-blue-400 transition-colors">Refund Policy</a></li>
+              <li><a href="/about" className="hover:text-blue-400 transition-colors">About Us</a></li>
+              <li><a href="/contact" className="hover:text-blue-400 transition-colors">Contact Us</a></li>
+              <li><a href="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms-of-service" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
+              <li><a href="/refund-policy" className="hover:text-blue-400 transition-colors">Refund Policy</a></li>
             </ul>
           </div>
         </div>
@@ -221,6 +227,7 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={social.label}
                 className="text-blue-200 hover:text-white transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center p-3 rounded-lg"
               >
                 <social.icon size={30} strokeWidth={1.5} />
@@ -242,7 +249,8 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
               Synckraft Technologies
             </div>
             <div className="text-[10px] font-medium opacity-40 leading-relaxed">
-              Proprietary Venture Studio. Registered Office: 414 DAGA PLAZZO INFRONT OF DMART CAMP AMRAVATI. All concepts, code, and frameworks are the intellectual property of Synckraft Technologies © 2026.
+              Proprietary Venture Studio. Registered Office: 414 DAGA PLAZZO INFRONT OF DMART CAMP AMRAVATI. 
+              All concepts, code, and frameworks are the intellectual property of Synckraft Technologies © 2026.
             </div>
           </div>
           
