@@ -371,14 +371,13 @@
 //     </Router>
 //   );
 // }
-
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 // Components
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { About as AboutSection } from './components/About'; // Changed name to avoid conflict
+import { About as AboutSection } from './components/About'; 
 import { Pillars } from './components/Pillars';
 import { Ecosystem } from './components/Ecosystem';
 import { Metrics } from './components/Metrics';
@@ -393,6 +392,7 @@ import TermsOfService from './pages/TermsOfService';
 import RefundPolicy from './pages/RefundPolicy';
 import ContactPage from './pages/Contact';
 
+// Scroll to top helper
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -401,6 +401,7 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Hook for scroll animations
 const useRevealAnimations = () => {
   const location = useLocation();
   useEffect(() => {
@@ -417,6 +418,7 @@ const useRevealAnimations = () => {
   }, [location]);
 };
 
+// Home/Landing Component
 const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
   useRevealAnimations();
   return (
@@ -436,12 +438,14 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
 export default function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     try {
+      if (typeof window === 'undefined') return 'dark';
       return (localStorage.getItem('theme') || 'dark') as 'dark' | 'light';
     } catch (e) { return 'dark'; }
   });
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
+    if (document.body) document.body.classList.toggle('dark', theme === 'dark');
     localStorage.setItem('theme', theme);
   }, [theme]);
 
@@ -452,8 +456,10 @@ export default function App() {
       <ScrollToTop />
       <div className={`min-h-full transition-colors duration-300 ${
         theme === 'dark' ? 'bg-[#0A0A0B] text-slate-100' : 'bg-white text-slate-900'
-      }`}>
+      } selection:bg-blue-600/20`}>
+        
         <Navbar theme={theme} toggleTheme={toggleTheme} />
+        
         <Routes>
           <Route path="/" element={<MainLanding theme={theme} />} />
           <Route path="/about" element={<MainLanding theme={theme} />} />
@@ -462,6 +468,7 @@ export default function App() {
           <Route path="/refund-policy" element={<RefundPolicy theme={theme} toggleTheme={toggleTheme} />} />
           <Route path="/contact" element={<ContactPage theme={theme} toggleTheme={toggleTheme} />} />
         </Routes>
+
         <Footer theme={theme} />
       </div>
     </Router>
