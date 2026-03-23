@@ -5,4 +5,34 @@
     <priority>1.00</priority>
     <changefreq>weekly</changefreq>
   </url>
+  <url>
+    <loc>https://synckraft.in/about</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://synckraft.in/contact</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://synckraft.in/privacy-policy</loc>
+    <priority>0.50</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://synckraft.in/terms-of-service</loc>
+    <priority>0.50</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://synckraft.in/refund-policy</loc>
+    <priority>0.50</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://synckraft.in/disclaimer</loc>
+    <priority>0.50</priority>
+    <changefreq>yearly</changefreq>
+  </url>
 </urlset>

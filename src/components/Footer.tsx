@@ -1,0 +1,120 @@
+import React from 'react';
+import { Linkedin, Instagram, Facebook, MapPin, ChevronRight, Twitter, ExternalLink } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+
+interface ThemeProps {
+  theme: 'dark' | 'light';
+}
+
+export const Footer: React.FC<ThemeProps> = ({ theme }) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  const socialLinks = [
+    { icon: Linkedin, label: "LinkedIn", href: "#" },
+    { icon: Twitter, label: "Twitter", href: "#" },
+    { icon: Instagram, label: "Instagram", href: "#" },
+    { icon: Facebook, label: "Facebook", href: "#" },
+  ];
+
+  return (
+    <footer id="footer" className={`pt-24 md:pt-40 pb-12 relative overflow-hidden transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-[#080809] text-white' : 'bg-[#1E40AF] text-white'
+    }`}>
+      {/* Decorative Blur */}
+      <div className={`absolute top-[-10%] right-[-5%] w-[600px] h-[600px] blur-[150px] rounded-full pointer-events-none ${
+        theme === 'dark' ? 'bg-blue-600/5' : 'bg-blue-500/10'
+      }`} />
+      
+      <div className="max-w-7xl mx-auto px-8 relative z-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-20 mb-32">
+          
+          {/* Logo & Description */}
+          <div className="lg:col-span-6">
+            <div className="flex items-center gap-5 mb-8">
+              <h3 className="text-3xl font-black tracking-tighter text-white">
+                Synckraft<span className="text-blue-500">.</span>
+              </h3>
+            </div> 
+            
+            <p className="text-blue-50 text-xl leading-relaxed max-w-lg mb-14 font-light opacity-70">
+              Architecting the future through institutional execution. We build, launch, and scale the technology platforms that define tomorrow's digital infrastructure.
+            </p>
+            
+            <div className="flex flex-col gap-4">
+              <span className="text-blue-300 text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Direct Correspondence</span>
+              <a href="mailto:grow@synckraft.in" className="text-white hover:text-blue-300 transition-all font-bold text-2xl flex items-center gap-3 group">
+                grow@synckraft.in <ChevronRight size={24} className="group-hover:translate-x-2 transition-transform text-blue-400" />
+              </a>
+            </div>
+          </div>
+
+          {/* Ecosystem Section */}
+          <div className="lg:col-span-3 lg:col-start-8">
+            <h4 className="text-white font-black uppercase tracking-[0.3em] text-[11px] mb-12 opacity-40">Ecosystem</h4>
+            <ul className="space-y-7 text-blue-100 font-bold text-sm tracking-wide">
+              <li>
+                <a href="https://solaroft.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 flex items-center gap-2 transition-colors">
+                  Solaroft <ExternalLink size={14} className="opacity-30" />
+                </a>
+              </li>
+              <li><a href={isHomePage ? "#ecosystem" : "/#ecosystem"} className="hover:text-blue-400 transition-colors">SolveItIndia</a></li>
+              <li><a href={isHomePage ? "#ecosystem" : "/#ecosystem"} className="hover:text-blue-400 transition-colors">Internal Labs</a></li>
+              <li><a href={isHomePage ? "#pillars" : "/#pillars"} className="hover:text-blue-400 transition-colors">Venture Strategy</a></li>
+            </ul>
+          </div>
+
+          {/* Legal Section - CRITICAL FOR META VERIFICATION */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white font-black uppercase tracking-[0.3em] text-[11px] mb-12 opacity-40">Legal & Corporate</h4>
+            <ul className="space-y-7 text-blue-100 font-bold text-sm tracking-wide">
+              <li><a href="/about" className="hover:text-blue-400 transition-colors">About Us</a></li>
+              <li><a href="/contact" className="hover:text-blue-400 transition-colors">Contact Us</a></li>
+              <li><a href="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms-of-service" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
+              <li><a href="/refund-policy" className="hover:text-blue-400 transition-colors">Refund Policy</a></li>
+              <li><a href="/disclaimer" className="hover:text-blue-400 transition-colors">Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Social Presence Layer */}
+        <div className="flex flex-wrap items-center justify-between gap-10 py-12 border-y border-white/5 mb-20">
+          <div className="flex items-center gap-10">
+            {socialLinks.map((social, i) => (
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="text-blue-200 hover:text-white transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center p-3 rounded-lg"
+              >
+                <social.icon size={30} strokeWidth={1.5} />
+              </a>
+            ))}
+            <a href="/contact" className="text-blue-200 hover:text-white transition-all transform hover:-translate-y-1 p-3 rounded-lg">
+              <MapPin size={30} strokeWidth={1.5} />
+            </a>
+          </div>
+          <div className="text-white text-[10px] font-black uppercase tracking-[0.6em] hidden lg:block">
+            Venture Standard v1.02.2026
+          </div>
+        </div>
+
+        {/* Executive Bottom Layer */}
+        <div className="flex flex-col md:flex-row justify-between items-end md:items-center gap-16 text-blue-200">
+          <div className="max-w-xs">
+            <div className="text-[12px] font-bold uppercase tracking-[0.25em] mb-2 text-white">
+              Synckraft Technologies Private Limited
+            </div>
+            <div className="text-white text-[10px] font-medium leading-relaxed">
+              CIN: U62020MH2026PTC467409<br />
+              All concepts, code, and frameworks are the intellectual property of Synckraft Technologies © 2026.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};

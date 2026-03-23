@@ -40,6 +40,27 @@ export const About: React.FC<ThemeProps> = ({ theme }) => {
                   <p className={`text-sm leading-relaxed ${theme === 'dark' ? 'text-slate-500' : 'text-slate-500'}`}>Every venture is a proprietary asset in our portfolio.</p>
                </div>
             </div>
+
+            {/* Portfolio Logos */}
+            <div className="mt-20 pt-12 border-t border-white/5 flex flex-col items-center text-center group transition-all duration-500">
+              <h3 className={`text-[35px] -ml-[18rem] font-bold mb-10 tracking-tight uppercase tracking-[0.2em] ${
+                theme === 'dark' ? 'text-blue/500' : 'text-black/400'
+              }`}>
+                Active <span className="text-blue-600/60 italic font-light lowercase">ventures</span>
+              </h3>
+              <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+                <img 
+                  src="/Solaroft.png" 
+                  alt="Solaroft" 
+                  className="h-[140px] md:h-[180px] w-auto object-contain transition-all duration-700 hover:scale-110" 
+                />
+                <img 
+                  src="/SolvitIndia.png" 
+                  alt="SolvitIndia" 
+                  className="h-[140px] md:h-[180px] w-auto object-contain transition-all duration-700 hover:scale-110 mt-10" 
+                />
+              </div>
+            </div>
           </div>
 
           <div className="relative reveal lg:pl-12" style={{ transitionDelay: '0.2s' }}>

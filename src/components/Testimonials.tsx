@@ -35,7 +35,7 @@ export const Testimonials: React.FC = () => {
         
         <div className="relative reveal">
           <div className="p-12 md:p-16 rounded-[3rem] bg-blue-50/30 border border-blue-100 text-center relative elev-1">
-             <Quote className="text-blue-200 absolute top-10 left-10" size={48} />
+             <Quote className="text-blue-200 absolute top-10 left-5" size={48} />
              <div className="min-h-[140px] flex flex-col justify-center items-center">
                 <p className="text-xl md:text-2xl text-slate-700 italic leading-relaxed mb-10 transition-all duration-500">
                   "{testimonials[index].text}"
@@ -45,6 +45,7 @@ export const Testimonials: React.FC = () => {
                    <p className="text-sm text-slate-400 uppercase tracking-widest font-medium mt-1">{testimonials[index].location}</p>
                 </div>
              </div>
+             <Quote className="text-blue-200 absolute bottom-[125px] right-5" size={48} />
           </div>
           
           <div className="flex justify-center gap-4 mt-10">

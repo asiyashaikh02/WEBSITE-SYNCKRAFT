@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, Clock, Globe, Zap, Box, ChevronLeft, ChevronRight, LayoutGrid } from 'lucide-react';
+import React from 'react';
+import { ArrowUpRight, Clock, Globe, Zap, Box, LayoutGrid } from 'lucide-react';
 
 interface ThemeProps {
   theme: 'dark' | 'light';
@@ -39,14 +39,6 @@ it performs, consistently.`,
 ];
 
 export const Ecosystem: React.FC<ThemeProps> = ({ theme }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % ventures.length);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, []);
 
   return (
     <section id="ecosystem" className={`py-24 md:py-40 relative overflow-hidden ${theme === 'dark' ? 'bg-[#080809]' : 'bg-slate-50'}`}>
@@ -58,24 +50,6 @@ export const Ecosystem: React.FC<ThemeProps> = ({ theme }) => {
             <p className={`text-xl font-light leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
               Synckraft architects a diverse portfolio of specialized digital platforms designed for massive scale and disruption.
             </p>
-          </div>
-          <div className="flex gap-4">
-            <button 
-              onClick={() => setCurrentIndex((prev) => (prev - 1 + ventures.length) % ventures.length)}
-              className={`w-14 h-14 rounded-2xl border transition-all flex items-center justify-center ${
-                theme === 'dark' ? 'bg-white/5 border-white/5 text-slate-500 hover:text-blue-500 hover:border-blue-500' : 'bg-white border-slate-200 text-slate-400 hover:text-blue-600 hover:border-blue-600 shadow-md'
-              }`}
-            >
-              <ChevronLeft size={28} />
-            </button>
-            <button 
-              onClick={() => setCurrentIndex((prev) => (prev + 1) % ventures.length)}
-              className={`w-14 h-14 rounded-2xl border transition-all flex items-center justify-center ${
-                theme === 'dark' ? 'bg-white/5 border-white/5 text-slate-500 hover:text-blue-500 hover:border-blue-500' : 'bg-white border-slate-200 text-slate-400 hover:text-blue-600 hover:border-blue-600 shadow-md'
-              }`}
-            >
-              <ChevronRight size={28} />
-            </button>
           </div>
         </div>
         
@@ -116,7 +90,25 @@ export const Ecosystem: React.FC<ThemeProps> = ({ theme }) => {
               
               <p className={`text-lg leading-relaxed mb-12 flex-grow font-light ${theme === 'dark' ? 'text-slate-500' : 'text-slate-500'}`}>{venture.description}</p>
               {venture.title === 'Solaroft' && (
-                <ul className="mt-2 space-y-2 text-sm font-medium">
+                <>
+                  <div className="mb-12 relative group/preview">
+                    <div className="absolute inset-0 bg-blue-600/5 blur-3xl rounded-full translate-y-10" />
+                    <div className="relative border border-white/10 rounded-2xl overflow-hidden shadow-2xl bg-slate-900 aspect-video md:aspect-[21/9]">
+                      <div className="bg-slate-800/80 px-4 py-2.5 flex items-center gap-1.5 border-b border-white/5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500/50" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/50" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
+                        <div className="ml-3 flex-grow h-3 bg-white/5 rounded-full" />
+                      </div>
+                      <iframe 
+                        src="https://solaroft.com" 
+                        title="Solaroft Website"
+                        className="w-full h-full border-0 opacity-90 group-hover/preview:opacity-100 transition-opacity duration-700"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <ul className="mt-2 space-y-2 text-sm font-medium">
                   <li>Trusted by 500+ customers</li>
                   <li>Annual Maintenance Contracts (AMC)</li>
                   <li>Solar cleaning & efficiency optimization</li>
@@ -125,9 +117,10 @@ export const Ecosystem: React.FC<ThemeProps> = ({ theme }) => {
                   <li>Up to 30% energy boost</li>
                   <li>Residential & Commercial services</li>
                 </ul>
+                </>
               )}
               
-              <div className={`pt-8 border-t mt-auto ${theme === 'dark' ? 'border-white/5' : 'border-slate-50'}`}>
+              <div className={`pt-8 mt-auto ${venture.title === 'Solaroft' ? '' : `border-t ${theme === 'dark' ? 'border-white/5' : 'border-slate-50'}`}`}>
                 {venture.isLive ? (
                   <a href={venture.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-blue-500 font-bold text-sm uppercase tracking-[0.15em] group/link transition-colors">
                     Explore Venture <ArrowUpRight size={20} className="transition-transform group-hover/link:-translate-y-1" />
