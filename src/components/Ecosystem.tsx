@@ -91,22 +91,12 @@ export const Ecosystem: React.FC<ThemeProps> = ({ theme }) => {
               <p className={`text-lg leading-relaxed mb-12 flex-grow font-light ${theme === 'dark' ? 'text-slate-500' : 'text-slate-500'}`}>{venture.description}</p>
               {venture.title === 'Solaroft' && (
                 <>
-                  <div className="mb-12 relative group/preview">
-                    <div className="absolute inset-0 bg-blue-600/5 blur-3xl rounded-full translate-y-10" />
-                    <div className="relative border border-white/10 rounded-2xl overflow-hidden shadow-2xl bg-slate-900 aspect-video md:aspect-[21/9]">
-                      <div className="bg-slate-800/80 px-4 py-2.5 flex items-center gap-1.5 border-b border-white/5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-red-500/50" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/50" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
-                        <div className="ml-3 flex-grow h-3 bg-white/5 rounded-full" />
-                      </div>
-                      <iframe 
-                        src="https://solaroft.com" 
-                        title="Solaroft Website"
-                        className="w-full h-full border-0 opacity-90 group-hover/preview:opacity-100 transition-opacity duration-700"
-                        loading="lazy"
-                      />
-                    </div>
+                  <div className="flex items-center justify-center py-12 mb-8 group/preview">
+                    <img 
+                      src="/Solaroft.png" 
+                      alt="Solaroft Logo" 
+                      className="h-32 md:h-48 w-auto object-contain transition-transform duration-700 group-hover/preview:scale-105 drop-shadow-sm" 
+                    />
                   </div>
                   <ul className="mt-2 space-y-2 text-sm font-medium">
                   <li>Trusted by 500+ customers</li>
