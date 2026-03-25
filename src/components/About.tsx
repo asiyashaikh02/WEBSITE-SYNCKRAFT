@@ -43,8 +43,8 @@ export const About: React.FC<ThemeProps> = ({ theme }) => {
 
             {/* Portfolio Logos */}
             <div className="mt-20 pt-12 border-t border-white/5 flex flex-col items-center text-center group transition-all duration-500">
-              <h3 className={`text-[35px] -ml-[18rem] font-bold mb-10 tracking-tight uppercase tracking-[0.2em] ${
-                theme === 'dark' ? 'text-blue/500' : 'text-black/400'
+              <h3 className={`text-[35px] md:-ml-[18rem] font-bold mb-10 tracking-tight uppercase tracking-[0.2em] ${
+                theme === 'dark' ? 'text-blue-500/50' : 'text-slate-400'
               }`}>
                 Active <span className="text-blue-600/60 italic font-light lowercase">ventures</span>
               </h3>
@@ -52,12 +52,12 @@ export const About: React.FC<ThemeProps> = ({ theme }) => {
                 <img 
                   src="/Solaroft.png" 
                   alt="Solaroft" 
-                  className="h-[140px] md:h-[180px] w-auto object-contain transition-all duration-700 hover:scale-110" 
+                  className="h-[80px] sm:h-[120px] md:h-[180px] w-auto object-contain transition-all duration-700 hover:scale-110" 
                 />
                 <img 
                   src="/SolvitIndia.png" 
                   alt="SolvitIndia" 
-                  className="h-[140px] md:h-[180px] w-auto object-contain transition-all duration-700 hover:scale-110 mt-10" 
+                  className="h-[80px] sm:h-[120px] md:h-[180px] w-auto object-contain transition-all duration-700 hover:scale-110 md:mt-10" 
                 />
               </div>
             </div>
