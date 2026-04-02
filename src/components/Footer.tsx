@@ -11,10 +11,10 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
   const isHomePage = location.pathname === '/';
 
   const socialLinks = [
-    { icon: Linkedin, label: "LinkedIn", href: "#" },
-    { icon: Twitter, label: "Twitter", href: "#" },
-    { icon: Instagram, label: "Instagram", href: "#" },
-    { icon: Facebook, label: "Facebook", href: "#" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/synckraft-technologies/" },
+    { icon: Twitter, label: "Twitter", href: "https://x.com/synckrafttech" },
+    { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/synckraft_technologies/" },
+    { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=61578472749598" },
   ];
 
   return (
