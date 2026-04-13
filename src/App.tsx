@@ -31,6 +31,11 @@ const BlogPage = React.lazy(() => import('./pages/Blog'));
 const CaseStudiesPage = React.lazy(() => import('./pages/CaseStudies'));
 const CompanyPage = React.lazy(() => import('./pages/Company'));
 
+// Phase 6 SEO Pages
+const RealEstateAutomation = React.lazy(() => import('./pages/seo/RealEstateAutomation'));
+const RestaurantAutomation = React.lazy(() => import('./pages/seo/RestaurantAutomation'));
+const HealthcareAutomation = React.lazy(() => import('./pages/seo/HealthcareAutomation'));
+
 // Scroll to top helper
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -139,6 +144,10 @@ export default function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/company" element={<CompanyPage />} />
+
+            <Route path="/real-estate-automation" element={<RealEstateAutomation theme={theme} />} />
+            <Route path="/restaurant-automation" element={<RestaurantAutomation theme={theme} />} />
+            <Route path="/healthcare-automation" element={<HealthcareAutomation theme={theme} />} />
           </Routes>
         </Suspense>
 
