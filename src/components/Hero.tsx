@@ -41,30 +41,30 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
             <span className={`text-[10px] tracking-[0.3em] font-black uppercase ${
               theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
             }`}>
-              Building What Matters
+              Operating System for Business
             </span>
           </div>
 
           <h1 className={`font-black leading-[1.1] ${
             theme === 'dark' ? 'text-white' : 'text-slate-900'
           } text-[clamp(2.5rem,8vw,4.5rem)]`}> 
-            Building <span className="text-blue-500">Scalable</span><br />
-            Digital <span className="text-blue-500">Capabilities</span>
+            AI-Powered <span className="text-blue-500">Business</span><br />
+            Operating <span className="text-blue-500">Systems</span>
           </h1>
           
           <p className="mt-5 text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
-            Synckraft Technologies architects, launches, and scales high-potential technology platforms through precision framework execution.
+            Synckraft builds industry-specific Business Operating Systems powered by AI, Automation, and Smart Dashboards.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-            <a href="#ecosystem" className="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg transition-all flex items-center justify-center gap-3 shadow-xl shadow-blue-600/20 group">
-              Explore Our Ventures 
+            <a href="#industries" className="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg transition-all flex items-center justify-center gap-3 shadow-xl shadow-blue-600/20 group">
+              Explore Industries 
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a href="#contact" className={`px-8 py-4 rounded-xl border-2 font-bold text-lg transition-all text-center ${
               theme === 'dark' ? 'border-white/10 text-white hover:bg-white/5' : 'border-slate-200 text-slate-900 hover:bg-slate-50'
             }`}>
-              Partner With Us
+              Book a Demo
             </a>
           </div>
         </div>
@@ -79,15 +79,15 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
                   <Rocket size={32} />
                 </div>
                 <div className="text-right">
-                   <p className="text-[10px] font-bold text-blue-500 tracking-widest uppercase mb-1">Venture Growth</p>
-                   <p className={`text-4xl font-black ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>9.8x</p>
+                   <p className="text-[10px] font-bold text-blue-500 tracking-widest uppercase mb-1">Workflow Automation</p>
+                   <p className={`text-4xl font-black ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>+300%</p>
                 </div>
              </div>
              
              <div className="space-y-6">
                 {[
-                  { label: 'Architecture', val: '85%', color: 'bg-blue-600' },
-                  { label: 'Market Execution', val: '72%', color: 'bg-blue-400' }
+                  { label: 'System Efficiency', val: '95%', color: 'bg-blue-600' },
+                  { label: 'Manual Tasks', val: '12%', color: 'bg-blue-400' }
                 ].map((item) => (
                   <div key={item.label} className="space-y-2">
                     <div className="flex justify-between text-[10px] font-bold text-slate-500 uppercase tracking-widest">

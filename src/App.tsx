@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -7,21 +7,29 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About as AboutSection } from './components/About'; 
 import { Pillars } from './components/Pillars';
-import { Ecosystem } from './components/Ecosystem';
+import { IndustrySolutions } from './components/IndustrySolutions';
 import { Metrics } from './components/Metrics';
 import { Testimonials } from './components/Testimonials';
 import { ContactForm } from './components/ContactForm';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
-import { MessageCircle } from 'lucide-react';
+import { FloatingCTA } from './components/FloatingCTA';
 
-// Pages
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfService from './pages/TermsOfService';
-import RefundPolicy from './pages/RefundPolicy';
-import ContactPage from './pages/Contact';
-import AboutPage from './pages/AboutPage';
-import Disclaimer from './pages/Disclaimer';
+// Lazy Pages
+const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfService = React.lazy(() => import('./pages/TermsOfService'));
+const RefundPolicy = React.lazy(() => import('./pages/RefundPolicy'));
+const Disclaimer = React.lazy(() => import('./pages/Disclaimer'));
+const ContactPage = React.lazy(() => import('./pages/Contact'));
+const AboutPage = React.lazy(() => import('./pages/AboutPage'));
+
+// New Phase 2 Pages
+const ServicesPage = React.lazy(() => import('./pages/Services'));
+const IndustriesPage = React.lazy(() => import('./pages/Industries'));
+const ProductsPage = React.lazy(() => import('./pages/Products'));
+const BlogPage = React.lazy(() => import('./pages/Blog'));
+const CaseStudiesPage = React.lazy(() => import('./pages/CaseStudies'));
+const CompanyPage = React.lazy(() => import('./pages/Company'));
 
 // Scroll to top helper
 const ScrollToTop = () => {
@@ -69,7 +77,7 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
       <Hero theme={theme} />
       <AboutSection theme={theme} />
       <Pillars theme={theme} />
-      <Ecosystem theme={theme} />
+      <IndustrySolutions theme={theme} />
       <Metrics theme={theme} />
       <Testimonials />
       <ContactForm theme={theme} />
@@ -115,31 +123,28 @@ export default function App() {
         
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         
-        <Routes>
-          <Route path="/" element={<MainLanding theme={theme} />} />
-          <Route path="/about" element={<AboutPage theme={theme} />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy theme={theme} />} />
-          <Route path="/terms-of-service" element={<TermsOfService theme={theme} />} />
-          <Route path="/refund-policy" element={<RefundPolicy theme={theme} />} />
-          <Route path="/disclaimer" element={<Disclaimer theme={theme} />} />
-          <Route path="/contact" element={<ContactPage theme={theme} />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#0A0A0B]"><div className="w-10 h-10 rounded-full border-4 border-blue-500 border-t-transparent animate-spin"></div></div>}>
+          <Routes>
+            <Route path="/" element={<MainLanding theme={theme} />} />
+            <Route path="/about" element={<AboutPage theme={theme} />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy theme={theme} />} />
+            <Route path="/terms-of-service" element={<TermsOfService theme={theme} />} />
+            <Route path="/refund-policy" element={<RefundPolicy theme={theme} />} />
+            <Route path="/disclaimer" element={<Disclaimer theme={theme} />} />
+            <Route path="/contact" element={<ContactPage theme={theme} />} />
+            
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/industries" element={<IndustriesPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
+            <Route path="/company" element={<CompanyPage />} />
+          </Routes>
+        </Suspense>
 
         <Footer theme={theme} />
 
-        {/* Floating WhatsApp Button */}
-        <a 
-          href="https://wa.me/919867799655" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="fixed bottom-8 right-8 z-[100] w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all group"
-          aria-label="Contact us on WhatsApp"
-        >
-          <MessageCircle size={32} />
-          <span className="absolute right-full mr-3 px-3 py-1.5 rounded-lg bg-black/80 text-white text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            Chat with us
-          </span>
-        </a>
+        <FloatingCTA />
       </div>
     </>
   );

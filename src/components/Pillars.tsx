@@ -7,18 +7,18 @@ interface ThemeProps {
 
 const pillarData = [
   {
-    title: 'Venture Incubation',
-    description: 'We take high-potential concepts from zero to institutional scale, providing deep strategy and capital execution.',
+    title: 'AI Automation',
+    description: 'We build intelligent workflows that eliminate manual tasks, reduce overhead, and scale operations infinitely.',
     icon: Rocket,
   },
   {
-    title: 'Platform Holdings',
-    description: 'Proprietary software, SaaS, and digital infrastructure built for global distribution and resilience.',
+    title: 'Business OS Deployment',
+    description: 'Proprietary dashboards and comprehensive operating systems tailored specifically to your sector.',
     icon: Layers,
   },
   {
-    title: 'Operational Logic',
-    description: 'Go-to-market frameworks and institutional systems designed for high-velocity, predictable expansion.',
+    title: 'Growth Architecture',
+    description: 'Data-driven systems and scalable infrastructure designed for predictable revenue and market expansion.',
     icon: TrendingUp,
   },
 ];
@@ -28,8 +28,8 @@ export const Pillars: React.FC<ThemeProps> = ({ theme }) => {
     <section id="pillars" className={`py-24 md:py-40 -mt-[140px] ${theme === 'dark' ? 'bg-[#0A0A0B]' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-28 reveal">
-          <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">Our Core Framework</h4>
-          <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Strategic Execution Pillars</h2>
+          <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">System Architecture</h4>
+          <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Core OS Capabilities</h2>
         </div>
         
         <div className="grid lg:grid-cols-3 gap-10">
@@ -46,7 +46,7 @@ export const Pillars: React.FC<ThemeProps> = ({ theme }) => {
               <p className={`text-lg leading-relaxed mb-10 font-light ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>{pillar.description}</p>
               
               <div className="flex items-center gap-2 text-blue-500 font-bold text-sm uppercase tracking-widest cursor-pointer hover:gap-3 transition-all">
-                Explore Logic <ChevronRight size={18} />
+                View Features <ChevronRight size={18} />
               </div>
             </div>
           ))}
