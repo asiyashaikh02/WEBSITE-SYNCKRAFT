@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import React, { Suspense, lazy, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 // Lazy load pages for performance
 const Home = lazy(() => import('./pages/Home'));
@@ -53,6 +54,10 @@ const Loader = () => (
 function ServicesMain() {
   return (
     <div className="services-module-wrapper text-slate-900 dark:text-slate-100">
+      <Helmet>
+        <title>Synckraft Business Automation Services</title>
+        <meta name="description" content="AI automation and business operating systems for real estate, restaurants, and healthcare businesses." />
+      </Helmet>
       <ScrollToHash />
       <Suspense fallback={<Loader />}>
         <Routes>

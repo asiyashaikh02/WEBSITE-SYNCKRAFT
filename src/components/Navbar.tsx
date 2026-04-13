@@ -21,8 +21,11 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const isHomePage = location.pathname === '/';
 
   const navLinks = [
-    { name: 'Venture Ecosystem', href: isHomePage ? '#ecosystem' : '/#ecosystem' },
-    { name: 'Incubation Strategy', href: isHomePage ? '#pillars' : '/#pillars' },
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'Products', href: '/products' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Company', href: '/company' },
   ];
 
   return (
@@ -81,9 +84,9 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8 mr-4">
               {navLinks.map(link => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   className={`text-sm font-semibold transition-colors ${
                     theme === 'dark'
                       ? 'text-slate-400 hover:text-white'
@@ -91,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                   }`}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </nav>
 
@@ -138,23 +141,19 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             theme === 'dark' ? 'bg-black text-white' : 'bg-white text-slate-900'
           }`}
         >
-          <a
-            href="#ecosystem"
-            className="text-3xl font-black border-b border-white/10 pb-4"
-            onClick={() => setIsOpen(false)}
-          >
-            Venture Ecosystem
-          </a>
-          <a
-            href="#pillars"
-            className="text-3xl font-black border-b border-white/10 pb-4"
-            onClick={() => setIsOpen(false)}
-          >
-            Incubation Strategy
-          </a>
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.href}
+              className="text-3xl font-black border-b border-white/10 pb-4"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
           <a
             href={isHomePage ? "#contact-form-section" : "/contact"}
-            className="w-full py-5 rounded-2xl bg-blue-600 text-white text-center text-xl font-black"
+            className="w-full py-5 rounded-2xl bg-blue-600 text-white text-center text-xl font-black mt-4"
             onClick={() => setIsOpen(false)}
           >
             Partner With Us

@@ -8,6 +8,7 @@ import { Hero } from './components/Hero';
 import { About as AboutSection } from './components/About'; 
 import { Pillars } from './components/Pillars';
 import { IndustrySolutions } from './components/IndustrySolutions';
+import { BusinessSolutions } from './components/BusinessSolutions';
 import { Metrics } from './components/Metrics';
 import { Testimonials } from './components/Testimonials';
 import { ContactForm } from './components/ContactForm';
@@ -82,6 +83,7 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
       <Testimonials />
       <ContactForm theme={theme} />
       <CTA theme={theme} />
+      <BusinessSolutions theme={theme} />
     </main>
   );
 };
