@@ -16,6 +16,8 @@ import { ContactForm } from './components/ContactForm';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 import { FloatingCTA } from './components/FloatingCTA';
+import { CaseStudiesPreview } from './components/CaseStudiesPreview';
+import { TrustSection } from './components/TrustSection';
 
 // Lazy Pages
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
@@ -30,7 +32,8 @@ const IndustriesPage = React.lazy(() => import('./pages/Industries'));
 const ProductsPage = React.lazy(() => import('./pages/Products'));
 const BlogPage = React.lazy(() => import('./pages/blog/Blog'));
 const BlogPostPage = React.lazy(() => import('./pages/blog/BlogPost'));
-const CaseStudiesPage = React.lazy(() => import('./pages/CaseStudies'));
+const CaseStudiesPage = React.lazy(() => import('./pages/case-studies/CaseStudies'));
+const CaseStudyDetailPage = React.lazy(() => import('./pages/case-studies/CaseStudyDetail'));
 const CompanyPage = React.lazy(() => import('./pages/Company'));
 
 // Phase 6 SEO Pages
@@ -88,15 +91,13 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
   return (
     <main role="main">
       <Hero theme={theme} />
-      <AboutSection theme={theme} />
-      <Pillars theme={theme} />
-      <IndustrySolutions theme={theme} />
-      <Metrics theme={theme} />
-      <Testimonials />
-      <BlogSection theme={theme} />
-      <ContactForm theme={theme} />
-      <CTA theme={theme} />
       <BusinessSolutions theme={theme} />
+      <IndustrySolutions theme={theme} />
+      <BlogSection theme={theme} />
+      <Testimonials theme={theme} />
+      <CaseStudiesPreview theme={theme} />
+      <TrustSection theme={theme} />
+      <CTA theme={theme} />
     </main>
   );
 };
@@ -153,6 +154,7 @@ export default function App() {
             <Route path="/blog" element={<BlogPage theme={theme} />} />
             <Route path="/blog/:id" element={<BlogPostPage theme={theme} />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
+            <Route path="/case-studies/:id" element={<CaseStudyDetailPage />} />
             <Route path="/company" element={<CompanyPage />} />
 
             <Route path="/real-estate-automation" element={<RealEstateAutomation theme={theme} />} />
