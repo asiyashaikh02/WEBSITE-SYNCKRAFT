@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  body {
+    min-height: max(884px, 100dvh);
+  }
+}
+
+@layer utilities {
+  .glass-header {
+    background: rgba(11, 19, 38, 0.6);
+    backdrop-filter: blur(20px);
+  }
+  .hero-gradient {
+    background: radial-gradient(circle at 50% 50%, rgba(137, 206, 255, 0.1) 0%, rgba(11, 19, 38, 0) 70%);
+  }
+}
+body { @apply bg-surface text-on-surface font-body selection:bg-primary/30; }

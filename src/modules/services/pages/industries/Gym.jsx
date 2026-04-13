@@ -1,0 +1,44 @@
+import React from 'react';
+import IndustryTemplate from '../../components/IndustryTemplate';
+
+export default function Gym() {
+  return (
+    <IndustryTemplate
+      title="Gym Automation System"
+      subtitle="Fitness Facility Intelligence"
+      description="Modernize your fitness center with AI-driven member retention algorithms, automated billing workflows, and smart predictive facility maintenance. Provide the ultimate seamless digital experience from the app to the access gate."
+      features={[
+        {
+          title: "Predictive Retention AI",
+          description: "Identify members at risk of churning based on visit frequency and engagement patterns, automatically triggering personalized retention campaigns.",
+          icon: "model_training"
+        },
+        {
+          title: "Seamless Access Control",
+          description: "Integration with biometric scanners and mobile NFC logic for completely frictionless facility entry and 24/7 autonomous operations.",
+          icon: "sensor_door"
+        },
+        {
+          title: "Class Orchestration",
+          description: "Dynamic capacity forecasting, automatic waitlist management, and dynamic scheduling for trainers and studio spaces.",
+          icon: "event_available"
+        },
+        {
+          title: "Automated Billing Engine",
+          description: "Robust recurring payment processing with smart dunning management to recover failed payments without staff intervention.",
+          icon: "currency_exchange"
+        },
+        {
+          title: "Equipment Maintenance Tracking",
+          description: "IoT connectivity to log machine usage hours and automatically schedule preventative servicing to eliminate downtime.",
+          icon: "fitness_center"
+        },
+        {
+          title: "Member Analytics",
+          description: "Deep insights into peak hours, class profitability, and lifetime member value to optimize future facility investments.",
+          icon: "insights"
+        }
+      ]}
+    />
+  );
+}
