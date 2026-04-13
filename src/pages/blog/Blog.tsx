@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ArrowRight, Calendar, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import CTA from '../../components/CTA';
+import { CTA } from '../../components/CTA';
 
 interface ThemeProps {
   theme: 'dark' | 'light';
