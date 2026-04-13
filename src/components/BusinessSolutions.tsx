@@ -8,7 +8,7 @@ interface ThemeProps {
 export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
   const solutions = [
     {
-      title: 'Real Estate Automation',
+      title: 'Real Estate OS',
       desc: 'Predictive lead matching, 24/7 AI qualification, and automated property management ecosystems.',
       icon: <Building2 size={32} />,
       link: '/services#real-estate'
@@ -31,8 +31,8 @@ export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
     <section className={`py-24 ${theme === 'dark' ? 'bg-[#0A0A0B]' : 'bg-slate-50'}`}>
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-16 reveal">
-          <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">Business Solutions</h4>
-          <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>SaaS Architecture</h2>
+          <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">Business Operating Systems</h4>
+          <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Business OS Architecture</h2>
         </div>
         
         <div className="grid lg:grid-cols-3 gap-8">
