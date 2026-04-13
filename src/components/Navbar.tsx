@@ -21,11 +21,11 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const isHomePage = location.pathname === '/';
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Products', href: '/products' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Company', href: '/company' },
+    { name: 'Home', href: '/', external: false },
+    { name: 'Services', href: '/services', external: true },
+    { name: 'Products', href: '/products', external: false },
+    { name: 'Blog', href: '/blog', external: false },
+    { name: 'Company', href: '/company', external: false },
   ];
 
   return (
@@ -84,17 +84,31 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8 mr-4">
               {navLinks.map(link => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className={`text-sm font-semibold transition-colors ${
-                    theme === 'dark'
-                      ? 'text-slate-400 hover:text-white'
-                      : 'text-slate-600 hover:text-blue-600'
-                  }`}
-                >
-                  {link.name}
-                </Link>
+                link.external ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className={`text-sm font-semibold transition-colors ${
+                      theme === 'dark'
+                        ? 'text-slate-400 hover:text-white'
+                        : 'text-slate-600 hover:text-blue-600'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={`text-sm font-semibold transition-colors ${
+                      theme === 'dark'
+                        ? 'text-slate-400 hover:text-white'
+                        : 'text-slate-600 hover:text-blue-600'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
             </nav>
 
@@ -142,14 +156,25 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           }`}
         >
           {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.href}
-              className="text-3xl font-black border-b border-white/10 pb-4"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </Link>
+            link.external ? (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-3xl font-black border-b border-white/10 pb-4"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="text-3xl font-black border-b border-white/10 pb-4"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </Link>
+            )
           ))}
           <a
             href={isHomePage ? "#contact-form-section" : "/contact"}

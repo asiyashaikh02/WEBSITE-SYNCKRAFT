@@ -25,7 +25,6 @@ const ContactPage = React.lazy(() => import('./pages/Contact'));
 const AboutPage = React.lazy(() => import('./pages/AboutPage'));
 
 // New Phase 2 Pages
-const ServicesMain = React.lazy(() => import('./modules/services/ServicesMain'));
 const IndustriesPage = React.lazy(() => import('./pages/Industries'));
 const ProductsPage = React.lazy(() => import('./pages/Products'));
 const BlogPage = React.lazy(() => import('./pages/Blog'));
@@ -135,7 +134,6 @@ export default function App() {
             <Route path="/disclaimer" element={<Disclaimer theme={theme} />} />
             <Route path="/contact" element={<ContactPage theme={theme} />} />
             
-            <Route path="/services/*" element={<ServicesMain />} />
             <Route path="/industries" element={<IndustriesPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/blog" element={<BlogPage />} />
