@@ -125,12 +125,12 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             </button>
 
             {/* CTA */}
-            <a
-              href={isHomePage ? "#contact-form-section" : "/contact"}
+            <Link
+              to="/book-demo"
               className="hidden sm:block px-6 py-3 rounded-full bg-blue-600 text-white text-sm font-bold shadow-lg shadow-blue-600/20 active:scale-95 transition-all"
             >
-              Partner With Us
-            </a>
+              Book Demo
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -176,13 +176,13 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
               </Link>
             )
           ))}
-          <a
-            href={isHomePage ? "#contact-form-section" : "/contact"}
+          <Link
+            to="/book-demo"
             className="w-full py-5 rounded-2xl bg-blue-600 text-white text-center text-xl font-black mt-4"
             onClick={() => setIsOpen(false)}
           >
-            Partner With Us
-          </a>
+            Book Demo
+          </Link>
         </div>
       )}
     </>

@@ -38,6 +38,12 @@ const RealEstateAutomation = React.lazy(() => import('./pages/seo/RealEstateAuto
 const RestaurantAutomation = React.lazy(() => import('./pages/seo/RestaurantAutomation'));
 const HealthcareAutomation = React.lazy(() => import('./pages/seo/HealthcareAutomation'));
 
+// Phase 8 Funnel Pages
+const BookDemo = React.lazy(() => import('./pages/funnel/BookDemo'));
+const FreeAudit = React.lazy(() => import('./pages/funnel/FreeAudit'));
+const ContactSales = React.lazy(() => import('./pages/funnel/ContactSales'));
+const ThankYou = React.lazy(() => import('./pages/funnel/ThankYou'));
+
 // Scroll to top helper
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -152,6 +158,12 @@ export default function App() {
             <Route path="/real-estate-automation" element={<RealEstateAutomation theme={theme} />} />
             <Route path="/restaurant-automation" element={<RestaurantAutomation theme={theme} />} />
             <Route path="/healthcare-automation" element={<HealthcareAutomation theme={theme} />} />
+
+            {/* Funnel Routes */}
+            <Route path="/book-demo" element={<BookDemo />} />
+            <Route path="/free-audit" element={<FreeAudit />} />
+            <Route path="/contact-sales" element={<ContactSales />} />
+            <Route path="/thank-you" element={<ThankYou />} />
           </Routes>
         </Suspense>
 
