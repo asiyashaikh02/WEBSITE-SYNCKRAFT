@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Bot, ArrowRight, Building2, Users, Briefcase, Mail, Phone, User, CheckCircle2 } from 'lucide-react';
+import { trackFunnelStep, trackEvent } from '../../utils/analytics';
+
 
 export default function BookDemo() {
   const [searchParams] = useSearchParams();
@@ -31,13 +33,18 @@ export default function BookDemo() {
   };
 
   const nextStep = () => {
-    if (validateStep(step)) setStep(prev => prev + 1);
+    if (validateStep(step)) {
+      trackFunnelStep('Book Demo Funnel', step, 'Step Completed');
+      setStep(prev => prev + 1);
+    }
   };
   const prevStep = () => setStep(prev => prev - 1);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateStep(3)) return;
+
+    trackEvent('Form Submission', 'Book Demo Form', 'Success');
 
     setIsSubmitting(true);
     const submissionData = {

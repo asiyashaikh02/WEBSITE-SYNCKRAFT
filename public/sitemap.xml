@@ -2,37 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://synckraft.in/</loc>
-    <priority>1.00</priority>
     <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://synckraft.in/about</loc>
-    <priority>0.80</priority>
+    <loc>https://synckraft.in/services</loc>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://synckraft.in/contact</loc>
-    <priority>0.80</priority>
+    <loc>https://synckraft.in/products</loc>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://synckraft.in/privacy-policy</loc>
-    <priority>0.50</priority>
-    <changefreq>yearly</changefreq>
+    <loc>https://synckraft.in/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://synckraft.in/terms-of-service</loc>
-    <priority>0.50</priority>
-    <changefreq>yearly</changefreq>
+    <loc>https://synckraft.in/case-studies</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://synckraft.in/refund-policy</loc>
-    <priority>0.50</priority>
+    <loc>https://synckraft.in/book-demo</loc>
     <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://synckraft.in/disclaimer</loc>
-    <priority>0.50</priority>
+    <loc>https://synckraft.in/free-audit</loc>
     <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://synckraft.in/real-estate-automation</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://synckraft.in/restaurant-automation</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://synckraft.in/healthcare-automation</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://synckraft.in/company</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

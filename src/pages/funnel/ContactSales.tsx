@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, User, Building2, MessageSquare, ArrowRight, ShieldCheck } from 'lucide-react';
+import { trackEvent } from '../../utils/analytics';
+
 
 export default function ContactSales() {
   const navigate = useNavigate();
@@ -22,6 +24,7 @@ export default function ContactSales() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    trackEvent('Form Submission', 'Contact Sales', 'Lead Capture');
     
     const submissionData = {
       ...formData,

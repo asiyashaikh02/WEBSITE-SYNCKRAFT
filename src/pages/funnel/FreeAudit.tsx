@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Bot, ArrowRight, Building2, User, Mail, Phone, Settings, Activity, Target } from 'lucide-react';
+import { trackEvent } from '../../utils/analytics';
+
 
 export default function FreeAudit() {
   const [searchParams] = useSearchParams();
@@ -25,6 +27,8 @@ export default function FreeAudit() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    trackEvent('Form Submission', 'Free Audit', 'Lead Capture');
+
     
     const submissionData = {
       ...formData,

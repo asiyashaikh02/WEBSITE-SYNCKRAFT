@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Building2, Utensils, Activity } from 'lucide-react';
+import { motion } from 'framer-motion';
+
 
 export const CaseStudiesPreview = ({ theme }: { theme: 'dark' | 'light' }) => {
   const previewStudies = [
@@ -51,14 +53,17 @@ export const CaseStudiesPreview = ({ theme }: { theme: 'dark' | 'light' }) => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {previewStudies.map((study, idx) => (
-            <div 
+            <motion.div 
               key={idx} 
-              className={`p-8 rounded-[2rem] border transition-all hover:-translate-y-2 reveal ${
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              className={`p-8 rounded-[2rem] border transition-all hover:-translate-y-2 ${
                 theme === 'dark' 
                   ? 'bg-[#111112] border-white/5 hover:border-blue-500/30' 
                   : 'bg-white border-slate-200 hover:border-blue-300 shadow-xl shadow-slate-200/50'
               }`}
-              style={{ transitionDelay: `${idx * 100}ms` }}
             >
               <div className="flex items-center justify-between mb-8">
                 <div className={`p-3 rounded-xl ${theme === 'dark' ? 'bg-white/5' : 'bg-slate-100'}`}>
@@ -81,7 +86,7 @@ export const CaseStudiesPreview = ({ theme }: { theme: 'dark' | 'light' }) => {
               >
                 Read Case Study <ArrowRight size={16} />
               </Link>
-            </div>
+            </motion.div>
           ))}
         </div>
 

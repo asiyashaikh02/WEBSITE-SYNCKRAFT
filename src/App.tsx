@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { initAnalytics, trackPageView } from './utils/analytics';
 
 // Components
 import { Navbar } from './components/Navbar';
@@ -18,6 +19,7 @@ import { Footer } from './components/Footer';
 import { FloatingCTA } from './components/FloatingCTA';
 import { CaseStudiesPreview } from './components/CaseStudiesPreview';
 import { TrustSection } from './components/TrustSection';
+import { Loader } from './components/Loader';
 
 // Lazy Pages
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
@@ -46,6 +48,9 @@ const BookDemo = React.lazy(() => import('./pages/funnel/BookDemo'));
 const FreeAudit = React.lazy(() => import('./pages/funnel/FreeAudit'));
 const ContactSales = React.lazy(() => import('./pages/funnel/ContactSales'));
 const ThankYou = React.lazy(() => import('./pages/funnel/ThankYou'));
+
+// Error Pages
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 // Scroll to top helper
 const ScrollToTop = () => {
@@ -113,7 +118,15 @@ export default function App() {
   const location = useLocation();
   const canonicalUrl = `https://synckraft.in${location.pathname === '/' ? '' : location.pathname}`;
 
-  // Call reveal animations hook here so it works on all routes
+  // Call analytics & reveal animations hook here so it works on all routes
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
+    trackPageView(location.pathname);
+  }, [location.pathname]);
+
   useRevealAnimations();
 
   useEffect(() => {
@@ -139,7 +152,7 @@ export default function App() {
         
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#0A0A0B]"><div className="w-10 h-10 rounded-full border-4 border-blue-500 border-t-transparent animate-spin"></div></div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<MainLanding theme={theme} />} />
             <Route path="/about" element={<AboutPage theme={theme} />} />
@@ -166,6 +179,9 @@ export default function App() {
             <Route path="/free-audit" element={<FreeAudit />} />
             <Route path="/contact-sales" element={<ContactSales />} />
             <Route path="/thank-you" element={<ThankYou />} />
+
+            {/* Error Route */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
 
