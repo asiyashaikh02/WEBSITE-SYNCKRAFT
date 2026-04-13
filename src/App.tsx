@@ -11,6 +11,7 @@ import { IndustrySolutions } from './components/IndustrySolutions';
 import { BusinessSolutions } from './components/BusinessSolutions';
 import { Metrics } from './components/Metrics';
 import { Testimonials } from './components/Testimonials';
+import { BlogSection } from './components/BlogSection';
 import { ContactForm } from './components/ContactForm';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
@@ -27,7 +28,8 @@ const AboutPage = React.lazy(() => import('./pages/AboutPage'));
 // New Phase 2 Pages
 const IndustriesPage = React.lazy(() => import('./pages/Industries'));
 const ProductsPage = React.lazy(() => import('./pages/Products'));
-const BlogPage = React.lazy(() => import('./pages/Blog'));
+const BlogPage = React.lazy(() => import('./pages/blog/Blog'));
+const BlogPostPage = React.lazy(() => import('./pages/blog/BlogPost'));
 const CaseStudiesPage = React.lazy(() => import('./pages/CaseStudies'));
 const CompanyPage = React.lazy(() => import('./pages/Company'));
 
@@ -85,6 +87,7 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
       <IndustrySolutions theme={theme} />
       <Metrics theme={theme} />
       <Testimonials />
+      <BlogSection theme={theme} />
       <ContactForm theme={theme} />
       <CTA theme={theme} />
       <BusinessSolutions theme={theme} />
@@ -141,7 +144,8 @@ export default function App() {
             
             <Route path="/industries" element={<IndustriesPage />} />
             <Route path="/products" element={<ProductsPage />} />
-            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog" element={<BlogPage theme={theme} />} />
+            <Route path="/blog/:id" element={<BlogPostPage theme={theme} />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/company" element={<CompanyPage />} />
 
