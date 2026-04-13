@@ -1,7 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import React, { Suspense, lazy, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 
 // Lazy load pages for performance
 const Home = lazy(() => import('./pages/Home'));
@@ -52,40 +50,38 @@ const Loader = () => (
   </div>
 );
 
-function App() {
+function ServicesMain() {
   return (
-    <Router>
+    <div className="services-module-wrapper text-slate-900 dark:text-slate-100">
       <ScrollToHash />
-      <Navbar ctaText="Get Started" />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
           
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/industries/restaurant" element={<Restaurant />} />
-          <Route path="/industries/real-estate" element={<RealEstate />} />
-          <Route path="/industries/retail" element={<Retail />} />
-          <Route path="/industries/furniture" element={<Furniture />} />
-          <Route path="/industries/fashion" element={<Fashion />} />
-          <Route path="/industries/jewelry" element={<Jewelry />} />
-          <Route path="/industries/jewellery" element={<Jewelry />} />
-          <Route path="/industries/automobile" element={<Automobile />} />
-          <Route path="/industries/education" element={<Education />} />
-          <Route path="/industries/healthcare" element={<Healthcare />} />
-          <Route path="/industries/gym" element={<Gym />} />
-          <Route path="/industries/hospitality" element={<Hospitality />} />
-          <Route path="/industries/beauty" element={<Beauty />} />
-          <Route path="/industries/supermarkets" element={<Supermarket />} />
-          <Route path="/industries/ai" element={<Obsidian />} />
+          <Route path="industries" element={<Industries />} />
+          <Route path="industries/restaurant" element={<Restaurant />} />
+          <Route path="industries/real-estate" element={<RealEstate />} />
+          <Route path="industries/retail" element={<Retail />} />
+          <Route path="industries/furniture" element={<Furniture />} />
+          <Route path="industries/fashion" element={<Fashion />} />
+          <Route path="industries/jewelry" element={<Jewelry />} />
+          <Route path="industries/jewellery" element={<Jewelry />} />
+          <Route path="industries/automobile" element={<Automobile />} />
+          <Route path="industries/education" element={<Education />} />
+          <Route path="industries/healthcare" element={<Healthcare />} />
+          <Route path="industries/gym" element={<Gym />} />
+          <Route path="industries/hospitality" element={<Hospitality />} />
+          <Route path="industries/beauty" element={<Beauty />} />
+          <Route path="industries/supermarkets" element={<Supermarket />} />
+          <Route path="industries/ai" element={<Obsidian />} />
 
-          <Route path="/services" element={<Services />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="services" element={<Services />} />
+          <Route path="products" element={<Products />} />
+          <Route path="contact" element={<Contact />} />
         </Routes>
       </Suspense>
-      <Footer />
-    </Router>
+    </div>
   );
 }
 
-export default App;
+export default ServicesMain;

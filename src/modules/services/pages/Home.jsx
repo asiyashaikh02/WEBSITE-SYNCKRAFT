@@ -20,7 +20,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FeaturedIndustryCard
-              to="/industries/real-estate"
+              to="industries/real-estate"
               imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuDXLqgtAVw-h9IJBYsIkzUsmikWSs4m7eybkf734RFgXYxZMJvnha1XEwZhhFyOvo2lTZ96_otqOPMbVLC6aCx14-gGZVoQ1yW6qHpDMNo4PJeJmMUcw6CElX9O88VucdFAPAVt5BXKf-y6Dt3wEKongkcOcu5Woq1nYyKSAZibP-4bCbDLA_VcMcKUnEO9t5cP6SgDFw_Yf3EVG20hBWwQ6Sh8Qy96pEgTBDltsRkVIm2gBJdRQnW-CLS0BrsZYadOWZZ1GMsiljA"
               imageAlt="Modern architecture"
               icon="domain"
@@ -29,7 +29,7 @@ export default function Home() {
               isPopular={false}
             />
             <FeaturedIndustryCard
-              to="/industries/restaurant"
+              to="industries/restaurant"
               imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuDzsVVE_948417n2Ty2DkCC4eHFPQCSbscziiKfHDdWW_ja4gr6MAE3QhQZrU2gv03i1DpvUoYR3kIOdHHoE0LRsPG935eJsrYvrE5LJ1nUO8jceje2onHLCImNvkEONEqcEqqr7i_N-06ggU9SIH2zzwG0doYfrWUvP9Y1hWu0x9GUduu2mFMnpq6GurXJH-uiH0CcZa1BQPdsFUuqzOTr6gO9y7cgcEeQocjy2qXa9xVN7jC8xkngzFdi9Wi_w7TjzxdZDhpdkDw"
               imageAlt="Luxury restaurant interior"
               icon="restaurant"
@@ -49,15 +49,15 @@ export default function Home() {
               <p className="text-on-surface-variant">Specialized AI systems for diverse industry requirements.</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              <IndustryCard to="/industries/healthcare" icon="medical_services" colorClass="text-tertiary" title="Healthcare" description="Data-driven diagnostics & ops." />
-              <IndustryCard to="/industries/fashion" icon="apparel" colorClass="text-secondary" title="Fashion" description="Trend forecasting & logistics." />
-              <IndustryCard to="/industries/beauty" icon="auto_awesome" colorClass="text-primary" title="Beauty" description="Personalized curation AI." />
-              <IndustryCard to="/industries/jewellery" icon="diamond" colorClass="text-tertiary" title="Jewellery" description="Inventory tracking & luxury CRM." />
-              <IndustryCard to="/industries/supermarkets" icon="shopping_cart" colorClass="text-secondary" title="Supermarkets" description="Supply chain automation." />
-              <IndustryCard to="/industries/furniture" icon="chair" colorClass="text-primary" title="Furniture" description="AR-integrated retail systems." />
-              <IndustryCard to="/industries/gym" icon="fitness_center" colorClass="text-tertiary" title="Gym" description="Institute workflow algorithms." />
-              <IndustryCard to="/industries/retail" icon="storefront" colorClass="text-secondary" title="Retail" description="Intelligent retail analytics." />
-              <IndustryCard to="/industries/ai" icon="robot_2" colorClass="text-primary" title="AI / Obsidian" description="Core system transformations." highlightClass="bg-primary/5 border border-primary/20 hover:bg-primary/10" />
+              <IndustryCard to="industries/healthcare" icon="medical_services" colorClass="text-tertiary" title="Healthcare" description="Data-driven diagnostics & ops." />
+              <IndustryCard to="industries/fashion" icon="apparel" colorClass="text-secondary" title="Fashion" description="Trend forecasting & logistics." />
+              <IndustryCard to="industries/beauty" icon="auto_awesome" colorClass="text-primary" title="Beauty" description="Personalized curation AI." />
+              <IndustryCard to="industries/jewellery" icon="diamond" colorClass="text-tertiary" title="Jewellery" description="Inventory tracking & luxury CRM." />
+              <IndustryCard to="industries/supermarkets" icon="shopping_cart" colorClass="text-secondary" title="Supermarkets" description="Supply chain automation." />
+              <IndustryCard to="industries/furniture" icon="chair" colorClass="text-primary" title="Furniture" description="AR-integrated retail systems." />
+              <IndustryCard to="industries/gym" icon="fitness_center" colorClass="text-tertiary" title="Gym" description="Institute workflow algorithms." />
+              <IndustryCard to="industries/retail" icon="storefront" colorClass="text-secondary" title="Retail" description="Intelligent retail analytics." />
+              <IndustryCard to="industries/ai" icon="robot_2" colorClass="text-primary" title="AI / Obsidian" description="Core system transformations." highlightClass="bg-primary/5 border border-primary/20 hover:bg-primary/10" />
             </div>
           </div>
         </section>
