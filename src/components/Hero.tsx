@@ -29,9 +29,9 @@ const Hero: React.FC = () => {
         </div>
 
         <h1 className="mt-8 max-w-4xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.03] text-white">
-          AI-Powered Business Operating Systems
+          AI-Powered  Systems
           <span className="block bg-gradient-to-r from-cyan-300 via-sky-300 to-fuchsia-400 bg-clip-text text-transparent">
-            for Real Estate, Restaurants & Modern Businesses
+            for  Modern Businesses
           </span>
         </h1>
 
