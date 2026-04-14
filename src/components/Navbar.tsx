@@ -27,27 +27,24 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       href: '/services', 
       external: false,
       subLinks: [
-        { name: 'Real Estate', href: '/industries/real-estate' },
         { name: 'Restaurant', href: '/industries/restaurant' },
+        { name: 'Real Estate', href: '/industries/real-estate' },
         { name: 'Healthcare', href: '/industries/healthcare' },
         { name: 'Retail', href: '/industries/retail' },
-        { name: 'Manufacturing', href: '/industries/manufacturing' }
+        { name: 'Manufacturing', href: '/industries/manufacturing' },
+        { name: 'Hospitality', href: '/industries/hospitality' },
+        { name: 'Gym', href: '/industries/gym' },
+        { name: 'Salon', href: '/industries/beauty' },
+        { name: 'Education', href: '/industries/education' },
+        { name: 'Jewellery', href: '/industries/jewelry' },
+        { name: 'Furniture', href: '/industries/furniture' },
+        { name: 'Automobile', href: '/industries/automobile' },
+        { name: 'Supermarket', href: '/industries/supermarket' },
+        { name: 'Fashion', href: '/industries/fashion' }
       ]
     },
-    { 
-      name: 'Products', 
-      href: '/products', 
-      external: false,
-      subLinks: [
-        { name: 'Real Estate OS', href: '/products/real-estate-os' },
-        { name: 'Restaurant OS', href: '/products/restaurant-os' },
-        { name: 'Healthcare OS', href: '/products/healthcare-os' },
-        { name: 'Business OS', href: '/products/business-os' }
-      ]
-    },
-    { name: 'Blog', href: '/blog', external: false },
-    { name: 'Case Studies', href: '/case-studies', external: false },
-    { name: 'Company', href: '/company', external: false },
+    { name: 'Products', href: '/products', external: false },
+    { name: 'Contact', href: '/contact', external: false },
   ];
 
   return (

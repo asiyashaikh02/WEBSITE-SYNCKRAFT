@@ -5,7 +5,7 @@ import { initAnalytics, trackPageView } from './utils/analytics';
 
 // Components
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
+import Hero from './components/Hero';
 import { About as AboutSection } from './components/About'; 
 import { Pillars } from './components/Pillars';
 import { IndustrySolutions } from './components/IndustrySolutions';
@@ -33,23 +33,23 @@ const AboutPage = React.lazy(() => import('./pages/AboutPage'));
 
 // New Phase 2 Pages
 const IndustriesPage = React.lazy(() => import('./pages/Industries'));
-const ServicesPage = React.lazy(() => import('./pages/Services'));
+const ServicesPage = React.lazy(() => import('./services/pages/Services'));
 
 // Industry Pages
-const Automobile = React.lazy(() => import('./pages/industries/Automobile'));
-const Beauty = React.lazy(() => import('./pages/industries/Beauty'));
-const Education = React.lazy(() => import('./pages/industries/Education'));
-const Fashion = React.lazy(() => import('./pages/industries/Fashion'));
-const Furniture = React.lazy(() => import('./pages/industries/Furniture'));
-const Gym = React.lazy(() => import('./pages/industries/Gym'));
-const Healthcare = React.lazy(() => import('./pages/industries/Healthcare'));
-const Hospitality = React.lazy(() => import('./pages/industries/Hospitality'));
-const Jewelry = React.lazy(() => import('./pages/industries/Jewelry'));
-const Obsidian = React.lazy(() => import('./pages/industries/Obsidian'));
-const RealEstate = React.lazy(() => import('./pages/industries/RealEstate'));
-const Restaurant = React.lazy(() => import('./pages/industries/Restaurant'));
-const Retail = React.lazy(() => import('./pages/industries/Retail'));
-const Supermarket = React.lazy(() => import('./pages/industries/Supermarket'));
+const Automobile = React.lazy(() => import('./services/pages/industries/Automobile'));
+const Beauty = React.lazy(() => import('./services/pages/industries/Beauty'));
+const Education = React.lazy(() => import('./services/pages/industries/Education'));
+const Fashion = React.lazy(() => import('./services/pages/industries/Fashion'));
+const Furniture = React.lazy(() => import('./services/pages/industries/Furniture'));
+const Gym = React.lazy(() => import('./services/pages/industries/Gym'));
+const Healthcare = React.lazy(() => import('./services/pages/industries/Healthcare'));
+const Hospitality = React.lazy(() => import('./services/pages/industries/Hospitality'));
+const Jewelry = React.lazy(() => import('./services/pages/industries/Jewelry'));
+const Obsidian = React.lazy(() => import('./services/pages/industries/Obsidian'));
+const RealEstate = React.lazy(() => import('./services/pages/industries/RealEstate'));
+const Restaurant = React.lazy(() => import('./services/pages/industries/Restaurant'));
+const Retail = React.lazy(() => import('./services/pages/industries/Retail'));
+const Supermarket = React.lazy(() => import('./services/pages/industries/Supermarket'));
 
 const ProductsPage = React.lazy(() => import('./pages/Products'));
 const BlogPage = React.lazy(() => import('./pages/blog/Blog'));
@@ -65,6 +65,13 @@ const HealthcareOS = React.lazy(() => import('./pages/products/HealthcareOS').th
 const RetailOS = React.lazy(() => import('./pages/products/RetailOS').then(m => ({ default: m.RetailOS })));
 const ManufacturingOS = React.lazy(() => import('./pages/products/ManufacturingOS').then(m => ({ default: m.ManufacturingOS })));
 const BusinessOS = React.lazy(() => import('./pages/products/BusinessOS').then(m => ({ default: m.BusinessOS })));
+
+// New Product Pages
+const RealEstateProduct = React.lazy(() => import('./pages/products/RealEstate'));
+const RestaurantProduct = React.lazy(() => import('./pages/products/Restaurant'));
+const HealthcareProduct = React.lazy(() => import('./pages/products/Healthcare'));
+const BusinessOSPage = React.lazy(() => import('./pages/products/BusinessOS'));
+const AutomationProduct = React.lazy(() => import('./pages/products/Automation'));
 
 // Phase 6 SEO Pages
 const RealEstateAutomation = React.lazy(() => import('./pages/seo/RealEstateAutomation'));
@@ -123,7 +130,7 @@ const useRevealAnimations = () => {
 const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
   return (
     <main role="main">
-      <Hero theme={theme} />
+      <Hero />
       <ProductOSSection theme={theme} />
       <BusinessSolutions theme={theme} />
       <IndustrySolutions theme={theme} />
@@ -223,6 +230,11 @@ export default function App() {
             <Route path="/products/retail-os" element={<RetailOS />} />
             <Route path="/products/manufacturing-os" element={<ManufacturingOS />} />
             <Route path="/products/business-os" element={<BusinessOS />} />
+            <Route path="/products/RealEstate" element={<RealEstateProduct />} />
+            <Route path="/products/Restaurant" element={<RestaurantProduct />} />
+            <Route path="/products/Healthcare" element={<HealthcareProduct />} />
+            <Route path="/products/BusinessOS" element={<BusinessOSPage />} />
+            <Route path="/products/Automation" element={<AutomationProduct />} />
 
             <Route path="/blog" element={<BlogPage theme={theme} />} />
             <Route path="/blog/:id" element={<BlogPostPage theme={theme} />} />

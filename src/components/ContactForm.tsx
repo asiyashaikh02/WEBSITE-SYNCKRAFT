@@ -114,6 +114,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({ theme }) => {
                 </div>
               </div>
 
+              <div className="grid sm:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-2">
+                  <label htmlFor="phone" className={`text-xs font-bold uppercase tracking-widest ml-1 ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}>Phone Number</label>
+                  <input required name="phone" type="tel" id="phone" placeholder="+91 9876543210" className={`w-full px-6 py-4 rounded-2xl outline-none transition-all border ${theme === 'dark' ? 'bg-white/5 border-white/10 text-white focus:border-blue-500 focus:bg-white/10' : 'bg-slate-50 border-slate-200 text-slate-900 focus:border-blue-600 focus:bg-white'}`} />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="business" className={`text-xs font-bold uppercase tracking-widest ml-1 ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}>Business Type</label>
+                  <input required name="business" type="text" id="business" placeholder="Restaurant, Real Estate, etc." className={`w-full px-6 py-4 rounded-2xl outline-none transition-all border ${theme === 'dark' ? 'bg-white/5 border-white/10 text-white focus:border-blue-500 focus:bg-white/10' : 'bg-slate-50 border-slate-200 text-slate-900 focus:border-blue-600 focus:bg-white'}`} />
+                </div>
+              </div>
+
               <div className="space-y-2 mb-8">
                 <label htmlFor="subject" className={`text-xs font-bold uppercase tracking-widest ml-1 ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}>Subject</label>
                 <div className="relative">

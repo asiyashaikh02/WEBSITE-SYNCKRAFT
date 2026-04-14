@@ -53,18 +53,20 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
           <div className="lg:col-span-2">
             <h4 className="text-white font-black uppercase tracking-[0.3em] text-[11px] mb-12 opacity-40">Services</h4>
             <ul className="space-y-4 text-blue-100 font-bold text-sm tracking-wide">
-              <li><Link to="/industries/real-estate" className="hover:text-blue-400 transition-colors">Real Estate Automation</Link></li>
-              <li><Link to="/industries/restaurant" className="hover:text-blue-400 transition-colors">Restaurant Automation</Link></li>
-              <li><Link to="/industries/healthcare" className="hover:text-blue-400 transition-colors">Healthcare Automation</Link></li>
-              <li><Link to="/industries/gym" className="hover:text-blue-400 transition-colors">Gym Automation</Link></li>
-              <li><Link to="/industries/salon" className="hover:text-blue-400 transition-colors">Salon Automation</Link></li>
-              <li><Link to="/industries/hotel" className="hover:text-blue-400 transition-colors">Hotel Automation</Link></li>
-              <li><Link to="/industries/retail" className="hover:text-blue-400 transition-colors">Retail Automation</Link></li>
-              <li><Link to="/industries/jewellery" className="hover:text-blue-400 transition-colors">Jewellery Automation</Link></li>
-              <li><Link to="/industries/furniture" className="hover:text-blue-400 transition-colors">Furniture Automation</Link></li>
-              <li><Link to="/industries/manufacturing" className="hover:text-blue-400 transition-colors">Manufacturing Automation</Link></li>
-              <li><Link to="/industries/education" className="hover:text-blue-400 transition-colors">Education Automation</Link></li>
-              <li><Link to="/industries/enterprise" className="hover:text-blue-400 transition-colors">Enterprise Automation</Link></li>
+              <li><Link to="/industries/restaurant" className="hover:text-blue-400 transition-colors">Restaurant</Link></li>
+              <li><Link to="/industries/real-estate" className="hover:text-blue-400 transition-colors">Real Estate</Link></li>
+              <li><Link to="/industries/healthcare" className="hover:text-blue-400 transition-colors">Healthcare</Link></li>
+              <li><Link to="/industries/retail" className="hover:text-blue-400 transition-colors">Retail</Link></li>
+              <li><Link to="/industries/manufacturing" className="hover:text-blue-400 transition-colors">Manufacturing</Link></li>
+              <li><Link to="/industries/hospitality" className="hover:text-blue-400 transition-colors">Hospitality</Link></li>
+              <li><Link to="/industries/gym" className="hover:text-blue-400 transition-colors">Gym</Link></li>
+              <li><Link to="/industries/beauty" className="hover:text-blue-400 transition-colors">Beauty</Link></li>
+              <li><Link to="/industries/education" className="hover:text-blue-400 transition-colors">Education</Link></li>
+              <li><Link to="/industries/jewelry" className="hover:text-blue-400 transition-colors">Jewelry</Link></li>
+              <li><Link to="/industries/furniture" className="hover:text-blue-400 transition-colors">Furniture</Link></li>
+              <li><Link to="/industries/automobile" className="hover:text-blue-400 transition-colors">Automobile</Link></li>
+              <li><Link to="/industries/supermarket" className="hover:text-blue-400 transition-colors">Supermarket</Link></li>
+              <li><Link to="/industries/fashion" className="hover:text-blue-400 transition-colors">Fashion</Link></li>
             </ul>
           </div>
 
@@ -72,13 +74,11 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
           <div className="lg:col-span-2">
             <h4 className="text-white font-black uppercase tracking-[0.3em] text-[11px] mb-12 opacity-40">Products</h4>
             <ul className="space-y-4 text-blue-100 font-bold text-sm tracking-wide">
-              <li><Link to="/services" className="hover:text-blue-400 transition-colors">Real Estate OS</Link></li>
-              <li><Link to="/services" className="hover:text-blue-400 transition-colors">Restaurant OS</Link></li>
-              <li><Link to="/services" className="hover:text-blue-400 transition-colors">Healthcare OS</Link></li>
-              <li><Link to="/services" className="hover:text-blue-400 transition-colors">Business Operating System</Link></li>
-              <li><Link to="/services" className="hover:text-blue-400 transition-colors">AI Automation Platform</Link></li>
-              <li><Link to="/services" className="hover:text-blue-400 transition-colors">CRM Automation</Link></li>
-              <li><Link to="/services" className="hover:text-blue-400 transition-colors">Analytics Dashboard</Link></li>
+              <li><Link to="/products/RealEstate" className="hover:text-blue-400 transition-colors">Real Estate Platform</Link></li>
+              <li><Link to="/products/Restaurant" className="hover:text-blue-400 transition-colors">Restaurant Platform</Link></li>
+              <li><Link to="/products/Healthcare" className="hover:text-blue-400 transition-colors">Healthcare Platform</Link></li>
+              <li><Link to="/products/BusinessOS" className="hover:text-blue-400 transition-colors">Business OS</Link></li>
+              <li><Link to="/products/Automation" className="hover:text-blue-400 transition-colors">Automation Platform</Link></li>
             </ul>
           </div>
 
@@ -87,21 +87,17 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
             <h4 className="text-white font-black uppercase tracking-[0.3em] text-[11px] mb-12 opacity-40">Company</h4>
             <ul className="space-y-4 text-blue-100 font-bold text-sm tracking-wide">
               <li><Link to="/about" className="hover:text-blue-400 transition-colors">About</Link></li>
-              <li><Link to="/blog" className="hover:text-blue-400 transition-colors">Blog</Link></li>
-              <li><Link to="/case-studies" className="hover:text-blue-400 transition-colors">Case Studies</Link></li>
               <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link></li>
-              <li><Link to="/book-demo" className="hover:text-blue-400 transition-colors">Book Demo</Link></li>
             </ul>
           </div>
 
-          {/* Legal Section */}
+          {/* Contact Section */}
           <div className="lg:col-span-2">
-            <h4 className="text-white font-black uppercase tracking-[0.3em] text-[11px] mb-12 opacity-40">Legal & Corporate</h4>
+            <h4 className="text-white font-black uppercase tracking-[0.3em] text-[11px] mb-12 opacity-40">Contact</h4>
             <ul className="space-y-4 text-blue-100 font-bold text-sm tracking-wide">
-              <li><Link to="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms-of-service" className="hover:text-blue-400 transition-colors">Terms of Service</Link></li>
-              <li><Link to="/refund-policy" className="hover:text-blue-400 transition-colors">Refund Policy</Link></li>
-              <li><Link to="/disclaimer" className="hover:text-blue-400 transition-colors">Disclaimer</Link></li>
+              <li><a href="mailto:grow@synckraft.in" className="hover:text-blue-400 transition-colors">Email</a></li>
+              <li><a href="https://wa.me/919867799655" className="hover:text-blue-400 transition-colors">WhatsApp</a></li>
+              <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Location</Link></li>
             </ul>
           </div>
         </div>
@@ -146,7 +142,7 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
         {/* SEO Text Layers */}
         <div className="mt-16 pt-8 border-t border-white/5">
           <p className="text-white/40 text-xs leading-relaxed max-w-4xl font-light mb-4 text-justify">
-            Synckraft provides AI automation and Business Operating Systems for Real Estate, Restaurants, Healthcare, Retail, Manufacturing, Hospitality and multiple industries globally.
+            Synckraft builds Business Operating Systems and AI Automation Platforms for Real Estate, Restaurants, Healthcare, Retail and multiple industries globally.
           </p>
           <p className="text-white/5 text-[10px] select-none text-justify">
             Business Automation Software, Restaurant Automation, Real Estate CRM Automation, Healthcare Automation Software, Business Operating System, AI Automation Platform, Digital Transformation Solutions

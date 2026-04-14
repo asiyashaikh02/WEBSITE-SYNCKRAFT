@@ -7,12 +7,11 @@ const Products: React.FC = () => {
   const theme = (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';
   
   const products = [
-    { title: "Real Estate OS", desc: "Full CRM, property matching, automated nurturing, and smart analytics all wrapped in one dashboard.", link: "/products/real-estate-os" },
-    { title: "Restaurant OS", desc: "Omnichannel ordertaking, smart inventory prediction, and built-in loyalty and retention pipelines.", link: "/products/restaurant-os" },
-    { title: "Healthcare OS", desc: "Compliant EMR, zero-drop appointment flow, and automated patient communication modules.", link: "/products/healthcare-os" },
-    { title: "Retail OS", desc: "Predictive inventory, omnichannel POS integration, and advanced customer analytics.", link: "/products/retail-os" },
-    { title: "Manufacturing OS", desc: "IoT integration, real-time machine floor analytics, and supply chain routing.", link: "/products/manufacturing-os" },
-    { title: "Business OS", desc: "End-to-end unified architecture connecting all disparate business operations.", link: "/products/business-os" }
+    { title: "Real Estate Platform", desc: "Comprehensive real estate management and automation platform.", link: "/products/RealEstate" },
+    { title: "Restaurant Platform", desc: "Complete restaurant operations and customer management system.", link: "/products/Restaurant" },
+    { title: "Healthcare Platform", desc: "Advanced healthcare management and patient care platform.", link: "/products/Healthcare" },
+    { title: "Business OS", desc: "Unified business operating system for enterprise automation.", link: "/products/BusinessOS" },
+    { title: "Automation Platform", desc: "Intelligent automation solutions for business processes.", link: "/products/Automation" }
   ];
 
   return (

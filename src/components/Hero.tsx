@@ -1,113 +1,37 @@
-import React, { useEffect, useRef } from 'react';
-import { ArrowRight, ChevronDown, Rocket } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-interface HeroProps {
-  theme: 'dark' | 'light';
-}
-
-export const Hero: React.FC<HeroProps> = ({ theme }) => {
-  const heroRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    // Small delay to ensure the reveal animation triggers smoothly
-    const timer = setTimeout(() => {
-      heroRef.current?.classList.add('active');
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
+export default function Hero() {
   return (
-    <section
-      ref={heroRef}
-      className={`relative min-h-[90vh] flex flex-col justify-center items-center pt-24 pb-12 overflow-hidden transition-colors duration-500 ${
-        theme === 'dark' ? 'bg-[#0A0A0B]' : 'bg-white'
-      }`}
-    >
-      {/* Background Ambient Glow */}
-      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-8 w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        
-        <div className="reveal flex flex-col items-start">
-          {/* THE BADGE WITH PULSING DOT */}
-          <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full mb-6 border transition-all ${
-            theme === 'dark' ? 'bg-white/5 border-white/10' : 'bg-blue-50 border-blue-100'
-          }`}>
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-            </span>
-            <span className={`text-[10px] tracking-[0.3em] font-black uppercase ${
-              theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
-            }`}>
-              Operating System for Business
-            </span>
-          </div>
-
-          <h1 className={`font-black leading-[1.1] ${
-            theme === 'dark' ? 'text-white' : 'text-slate-900'
-          } text-[clamp(2.5rem,8vw,4.5rem)]`}> 
-            AI-Powered <span className="text-blue-500">Business</span><br />
-            Operating <span className="text-blue-500">Systems</span>
-          </h1>
-          
-          <p className="mt-5 text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
-            Synckraft builds industry-specific Business Operating Systems powered by AI, Automation, and Smart Dashboards.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-            <a href="#industries" className="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg transition-all flex items-center justify-center gap-3 shadow-xl shadow-blue-600/20 group">
-              Explore Industries 
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="#contact" className={`px-8 py-4 rounded-xl border-2 font-bold text-lg transition-all text-center ${
-              theme === 'dark' ? 'border-white/10 text-white hover:bg-white/5' : 'border-slate-200 text-slate-900 hover:bg-slate-50'
-            }`}>
-              Book a Demo
-            </a>
-          </div>
+    <section className="relative min-h-[707px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+      <div className="hero-gradient absolute inset-0 pointer-events-none"></div>
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-container/20 border border-secondary/20 text-on-secondary-container text-xs font-medium mb-8">
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          Business Operating Systems & AI Automation
         </div>
+        <h1 className="text-5xl md:text-7xl font-extrabold font-headline tracking-tighter text-on-surface mb-8 leading-[1.1]">
+          Business Operating Systems & AI Automation for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">Modern Businesses</span>
+        </h1>
+        <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-12 font-light">
+          Synckraft helps Real Estate, Restaurants, Healthcare and other industries automate operations, increase revenue and scale using digital business operating systems.
+        </p>
 
-        {/* RIGHT SIDE VISUAL CARD */}
-        <div className="hidden lg:flex justify-end reveal" style={{ transitionDelay: '0.2s' }}>
-          <div className={`p-8 rounded-[2rem] border shadow-2xl w-full max-w-md ${
-            theme === 'dark' ? 'bg-[#111112] border-white/10' : 'bg-white border-slate-100'
-          }`}>
-             <div className="flex justify-between items-center mb-10">
-                <div className="p-4 rounded-2xl bg-blue-600/10 text-blue-500">
-                  <Rocket size={32} />
-                </div>
-                <div className="text-right">
-                   <p className="text-[10px] font-bold text-blue-500 tracking-widest uppercase mb-1">Workflow Automation</p>
-                   <p className={`text-4xl font-black ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>+300%</p>
-                </div>
-             </div>
-             
-             <div className="space-y-6">
-                {[
-                  { label: 'System Efficiency', val: '95%', color: 'bg-blue-600' },
-                  { label: 'Manual Tasks', val: '12%', color: 'bg-blue-400' }
-                ].map((item) => (
-                  <div key={item.label} className="space-y-2">
-                    <div className="flex justify-between text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                      <span>{item.label}</span>
-                      <span>{item.val}</span>
-                    </div>
-                    <div className={`h-2 w-full rounded-full overflow-hidden ${theme === 'dark' ? 'bg-white/5' : 'bg-slate-100'}`}>
-                       <div className={`h-full ${item.color} rounded-full transition-all duration-1000`} style={{ width: item.val }} />
-                    </div>
-                  </div>
-                ))}
-             </div>
-          </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Link to="/book-demo" className="w-full sm:w-auto px-8 py-4 bg-primary text-on-primary rounded-xl font-bold text-lg hover:shadow-[0_0_20px_rgba(137,206,255,0.4)] transition-all">
+            Book Demo
+          </Link>
+          <Link to="/services" className="w-full sm:w-auto px-8 py-4 bg-surface-container-high text-on-surface rounded-xl font-bold text-lg border border-outline-variant/20 hover:bg-surface-container-highest transition-all">
+            Explore Services
+          </Link>
+          <Link to="/services" className="w-full sm:w-auto px-8 py-4 bg-transparent border border-outline-variant text-on-surface rounded-xl font-bold text-lg hover:bg-surface-container-highest transition-all">
+            View Industries
+          </Link>
         </div>
       </div>
-
-      {/* Bounce Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-slate-500 opacity-50">
-        <ChevronDown size={32} />
+      <div className="mt-20 w-full max-w-6xl mx-auto px-4 opacity-50">
+        <div className="h-px bg-gradient-to-r from-transparent via-outline-variant/30 to-transparent"></div>
       </div>
     </section>
   );
-};
+}
