@@ -10,6 +10,7 @@ import { About as AboutSection } from './components/About';
 import { Pillars } from './components/Pillars';
 import { IndustrySolutions } from './components/IndustrySolutions';
 import { BusinessSolutions } from './components/BusinessSolutions';
+import { IndustriesFOMO } from './components/IndustriesFOMO';
 import { Metrics } from './components/Metrics';
 import { Testimonials } from './components/Testimonials';
 import { BlogSection } from './components/BlogSection';
@@ -116,6 +117,7 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
       <Hero theme={theme} />
       <BusinessSolutions theme={theme} />
       <IndustrySolutions theme={theme} />
+      <IndustriesFOMO theme={theme} />
       <BlogSection theme={theme} />
       <Testimonials theme={theme} />
       <CaseStudiesPreview theme={theme} />

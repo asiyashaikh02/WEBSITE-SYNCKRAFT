@@ -7,12 +7,12 @@ const Products: React.FC = () => {
   const theme = (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';
   
   const products = [
-    { title: "Real Estate OS", desc: "Full CRM, property matching, automated nurturing, and smart analytics all wrapped in one dashboard." },
-    { title: "Restaurant OS", desc: "Omnichannel ordertaking, smart inventory prediction, and built-in loyalty and retention pipelines." },
-    { title: "Healthcare OS", desc: "Compliant EMR, zero-drop appointment flow, and automated patient communication modules." },
-    { title: "Business OS", desc: "End-to-end unified architecture connecting all disparate business operations." },
-    { title: "AI Automation", desc: "Custom AI predictive models tailored to optimize enterprise routines and workflows." },
-    { title: "CRM System", desc: "Next-generation sales and customer lifecycle pipeline automation systems." }
+    { title: "Real Estate OS", desc: "Full CRM, property matching, automated nurturing, and smart analytics all wrapped in one dashboard.", link: "/industries/real-estate" },
+    { title: "Restaurant OS", desc: "Omnichannel ordertaking, smart inventory prediction, and built-in loyalty and retention pipelines.", link: "/industries/restaurant" },
+    { title: "Healthcare OS", desc: "Compliant EMR, zero-drop appointment flow, and automated patient communication modules.", link: "/industries/healthcare" },
+    { title: "Business OS", desc: "End-to-end unified architecture connecting all disparate business operations.", link: "/services" },
+    { title: "AI Automation", desc: "Custom AI predictive models tailored to optimize enterprise routines and workflows.", link: "/services" },
+    { title: "CRM System", desc: "Next-generation sales and customer lifecycle pipeline automation systems.", link: "/services" }
   ];
 
   return (
@@ -32,7 +32,7 @@ const Products: React.FC = () => {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {products.map((p, i) => (
-            <Link to="/services" key={i} className={`block group cursor-pointer p-8 rounded-[2rem] border transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${theme === 'dark' ? 'bg-[#111112] border-white/5 hover:border-blue-500/30' : 'bg-white border-slate-200 hover:border-blue-500/30'}`}>
+            <Link to={p.link} key={i} className={`block group cursor-pointer p-8 rounded-[2rem] border transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${theme === 'dark' ? 'bg-[#111112] border-white/5 hover:border-blue-500/30' : 'bg-white border-slate-200 hover:border-blue-500/30'}`}>
               <div className="w-14 h-14 bg-blue-600/10 text-blue-500 rounded-xl flex items-center justify-center mb-6">
                 <BarChart2 size={24} />
               </div>

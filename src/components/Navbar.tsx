@@ -22,7 +22,18 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
   const navLinks = [
     { name: 'Home', href: '/', external: false },
-    { name: 'Services', href: '/services', external: false },
+    { 
+      name: 'Services', 
+      href: '/services', 
+      external: false,
+      subLinks: [
+        { name: 'Real Estate', href: '/industries/real-estate' },
+        { name: 'Restaurant', href: '/industries/restaurant' },
+        { name: 'Healthcare', href: '/industries/healthcare' },
+        { name: 'Retail', href: '/industries/retail' },
+        { name: 'Manufacturing', href: '/industries/manufacturing' }
+      ]
+    },
     { name: 'Products', href: '/products', external: false },
     { name: 'Blog', href: '/blog', external: false },
     { name: 'Case Studies', href: '/case-studies', external: false },
@@ -85,31 +96,47 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8 mr-4">
               {navLinks.map(link => (
-                link.external ? (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className={`text-sm font-semibold transition-colors ${
-                      theme === 'dark'
-                        ? 'text-slate-400 hover:text-white'
-                        : 'text-slate-600 hover:text-blue-600'
-                    }`}
-                  >
-                    {link.name}
-                  </a>
-                ) : (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    className={`text-sm font-semibold transition-colors ${
-                      theme === 'dark'
-                        ? 'text-slate-400 hover:text-white'
-                        : 'text-slate-600 hover:text-blue-600'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                )
+                <div key={link.name} className="relative group p-2">
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      className={`text-sm font-semibold transition-colors flex items-center gap-1 ${
+                        theme === 'dark'
+                          ? 'text-slate-400 hover:text-white'
+                          : 'text-slate-600 hover:text-blue-600'
+                      }`}
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className={`text-sm font-semibold transition-colors flex items-center gap-1 ${
+                        theme === 'dark'
+                          ? 'text-slate-400 hover:text-white'
+                          : 'text-slate-600 hover:text-blue-600'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                  
+                  {link.subLinks && (
+                    <div className={`absolute top-full left-0 w-48 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 border ${theme === 'dark' ? 'bg-[#111112] border-white/10' : 'bg-white border-slate-100'}`}>
+                      <div className="py-2">
+                        {link.subLinks.map(sub => (
+                          <Link
+                            key={sub.name}
+                            to={sub.href}
+                            className={`block px-5 py-2.5 text-sm font-medium transition-colors ${theme === 'dark' ? 'text-slate-300 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}`}
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
 
@@ -157,25 +184,39 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           }`}
         >
           {navLinks.map((link) => (
-            link.external ? (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-3xl font-black border-b border-white/10 pb-4"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </a>
-            ) : (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="text-3xl font-black border-b border-white/10 pb-4"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            )
+            <div key={link.name} className="border-b border-white/10 pb-4">
+              {link.external ? (
+                <a
+                  href={link.href}
+                  className="text-3xl font-black block"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  to={link.href}
+                  className="text-3xl font-black block"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              )}
+              {link.subLinks && (
+                <div className="mt-4 flex flex-col gap-3 pl-4 border-l-2 border-blue-500/30">
+                  {link.subLinks.map(sub => (
+                     <Link
+                       key={sub.name}
+                       to={sub.href}
+                       className="text-xl font-bold opacity-80"
+                       onClick={() => setIsOpen(false)}
+                     >
+                       {sub.name}
+                     </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
           <Link
             to="/book-demo"

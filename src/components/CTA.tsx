@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, Search, Component } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ThemeProps {
   theme: 'dark' | 'light';
@@ -26,15 +27,13 @@ export const CTA: React.FC<ThemeProps> = ({ theme }) => {
               Let's turn it into a structured, scalable business. Our incubation engine is designed to deploy institutional-grade strategy and tech.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-               {/* Updated to link to Contact Page for better Business Suite compliance */}
-               <a href="/contact" className="group px-8 py-5 rounded-2xl bg-white text-blue-600 font-bold text-xl transition-all flex items-center gap-3 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto justify-center text-center touchable">
-                  Start a Conversation <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
-               </a>
-               <div className="flex items-center gap-3 text-blue-100 font-bold text-lg">
-                  <Mail size={24} className="text-blue-200" />
-                  <a href="mailto:grow@synckraft.in" className="hover:text-white transition-colors">grow@synckraft.in</a>
-               </div>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+               <Link to="/services" className="group px-8 py-5 rounded-2xl bg-white text-blue-600 font-bold text-xl transition-all flex items-center gap-3 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto justify-center text-center touchable">
+                  Explore Services <Search size={24} className="group-hover:translate-x-1 transition-transform" />
+               </Link>
+               <Link to="/industries" className="group px-8 py-5 rounded-2xl bg-white/10 text-white font-bold text-xl transition-all flex items-center gap-3 hover:bg-white/20 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto justify-center text-center backdrop-blur-md touchable">
+                  View Industry Solutions <Component size={24} className="group-hover:translate-x-1 transition-transform text-blue-200" />
+               </Link>
             </div>
           </div>
         </div>

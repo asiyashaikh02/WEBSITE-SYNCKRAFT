@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Building2, UtensilsCrossed, Stethoscope } from 'lucide-react';
+import { ArrowRight, Building2, UtensilsCrossed, Stethoscope, Store, Factory } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ThemeProps {
@@ -12,19 +12,31 @@ export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
       title: 'Real Estate OS',
       desc: 'Predictive lead matching, 24/7 AI qualification, and automated property management ecosystems.',
       icon: <Building2 size={32} />,
-      link: '/industries/real-estate'
+      link: '/services'
     },
     {
       title: 'Restaurant OS',
       desc: 'Predictive inventory processing, table turnover optimization, and unified POS intelligence.',
       icon: <UtensilsCrossed size={32} />,
-      link: '/industries/restaurant'
+      link: '/services'
     },
     {
       title: 'Healthcare OS',
       desc: 'Secure EMR data flows, automated appointment sequencing, and remote diagnostics pipelines.',
       icon: <Stethoscope size={32} />,
-      link: '/industries/healthcare'
+      link: '/services'
+    },
+    {
+      title: 'Retail OS',
+      desc: 'Omnichannel POS integration, inventory automation, and predictive customer analytics.',
+      icon: <Store size={32} />,
+      link: '/services'
+    },
+    {
+      title: 'Manufacturing OS',
+      desc: 'IoT data visualization, supply chain forecasting, and smart factory floor management.',
+      icon: <Factory size={32} />,
+      link: '/services'
     }
   ];
 
@@ -33,7 +45,7 @@ export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-16 reveal">
           <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">Business Operating Systems</h4>
-          <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Business OS Architecture</h2>
+          <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Business Operating Systems for Every Industry</h2>
         </div>
         
         <div className="grid lg:grid-cols-3 gap-8">
@@ -48,7 +60,7 @@ export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
               <p className={`text-base leading-relaxed mb-10 flex-grow ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>{sol.desc}</p>
               
               <Link to={sol.link} className="flex items-center gap-3 text-blue-500 font-bold text-sm uppercase tracking-widest hover:gap-4 transition-all">
-                Explore Platform <ArrowRight size={18} />
+                Explore Industry <ArrowRight size={18} />
               </Link>
             </div>
           ))}
