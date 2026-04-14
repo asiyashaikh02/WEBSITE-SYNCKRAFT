@@ -1,8 +1,13 @@
+import { useEffect } from 'react';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { IndustrySolutions } from '../components/IndustrySolutions';
 
 const Industries: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const theme = (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';
   
   return (

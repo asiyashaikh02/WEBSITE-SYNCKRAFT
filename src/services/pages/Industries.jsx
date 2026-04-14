@@ -1,20 +1,28 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const industries = [
+  { path: "/industries/real-estate", name: "Real Estate", icon: "apartment" },
   { path: "/industries/restaurant", name: "Restaurant", icon: "restaurant" },
   { path: "/industries/retail", name: "Retail", icon: "storefront" },
+  { path: "/industries/supermarket", name: "Supermarket", icon: "shopping_cart" },
+  { path: "/industries/healthcare", name: "Healthcare", icon: "medical_services" },
+  { path: "/industries/gym", name: "Gym", icon: "fitness_center" },
+  { path: "/industries/hospitality", name: "Hospitality", icon: "hotel" },
+  { path: "/industries/beauty", name: "Beauty", icon: "spa" },
+  { path: "/industries/education", name: "Education", icon: "school" },
   { path: "/industries/fashion", name: "Fashion", icon: "checkroom" },
   { path: "/industries/furniture", name: "Furniture", icon: "chair" },
-  { path: "/industries/jewelry", name: "Jewelry", icon: "diamond" },
-  { path: "/industries/real-estate", name: "Real Estate", icon: "apartment" },
   { path: "/industries/automobile", name: "Automobile", icon: "directions_car" },
-  { path: "/industries/healthcare", name: "Healthcare", icon: "medical_services" },
-  { path: "/industries/education", name: "Education", icon: "school" },
-  { path: "/industries/hospitality", name: "Hospitality", icon: "hotel" }
+  { path: "/industries/jewelry", name: "Jewelry", icon: "diamond" },
+  { path: "/industries/enterprise", name: "Enterprise", icon: "business" }
 ];
 
 export default function Industries() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="pt-32 min-h-screen">
       <section className="px-8 max-w-7xl mx-auto mb-20 text-center">
