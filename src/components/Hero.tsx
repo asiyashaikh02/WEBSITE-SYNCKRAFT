@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Hero() {
+const Hero: React.FC = () => {
   return (
-    <section className="relative isolate min-h-[780px] overflow-hidden px-6 py-20 sm:py-28">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-20 sm:py-28">
       <div className="absolute inset-0 bg-slate-950/95" />
 
       <div
@@ -64,4 +64,6 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

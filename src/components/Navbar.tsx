@@ -51,14 +51,11 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
     <>
       {/* ================= HEADER ================= */}
       <header
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 backdrop-blur-xl ${
           scrolled
-            ? theme === 'dark'
-              ? 'bg-black/95 border-b border-white/10 py-2'
-              : 'bg-white/95 border-b border-slate-200 py-2 shadow-sm'
-            : 'bg-transparent py-4'
+            ? 'bg-slate-900/90 border-b border-white/10 py-2'
+            : 'bg-slate-950/80 py-4'
         }`}
-        style={{ backdropFilter: 'blur(12px)' }}
       >
         <div className="max-w-7xl mx-auto px-5 flex items-center justify-between">
 
@@ -129,13 +126,13 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                   )}
                   
                   {link.subLinks && (
-                    <div className={`absolute top-full left-0 w-48 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 border ${theme === 'dark' ? 'bg-[#111112] border-white/10' : 'bg-white border-slate-100'}`}>
+                    <div className="absolute top-full left-0 w-48 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 bg-slate-900/90 border border-white/10 backdrop-blur-xl">
                       <div className="py-2">
                         {link.subLinks.map(sub => (
                           <Link
                             key={sub.name}
                             to={sub.href}
-                            className={`block px-5 py-2.5 text-sm font-medium transition-colors ${theme === 'dark' ? 'text-slate-300 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}`}
+                            className="block px-5 py-2.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
                           >
                             {sub.name}
                           </Link>
@@ -162,7 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             {/* CTA */}
             <Link
               to="/book-demo"
-              className="hidden sm:block px-6 py-3 rounded-full bg-blue-600 text-white text-sm font-bold shadow-lg shadow-blue-600/20 active:scale-95 transition-all"
+              className="hidden sm:block px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 text-white text-sm font-bold shadow-[0_24px_80px_rgba(56,189,248,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_30px_90px_rgba(56,189,248,0.35)]"
             >
               Book Demo
             </Link>

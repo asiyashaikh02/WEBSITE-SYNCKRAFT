@@ -18,33 +18,41 @@ export const Footer: React.FC<ThemeProps> = ({ theme }) => {
   ];
 
   return (
-    <footer id="footer" className={`pt-24 md:pt-40 pb-12 relative overflow-hidden transition-colors duration-300 ${
-      theme === 'dark' ? 'bg-[#080809] text-white' : 'bg-[#1E40AF] text-white'
-    }`}>
-      {/* Decorative Blur */}
-      <div className={`absolute top-[-10%] right-[-5%] w-[600px] h-[600px] blur-[150px] rounded-full pointer-events-none ${
-        theme === 'dark' ? 'bg-blue-600/5' : 'bg-blue-500/10'
-      }`} />
+    <footer id="footer" className="py-24 relative overflow-hidden bg-slate-950 text-slate-100">
+      {/* Global Background Layer */}
+      <div className="absolute inset-0 bg-slate-950/95" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 12%, rgba(56,189,248,0.04), transparent 28%), radial-gradient(circle at 82% 18%, rgba(168,85,247,0.03), transparent 26%), radial-gradient(circle at 55% 85%, rgba(14,165,233,0.02), transparent 35%)",
+          mixBlendMode: "screen",
+          opacity: 0.4,
+        }}
+      />
+      <div className="hero-glow opacity-30" />
+      <div className="absolute left-10 top-28 h-72 w-72 rounded-full bg-cyan-500/5 blur-3xl" />
+      <div className="absolute right-8 top-40 h-56 w-56 rounded-full bg-fuchsia-500/5 blur-3xl" />
       
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-20 mb-32">
           
           {/* Logo & Description */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-5 mb-8">
               <h3 className="text-3xl font-black tracking-tighter text-white">
-                Synckraft<span className="text-blue-500">.</span>
+                Synckraft<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-sky-400">.</span>
               </h3>
             </div> 
             
-            <p className="text-blue-50 text-xl leading-relaxed max-w-lg mb-14 font-light opacity-70">
+            <p className="text-slate-300 text-xl leading-relaxed max-w-lg mb-14 font-light opacity-80">
               Architecting the future through institutional execution. We build, launch, and scale the technology platforms that define tomorrow's digital infrastructure.
             </p>
             
             <div className="flex flex-col gap-4">
-              <span className="text-blue-300 text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Direct Correspondence</span>
-              <a href="mailto:grow@synckraft.in" className="text-white hover:text-blue-300 transition-all font-bold text-2xl flex items-center gap-3 group">
-                grow@synckraft.in <ChevronRight size={24} className="group-hover:translate-x-2 transition-transform text-blue-400" />
+              <span className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em] opacity-60">Direct Correspondence</span>
+              <a href="mailto:grow@synckraft.in" className="text-white hover:text-cyan-300 transition-all font-bold text-2xl flex items-center gap-3 group">
+                grow@synckraft.in <ChevronRight size={24} className="group-hover:translate-x-2 transition-transform text-cyan-400" />
               </a>
             </div>
           </div>
