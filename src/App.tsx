@@ -11,6 +11,7 @@ import { Pillars } from './components/Pillars';
 import { IndustrySolutions } from './components/IndustrySolutions';
 import { BusinessSolutions } from './components/BusinessSolutions';
 import { IndustriesFOMO } from './components/IndustriesFOMO';
+import { ProductOSSection } from './components/ProductOSSection';
 import { Metrics } from './components/Metrics';
 import { Testimonials } from './components/Testimonials';
 import { BlogSection } from './components/BlogSection';
@@ -56,6 +57,14 @@ const BlogPostPage = React.lazy(() => import('./pages/blog/BlogPost'));
 const CaseStudiesPage = React.lazy(() => import('./pages/case-studies/CaseStudies'));
 const CaseStudyDetailPage = React.lazy(() => import('./pages/case-studies/CaseStudyDetail'));
 const CompanyPage = React.lazy(() => import('./pages/Company'));
+
+// Product OS Pages
+const RealEstateOS = React.lazy(() => import('./pages/products/RealEstateOS').then(m => ({ default: m.RealEstateOS })));
+const RestaurantOS = React.lazy(() => import('./pages/products/RestaurantOS').then(m => ({ default: m.RestaurantOS })));
+const HealthcareOS = React.lazy(() => import('./pages/products/HealthcareOS').then(m => ({ default: m.HealthcareOS })));
+const RetailOS = React.lazy(() => import('./pages/products/RetailOS').then(m => ({ default: m.RetailOS })));
+const ManufacturingOS = React.lazy(() => import('./pages/products/ManufacturingOS').then(m => ({ default: m.ManufacturingOS })));
+const BusinessOS = React.lazy(() => import('./pages/products/BusinessOS').then(m => ({ default: m.BusinessOS })));
 
 // Phase 6 SEO Pages
 const RealEstateAutomation = React.lazy(() => import('./pages/seo/RealEstateAutomation'));
@@ -115,6 +124,7 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
   return (
     <main role="main">
       <Hero theme={theme} />
+      <ProductOSSection theme={theme} />
       <BusinessSolutions theme={theme} />
       <IndustrySolutions theme={theme} />
       <IndustriesFOMO theme={theme} />
@@ -205,6 +215,15 @@ export default function App() {
             <Route path="/industries/supermarket" element={<Supermarket />} />
 
             <Route path="/products" element={<ProductsPage />} />
+
+            {/* Product OS Routes */}
+            <Route path="/products/real-estate-os" element={<RealEstateOS />} />
+            <Route path="/products/restaurant-os" element={<RestaurantOS />} />
+            <Route path="/products/healthcare-os" element={<HealthcareOS />} />
+            <Route path="/products/retail-os" element={<RetailOS />} />
+            <Route path="/products/manufacturing-os" element={<ManufacturingOS />} />
+            <Route path="/products/business-os" element={<BusinessOS />} />
+
             <Route path="/blog" element={<BlogPage theme={theme} />} />
             <Route path="/blog/:id" element={<BlogPostPage theme={theme} />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />

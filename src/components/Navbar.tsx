@@ -34,7 +34,17 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
         { name: 'Manufacturing', href: '/industries/manufacturing' }
       ]
     },
-    { name: 'Products', href: '/products', external: false },
+    { 
+      name: 'Products', 
+      href: '/products', 
+      external: false,
+      subLinks: [
+        { name: 'Real Estate OS', href: '/products/real-estate-os' },
+        { name: 'Restaurant OS', href: '/products/restaurant-os' },
+        { name: 'Healthcare OS', href: '/products/healthcare-os' },
+        { name: 'Business OS', href: '/products/business-os' }
+      ]
+    },
     { name: 'Blog', href: '/blog', external: false },
     { name: 'Case Studies', href: '/case-studies', external: false },
     { name: 'Company', href: '/company', external: false },

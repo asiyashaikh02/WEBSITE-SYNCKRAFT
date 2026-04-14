@@ -7,12 +7,12 @@ const Products: React.FC = () => {
   const theme = (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';
   
   const products = [
-    { title: "Real Estate OS", desc: "Full CRM, property matching, automated nurturing, and smart analytics all wrapped in one dashboard.", link: "/industries/real-estate" },
-    { title: "Restaurant OS", desc: "Omnichannel ordertaking, smart inventory prediction, and built-in loyalty and retention pipelines.", link: "/industries/restaurant" },
-    { title: "Healthcare OS", desc: "Compliant EMR, zero-drop appointment flow, and automated patient communication modules.", link: "/industries/healthcare" },
-    { title: "Business OS", desc: "End-to-end unified architecture connecting all disparate business operations.", link: "/services" },
-    { title: "AI Automation", desc: "Custom AI predictive models tailored to optimize enterprise routines and workflows.", link: "/services" },
-    { title: "CRM System", desc: "Next-generation sales and customer lifecycle pipeline automation systems.", link: "/services" }
+    { title: "Real Estate OS", desc: "Full CRM, property matching, automated nurturing, and smart analytics all wrapped in one dashboard.", link: "/products/real-estate-os" },
+    { title: "Restaurant OS", desc: "Omnichannel ordertaking, smart inventory prediction, and built-in loyalty and retention pipelines.", link: "/products/restaurant-os" },
+    { title: "Healthcare OS", desc: "Compliant EMR, zero-drop appointment flow, and automated patient communication modules.", link: "/products/healthcare-os" },
+    { title: "Retail OS", desc: "Predictive inventory, omnichannel POS integration, and advanced customer analytics.", link: "/products/retail-os" },
+    { title: "Manufacturing OS", desc: "IoT integration, real-time machine floor analytics, and supply chain routing.", link: "/products/manufacturing-os" },
+    { title: "Business OS", desc: "End-to-end unified architecture connecting all disparate business operations.", link: "/products/business-os" }
   ];
 
   return (
