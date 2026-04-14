@@ -1,13 +1,14 @@
 import React from 'react';
 import { Building2, Stethoscope, UtensilsCrossed, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ThemeProps {
   theme: 'dark' | 'light';
 }
 
 const industries = [
-  { 
-    title: "Real Estate (Priority)", 
+  {
+    title: "Real Estate",
     tag: "Property & Asset Management",
     description: `Automate lead qualification, client follow-ups, and property administration. Transform your brokerage with our AI Business OS.`,
     features: [
@@ -17,11 +18,11 @@ const industries = [
     ],
     status: "Active Platform",
     isLive: true,
-    link: "#",
+    link: "/industries/real-estate",
     icon: Building2
   },
-  { 
-    title: "Restaurants & Hospitality", 
+  {
+    title: "Restaurants & Hospitality",
     tag: "F&B Operations",
     description: "Streamline orders, manage inventory intelligently, and drive customer retention through our unified hospitality AI systems.",
     status: "Active Platform",
@@ -31,11 +32,11 @@ const industries = [
       "AI Inventory Forecasting",
       "Loyalty & Retention Engine"
     ],
-    link: "#",
+    link: "/industries/restaurant",
     icon: UtensilsCrossed
   },
-  { 
-    title: "Healthcare & Clinics", 
+  {
+    title: "Healthcare & Clinics",
     tag: "Patient Management",
     description: "Secure, compliant, and highly efficient clinic management systems. Reduce no-shows with smart scheduling and patient communication.",
     status: "Active Platform",
@@ -45,7 +46,7 @@ const industries = [
       "Automated Appointment Reminders",
       "Secure Digital Records"
     ],
-    link: "#",
+    link: "/industries/healthcare",
     icon: Stethoscope
   }
 ];
@@ -64,14 +65,13 @@ export const IndustrySolutions: React.FC<ThemeProps> = ({ theme }) => {
             </p>
           </div>
         </div>
-        
+
         <div className="grid lg:grid-cols-3 gap-8 items-stretch">
           {industries.map((industry, index) => (
-            <div 
-              key={index} 
-              className={`group p-8 sm:p-12 rounded-[3.5rem] border transition-transform transition-shadow transition-colors duration-200 ease-out flex flex-col reveal card-glow will-change-transform min-h-[460px] h-full ${
-                theme === 'dark' ? 'bg-[#111112] border-white/5' : 'bg-white border-slate-100'
-              }`}>
+            <div
+              key={index}
+              className={`group p-8 sm:p-12 rounded-[3.5rem] border transition-transform transition-shadow transition-colors duration-200 ease-out flex flex-col reveal card-glow will-change-transform min-h-[460px] h-full ${theme === 'dark' ? 'bg-[#111112] border-white/5' : 'bg-white border-slate-100'
+                }`}>
               <div className="flex justify-between items-start mb-12">
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-200 ease-out transform-gpu group-hover:-translate-y-1 group-hover:shadow-xl will-change-transform bg-blue-600 text-white`}>
                   <industry.icon size={28} />
@@ -80,14 +80,14 @@ export const IndustrySolutions: React.FC<ThemeProps> = ({ theme }) => {
                   {industry.status}
                 </div>
               </div>
-              
+
               <div className="mb-4">
-                 <span className="text-[10px] font-bold text-blue-500/60 uppercase tracking-widest">{industry.tag}</span>
-                 <h3 className={`text-3xl font-bold mt-1 mb-3 transition-colors ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{industry.title}</h3>
+                <span className="text-[10px] font-bold text-blue-500/60 uppercase tracking-widest">{industry.tag}</span>
+                <h3 className={`text-3xl font-bold mt-1 mb-3 transition-colors ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{industry.title}</h3>
               </div>
-              
+
               <p className={`text-lg leading-relaxed mb-8 flex-grow font-light ${theme === 'dark' ? 'text-slate-500' : 'text-slate-500'}`}>{industry.description}</p>
-              
+
               <ul className={`mb-10 space-y-3 pt-6 border-t ${theme === 'dark' ? 'border-white/5' : 'border-slate-50'}`}>
                 {industry.features.map((feature, fIndex) => (
                   <li key={fIndex} className={`flex items-start gap-3 text-sm font-medium ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -96,11 +96,11 @@ export const IndustrySolutions: React.FC<ThemeProps> = ({ theme }) => {
                   </li>
                 ))}
               </ul>
-              
+
               <div className={`pt-8 mt-auto border-t ${theme === 'dark' ? 'border-white/5' : 'border-slate-50'}`}>
-                <a href="#contact" className="flex items-center gap-3 text-blue-500 font-bold text-sm uppercase tracking-[0.15em] group/link transition-colors cursor-pointer">
+                <Link to={industry.link} className="flex items-center gap-3 text-blue-500 font-bold text-sm uppercase tracking-[0.15em] group/link transition-colors cursor-pointer">
                   View Demo <ArrowUpRight size={20} className="transition-transform group-hover/link:-translate-y-1" />
-                </a>
+                </Link>
               </div>
             </div>
           ))}

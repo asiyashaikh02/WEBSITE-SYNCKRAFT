@@ -31,6 +31,24 @@ const AboutPage = React.lazy(() => import('./pages/AboutPage'));
 
 // New Phase 2 Pages
 const IndustriesPage = React.lazy(() => import('./pages/Industries'));
+const ServicesPage = React.lazy(() => import('./pages/Services'));
+
+// Industry Pages
+const Automobile = React.lazy(() => import('./pages/industries/Automobile'));
+const Beauty = React.lazy(() => import('./pages/industries/Beauty'));
+const Education = React.lazy(() => import('./pages/industries/Education'));
+const Fashion = React.lazy(() => import('./pages/industries/Fashion'));
+const Furniture = React.lazy(() => import('./pages/industries/Furniture'));
+const Gym = React.lazy(() => import('./pages/industries/Gym'));
+const Healthcare = React.lazy(() => import('./pages/industries/Healthcare'));
+const Hospitality = React.lazy(() => import('./pages/industries/Hospitality'));
+const Jewelry = React.lazy(() => import('./pages/industries/Jewelry'));
+const Obsidian = React.lazy(() => import('./pages/industries/Obsidian'));
+const RealEstate = React.lazy(() => import('./pages/industries/RealEstate'));
+const Restaurant = React.lazy(() => import('./pages/industries/Restaurant'));
+const Retail = React.lazy(() => import('./pages/industries/Retail'));
+const Supermarket = React.lazy(() => import('./pages/industries/Supermarket'));
+
 const ProductsPage = React.lazy(() => import('./pages/Products'));
 const BlogPage = React.lazy(() => import('./pages/blog/Blog'));
 const BlogPostPage = React.lazy(() => import('./pages/blog/BlogPost'));
@@ -163,6 +181,27 @@ export default function App() {
             <Route path="/contact" element={<ContactPage theme={theme} />} />
             
             <Route path="/industries" element={<IndustriesPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            
+            {/* Industry Routes */}
+            <Route path="/industries/automobile" element={<Automobile />} />
+            <Route path="/industries/salon" element={<Beauty />} />
+            <Route path="/industries/beauty" element={<Beauty />} />
+            <Route path="/industries/education" element={<Education />} />
+            <Route path="/industries/fashion" element={<Fashion />} />
+            <Route path="/industries/furniture" element={<Furniture />} />
+            <Route path="/industries/gym" element={<Gym />} />
+            <Route path="/industries/healthcare" element={<Healthcare />} />
+            <Route path="/industries/hospitality" element={<Hospitality />} />
+            <Route path="/industries/hotel" element={<Hospitality />} />
+            <Route path="/industries/jewellery" element={<Jewelry />} />
+            <Route path="/industries/jewelry" element={<Jewelry />} />
+            <Route path="/industries/enterprise" element={<Obsidian />} />
+            <Route path="/industries/real-estate" element={<RealEstate />} />
+            <Route path="/industries/restaurant" element={<Restaurant />} />
+            <Route path="/industries/retail" element={<Retail />} />
+            <Route path="/industries/supermarket" element={<Supermarket />} />
+
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/blog" element={<BlogPage theme={theme} />} />
             <Route path="/blog/:id" element={<BlogPostPage theme={theme} />} />

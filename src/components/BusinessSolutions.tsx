@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Building2, UtensilsCrossed, Stethoscope } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ThemeProps {
   theme: 'dark' | 'light';
@@ -11,19 +12,19 @@ export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
       title: 'Real Estate OS',
       desc: 'Predictive lead matching, 24/7 AI qualification, and automated property management ecosystems.',
       icon: <Building2 size={32} />,
-      link: '/services#real-estate'
+      link: '/industries/real-estate'
     },
     {
       title: 'Restaurant OS',
       desc: 'Predictive inventory processing, table turnover optimization, and unified POS intelligence.',
       icon: <UtensilsCrossed size={32} />,
-      link: '/services#restaurant'
+      link: '/industries/restaurant'
     },
     {
       title: 'Healthcare OS',
       desc: 'Secure EMR data flows, automated appointment sequencing, and remote diagnostics pipelines.',
       icon: <Stethoscope size={32} />,
-      link: '/services#healthcare'
+      link: '/industries/healthcare'
     }
   ];
 
@@ -46,9 +47,9 @@ export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
               <h3 className={`text-2xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{sol.title}</h3>
               <p className={`text-base leading-relaxed mb-10 flex-grow ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>{sol.desc}</p>
               
-              <a href={sol.link} className="flex items-center gap-3 text-blue-500 font-bold text-sm uppercase tracking-widest hover:gap-4 transition-all">
+              <Link to={sol.link} className="flex items-center gap-3 text-blue-500 font-bold text-sm uppercase tracking-widest hover:gap-4 transition-all">
                 Explore Platform <ArrowRight size={18} />
-              </a>
+              </Link>
             </div>
           ))}
         </div>

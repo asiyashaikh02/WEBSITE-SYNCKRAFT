@@ -22,7 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
   const navLinks = [
     { name: 'Home', href: '/', external: false },
-    { name: 'Services', href: '/services', external: true },
+    { name: 'Services', href: '/services', external: false },
     { name: 'Products', href: '/products', external: false },
     { name: 'Blog', href: '/blog', external: false },
     { name: 'Case Studies', href: '/case-studies', external: false },
