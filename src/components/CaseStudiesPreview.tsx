@@ -90,6 +90,15 @@ export const CaseStudiesPreview = ({ theme }: { theme: 'dark' | 'light' }) => {
           ))}
         </div>
 
+        <div className="text-center mt-12">
+          <Link 
+            to="/services"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold transition-transform hover:-translate-y-1"
+          >
+            Explore Services <ArrowRight size={18} />
+          </Link>
+        </div>
+
       </div>
     </section>
   );
