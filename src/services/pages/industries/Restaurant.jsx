@@ -15,7 +15,7 @@ export default function Restaurant() {
               <span className="text-secondary font-label text-xs uppercase tracking-widest font-bold">Next-Gen Hospitality OS</span>
             </div>
             <h1 className="text-6xl md:text-7xl font-extrabold font-headline leading-[1.1] tracking-tighter text-on-surface">
-              Cognitive <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">Ecosystem</span> for Modern Dining.
+              Cognitive Ecosystem<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary"></span> for Modern Dining.
             </h1>
             <p className="text-xl text-on-surface-variant max-w-2xl leading-relaxed">
               Synckraft automates the complex choreography of restaurant operations, from 3D digital menus to AI-powered kitchen intelligence.

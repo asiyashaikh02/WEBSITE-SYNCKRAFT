@@ -81,6 +81,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* Prevent accidental horizontal overflow from large cards */
 img,svg,iframe,video{max-width:100%;height:auto}
 
+/* Page transition animations */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
 /* Mobile-first spacing: increase vertical spacing and ensure buttons expand */
 section{padding-top:2.5rem;padding-bottom:2.5rem}
 @media(min-width:768px){

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, Stethoscope, UtensilsCrossed, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Building2, Stethoscope, UtensilsCrossed, ArrowUpRight, CheckCircle2, Dumbbell } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ThemeProps {
@@ -22,21 +22,7 @@ const industries = [
     icon: Building2
   },
   {
-    title: "Restaurants & Hospitality",
-    tag: "F&B Operations",
-    description: "Streamline orders, manage inventory intelligently, and drive customer retention through our unified hospitality AI systems.",
-    status: "Active Platform",
-    isLive: true,
-    features: [
-      "Automated Order Processing",
-      "AI Inventory Forecasting",
-      "Loyalty & Retention Engine"
-    ],
-    link: "/industries/restaurant",
-    icon: UtensilsCrossed
-  },
-  {
-    title: "Healthcare & Clinics",
+    title: "Healthcare",
     tag: "Patient Management",
     description: "Secure, compliant, and highly efficient clinic management systems. Reduce no-shows with smart scheduling and patient communication.",
     status: "Active Platform",
@@ -48,6 +34,34 @@ const industries = [
     ],
     link: "/industries/healthcare",
     icon: Stethoscope
+  },
+  {
+    title: "Gym & Fitness",
+    tag: "Fitness Operations",
+    description: "Streamline memberships, class bookings, and member engagement with our comprehensive gym management AI platform.",
+    status: "Active Platform",
+    isLive: true,
+    features: [
+      "Automated Membership Management",
+      "Smart Class Scheduling",
+      "Member Retention Analytics"
+    ],
+    link: "/industries/gym",
+    icon: Dumbbell
+  },
+  {
+    title: "Hospitality",
+    tag: "Hotel & Restaurant Operations",
+    description: "Streamline orders, manage inventory intelligently, and drive customer retention through our unified hospitality AI systems.",
+    status: "Active Platform",
+    isLive: true,
+    features: [
+      "Automated Order Processing",
+      "AI Inventory Forecasting",
+      "Loyalty & Retention Engine"
+    ],
+    link: "/industries/hospitality",
+    icon: UtensilsCrossed
   }
 ];
 
