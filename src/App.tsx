@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { AnimatePresence } from 'framer-motion';
 import { initAnalytics, trackPageView } from './utils/analytics';
 
 // Components
@@ -205,7 +206,8 @@ export default function App() {
           <Navbar theme={theme} toggleTheme={toggleTheme} />
           
           <Suspense fallback={<Loader />}>
-            <Routes>
+            <AnimatePresence mode="wait">
+              <Routes>
             <Route path="/" element={<MainLanding theme={theme} />} />
             <Route path="/about" element={<AboutPage theme={theme} />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy theme={theme} />} />
@@ -269,8 +271,9 @@ export default function App() {
 
             {/* Error Route */}
             <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+              </Routes>
+            </AnimatePresence>
+          </Suspense>
 
         <Footer theme={theme} />
 
