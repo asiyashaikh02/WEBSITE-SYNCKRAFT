@@ -19,9 +19,9 @@ const industries = [
 
 export const IndustriesFOMO: React.FC<ThemeProps> = ({ theme }) => {
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden">
+    <section className={`py-24 relative overflow-hidden ${theme === 'dark' ? 'bg-surface' : 'bg-surface-container'}`}>
       {/* Background Layer */}
-      <div className="absolute inset-0 bg-slate-950/95" />
+      <div className="absolute inset-0 bg-surface opacity-95" />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -38,10 +38,10 @@ export const IndustriesFOMO: React.FC<ThemeProps> = ({ theme }) => {
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-16 reveal">
           <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">Industries Served</h4>
-          <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight mb-6 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-on-surface">
             Industries We <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">Digitally Transform</span>
           </h2>
-          <p className={`text-xl font-light max-w-2xl mx-auto ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+          <p className="text-xl font-light max-w-2xl mx-auto text-on-surface/70">
             Join global leaders who have already upgraded their operations securely.
           </p>
         </div>
@@ -51,12 +51,12 @@ export const IndustriesFOMO: React.FC<ThemeProps> = ({ theme }) => {
             <Link 
               to={ind.path} 
               key={i} 
-              className="group relative overflow-hidden rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center gap-4 bg-slate-900/60 border border-white/10 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(56,189,248,0.15)] hover:border-cyan-500/30"
+              className="group relative overflow-hidden rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center gap-4 bg-surface-container bg-opacity-70 border border-outline-variant backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(56,189,248,0.15)] hover:border-cyan-500/30"
             >
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-on-surface transition-all duration-300">
                 <ind.icon size={24} />
               </div>
-              <span className="font-bold text-sm text-center text-white">{ind.name}</span>
+              <span className="font-bold text-sm text-center text-on-surface">{ind.name}</span>
             </Link>
           ))}
         </div>
@@ -64,7 +64,7 @@ export const IndustriesFOMO: React.FC<ThemeProps> = ({ theme }) => {
         <div className="text-center reveal">
           <Link 
             to="/services" 
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 text-white font-bold px-8 py-4 rounded-full transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_30px_90px_rgba(56,189,248,0.35)] shadow-[0_24px_80px_rgba(56,189,248,0.25)] hover:gap-4"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 text-on-surface font-bold px-8 py-4 rounded-full transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_30px_90px_rgba(56,189,248,0.35)] shadow-[0_24px_80px_rgba(56,189,248,0.25)] hover:gap-4"
           >
             Explore All Industries <ArrowUpRight size={20} />
           </Link>

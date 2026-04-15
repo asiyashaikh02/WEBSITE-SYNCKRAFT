@@ -52,7 +52,7 @@ export default function Home() {
               <IndustryCard to="/industries/healthcare" icon="medical_services" colorClass="text-tertiary" title="Healthcare" description="Data-driven diagnostics & ops." />
               <IndustryCard to="/industries/fashion" icon="apparel" colorClass="text-secondary" title="Fashion" description="Trend forecasting & logistics." />
               <IndustryCard to="/industries/beauty" icon="auto_awesome" colorClass="text-primary" title="Beauty" description="Personalized curation AI." />
-              <IndustryCard to="/industries/jewellery" icon="diamond" colorClass="text-tertiary" title="Jewellery" description="Inventory tracking & luxury CRM." />
+              <IndustryCard to="/industries/jewelry" icon="diamond" colorClass="text-tertiary" title="Jewellery" description="Inventory tracking & luxury CRM." />
               <IndustryCard to="/industries/supermarkets" icon="shopping_cart" colorClass="text-secondary" title="Supermarkets" description="Supply chain automation." />
               <IndustryCard to="/industries/furniture" icon="chair" colorClass="text-primary" title="Furniture" description="AR-integrated retail systems." />
               <IndustryCard to="/industries/gym" icon="fitness_center" colorClass="text-tertiary" title="Gym" description="Institute workflow algorithms." />

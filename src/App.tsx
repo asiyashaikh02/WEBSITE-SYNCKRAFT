@@ -176,7 +176,7 @@ export default function App() {
             <Route path="/industries/gym" element={<Gym />} />
             <Route path="/industries/healthcare" element={<Healthcare />} />
             <Route path="/industries/hospitality" element={<Hospitality />} />
-            <Route path="/industries/jewellery" element={<Jewelry />} />
+            <Route path="/industries/jewelry" element={<Jewelry />} />
             <Route path="/industries/enterprise" element={<Obsidian />} />
             <Route path="/industries/real-estate" element={<RealEstate />} />
             <Route path="/industries/restaurant" element={<Restaurant />} />
