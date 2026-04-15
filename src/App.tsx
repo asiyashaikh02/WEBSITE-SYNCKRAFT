@@ -72,6 +72,10 @@ const BlogPage = React.lazy(() => import('./pages/blog/Blog'));
 const BlogPostPage = React.lazy(() => import('./pages/blog/BlogPost'));
 const CaseStudiesPage = React.lazy(() => import('./pages/case-studies/CaseStudies'));
 const CaseStudyDetailPage = React.lazy(() => import('./pages/case-studies/CaseStudyDetail'));
+const BookDemoPage = React.lazy(() => import('./pages/funnel/BookDemo'));
+const ContactSalesPage = React.lazy(() => import('./pages/funnel/ContactSales'));
+const FreeAuditPage = React.lazy(() => import('./pages/funnel/FreeAudit'));
+const ThankYouPage = React.lazy(() => import('./pages/funnel/ThankYou'));
 const CompanyPage = React.lazy(() => import('./pages/Company'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
 
@@ -163,9 +167,12 @@ export default function App() {
             <Route path="/" element={<MainLanding theme={theme} />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
-
             <Route path="/industries" element={<IndustriesPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/book-demo" element={<BookDemoPage />} />
+            <Route path="/free-audit" element={<FreeAuditPage />} />
+            <Route path="/contact-sales" element={<ContactSalesPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
 
             {/* Industry Routes */}
             <Route path="/industries/automobile" element={<Automobile />} />
