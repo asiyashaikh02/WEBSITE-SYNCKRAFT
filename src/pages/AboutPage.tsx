@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Target, Rocket, Zap, Shield, Briefcase, ChevronRight } from 'lucide-react';
+import { useTheme } from '../components/ThemeProvider';
 
-const AboutPage = ({ theme }: { theme: 'dark' | 'light' }) => {
+const AboutPage = () => {
+  const { theme } = useTheme();
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (

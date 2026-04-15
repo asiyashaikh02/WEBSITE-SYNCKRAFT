@@ -27,7 +27,11 @@ const Industries = () => {
         <link rel="canonical" href="https://synckraft.in/industries" />
       </Helmet>
 
-      <div className="pt-24 min-h-screen bg-surface text-on-surface">
+      <div
+        className={`pt-24 min-h-screen transition-colors duration-500 ${
+          theme === 'dark' ? 'bg-surface text-on-surface' : 'bg-white text-slate-900'
+        }`}
+      >
         <div className="text-center py-20 px-8 max-w-4xl mx-auto">
           
           <h1 className="text-5xl md:text-7xl font-black mb-6">

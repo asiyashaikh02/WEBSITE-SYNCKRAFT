@@ -48,12 +48,24 @@ const Retail = React.lazy(() => import('./services/pages/industries/Retail'));
 const Supermarket = React.lazy(() => import('./services/pages/industries/Supermarket'));
 
 // Product Pages (✅ FIXED LAZY)
-const RealEstateOS = React.lazy(() => import('./pages/products/RealEstateOS'));
-const RestaurantOS = React.lazy(() => import('./pages/products/RestaurantOS'));
-const HealthcareOS = React.lazy(() => import('./pages/products/HealthcareOS'));
-const RetailOS = React.lazy(() => import('./pages/products/RetailOS'));
-const ManufacturingOS = React.lazy(() => import('./pages/products/ManufacturingOS'));
-const BusinessOS = React.lazy(() => import('./pages/products/BusinessOS'));
+const RealEstateOS = React.lazy(() =>
+  import('./pages/products/RealEstateOS').then((module) => ({ default: module.RealEstateOS }))
+);
+const RestaurantOS = React.lazy(() =>
+  import('./pages/products/RestaurantOS').then((module) => ({ default: module.RestaurantOS }))
+);
+const HealthcareOS = React.lazy(() =>
+  import('./pages/products/HealthcareOS').then((module) => ({ default: module.HealthcareOS }))
+);
+const RetailOS = React.lazy(() =>
+  import('./pages/products/RetailOS').then((module) => ({ default: module.RetailOS }))
+);
+const ManufacturingOS = React.lazy(() =>
+  import('./pages/products/ManufacturingOS').then((module) => ({ default: module.ManufacturingOS }))
+);
+const BusinessOS = React.lazy(() =>
+  import('./pages/products/BusinessOS').then((module) => ({ default: module.BusinessOS }))
+);
 
 const ProductsPage = React.lazy(() => import('./pages/Products'));
 const BlogPage = React.lazy(() => import('./pages/blog/Blog'));
@@ -77,8 +89,10 @@ const useRevealAnimations = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      const observer = new IntersectionObserver((entries) => {
+    let observer: IntersectionObserver | null = null;
+
+    const timeoutId = window.setTimeout(() => {
+      observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
@@ -87,12 +101,13 @@ const useRevealAnimations = () => {
       });
 
       const elements = document.querySelectorAll('.reveal');
-      elements.forEach((el) => observer.observe(el));
-
-      return () => observer.disconnect(); // ✅ FIX
+      elements.forEach((el) => observer?.observe(el));
     }, 100);
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+      observer?.disconnect();
+    };
   }, [location]);
 };
 

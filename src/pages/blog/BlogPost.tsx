@@ -3,12 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, User, Calendar, ChevronRight } from 'lucide-react';
 import { blogPostsData } from './Blog';
+import { useTheme } from '../../components/ThemeProvider';
 
-interface ThemeProps {
-  theme: 'dark' | 'light';
-}
-
-export default function BlogPost({ theme }: ThemeProps) {
+export default function BlogPost() {
+  const { theme } = useTheme();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const isDark = theme === 'dark';
