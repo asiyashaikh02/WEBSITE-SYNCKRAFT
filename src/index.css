@@ -2,6 +2,11 @@
 :root{
   --synckraft-blue: #2563EB;
   --header-height: 64px;
+  /* Theme variables */
+  --primary: #89ceff;
+  --surface: #0b1326;
+  --surface-container: #171f33;
+  --on-surface: #dae2fd;
 }
 /* keep original synckraft accent token; no global color overrides here */
 

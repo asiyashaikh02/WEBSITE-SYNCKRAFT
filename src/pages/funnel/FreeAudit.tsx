@@ -3,9 +3,11 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Bot, ArrowRight, Building2, User, Mail, Phone, Settings, Activity, Target } from 'lucide-react';
 import { trackEvent } from '../../utils/analytics';
+import { useTheme } from '../../components/ThemeProvider';
 
 
 export default function FreeAudit() {
+  const { theme } = useTheme();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,7 +65,7 @@ export default function FreeAudit() {
         <meta name="description" content="Discover inefficiencies and automation opportunities in your workflows with our free business audit." />
       </Helmet>
 
-      <div className="pt-32 pb-24 min-h-screen relative overflow-hidden flex flex-col justify-center bg-slate-50 dark:bg-black transition-colors duration-300">
+      <div className="pt-32 pb-24 min-h-screen relative overflow-hidden flex flex-col justify-center bg-surface text-on-surface transition-colors duration-300">
         
         {/* Background elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 dark:bg-emerald-600/5 rounded-full blur-[100px] pointer-events-none" />

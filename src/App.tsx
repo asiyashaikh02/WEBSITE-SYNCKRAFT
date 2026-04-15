@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { AnimatePresence } from 'framer-motion';
 import { initAnalytics, trackPageView } from './utils/analytics';
+import { useTheme } from './components/ThemeProvider';
 
 // Components
 import { Navbar } from './components/Navbar';
@@ -146,13 +147,7 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
 };
 
 export default function App() {
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    try {
-      if (typeof window === 'undefined') return 'dark';
-      return (localStorage.getItem('theme') || 'dark') as 'dark' | 'light';
-    } catch (event) { return 'dark'; }
-  });
-
+  const { theme, toggleTheme } = useTheme();
   const location = useLocation();
   const canonicalUrl = `https://synckraft.in${location.pathname === '/' ? '' : location.pathname}`;
 
@@ -167,14 +162,6 @@ export default function App() {
 
   useRevealAnimations();
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    if (document.body) document.body.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme(previous => previous === 'dark' ? 'light' : 'dark');
-
   return (
     <>
       <Helmet>
@@ -184,30 +171,12 @@ export default function App() {
         <meta property="og:url" content={canonicalUrl} />
       </Helmet>
       <ScrollToTop />
-      <div className="min-h-full bg-slate-950 text-slate-100 selection:bg-blue-600/20 relative overflow-hidden">
-        {/* Global Background Layer */}
-        <div className="absolute inset-0 bg-slate-950/95" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 12%, rgba(56,189,248,0.08), transparent 28%), radial-gradient(circle at 82% 18%, rgba(168,85,247,0.06), transparent 26%), radial-gradient(circle at 55% 85%, rgba(14,165,233,0.04), transparent 35%)",
-            mixBlendMode: "screen",
-            opacity: 0.6,
-          }}
-        />
-        <div className="hero-glow" />
-        <div className="absolute left-10 top-28 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
-        <div className="absolute right-8 top-40 h-56 w-56 rounded-full bg-fuchsia-500/10 blur-3xl" />
-        <div className="absolute left-[10%] bottom-16 h-44 w-44 rounded-full bg-sky-500/8 blur-3xl" />
-        <div className="absolute right-[12%] bottom-20 h-64 w-64 rounded-full bg-violet-500/8 blur-3xl" />
+      <div className="relative z-10">
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
         
-        <div className="relative z-10">
-          <Navbar theme={theme} toggleTheme={toggleTheme} />
-          
-          <Suspense fallback={<Loader />}>
-            <AnimatePresence mode="wait">
-              <Routes>
+        <Suspense fallback={<Loader />}>
+          <AnimatePresence mode="wait">
+            <Routes>
             <Route path="/" element={<MainLanding theme={theme} />} />
             <Route path="/about" element={<AboutPage theme={theme} />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy theme={theme} />} />
@@ -279,7 +248,6 @@ export default function App() {
 
         <FloatingCTA />
         </div>
-      </div>
     </>
   );
 }

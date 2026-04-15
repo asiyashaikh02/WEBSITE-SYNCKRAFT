@@ -3,9 +3,11 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Bot, ArrowRight, Building2, Users, Briefcase, Mail, Phone, User, CheckCircle2 } from 'lucide-react';
 import { trackFunnelStep, trackEvent } from '../../utils/analytics';
+import { useTheme } from '../../components/ThemeProvider';
 
 
 export default function BookDemo() {
+  const { theme } = useTheme();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
@@ -81,7 +83,7 @@ export default function BookDemo() {
         <meta name="description" content="Book a demo to see how Synckraft can automate your business operations." />
       </Helmet>
 
-      <div className="pt-32 pb-24 min-h-screen relative overflow-hidden flex flex-col justify-center bg-slate-50 dark:bg-black transition-colors duration-300">
+      <div className="pt-32 pb-24 min-h-screen relative overflow-hidden flex flex-col justify-center bg-surface text-on-surface transition-colors duration-300">
         
         {/* Background elements */}
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-600/10 dark:bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
@@ -107,7 +109,7 @@ export default function BookDemo() {
               {[1, 2, 3].map((num) => (
                 <div key={num} className={`w-10 h-10 rounded-full flex items-center justify-center font-bold border-4 ${
                   step === num ? 'bg-blue-600 border-blue-100 dark:border-blue-900/50 text-white' :
-                  step > num ? 'bg-blue-600 border-blue-600 text-white' : 'bg-slate-100 dark:bg-black border-slate-200 dark:border-white/10 text-slate-400'
+                  step > num ? 'bg-blue-600 border-blue-600 text-white' : 'bg-surface border-surface-container text-on-surface'
                 } transition-all duration-300`}>
                   {step > num ? <CheckCircle2 size={16} /> : num}
                 </div>

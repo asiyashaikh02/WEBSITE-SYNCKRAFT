@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, User, Building2, MessageSquare, ArrowRight, ShieldCheck } from 'lucide-react';
 import { trackEvent } from '../../utils/analytics';
+import { useTheme } from '../../components/ThemeProvider';
 
 
 export default function ContactSales() {
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -59,7 +61,7 @@ export default function ContactSales() {
         <meta name="description" content="Talk directly with our sales team about implementing Synckraft's business automation solutions." />
       </Helmet>
 
-      <div className="pt-32 pb-24 min-h-screen relative overflow-hidden flex flex-col justify-center bg-slate-50 dark:bg-black transition-colors duration-300">
+      <div className="pt-32 pb-24 min-h-screen relative overflow-hidden flex flex-col justify-center bg-surface text-on-surface transition-colors duration-300">
         
         {/* Background elements */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/10 dark:bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />

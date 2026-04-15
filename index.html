@@ -41,6 +41,10 @@
     <script>
       tailwind.config = {
         darkMode: 'class',
+        content: [
+          "./index.html",
+          "./src/**/*.{js,ts,jsx,tsx}"
+        ],
         theme: {
           extend: {
             colors: {
@@ -50,7 +54,11 @@
                 azure: '#38BDF8',
                 border: '#1E293B',
                 muted: '#94A3B8'
-              }
+              },
+              primary: '#89ceff',
+              surface: '#0b1326',
+              'surface-container': '#171f33',
+              'on-surface': '#dae2fd'
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
