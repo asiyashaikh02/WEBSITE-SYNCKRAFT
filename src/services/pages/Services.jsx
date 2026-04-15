@@ -118,7 +118,7 @@ const services = [
 
 export default function Services() {
   return (
-    <main className="pt-32 min-h-screen">
+    <main className="pt-32 min-h-screen bg-surface text-on-surface">
 
       {/* Hero Section */}
 
@@ -134,11 +134,11 @@ export default function Services() {
             Synckraft Services
           </div>
 
-          <h1 className="text-5xl font-bold tracking-tight mb-6">
+          <h1 className="text-5xl font-bold tracking-tight mb-6 text-on-surface">
             Build Your Business Operating System
           </h1>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-on-surface/70 max-w-2xl mx-auto">
             Synckraft delivers AI powered digital infrastructure to automate,
             scale and optimize your entire business ecosystem.
           </p>
@@ -162,7 +162,7 @@ export default function Services() {
               transition={{ delay: index * 0.05 }}
               viewport={{ once: true }}
               whileHover={{ y: -8 }}
-              className="group relative p-8 rounded-2xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/40 transition-all duration-300"
+              className="group relative p-8 rounded-2xl bg-surface-container border border-outline-variant/10 hover:border-primary/40 transition-all duration-300"
             >
 
               {/* Glow Effect */}
@@ -181,13 +181,13 @@ export default function Services() {
 
               {/* Title */}
 
-              <h3 className="text-xl font-semibold mb-3">
+              <h3 className="text-xl font-semibold mb-3 text-on-surface">
                 {service.title}
               </h3>
 
               {/* Description */}
 
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-on-surface/70 leading-relaxed">
                 {service.desc}
               </p>
 
@@ -224,21 +224,21 @@ export default function Services() {
           transition={{ duration: 0.6 }}
         >
 
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="text-3xl font-bold mb-4 text-on-surface">
             Build Your Digital Operating System
           </h2>
 
-          <p className="text-muted-foreground mb-8">
+          <p className="text-on-surface/70 mb-8">
             Let Synckraft design your intelligent business infrastructure
           </p>
 
           <div className="flex justify-center gap-4">
 
-            <button className="px-6 py-3 rounded-xl bg-primary text-white font-medium hover:opacity-90 transition">
+            <button className="px-6 py-3 rounded-xl bg-primary text-on-primary font-medium hover:opacity-90 transition">
               Book Demo
             </button>
 
-            <button className="px-6 py-3 rounded-xl border border-outline">
+            <button className="px-6 py-3 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition">
               Talk to Expert
             </button>
 

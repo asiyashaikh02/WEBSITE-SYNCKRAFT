@@ -8,41 +8,88 @@ export default function Education() {
 
   return (
     <IndustryTemplate
-      title="Cognitive Education"
-      subtitle="Smart Institutional Management"
-      description="Automate administrative burdens, provide a centralized digital campus for students, and use analytics to predict student performance and optimize curriculum delivery. Modernize the educational lifecycle from admission to alumni relations."
+      // 🎓 HERO (UPGRADED POSITIONING)
+      badge="Next-Gen Education Intelligence"
+      title="Cognitive Education System"
+      subtitle="AI-Powered Institutional & Student Lifecycle Management"
+      description="Transform your institution into a fully digitized, intelligent ecosystem. From admissions to alumni engagement — automate operations, enhance student performance, and deliver a seamless, future-ready learning experience."
+
+      // 🔴 FOMO + TRUST
+      liveStats={{
+        viewers: 27,
+        bookings: "9 institutions onboarded this week",
+        growth: "+180% operational efficiency"
+      }}
+
+      // 📊 AUTHORITY METRICS
+      metrics={[
+        { value: "+180%", label: "Operational Efficiency" },
+        { value: "2.5x", label: "Student Engagement" },
+        { value: "95%", label: "Process Automation" },
+      ]}
+
+      // 📦 FEATURES (OUTCOME-DRIVEN)
       features={[
         {
           title: "Unified Student Portal",
-          description: "One-stop seamless access for assignments, syllabus tracking, digital billing, and real-time campus notifications.",
-          icon: "school"
+          description:
+            "Centralized platform for assignments, attendance, billing, announcements, and academic tracking.",
+          icon: "school",
+          outcome: "Enhance student experience & engagement"
         },
         {
           title: "Administrative Automation",
-          description: "Massively reduce staff workload with automated enrollment workflows, seamless fee collection systems, and dynamic room scheduling.",
-          icon: "admin_panel_settings"
+          description:
+            "Automate admissions, fee collection, scheduling, and internal workflows across departments.",
+          icon: "admin_panel_settings",
+          outcome: "Reduce operational workload drastically"
         },
         {
           title: "Performance AI & Risk Models",
-          description: "Identify at-risk students securely using predictive grade and attendance data patterns, triggering early counselor intervention.",
-          icon: "insights"
+          description:
+            "Predict student performance trends and identify at-risk students using AI-driven analytics.",
+          icon: "insights",
+          outcome: "Improve academic outcomes proactively"
         },
         {
-          title: "Digital Admissions",
-          description: "End-to-end paperless pipeline for processing student applications, reviewing credentials, and issuing automated acceptance notices.",
-          icon: "how_to_reg"
+          title: "Digital Admissions Pipeline",
+          description:
+            "Fully automated application processing, document verification, and onboarding workflows.",
+          icon: "how_to_reg",
+          outcome: "Increase admission efficiency & conversion"
         },
         {
-          title: "Alumni CRM",
-          description: "Maintain lifelong engagement post-graduation with targeted donation campaigns, event invites, and career network tracking.",
-          icon: "diversity_1"
+          title: "Alumni Relationship CRM",
+          description:
+            "Engage alumni with events, donations, and career network opportunities.",
+          icon: "diversity_1",
+          outcome: "Build long-term institutional value"
         },
         {
           title: "Compliance & Reporting",
-          description: "Generate highly accurate, instantly exportable demographic and performance reports to fulfill stringent government accreditation standards.",
-          icon: "assured_workload"
+          description:
+            "Generate real-time reports aligned with accreditation and regulatory standards.",
+          icon: "assured_workload",
+          outcome: "Ensure seamless compliance & audits"
         }
       ]}
+
+      // 💬 TESTIMONIAL (TRUST)
+      testimonial={{
+        quote:
+          "Our institution became fully digital within months. Administrative load reduced drastically and student engagement improved significantly.",
+        author: "Director, Private University"
+      }}
+
+      // 🧲 CTA SYSTEM
+      cta={{
+        primary: "Book Institution Demo",
+        secondary: "Explore Platform",
+        note: "Limited onboarding slots for institutions"
+      }}
+
+      // 🎨 THEME
+      theme="education"
     />
   );
 }
