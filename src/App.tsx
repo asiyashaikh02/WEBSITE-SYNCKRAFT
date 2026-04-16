@@ -21,6 +21,7 @@ import { CaseStudiesPreview } from './components/CaseStudiesPreview';
 import { TrustSection } from './components/TrustSection';
 import { Loader } from './components/Loader';
 import { Pillars } from './components/Pillars';
+import { About } from './components/About';
 
 // Lazy Pages (✅ FIXED)
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
@@ -140,7 +141,7 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
       <Pillars theme={theme} />
       <IndustrySolutions theme={theme} />
       <ProductOSSection theme={theme} />
-      <Testimonials theme={theme} />
+      <About theme={theme} />
       <CTA theme={theme} />
     </main>
   );
