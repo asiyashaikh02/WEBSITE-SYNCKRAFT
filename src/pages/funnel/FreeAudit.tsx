@@ -37,11 +37,18 @@ export default function FreeAudit() {
     };
 
     try {
-      await Promise.all([
-        fetch("https://n8n.clario.in/webhook/synckraft-free-audit", {
+      const [res] = await Promise.all([
+        fetch("https://n8n.clario.in/webhook/synckraft-lead", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(submissionData)
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            lead_source: "free_audit"
+          })
+        }).catch(err => {
+          console.error("n8n webhook failed:", err);
+          return null;
         }),
         submitToHubspot(
           formData.name,
@@ -54,12 +61,17 @@ export default function FreeAudit() {
             problem: formData.biggestProblem,
             budget: formData.budgetRange
           }
-        )
+        ).catch(err => {
+          console.error("HubSpot submission failed:", err);
+        })
       ]);
 
-      const msg = encodeURIComponent(`New Lead From Synckraft\n\nType: Free Audit\nName: ${formData.name}\nIndustry: ${formData.industry}\nProblem: ${formData.biggestProblem}\nPhone: ${formData.phone}`);
-      const whatsappUrl = `https://wa.me/919867799655?text=${msg}`;
-      window.open(whatsappUrl, "_blank");
+      if (res && res.ok) {
+        const waLink = await res.text();
+        if (waLink) {
+          window.open(waLink, "_blank");
+        }
+      }
 
       navigate("/thank-you");
     } catch (error) {

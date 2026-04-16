@@ -56,11 +56,18 @@ export default function BookDemo() {
     };
 
     try {
-      await Promise.all([
-        fetch("https://n8n.clario.in/webhook/synckraft-book-demo", {
+      const [res] = await Promise.all([
+        fetch("https://n8n.clario.in/webhook/synckraft-lead", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(submissionData)
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            lead_source: "book_demo"
+          })
+        }).catch(err => {
+          console.error("n8n webhook failed:", err);
+          return null;
         }),
         submitToHubspot(
           formData.name,
@@ -73,12 +80,17 @@ export default function BookDemo() {
             company: formData.company,
             teamSize: formData.teamSize
           }
-        )
+        ).catch(err => {
+          console.error("HubSpot submission failed:", err);
+        })
       ]);
 
-      const msg = encodeURIComponent(`New Lead From Synckraft\n\nType: Book Demo\nName: ${formData.name}\nCompany: ${formData.company}\nIndustry: ${formData.industry}\nPhone: ${formData.phone}`);
-      const whatsappUrl = `https://wa.me/919867799655?text=${msg}`;
-      window.open(whatsappUrl, "_blank");
+      if (res && res.ok) {
+        const waLink = await res.text();
+        if (waLink) {
+          window.open(waLink, "_blank");
+        }
+      }
 
       navigate("/thank-you");
     } catch (error) {

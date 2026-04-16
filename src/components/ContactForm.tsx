@@ -29,50 +29,57 @@ export const ContactForm: React.FC<ContactFormProps> = () => {
     }
   }, [status]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!consent || !formRef.current) return;
     
     setStatus('submitting');
-    console.log('Attempting to send email via EmailJS...', {
-      service: EMAILJS_SERVICE_ID,
-      template: EMAILJS_TEMPLATE_ID
-    });
-
     const fd = new FormData(formRef.current);
-    const hsPromise = submitToHubspot(
-      fd.get('from_name') as string,
-      fd.get('from_email') as string,
-      fd.get('phone') as string,
-      "contact_form",
-      {
-        business: fd.get('business') as string,
-        subject: fd.get('subject') as string,
-        message: fd.get('message') as string
-      }
-    );
+    
+    try {
+      const [res] = await Promise.all([
+        fetch("https://n8n.clario.in/webhook/synckraft-lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: fd.get('from_name') as string,
+            phone: fd.get('phone') as string,
+            lead_source: "contact_form"
+          })
+        }).catch(err => {
+          console.error("n8n webhook failed:", err);
+          return null;
+        }),
+        submitToHubspot(
+          fd.get('from_name') as string,
+          fd.get('from_email') as string,
+          fd.get('phone') as string,
+          "contact_form",
+          {
+            business: fd.get('business') as string,
+            subject: fd.get('subject') as string,
+            message: fd.get('message') as string
+          }
+        ).catch(err => {
+          console.error("HubSpot submission failed:", err);
+        })
+      ]);
 
-    Promise.all([
-      hsPromise,
-      emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        EMAILJS_PUBLIC_KEY
-      )
-    ]).then((results) => {
-      // result[1] is EmailJS object
-      const result = results[1];
-      console.log('EmailJS Success:', result.text);
+      if (res && res.ok) {
+        const waLink = await res.text();
+        if (waLink) {
+          window.open(waLink, "_blank");
+        }
+      }
+
       setStatus('success');
       if (sectionRef.current) {
         window.scrollTo({ top: sectionRef.current.offsetTop - 100, behavior: 'smooth' });
       }
-    }).catch((error) => {
-      console.error('EmailJS Detailed Error:', error);
-      alert(`Email Error: ${error.text || 'Check your EmailJS Public Key or Template/Service IDs.'}`);
+    } catch (error) {
+      console.error("Submission error:", error);
       setStatus('idle');
-    });
+    }
   };
 
   if (status === 'success') {
