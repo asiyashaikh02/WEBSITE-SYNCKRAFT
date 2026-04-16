@@ -32,14 +32,14 @@ html,body{
 /* Selection color — monochrome */
 /* default selection preserved to theme styles (avoid global color overrides) */
 
-/* Reveal animation — faster, subtle, performant */
-.reveal{
+/* Reveal animation — smoother and performant */
+.reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.42s ease-out, transform 0.42s ease-out;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
-.reveal.active{
+.reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
@@ -134,18 +134,38 @@ section{padding-top:2.5rem;padding-bottom:2.5rem}
 .no-bounce{animation:none!important}
 
 /* Touchable feedback for buttons and interactive elements */
-.touchable{transition:transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease; -webkit-tap-highlight-color: transparent}
-.touchable:active{transform:translateY(1px);opacity:0.98}
-.touchable:focus-visible{transform:translateY(-1px)}
+.touchable, button, .btn-feedback {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+.touchable:hover, button:hover, .btn-feedback:hover {
+  transform: scale(1.03);
+}
+.touchable:active, button:active, .btn-feedback:active {
+  transform: scale(0.97) translateY(1px);
+  opacity: 0.95;
+}
+.touchable:focus-visible{transform:translateY(-1px) scale(1.02)}
 
 /* JS-driven pressed state for immediate tactile feedback on touch - no scaling, only translateY */
 .touchable.pressed{transform:translateY(2px) !important;opacity:0.95 !important;transition:transform 120ms cubic-bezier(.2,.8,.2,1)}
 
-/* Card tap elevation */
-.card-glow{transition:box-shadow 180ms ease, transform 180ms ease}
-.card-glow:active{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
+/* Card tap elevation and interactions */
+.card-glow {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-glow:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15), 0 0 20px rgba(56, 189, 248, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+.card-glow:active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+}
 
-/* Pressing and hold visual states for cards (mobile) - no scaling, only translateY */
+/* Pressing and hold visual states for cards (mobile) */
 .card-glow.pressing{transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,0.12)}
 .card-glow.hold{box-shadow:0 26px 70px rgba(0,0,0,0.18);transform:translateY(-4px)}
 
@@ -181,16 +201,14 @@ section{padding-top:2.5rem;padding-bottom:2.5rem}
 }
 
 /* Subtle hero background glow animation (lightweight) */
-.hero-glow{
-  position:absolute;right:8%;top:8%;width:20rem;height:20rem;border-radius:9999px;pointer-events:none;opacity:0.08;mix-blend-mode:screen;will-change:transform,opacity;
-  background: radial-gradient(circle at 30% 30%, rgba(37,99,235,0.9), rgba(56,189,248,0.6) 40%, transparent 60%);
-  transform:translate3d(0,0,0);
-  animation: hero-glow-move 6s ease-in-out infinite;
+.hero-glow {
+  position: absolute; right: 8%; top: 8%; width: 20rem; height: 20rem; border-radius: 9999px; pointer-events: none; opacity: 0.15; mix-blend-mode: screen; will-change: transform, opacity;
+  background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 1), rgba(56, 189, 248, 0.4) 50%, transparent 70%);
+  animation: hero-glow-pulse 8s ease-in-out infinite alternate;
 }
-@keyframes hero-glow-move{
-  0%{transform:translate3d(0,0,0);opacity:0.06}
-  50%{transform:translate3d(-6px,-4px,0);opacity:0.09}
-  100%{transform:translate3d(0,0,0);opacity:0.06}
+@keyframes hero-glow-pulse {
+  0% { transform: scale(1) translate3d(0, 0, 0); opacity: 0.12; }
+  100% { transform: scale(1.1) translate3d(-10px, -10px, 0); opacity: 0.18; }
 }
 
 /* Section separators for subtle depth */

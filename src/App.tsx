@@ -100,13 +100,27 @@ const useRevealAnimations = () => {
       observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('active');
+            // Apply stagger delay dynamically based on sibling index if inside a grid/flex
+            const target = entry.target as HTMLElement;
+            if (target.parentElement) {
+              const children = Array.from(target.parentElement.children);
+              const index = children.indexOf(target);
+              if (index > 0 && target.parentElement.childElementCount > 1 && !target.style.transitionDelay) {
+                target.style.transitionDelay = `${Math.min(index * 100, 500)}ms`;
+              }
+            }
+            target.classList.add('active');
           }
         });
-      });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
       const elements = document.querySelectorAll('.reveal');
-      elements.forEach((el) => observer?.observe(el));
+      elements.forEach((el) => {
+        // Reset state for route changes
+        el.classList.remove('active');
+        (el as HTMLElement).style.transitionDelay = '';
+        observer?.observe(el);
+      });
     }, 100);
 
     return () => {
