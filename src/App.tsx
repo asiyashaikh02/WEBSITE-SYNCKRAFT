@@ -20,6 +20,7 @@ import { FloatingCTA } from './components/FloatingCTA';
 import { CaseStudiesPreview } from './components/CaseStudiesPreview';
 import { TrustSection } from './components/TrustSection';
 import { Loader } from './components/Loader';
+import { Pillars } from './components/Pillars';
 
 // Lazy Pages (✅ FIXED)
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
@@ -120,14 +121,12 @@ const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
   return (
     <main>
       <Hero />
-      <ProductOSSection theme={theme} />
+      <TrustSection />
       <BusinessSolutions theme={theme} />
+      <Pillars theme={theme} />
       <IndustrySolutions theme={theme} />
-      <IndustriesFOMO theme={theme} />
-      <BlogSection theme={theme} />
+      <ProductOSSection theme={theme} />
       <Testimonials theme={theme} />
-      <CaseStudiesPreview theme={theme} />
-      <TrustSection theme={theme} />
       <CTA theme={theme} />
     </main>
   );

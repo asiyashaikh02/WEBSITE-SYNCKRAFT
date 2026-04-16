@@ -72,10 +72,10 @@ export const IndustrySolutions: React.FC<ThemeProps> = ({ theme }) => {
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20 reveal">
           <div className="max-w-2xl">
-            <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">Industry Solutions</h4>
-            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-8 leading-tight text-on-surface">Business OS <br />Platforms</h2>
+            <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">Personalized By Industry</h4>
+            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-8 leading-tight text-on-surface">Built For Your <br />Exact Needs</h2>
             <p className="text-xl font-light leading-relaxed text-on-surface/70">
-              Synckraft architects specialized Business Operating Systems designed to scale operations, cut costs, and drive revenue in your sector.
+              We don't do cookie-cutter. Your AI automation system is tailored specifically to your industry's exact workflows and revenue drivers.
             </p>
           </div>
         </div>

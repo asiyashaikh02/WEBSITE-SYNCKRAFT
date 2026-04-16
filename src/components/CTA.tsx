@@ -34,18 +34,18 @@ export const CTA: React.FC<ThemeProps> = ({ theme }) => {
 
           <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-7xl font-extrabold mb-10 tracking-tight leading-tight text-white">
-              Have an Idea <br /> Worth <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-fuchsia-400 italic">Scaling?</span>
+              Ready to Scale <br /> Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-fuchsia-400 italic">Revenue?</span>
             </h2>
             <p className="text-xl text-slate-300 mb-14 leading-relaxed opacity-90 font-light">
-              Let's turn it into a structured, scalable business. Our incubation engine is designed to deploy institutional-grade strategy and tech.
+              Stop losing leads and wasting time on manual tasks. Let's build your automated growth engine today.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-               <Link to="/services" className="group px-8 py-5 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 text-white font-bold text-xl transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_30px_90px_rgba(56,189,248,0.35)] shadow-[0_24px_80px_rgba(56,189,248,0.25)] flex items-center gap-3 w-full sm:w-auto justify-center text-center">
-                  Explore Services <Search size={24} className="group-hover:translate-x-1 transition-transform" />
+               <Link to="/free-audit" className="group px-8 py-5 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 text-white font-bold text-xl transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_30px_90px_rgba(56,189,248,0.35)] shadow-[0_24px_80px_rgba(56,189,248,0.25)] flex items-center gap-3 w-full sm:w-auto justify-center text-center">
+                  Get Free Audit <Search size={24} className="group-hover:translate-x-1 transition-transform" />
                </Link>
-               <Link to="/industries" className="group px-8 py-5 rounded-full bg-slate-900/70 border border-white/10 text-slate-100 font-bold text-xl transition duration-300 hover:bg-slate-900/90 hover:shadow-[0_24px_70px_rgba(56,189,248,0.18)] shadow-[0_20px_60px_rgba(15,23,42,0.2)] backdrop-blur-md flex items-center gap-3 w-full sm:w-auto justify-center text-center">
-                  View Industry Solutions <Component size={24} className="group-hover:translate-x-1 transition-transform text-cyan-300" />
+               <Link to="/contact-sales" className="group px-8 py-5 rounded-full bg-slate-900/70 border border-white/10 text-slate-100 font-bold text-xl transition duration-300 hover:bg-slate-900/90 hover:shadow-[0_24px_70px_rgba(56,189,248,0.18)] shadow-[0_20px_60px_rgba(15,23,42,0.2)] backdrop-blur-md flex items-center gap-3 w-full sm:w-auto justify-center text-center">
+                  Contact Sales <Component size={24} className="group-hover:translate-x-1 transition-transform text-cyan-300" />
                </Link>
             </div>
           </div>

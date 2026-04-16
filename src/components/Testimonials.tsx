@@ -39,8 +39,8 @@ export const Testimonials = () => {
     <section className="py-32 relative overflow-hidden bg-surface text-on-surface border-y border-outline-variant/10">
       <div className="max-w-4xl mx-auto px-8 relative z-10">
         <div className="text-center mb-16 reveal">
-          <h4 className="text-primary font-bold uppercase tracking-[0.2em] text-xs mb-4">Testimonials</h4>
-          <h2 className="text-3xl font-bold tracking-tight text-on-surface">Trusted by Visionaries</h2>
+          <h4 className="text-primary font-bold uppercase tracking-[0.2em] text-xs mb-4">Why Choose Us</h4>
+          <h2 className="text-3xl font-bold tracking-tight text-on-surface">Trusted by Fast-Growing Companies</h2>
         </div>
 
         <motion.div

@@ -9,33 +9,21 @@ interface ThemeProps {
 export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
   const solutions = [
     {
-      title: 'Real Estate OS',
-      desc: 'Predictive lead matching, 24/7 AI qualification, and automated property management ecosystems.',
+      title: 'Lead Generation OS',
+      desc: 'Automates customer acquisition and qualifies leads 24/7 so you only talk to ready buyers.',
       icon: <Building2 size={32} />,
       link: '/services'
     },
     {
-      title: 'Restaurant OS',
-      desc: 'Predictive inventory processing, table turnover optimization, and unified POS intelligence.',
-      icon: <UtensilsCrossed size={32} />,
-      link: '/services'
-    },
-    {
-      title: 'Healthcare OS',
-      desc: 'Secure EMR data flows, automated appointment sequencing, and remote diagnostics pipelines.',
-      icon: <Stethoscope size={32} />,
-      link: '/services'
-    },
-    {
-      title: 'Retail OS',
-      desc: 'Omnichannel POS integration, inventory automation, and predictive customer analytics.',
-      icon: <Store size={32} />,
-      link: '/services'
-    },
-    {
-      title: 'Manufacturing OS',
-      desc: 'IoT data visualization, supply chain forecasting, and smart factory floor management.',
+      title: 'Operations Automation',
+      desc: 'Connects your scattered tools into one seamless dashboard to eliminate manual data entry.',
       icon: <Factory size={32} />,
+      link: '/services'
+    },
+    {
+      title: 'Growth Analytics',
+      desc: 'Turns complex data into simple, actionable insights that help you scale revenue predictably.',
+      icon: <Store size={32} />,
       link: '/services'
     }
   ];
@@ -59,8 +47,8 @@ export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-16 reveal">
-          <h4 className="text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">Business Operating Systems</h4>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">Business Operating Systems for Every <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-sky-400">Industry</span></h2>
+          <h4 className="text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">What We Do</h4>
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">Systems That Drive <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-sky-400">Growth</span></h2>
         </div>
         
         <div className="grid lg:grid-cols-3 gap-8">
@@ -73,7 +61,7 @@ export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
               <p className="text-base leading-relaxed mb-10 flex-grow text-slate-300">{sol.desc}</p>
               
               <Link to={sol.link} className="flex items-center gap-3 text-cyan-400 font-bold text-sm uppercase tracking-widest hover:gap-4 hover:text-cyan-300 transition-all">
-                Explore Industry <ArrowRight size={18} />
+                See Solutions <ArrowRight size={18} />
               </Link>
             </div>
           ))}

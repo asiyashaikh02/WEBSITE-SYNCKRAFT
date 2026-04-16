@@ -9,7 +9,7 @@ interface ThemeProps {
 export const ProductOSSection: React.FC<ThemeProps> = ({ theme }) => {
   const products = [
     {
-      title: 'Real Estate OS',
+      title: 'Real Estate Growth System',
       desc: 'Predictive CRM & automated property pipelines.',
       icon: <Building2 size={28} />,
       link: '/products/real-estate-os'
@@ -21,13 +21,13 @@ export const ProductOSSection: React.FC<ThemeProps> = ({ theme }) => {
       link: '/products/restaurant-os'
     },
     {
-      title: 'Healthcare OS',
+      title: 'Patient Management OS',
       desc: 'Secure EMR compliance & patient workflow automation.',
       icon: <Stethoscope size={28} />,
       link: '/products/healthcare-os'
     },
     {
-      title: 'Retail OS',
+      title: 'Retail Escalation Engine',
       desc: 'Smart supply chains & physical-to-digital integrations.',
       icon: <Store size={28} />,
       link: '/products/retail-os'
@@ -38,8 +38,8 @@ export const ProductOSSection: React.FC<ThemeProps> = ({ theme }) => {
     <section className={`py-24 ${theme === 'dark' ? 'bg-[#0A0A0B]' : 'bg-slate-50'}`}>
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-16 reveal">
-          <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8 flex justify-center items-center gap-2"><Box size={14} /> Product Ecosystem</h4>
-          <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Business Operating Systems</h2>
+          <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8 flex justify-center items-center gap-2"><Box size={14} /> Comprehensive Products</h4>
+          <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Ready-Made Growth Systems</h2>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">

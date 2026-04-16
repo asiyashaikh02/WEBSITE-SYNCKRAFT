@@ -8,34 +8,49 @@ export const TrustSection = () => {
     'Restaurants',
     'Healthcare',
     'Retail',
-    'Manufacturing'
+    'Manufacturing',
+    'E-Commerce',
+    'Education',
+    'Hospitality',
+    'Fintech',
+    'Automotive'
   ];
 
   return (
-    <section className="py-20 border-y bg-surface text-on-surface border-outline-variant/10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8 relative">
+    <section className="py-12 border-y bg-slate-950 text-white border-white/10 overflow-hidden relative">
+      <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-8 relative mb-6">
+        <div className="flex flex-col items-center justify-center text-center">
+          <p className="text-slate-400 font-semibold tracking-widest uppercase text-xs">
+            Trusted by industry leaders across the globe
+          </p>
+        </div>
+      </div>
+      
+      <div className="flex overflow-hidden relative w-full">
         <motion.div
-          className="flex flex-col items-center justify-center text-center reveal"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55 }}
+          className="flex whitespace-nowrap gap-8"
+          animate={{ x: [0, -1035] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 25,
+              ease: "linear",
+            },
+          }}
         >
-          <Globe2 className="text-primary mb-6" size={40} />
-          <h2 className="text-2xl md:text-3xl font-black mb-8 text-on-surface">
-            Trusted Across Industries. Serving Businesses Globally.
-          </h2>
-
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 opacity-80">
-            {industries.map((ind, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.02 }}
-                className="px-6 py-3 rounded-full font-bold text-sm md:text-base border border-outline-variant/10 text-on-surface/80 bg-surface-container"
-              >
-                {ind}
-              </motion.div>
-            ))}
-          </div>
+          {/* Double array for seamless loop */}
+          {[...industries, ...industries, ...industries].map((ind, i) => (
+            <div
+              key={i}
+              className="px-6 py-2 rounded-full font-bold text-sm md:text-base border border-white/10 text-slate-300 bg-white/5 whitespace-nowrap"
+            >
+              {ind}
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>
