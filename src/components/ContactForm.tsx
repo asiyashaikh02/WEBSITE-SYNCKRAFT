@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, CheckCircle2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useTheme } from './ThemeProvider';
+import { submitToHubspot } from '../utils/hubspot';
 
 // --- EMAILJS CONFIGURATION ---
 const EMAILJS_SERVICE_ID = "service_99w1d82"; 
@@ -38,12 +39,30 @@ export const ContactForm: React.FC<ContactFormProps> = () => {
       template: EMAILJS_TEMPLATE_ID
     });
 
-    emailjs.sendForm(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      formRef.current,
-      EMAILJS_PUBLIC_KEY
-    ).then((result) => {
+    const fd = new FormData(formRef.current);
+    const hsPromise = submitToHubspot(
+      fd.get('from_name') as string,
+      fd.get('from_email') as string,
+      fd.get('phone') as string,
+      "contact_form",
+      {
+        business: fd.get('business') as string,
+        subject: fd.get('subject') as string,
+        message: fd.get('message') as string
+      }
+    );
+
+    Promise.all([
+      hsPromise,
+      emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      )
+    ]).then((results) => {
+      // result[1] is EmailJS object
+      const result = results[1];
       console.log('EmailJS Success:', result.text);
       setStatus('success');
       if (sectionRef.current) {

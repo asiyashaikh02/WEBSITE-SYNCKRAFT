@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Bot, ArrowRight, Building2, User, Mail, Phone, Settings, Activity, Target } from 'lucide-react';
 import { trackEvent } from '../../utils/analytics';
+import { submitToHubspot } from '../../utils/hubspot';
 
 export default function FreeAudit() {
   const [searchParams] = useSearchParams();
@@ -36,11 +37,25 @@ export default function FreeAudit() {
     };
 
     try {
-      await fetch("https://n8n.clario.in/webhook/synckraft-free-audit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submissionData)
-      });
+      await Promise.all([
+        fetch("https://n8n.clario.in/webhook/synckraft-free-audit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(submissionData)
+        }),
+        submitToHubspot(
+          formData.name,
+          formData.email,
+          formData.phone,
+          "free_audit",
+          {
+            industry: formData.industry,
+            currentSystem: formData.currentSystem,
+            problem: formData.biggestProblem,
+            budget: formData.budgetRange
+          }
+        )
+      ]);
 
       const msg = encodeURIComponent(`New Lead From Synckraft\n\nType: Free Audit\nName: ${formData.name}\nIndustry: ${formData.industry}\nProblem: ${formData.biggestProblem}\nPhone: ${formData.phone}`);
       const whatsappUrl = `https://wa.me/919867799655?text=${msg}`;

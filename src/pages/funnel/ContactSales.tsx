@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, User, Building2, MessageSquare, ArrowRight, ShieldCheck } from 'lucide-react';
 import { trackEvent } from '../../utils/analytics';
 import { useTheme } from '../../components/ThemeProvider';
-
+import { submitToHubspot } from '../../utils/hubspot';
 
 export default function ContactSales() {
   const { theme } = useTheme();
@@ -35,11 +35,23 @@ export default function ContactSales() {
     };
 
     try {
-      await fetch("https://n8n.clario.in/webhook/synckraft-contact-sales", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submissionData)
-      });
+      await Promise.all([
+        fetch("https://n8n.clario.in/webhook/synckraft-contact-sales", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(submissionData)
+        }),
+        submitToHubspot(
+          formData.name,
+          formData.email,
+          formData.phone,
+          "contact_sales",
+          {
+            company: formData.company,
+            message: formData.message
+          }
+        )
+      ]);
 
       const msg = encodeURIComponent(`New Lead From Synckraft\n\nType: Contact Sales\nName: ${formData.name}\nCompany: ${formData.company}\nPhone: ${formData.phone}\nMessage: ${formData.message}`);
       const whatsappUrl = `https://wa.me/919867799655?text=${msg}`;

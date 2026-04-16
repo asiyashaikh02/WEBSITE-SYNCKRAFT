@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Bot, ArrowRight, Building2, Users, Briefcase, Mail, Phone, User, CheckCircle2 } from 'lucide-react';
 import { trackFunnelStep, trackEvent } from '../../utils/analytics';
 import { useTheme } from '../../components/ThemeProvider';
-
+import { submitToHubspot } from '../../utils/hubspot';
 
 export default function BookDemo() {
   const { theme } = useTheme();
@@ -56,11 +56,25 @@ export default function BookDemo() {
     };
 
     try {
-      await fetch("https://n8n.clario.in/webhook/synckraft-book-demo", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submissionData)
-      });
+      await Promise.all([
+        fetch("https://n8n.clario.in/webhook/synckraft-book-demo", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(submissionData)
+        }),
+        submitToHubspot(
+          formData.name,
+          formData.email,
+          formData.phone,
+          "book_demo",
+          {
+            businessType: formData.businessType,
+            industry: formData.industry,
+            company: formData.company,
+            teamSize: formData.teamSize
+          }
+        )
+      ]);
 
       const msg = encodeURIComponent(`New Lead From Synckraft\n\nType: Book Demo\nName: ${formData.name}\nCompany: ${formData.company}\nIndustry: ${formData.industry}\nPhone: ${formData.phone}`);
       const whatsappUrl = `https://wa.me/919867799655?text=${msg}`;
