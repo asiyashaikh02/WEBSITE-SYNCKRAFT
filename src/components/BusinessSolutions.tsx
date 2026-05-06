@@ -29,38 +29,36 @@ export const BusinessSolutions: React.FC<ThemeProps> = ({ theme }) => {
   ];
 
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden">
-      {/* Background Layer */}
-      <div className="absolute inset-0 bg-slate-950/95" />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 12%, rgba(56,189,248,0.06), transparent 28%), radial-gradient(circle at 82% 18%, rgba(168,85,247,0.05), transparent 26%), radial-gradient(circle at 55% 85%, rgba(14,165,233,0.04), transparent 35%)",
-          mixBlendMode: "screen",
-          opacity: 0.5,
-        }}
-      />
-      <div className="hero-glow opacity-50" />
-      <div className="absolute left-10 top-28 h-72 w-72 rounded-full bg-cyan-500/8 blur-3xl" />
-      <div className="absolute right-8 top-40 h-56 w-56 rounded-full bg-fuchsia-500/8 blur-3xl" />
+    <section className="py-32 bg-[#0B0F19] relative overflow-hidden">
+      {/* Refined clean dark background with subtle structure */}
+      <div className="absolute inset-0 bg-[#0B0F19]" />
+      
+      {/* Subtle SaaS structural gradient (focused, non-messy) */}
+      <div className="absolute left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-[#2563EB]/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <div className="text-center mb-16 reveal">
-          <h4 className="text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">What We Do</h4>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">Systems That Drive <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-sky-400">Growth</span></h2>
+        <div className="text-center mb-20 reveal flex flex-col items-center">
+          <span className="text-[#06B6D4] font-semibold uppercase tracking-widest text-xs mb-4 inline-block px-4 py-1.5 rounded-full border border-[#06B6D4]/20 bg-[#06B6D4]/5">
+            What We Do
+          </span>
+          <h2 className="text-4xl md:text-[40px] font-sora font-bold tracking-tight text-white mb-6">
+            Systems That Drive <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Growth</span>
+          </h2>
+          <p className="max-w-2xl text-lg text-[#9CA3AF] font-sans">
+            Replace chaotic processes with streamlined operating systems that empower your team to focus on high-leverage work.
+          </p>
         </div>
         
         <div className="grid lg:grid-cols-3 gap-8">
           {solutions.map((sol, index) => (
-            <div key={index} className="group p-10 rounded-[2.5rem] bg-slate-900/60 border border-white/10 backdrop-blur-xl transition-all duration-300 flex flex-col reveal hover:-translate-y-2 hover:shadow-[0_32px_80px_rgba(56,189,248,0.15)] hover:border-cyan-500/30">
-              <div className="w-16 h-16 bg-cyan-500/10 text-cyan-400 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+            <div key={index} className="group p-10 rounded-2xl bg-[#111827] border border-[#1F2937] transition-all duration-300 flex flex-col reveal hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(37,99,235,0.08)] hover:border-[#2563EB]/40">
+              <div className="w-16 h-16 bg-[#2563EB]/10 text-[#06B6D4] rounded-xl flex items-center justify-center mb-8 border border-[#2563EB]/20 group-hover:scale-105 transition-transform">
                 {sol.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">{sol.title}</h3>
-              <p className="text-base leading-relaxed mb-10 flex-grow text-slate-300">{sol.desc}</p>
+              <h3 className="text-2xl font-sora font-semibold mb-4 text-white">{sol.title}</h3>
+              <p className="text-[17px] leading-relaxed mb-10 flex-grow text-[#9CA3AF] font-sans">{sol.desc}</p>
               
-              <Link to={sol.link} className="flex items-center gap-3 text-cyan-400 font-bold text-sm uppercase tracking-widest hover:gap-4 hover:text-cyan-300 transition-all">
+              <Link to={sol.link} className="flex items-center gap-2 text-[#06B6D4] font-semibold text-sm uppercase tracking-wider hover:gap-3 hover:text-cyan-300 transition-all">
                 See Solutions <ArrowRight size={18} />
               </Link>
             </div>

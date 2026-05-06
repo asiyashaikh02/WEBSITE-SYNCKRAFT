@@ -1,123 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- BASIC META -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- PRIMARY SEO (VERY IMPORTANT) -->
-    <title>Synckraft Technologies | AI Development & Web Solutions in India</title>
-    <meta name="description" content="Synckraft Technologies builds AI-powered websites, scalable digital platforms, and modern web solutions for startups and businesses." />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="Synckraft Technologies" />
+<head>
+  <!-- BASIC META -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- CANONICAL & SEO (Managed by React Helmet) -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
-    <meta property="og:image" content="https://synckraft.in/og-image.png" />
+  <!-- PRIMARY SEO (VERY IMPORTANT) -->
+  <title>Synckraft Technologies | AI Development & Web Solutions in India</title>
+  <meta name="description"
+    content="Synckraft Technologies builds AI-powered websites, scalable digital platforms, and modern web solutions for startups and businesses." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Synckraft Technologies" />
 
-    <!-- SITEMAP -->
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+  <!-- CANONICAL & SEO (Managed by React Helmet) -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta property="og:image" content="https://synckraft.in/og-image.png" />
 
-    <!-- OPEN GRAPH (SOCIAL + GOOGLE SEO) -->
-    <meta property="og:title" content="Synckraft Technologies | AI Development & Web Solutions" />
-    <meta property="og:description" content="We design and develop AI websites, scalable digital products, and high-performance web platforms." />
-    <meta property="og:type" content="website" />
+  <!-- SITEMAP -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
-    <!-- TWITTER CARD -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Synckraft Technologies | AI Development & Web Solutions" />
-    <meta name="twitter:description" content="AI websites, development & scalable digital solutions by Synckraft Technologies." />
-    <meta name="twitter:image" content="https://synckraft.in/og-image.png" />
+  <!-- OPEN GRAPH (SOCIAL + GOOGLE SEO) -->
+  <meta property="og:title" content="Synckraft Technologies | AI Development & Web Solutions" />
+  <meta property="og:description"
+    content="We design and develop AI websites, scalable digital products, and high-performance web platforms." />
+  <meta property="og:type" content="website" />
 
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Synckraft Technologies | AI Development & Web Solutions" />
+  <meta name="twitter:description"
+    content="AI websites, development & scalable digital solutions by Synckraft Technologies." />
+  <meta name="twitter:image" content="https://synckraft.in/og-image.png" />
 
-    <!-- TAILWIND -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        content: [
-          "./index.html",
-          "./src/**/*.{js,ts,jsx,tsx}"
-        ],
-        theme: {
-          extend: {
-            colors: {
-              synckraft: {
-                dark: '#0A0A0B',
-                indigo: '#2563EB',
-                azure: '#38BDF8',
-                border: '#1E293B',
-                muted: '#94A3B8'
-              },
-              primary: '#89ceff',
-              surface: '#0b1326',
-              'surface-container': '#171f33',
-              'on-surface': '#dae2fd'
+  <!-- TAILWIND -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      content: [
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}"
+      ],
+      theme: {
+        extend: {
+          colors: {
+            synckraft: {
+              dark: '#0B0F19',
+              indigo: '#2563EB',
+              azure: '#06B6D4',
+              border: '#1F2937',
+              muted: '#9CA3B8'
             },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Space Grotesk', 'sans-serif'],
-            }
+            primary: '#2563EB',
+            surface: '#0B0F19',
+            'surface-container': '#111827',
+            'on-surface': '#FFFFFF'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            sora: ['Sora', 'sans-serif'],
           }
         }
       }
-    </script>
+    }
+  </script>
 
-    <!-- PRE-RENDER THEME -->
-    <script>
-      (function(){
+  <!-- PRE-RENDER THEME -->
+  <script>
+      (function () {
         try {
           var t = localStorage.getItem('theme') || localStorage.getItem('synckraft-theme') || 'dark';
           document.documentElement.classList.toggle('dark', t === 'dark');
-        } catch (e) {}
+        } catch (e) { }
       })();
-    </script>
+  </script>
 
-    <!-- CUSTOM STYLES -->
-    <style>
-      :root {
-        --synckraft-blue: #2563EB;
-      }
-      body {
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-      .reveal { opacity: 0; transform: translateY(20px); }
-      .reveal.active { opacity: 1; transform: translateY(0); }
-      .card-glow:hover {
-        box-shadow: 0 0 30px rgba(37, 99, 235, 0.15);
-      }
-      .glass-nav {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-      }
-      .clip-path-hero {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
-      }
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0A0A0B;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #1E293B;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #2563EB;
-      }
-    </style>
+  <!-- CUSTOM STYLES -->
+  <style>
+    :root {
+      --synckraft-blue: #2563EB;
+    }
+
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-glow:hover {
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.15);
+    }
+
+    .glass-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .clip-path-hero {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0A0A0B;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #1E293B;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2563EB;
+    }
+  </style>
 
 
 
-    <!-- REACT IMPORT MAP (KEEP) -->
-    <script type="importmap">
+  <!-- REACT IMPORT MAP (KEEP) -->
+  <script type="importmap">
     {
       "imports": {
         "react/": "https://esm.sh/react@^19.2.4/",
@@ -128,11 +150,12 @@
     }
     </script>
 
-    <link rel="stylesheet" href="/src/index.css">
-  </head>
+  <link rel="stylesheet" href="/src/index.css">
+</head>
 
-  <body class="dark bg-[#0A0A0B]">
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
+<body class="dark bg-surface text-on-surface">
+  <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
+</body>
+
 </html>

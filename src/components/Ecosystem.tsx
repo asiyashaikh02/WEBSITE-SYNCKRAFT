@@ -1,127 +1,98 @@
 import React from 'react';
-import { ArrowUpRight, Clock, Globe, Zap, Box, LayoutGrid } from 'lucide-react';
+import { ArrowUpRight, Cpu, Sun, BarChart2 } from 'lucide-react';
 
 interface ThemeProps {
-  theme: 'dark' | 'light';
+  theme?: 'dark' | 'light';
 }
 
 const ventures = [
   { 
-    title: "Solaroft", 
-    tag: "Green Energy Services",
-    description: `From precision installation support and scheduled cleaning to deep system health checks and long-term asset care, Solaroft manages solar systems for homes and businesses end-to-end.
-
-Your solar doesn’t just turn on —
-it performs, consistently.`,
-    status: "Active Portfolio",
+    title: "UNSTOPR", 
+    tag: "AI & Automation",
+    description: "Enterprise AI infrastructure, WhatsApp API, CRM, and advanced business automation systems.",
+    status: "Active Infrastructure",
     isLive: true,
-    link: "https://solaroft.com",
-    icon: Globe
+    link: "https://www.unstopr.com/in",
+    icon: Cpu,
+    color: "from-purple-500 to-indigo-500",
+    bgLight: "bg-indigo-50/50"
   },
   { 
-    title: "SolveItIndia", 
-    tag: "Marketplace",
-    description: "An institutional-scale logistics marketplace redesigning delivery ecosystems in Tier-2 Indian cities.",
-    status: "Upcoming Venture",
-    isLive: false,
-    link: "#",
-    icon: Zap
+    title: "SOLAROFT", 
+    tag: "Solar Infrastructure",
+    description: "Comprehensive solar plant operations, industrial maintenance, and efficiency optimization systems.",
+    status: "Active Infrastructure",
+    isLive: true,
+    link: "https://www.solaroft.com/",
+    icon: Sun,
+    color: "from-amber-400 to-orange-500",
+    bgLight: "bg-orange-50/50"
   },
   { 
-    title: "Internal Labs", 
-    tag: "Proprietary SaaS",
-    description: "Incubating next-gen internal SaaS tools and AI-driven business architecture modules in stealth.",
-    status: "In Development",
-    isLive: false,
-    link: "#",
-    icon: LayoutGrid
+    title: "SOLVEIT INDIA", 
+    tag: "Business Operations",
+    description: "Enterprise assistance, process management, and core business support service infrastructure.",
+    status: "Active Infrastructure",
+    isLive: true,
+    link: "https://www.solveitindia.com/",
+    icon: BarChart2,
+    color: "from-emerald-400 to-teal-500",
+    bgLight: "bg-teal-50/50"
   }
 ];
 
-export const Ecosystem: React.FC<ThemeProps> = ({ theme }) => {
-
+export const Ecosystem: React.FC<ThemeProps> = () => {
   return (
-    <section id="ecosystem" className={`py-24 md:py-40 relative overflow-hidden ${theme === 'dark' ? 'bg-[#080809]' : 'bg-slate-50'}`}>
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
+    <section id="ecosystem" className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20 reveal">
           <div className="max-w-2xl">
-            <h4 className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-8">Venture Ecosystem</h4>
-            <h2 className={`text-4xl md:text-6xl font-extrabold tracking-tight mb-8 leading-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Institutional <br />Holdings</h2>
-            <p className={`text-xl font-light leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
-              Synckraft architects a diverse portfolio of specialized digital platforms designed for massive scale and disruption.
+            <span className="text-blue-600 font-bold uppercase tracking-widest text-[10px] mb-4 inline-block px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50/50">
+              Venture Ecosystem
+            </span>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+              Specialized Brands.<br/>Unified Infrastructure.
+            </h2>
+            <p className="text-lg text-slate-500 font-medium leading-relaxed">
+              We build and manage dedicated technology platforms tailored for massive scale and operational excellence.
             </p>
           </div>
         </div>
         
-        <div className="grid lg:grid-cols-3 lg:grid-rows-2 gap-8 items-stretch">
+        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
           {ventures.map((venture, index) => (
-            <div 
+            <a 
               key={index} 
-              className={`group p-8 sm:p-12 rounded-[3.5rem] border transition-transform transition-shadow transition-colors duration-200 ease-out flex flex-col reveal card-glow will-change-transform ${
-                // Solaroft: primary, spans left column and two rows on large screens
-                venture.title === 'Solaroft'
-                ? 'lg:col-span-2 lg:row-span-2 min-h-[460px] lg:min-h-[460px] border-l-4 border-blue-500/20 shadow-2xl'
-                : 'min-h-[220px] lg:min-h-[220px] h-full'
-              }`}>
-              <div className="flex justify-between items-start mb-12">
-                <div className={`${venture.title === 'Solaroft' ? 'w-[72px] h-[72px]' : 'w-16 h-16'} rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-200 ease-out transform-gpu group-hover:-translate-y-1 group-hover:shadow-xl will-change-transform ${
-                    venture.isLive ? 'bg-blue-600 text-white' : (theme === 'dark' ? 'bg-white/5 text-slate-600' : 'bg-slate-50 text-slate-300')
-                  }`}>
-                  <venture.icon size={venture.title === 'Solaroft' ? 33 : 28} />
+              href={venture.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative p-8 sm:p-10 rounded-3xl border border-slate-200 transition-all duration-300 ease-out flex flex-col reveal bg-white hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-2 hover:border-blue-200`}
+            >
+              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${venture.color} opacity-[0.03] rounded-bl-full transition-opacity duration-300 group-hover:opacity-[0.08]`}></div>
+              
+              <div className="flex justify-between items-start mb-10">
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:shadow-md ${venture.bgLight} text-slate-700`}>
+                  <venture.icon size={26} className="text-slate-900" />
                 </div>
-                <div className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] border ${
-                  venture.isLive 
-                  ? 'bg-blue-600/10 text-blue-500 border-blue-500/20' 
-                  : 'bg-white/5 text-slate-500 border-white/5'
-                }`}>
+                <div className="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 border border-slate-200">
                   {venture.status}
                 </div>
               </div>
               
-              <div className="mb-4">
-                 <span className="text-[10px] font-bold text-blue-500/60 uppercase tracking-widest">{venture.tag}</span>
-                 <h3 className={`text-3xl font-bold mt-1 mb-3 ${venture.title === 'Solaroft' ? 'text-4xl' : ''} transition-colors ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{venture.title}</h3>
-                 {venture.title === 'Solaroft' && (
-                   <div className={`text-sm font-semibold mb-4 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
-                     Solar AMC • Cleaning • Maintenance • Efficiency Optimization
-                   </div>
-                 )}
+              <div className="mb-4 relative z-10">
+                 <span className="text-[11px] font-bold text-blue-600 uppercase tracking-widest">{venture.tag}</span>
+                 <h3 className="text-2xl font-bold mt-2 mb-3 text-slate-900 tracking-tight">{venture.title}</h3>
               </div>
               
-              <p className={`text-lg leading-relaxed mb-12 flex-grow font-light ${theme === 'dark' ? 'text-slate-500' : 'text-slate-500'}`}>{venture.description}</p>
-              {venture.title === 'Solaroft' && (
-                <>
-                  <div className="flex items-center justify-center py-12 mb-8 group/preview">
-                    <img 
-                      src="/Solaroft.png" 
-                      alt="Solaroft Logo" 
-                      className="h-32 md:h-48 w-auto object-contain transition-transform duration-700 group-hover/preview:scale-105 drop-shadow-sm" 
-                    />
-                  </div>
-                  <ul className="mt-2 space-y-2 text-sm font-medium">
-                  <li>Trusted by 500+ customers</li>
-                  <li>Annual Maintenance Contracts (AMC)</li>
-                  <li>Solar cleaning & efficiency optimization</li>
-                  <li>Eco-friendly practices</li>
-                  <li>Certified solar technicians</li>
-                  <li>Up to 30% energy boost</li>
-                  <li>Residential & Commercial services</li>
-                </ul>
-                </>
-              )}
+              <p className="text-slate-500 leading-relaxed mb-10 flex-grow font-medium">{venture.description}</p>
               
-              <div className={`pt-8 mt-auto ${venture.title === 'Solaroft' ? '' : `border-t ${theme === 'dark' ? 'border-white/5' : 'border-slate-50'}`}`}>
-                {venture.isLive ? (
-                  <a href={venture.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-blue-500 font-bold text-sm uppercase tracking-[0.15em] group/link transition-colors">
-                    Explore Venture <ArrowUpRight size={20} className="transition-transform group-hover/link:-translate-y-1" />
-                  </a>
-                ) : (
-                  <div className="flex items-center gap-3 text-slate-600 font-bold text-sm uppercase tracking-[0.15em] italic">
-                    <Clock size={20} /> Incubation
-                  </div>
-                )}
+              <div className="pt-6 mt-auto border-t border-slate-100 flex items-center justify-between group/link">
+                <span className="text-slate-900 font-bold text-sm uppercase tracking-widest transition-colors group-hover:text-blue-600">
+                  Explore Brand
+                </span>
+                <ArrowUpRight size={20} className="text-slate-400 transition-all duration-300 group-hover:text-blue-600 group-hover:-translate-y-1 group-hover:translate-x-1" />
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

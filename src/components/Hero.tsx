@@ -3,55 +3,46 @@ import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-20 sm:py-28">
-      <div className="absolute inset-0 bg-slate-950/95" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-32 bg-white">
+      {/* Light elegant gradients */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-blue-50/80 blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-slate-50/80 blur-3xl" />
+      </div>
 
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 12%, rgba(56,189,248,0.18), transparent 28%), radial-gradient(circle at 82% 18%, rgba(168,85,247,0.14), transparent 26%), radial-gradient(circle at 55% 85%, rgba(14,165,233,0.08), transparent 35%)",
-          mixBlendMode: "screen",
-          opacity: 0.75,
-        }}
-      />
-
-      <div className="hero-glow" />
-      <div className="absolute left-10 top-28 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl" />
-      <div className="absolute right-8 top-40 h-56 w-56 rounded-full bg-fuchsia-500/15 blur-3xl" />
-      <div className="absolute left-[10%] bottom-16 h-44 w-44 rounded-full bg-sky-500/10 blur-3xl" />
-      <div className="absolute right-[12%] bottom-20 h-64 w-64 rounded-full bg-violet-500/10 blur-3xl" />
-
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-200 shadow-[0_0_32px_rgba(56,189,248,0.16)] backdrop-blur-xl">
-          <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-          +35% Avg Revenue Growth | Rated 4.9/5 by 100+ Businesses
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
+        <div className="inline-flex items-center gap-3 rounded-full border border-blue-100 bg-blue-50/50 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-blue-600 mb-8 backdrop-blur-md">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+          </span>
+          Parent Ecosystem Company
         </div>
 
-        <h1 className="mt-8 max-w-4xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.03] text-white">
-          Turn Your Business Into A
-          <span className="block bg-gradient-to-r from-cyan-300 via-sky-300 to-fuchsia-400 bg-clip-text text-transparent">
-            Scaleable Growth Engine
+        <h1 className="max-w-4xl text-5xl md:text-6xl lg:text-[72px] font-extrabold tracking-tight text-slate-900 leading-[1.1]">
+          Building the Future of
+          <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+            Institutional Infrastructure
           </span>
         </h1>
 
-        <p className="mt-6 max-w-3xl text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed">
-          We build robust operating systems and automated workflows that eliminate manual friction, generate qualified leads, and scale your revenue predictably.
+        <p className="mt-8 max-w-2xl text-xl text-slate-500 font-medium leading-relaxed">
+          Synckraft builds and powers specialized modern infrastructure brands. We architect ecosystems that drive enterprise performance at scale.
         </p>
 
-        <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+        <div className="mt-12 flex w-full flex-col justify-center gap-4 sm:flex-row sm:gap-6">
           <Link
-            to="/free-audit"
-            className="inline-flex min-w-[220px] items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 px-8 py-4 text-base font-semibold text-white shadow-[0_24px_80px_rgba(56,189,248,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_30px_90px_rgba(56,189,248,0.35)]"
+            to="/ecosystem"
+            className="inline-flex min-w-[220px] items-center justify-center rounded-full bg-slate-900 px-8 py-4 text-base font-semibold text-white shadow-[0_8px_30px_rgba(15,23,42,0.12)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(15,23,42,0.2)] hover:bg-blue-600"
           >
-            Get Free Growth Audit
+            Explore Ecosystem
           </Link>
 
           <Link
-            to="/services"
-            className="inline-flex min-w-[220px] items-center justify-center rounded-full border border-white/10 bg-white/10 px-8 py-4 text-base font-semibold text-slate-100 shadow-[0_20px_60px_rgba(15,23,42,0.2)] transition duration-300 hover:bg-white/15 hover:shadow-[0_24px_70px_rgba(56,189,248,0.18)]"
+            to="/company"
+            className="inline-flex min-w-[220px] items-center justify-center rounded-full border border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:-translate-y-1 hover:border-slate-300"
           >
-            See How It Works
+            About Synckraft
           </Link>
         </div>
       </div>

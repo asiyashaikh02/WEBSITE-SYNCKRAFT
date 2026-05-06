@@ -8,20 +8,13 @@ import { useTheme } from './components/ThemeProvider';
 // Components
 import { Navbar } from './components/Navbar';
 import Hero from './components/Hero';
-import { IndustrySolutions } from './components/IndustrySolutions';
-import { BusinessSolutions } from './components/BusinessSolutions';
-import { IndustriesFOMO } from './components/IndustriesFOMO';
-import { ProductOSSection } from './components/ProductOSSection';
-import { Testimonials } from './components/Testimonials';
-import { BlogSection } from './components/BlogSection';
+import { Ecosystem } from './components/Ecosystem';
+import { About } from './components/About';
+import { VisionSection } from './components/VisionSection';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 import { FloatingCTA } from './components/FloatingCTA';
-import { CaseStudiesPreview } from './components/CaseStudiesPreview';
-import { TrustSection } from './components/TrustSection';
 import { Loader } from './components/Loader';
-import { Pillars } from './components/Pillars';
-import { About } from './components/About';
 
 // Lazy Pages (✅ FIXED)
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
@@ -70,6 +63,7 @@ const BusinessOS = React.lazy(() =>
 );
 
 const ProductsPage = React.lazy(() => import('./pages/Products'));
+const EcosystemPage = React.lazy(() => import('./pages/EcosystemPage'));
 const BlogPage = React.lazy(() => import('./pages/blog/Blog'));
 const BlogPostPage = React.lazy(() => import('./pages/blog/BlogPost'));
 const CaseStudiesPage = React.lazy(() => import('./pages/case-studies/CaseStudies'));
@@ -134,14 +128,11 @@ const useRevealAnimations = () => {
 // Landing Page
 const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
   return (
-    <main>
+    <main className="bg-white">
       <Hero />
-      <TrustSection />
-      <BusinessSolutions theme={theme} />
-      <Pillars theme={theme} />
-      <IndustrySolutions theme={theme} />
-      <ProductOSSection theme={theme} />
+      <Ecosystem theme={theme} />
       <About theme={theme} />
+      <VisionSection theme={theme} />
       <CTA theme={theme} />
     </main>
   );
@@ -179,14 +170,16 @@ export default function App() {
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<MainLanding theme={theme} />} />
+            <Route path="/ecosystem" element={<EcosystemPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/industries" element={<IndustriesPage />} />
             <Route path="/services" element={<ServicesPage />} />
-            <Route path="/book-demo" element={<BookDemoPage />} />
-            <Route path="/free-audit" element={<FreeAuditPage />} />
-            <Route path="/contact-sales" element={<ContactSalesPage />} />
-            <Route path="/thank-you" element={<ThankYouPage />} />
+            
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
 
             {/* Industry Routes */}
             <Route path="/industries/automobile" element={<Automobile />} />
@@ -212,6 +205,12 @@ export default function App() {
             <Route path="/products/retail-os" element={<RetailOS />} />
             <Route path="/products/manufacturing-os" element={<ManufacturingOS />} />
             <Route path="/products/business-os" element={<BusinessOS />} />
+
+            {/* Funnel Routes */}
+            <Route path="/book-demo" element={<BookDemoPage />} />
+            <Route path="/free-audit" element={<FreeAuditPage />} />
+            <Route path="/contact-sales" element={<ContactSalesPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
 
             {/* Blog */}
             <Route path="/blog" element={<BlogPage />} />
