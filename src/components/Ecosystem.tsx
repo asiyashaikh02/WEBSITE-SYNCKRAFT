@@ -11,123 +11,138 @@ const ventures = [
   {
     title: "UNSTOPR",
     tag: "AI & Automation",
-    description: "Enterprise AI infrastructure, WhatsApp API, CRM, and advanced business automation systems.",
+    description: "Enterprise AI infrastructure, WhatsApp API, CRM, and advanced business automation systems powering modern operations.",
     status: "Active Infrastructure",
-    isLive: true,
     link: "https://www.unstopr.com",
     icon: Cpu,
-    color: "from-blue-600 to-blue-700",
-    bgLight: "bg-blue-50/50",
-    isPrimary: true
+    accent: "blue",
+    isPrimary: true,
   },
   {
     title: "SOLVEIT INDIA",
     tag: "Business Operations",
-    description: "Enterprise assistance, process management, and core business support service infrastructure.",
+    description: "Enterprise assistance, process management, and core business support infrastructure for operational excellence.",
     status: "Active Infrastructure",
-    isLive: true,
-    link: "https://www.solveitindia.com/",
+    link: "https://www.solveitindia.com",
     icon: BarChart2,
-    color: "from-emerald-600 to-emerald-700",
-    bgLight: "bg-emerald-50/50"
+    accent: "emerald",
+    isPrimary: false,
   },
   {
     title: "SOLAROFT",
-    tag: "Green Energy & Solar Infrastructure",
-    description: "Comprehensive solar plant operations, industrial maintenance, and efficiency optimization systems.",
+    tag: "Green Energy & Solar",
+    description: "Comprehensive solar plant operations, industrial maintenance, and energy efficiency optimization systems.",
     status: "Active Infrastructure",
-    isLive: true,
-    link: "https://www.solaroft.com/",
+    link: "https://www.solaroft.com",
     icon: Sun,
-    color: "from-amber-600 to-amber-700",
-    bgLight: "bg-amber-50/50"
+    accent: "amber",
+    isPrimary: false,
   }
 ];
 
+const accentMap: Record<string, { gradient: string; badge: string; icon: string; glow: string }> = {
+  blue:    { gradient: 'from-blue-600 to-blue-700',    badge: 'bg-blue-50 text-blue-700 border-blue-200',    icon: 'bg-blue-50 text-blue-600',    glow: 'from-blue-600/20 to-cyan-600/20' },
+  emerald: { gradient: 'from-emerald-600 to-emerald-700', badge: 'bg-emerald-50 text-emerald-700 border-emerald-200', icon: 'bg-emerald-50 text-emerald-600', glow: 'from-emerald-600/20 to-teal-600/20' },
+  amber:   { gradient: 'from-amber-600 to-amber-700',   badge: 'bg-amber-50 text-amber-700 border-amber-200',   icon: 'bg-amber-50 text-amber-600',   glow: 'from-amber-600/20 to-orange-600/20' },
+};
+
 export const Ecosystem: React.FC<ThemeProps> = () => {
   return (
-    <section id="ecosystem" className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
+    <section id="ecosystem" className="py-28 md:py-36 bg-slate-50 relative overflow-hidden">
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      </div>
+
       <div className={`${STYLES.container} relative z-10`}>
-        <div data-reveal className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20 reveal">
+
+        {/* Section header */}
+        <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
           <div className="max-w-2xl">
-            <span className="text-blue-600 font-bold uppercase tracking-widest text-[10px] mb-4 inline-block px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50/50">
+            <span className="text-blue-600 font-bold uppercase tracking-[0.18em] text-[10px] mb-5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
               Venture Ecosystem
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-              Specialized Brands.<br/>Unified Infrastructure.
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-5 leading-[1.1]">
+              Specialized Brands.<br />
+              <span className="text-slate-400 font-light italic">Unified Infrastructure.</span>
             </h2>
-            <p className="text-lg text-slate-500 font-medium leading-relaxed">
-              We build and manage dedicated technology platforms tailored for massive scale and operational excellence.
+            <p className="text-lg text-slate-500 font-medium leading-relaxed max-w-xl">
+              We build and manage dedicated technology platforms engineered for massive scale and operational excellence.
             </p>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
-          {ventures.map((venture, index) => (
-            <a
-              key={index}
-              href={venture.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group relative p-8 sm:p-10 rounded-3xl border transition-all duration-500 ease-out flex flex-col reveal bg-white hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-3 hover:border-blue-200 ${
-                venture.isPrimary
-                  ? 'border-blue-300 shadow-lg shadow-blue-900/10 lg:col-span-2 lg:row-span-1'
-                  : 'border-slate-200'
-              }`}
-            >
-              {/* Premium background effects */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${venture.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/20 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
-
-              <div className="flex justify-between items-start mb-10">
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:rotate-3 ${venture.bgLight} text-slate-700 ${
-                  venture.isPrimary ? 'w-16 h-16' : ''
-                }`}>
-                  <venture.icon size={venture.isPrimary ? 32 : 26} className="text-slate-900 drop-shadow-sm" />
-                </div>
-                <div className={`px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest border ${
+        {/* Venture cards */}
+        <div className="grid lg:grid-cols-3 gap-6 items-stretch">
+          {ventures.map((venture, index) => {
+            const colors = accentMap[venture.accent];
+            return (
+              <a
+                key={index}
+                href={venture.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`reveal group relative p-8 sm:p-10 rounded-3xl border bg-white flex flex-col card-premium hover-glow ${
                   venture.isPrimary
-                    ? 'bg-blue-100 text-blue-700 border-blue-200 shadow-sm'
-                    : 'bg-slate-100 text-slate-500 border-slate-200'
-                }`}>
-                  {venture.status}
+                    ? 'border-blue-200 shadow-lg shadow-blue-900/8 lg:col-span-2'
+                    : 'border-slate-200'
+                }`}
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
+                {/* Hover gradient overlay */}
+                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${colors.gradient} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500`} />
+
+                {/* Top row */}
+                <div className="flex justify-between items-start mb-10 relative z-10">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${colors.icon} transition-all duration-500 group-hover:scale-110 group-hover:shadow-md`}>
+                    <venture.icon size={venture.isPrimary ? 28 : 24} strokeWidth={1.8} />
+                  </div>
+                  <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border ${colors.badge}`}>
+                    {venture.status}
+                  </span>
                 </div>
-              </div>
 
-              <div className="mb-4 relative z-10">
-                 <span className={`font-bold uppercase tracking-widest ${
-                   venture.isPrimary ? 'text-blue-600' : 'text-blue-600'
-                 }`}>{venture.tag}</span>
-                 <h3 className={`mt-2 mb-3 tracking-tight ${
-                   venture.isPrimary ? 'text-3xl' : 'text-2xl'
-                 } font-black text-slate-900 group-hover:scale-105 transition-transform duration-300`}>{venture.title}</h3>
-              </div>
+                {/* Content */}
+                <div className="mb-4 relative z-10">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">{venture.tag}</span>
+                  <h3 className={`mt-2 mb-4 font-black tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-blue-600 ${
+                    venture.isPrimary ? 'text-3xl' : 'text-2xl'
+                  }`}>
+                    {venture.title}
+                  </h3>
+                </div>
 
-              <p className="text-slate-500 leading-relaxed mb-10 flex-grow font-medium">{venture.description}</p>
+                <p className="text-slate-500 leading-relaxed mb-10 flex-grow text-[15px]">{venture.description}</p>
 
-              <div className="pt-6 mt-auto border-t border-slate-100 flex items-center justify-between group/link">
-                <span className="text-slate-900 font-bold text-sm uppercase tracking-widest transition-colors group-hover:text-blue-600">
-                  Explore Brand
-                </span>
-                <ArrowUpRight size={20} className="text-slate-400 transition-all duration-300 group-hover:text-blue-600 group-hover:-translate-y-1 group-hover:translate-x-1" />
-              </div>
+                {/* Footer link */}
+                <div className="pt-6 mt-auto border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[13px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-blue-600 transition-colors duration-300">
+                    Explore Brand
+                  </span>
+                  <ArrowUpRight
+                    size={18}
+                    className="text-slate-300 transition-all duration-300 group-hover:text-blue-600 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </div>
 
-              {/* Subtle border glow for primary */}
-              {venture.isPrimary && (
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-600/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl" />
-              )}
-            </a>
-          ))}
+                {/* Primary card glow */}
+                {venture.isPrimary && (
+                  <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${colors.glow} opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-2xl`} />
+                )}
+              </a>
+            );
+          })}
         </div>
 
-        {/* Premium CTA Section */}
-        <div className="text-center mt-20">
+        {/* CTA */}
+        <div className="reveal text-center mt-16">
           <Button
             to="/ecosystem"
             variant="secondary"
             size="lg"
-            className="shadow-lg shadow-slate-900/25 hover:shadow-xl hover:shadow-slate-900/30"
-            icon={<ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />}
+            icon={<ArrowUpRight size={20} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />}
             iconPosition="right"
           >
             View Complete Ecosystem

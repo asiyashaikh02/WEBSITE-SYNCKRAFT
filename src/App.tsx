@@ -3,8 +3,6 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { AnimatePresence } from 'framer-motion';
 import { initAnalytics, trackPageView } from './utils/analytics';
-import { injectPremiumAnimations } from './utils/premiumAnimations';
-import { useTheme } from './components/ThemeProvider';
 
 // Components
 import { Navbar } from './components/Navbar';
@@ -79,29 +77,23 @@ const useRevealAnimations = () => {
 };
 
 // Landing Page
-const MainLanding = ({ theme }: { theme: 'dark' | 'light' }) => {
+const MainLanding = () => {
   return (
-    <main className="bg-white">
+    <main className="bg-white page-enter">
       <Hero />
-      <Ecosystem theme={theme} />
-      <About theme={theme} />
-      <VisionSection theme={theme} />
-      <CTA theme={theme} />
+      <Ecosystem />
+      <About />
+      <VisionSection />
+      <CTA />
     </main>
   );
 };
 
 export default function App() {
-  const { theme, toggleTheme } = useTheme() as {
-    theme: 'dark' | 'light';
-    toggleTheme: () => void;
-  };
-
   const location = useLocation();
 
   useEffect(() => {
     initAnalytics();
-    injectPremiumAnimations();
   }, []);
 
   useEffect(() => {
@@ -166,9 +158,9 @@ export default function App() {
               "email": "grow@synckraft.in"
             },
             "sameAs": [
-              "https://www.linkedin.com/company/synckraft",
-              "https://twitter.com/synckraft",
-              "https://www.unstopr.com/in",
+              "https://www.linkedin.com/company/synckraft-technologies/",
+              "https://twitter.com/synckrafttech",
+              "https://www.unstopr.com",
               "https://www.solveitindia.com",
               "https://www.solaroft.com"
             ],
@@ -214,12 +206,12 @@ export default function App() {
 
       <ScrollToTop />
 
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      <Navbar />
 
       <Suspense fallback={<Loader />}>
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<MainLanding theme={theme} />} />
+            <Route path="/" element={<MainLanding />} />
             <Route path="/ecosystem" element={<EcosystemPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
@@ -236,7 +228,7 @@ export default function App() {
         </AnimatePresence>
       </Suspense>
 
-      <Footer theme={theme} />
+      <Footer />
       <FloatingCTA />
     </>
   );

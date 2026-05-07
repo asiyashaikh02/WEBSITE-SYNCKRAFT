@@ -1,4 +1,7 @@
-/* Premium Global Styles - Enterprise Grade Visual System */
+/* ============================================================
+   SYNCKRAFT — GLOBAL PREMIUM STYLES
+   Enterprise-grade visual system
+   ============================================================ */
 
 :root {
   --color-primary: #2563eb;
@@ -27,36 +30,20 @@
 }
 
 /* Premium Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f8fafc; }
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
-  border-radius: 5px;
+  border-radius: 4px;
   transition: background 300ms;
 }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
+/* Selection */
+::selection { background-color: #2563eb; color: #ffffff; }
+::-moz-selection { background-color: #2563eb; color: #ffffff; }
 
-/* Smooth Selection */
-::selection {
-  background-color: #2563eb;
-  color: #ffffff;
-}
-
-::-moz-selection {
-  background-color: #2563eb;
-  color: #ffffff;
-}
-
-/* Focus Styles */
+/* Focus */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
@@ -64,162 +51,12 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
-/* Accessibility - Motion Preferences */
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Global Transitions - Smooth by default */
-* {
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-button {
-  transition-duration: 400ms;
-}
-
-/* Premium Link Styles */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:hover {
-  color: #2563eb;
-}
-
-/* Form Elements */
-input,
-textarea,
-select {
-  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-/* Image Optimization */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Utility Classes */
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.premium-shadow {
-  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
-}
-
-.premium-shadow-lg {
-  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
-}
-
-/* Smooth Hover Lift */
-.hover-lift {
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
-}
-
-/* Loading States */
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-.shimmer {
-  animation: shimmer 2s infinite;
-  background: linear-gradient(
-    to right,
-    #f1f5f9 8%,
-    #e2e8f0 18%,
-    #f1f5f9 33%
-  );
-  background-size: 800px 100%;
-}
-
-/* Container Queries Support */
-@supports (container-type: inline-size) {
-  .container-grid {
-    container-type: inline-size;
-  }
-
-  @container (min-width: 400px) {
-    .container-grid > * {
-      grid-column: auto;
-    }
-  }
-}
-
-/* Performance Optimization */
-@media (prefers-reduced-motion: no-preference) {
-  .will-animate {
-    will-change: transform, opacity;
-  }
-}
-
-/* Print Styles */
-@media print {
-  body {
-    background: white;
-  }
-
-  a {
-    text-decoration: underline;
-  }
-
-  img {
-    max-width: 100%;
-  }
-}
-
-/* Premium Cursor */
-html {
-  cursor: auto;
-}
-
-button,
-a,
-[role="button"] {
-  cursor: pointer;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-  cursor: text;
 }

@@ -1,249 +1,264 @@
-/* Global mobile-first styles and subtle animation adjustments */
-:root{
+/* ============================================================
+   SYNCKRAFT — PREMIUM ENTERPRISE ANIMATION SYSTEM
+   Inspired by Apple, Linear, Stripe, Framer
+   ============================================================ */
+
+:root {
   --synckraft-blue: #2563EB;
-  --header-height: 64px;
-  /* Theme variables - Light Mode is legacy, Defaulting strictly to Dark SaaS here */
+  --header-height: 72px;
   --primary: #2563EB;
-  --surface: #0B0F19;
-  --surface-container: #111827;
-  --surface-container-low: #1F2937;
-  --on-surface: #FFFFFF;
-  --outline-variant: #1F2937;
+  --primary-light: #3b82f6;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --on-surface: #0f172a;
+  --outline-variant: #e2e8f0;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 200ms;
+  --duration-base: 400ms;
+  --duration-slow: 700ms;
+  --duration-cinematic: 1000ms;
 }
 
-body.dark{
-  --primary: #2563EB;
-  --surface: #0B0F19;
-  --surface-container: #111827;
-  --surface-container-low: #1F2937;
-  --on-surface: #FFFFFF;
-  --outline-variant: #1F2937;
-}
-
-/* keep original synckraft accent token; no global color overrides here */
-
-html,body{
+html, body {
   scroll-behavior: smooth;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Selection color — monochrome */
-/* default selection preserved to theme styles (avoid global color overrides) */
-
-/* Reveal animation — smoother and performant */
+/* ============================================================
+   REVEAL ANIMATION SYSTEM — Scroll-triggered entrance
+   ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(28px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out-expo),
+    transform var(--duration-slow) var(--ease-out-expo);
   will-change: opacity, transform;
 }
+
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Elevation / shadow system (monochrome) */
-:root{
-  --shadow-ambient-light: rgba(0,0,0,0.06);
-  --shadow-sharp-light: rgba(0,0,0,0.08);
-  --shadow-ambient-dark: rgba(0,0,0,0.5);
-  --shadow-sharp-dark: rgba(0,0,0,0.65);
+/* Reveal variants */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 0.9s var(--ease-out-expo);
+  will-change: opacity, transform;
 }
-body.dark{
-  --shadow-ambient: var(--shadow-ambient-dark);
-  --shadow-sharp: var(--shadow-sharp-dark);
+.reveal-up.active { opacity: 1; transform: translateY(0); }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94) translateY(20px);
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-spring);
+  will-change: opacity, transform;
 }
-body:not(.dark){
-  --shadow-ambient: var(--shadow-ambient-light);
-  --shadow-sharp: var(--shadow-sharp-light);
+.reveal-scale.active { opacity: 1; transform: scale(1) translateY(0); }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal-left.active { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal-right.active { opacity: 1; transform: translateX(0); }
+
+/* ============================================================
+   PAGE TRANSITION
+   ============================================================ */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.elev-1{
-  box-shadow: 0 1px 2px var(--shadow-sharp), 0 8px 20px var(--shadow-ambient);
-  border: 1px solid rgba(0,0,0,0.04);
-  transition: box-shadow 220ms ease-out, transform 220ms ease-out;
-}
-.elev-1:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--shadow-sharp), 0 18px 40px var(--shadow-ambient);
-}
-
-.elev-2{
-  box-shadow: 0 6px 14px var(--shadow-sharp), 0 22px 60px var(--shadow-ambient);
-  transition: box-shadow 220ms ease-out, transform 220ms ease-out;
-}
-.elev-2:active{transform:translateY(0)}
-
-.elev-3{
-  box-shadow: 0 10px 30px var(--shadow-sharp), 0 30px 80px var(--shadow-ambient);
-  transition: box-shadow 200ms ease-out, transform 120ms cubic-bezier(.2,.8,.2,1);
-}
-.elev-3:active{transform:translateY(0)}
-
-/* Remove infinite hero glow; replace with subtle static monochrome glow */
-.hero-glow{
-  position:absolute;right:8%;top:8%;width:20rem;height:20rem;border-radius:9999px;pointer-events:none;opacity:0.2;mix-blend-mode:screen;will-change:transform,opacity;
-  background: radial-gradient(circle at 30% 30%, rgba(37,99,235,0.4), rgba(6,182,212,0.1) 40%, transparent 60%);
-}
-
-/* Accessibility focus states */
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
-  outline: 3px solid rgba(37,99,235,0.14);
-  outline-offset: 3px;
-  border-radius: 8px;
-}
-
-/* Prevent accidental horizontal overflow from large cards */
-img,svg,iframe,video{max-width:100%;height:auto}
-
-/* Page transition animations */
 .page-enter {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  animation: pageEnter 0.55s var(--ease-out-expo) forwards;
 }
 
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
+/* ============================================================
+   GRADIENT ANIMATIONS
+   ============================================================ */
+@keyframes gradientX {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 
-.page-exit {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 
-.page-exit-active {
-  opacity: 0;
-  transform: translateY(-20px);
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradientX 8s ease infinite;
 }
 
-/* Mobile-first spacing: increase vertical spacing and ensure buttons expand */
-section{padding-top:2.5rem;padding-bottom:2.5rem}
-@media(min-width:768px){
-  section{padding-top:6rem;padding-bottom:6rem}
+/* ============================================================
+   FLOATING / PARALLAX ELEMENTS
+   ============================================================ */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-14px) rotate(0.5deg); }
+  66%       { transform: translateY(-6px) rotate(-0.5deg); }
 }
 
-/* Helper utility for full-width buttons on small screens */
-.full-mobile{width:100%}
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
 
-/* Slightly reduce heavy motion (remove bounce by default) */
-.no-bounce{animation:none!important}
+@keyframes orbDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%       { transform: translate(20px, -15px) scale(1.03); }
+  50%       { transform: translate(-10px, -25px) scale(0.97); }
+  75%       { transform: translate(-20px, -8px) scale(1.02); }
+}
 
-/* Touchable feedback for buttons and interactive elements */
-.touchable, button, .btn-feedback {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-}
-.touchable:hover, button:hover, .btn-feedback:hover {
-  transform: scale(1.03);
-}
-.touchable:active, button:active, .btn-feedback:active {
-  transform: scale(0.97) translateY(1px);
-  opacity: 0.95;
-}
-.touchable:focus-visible{transform:translateY(-1px) scale(1.02)}
+.animate-float-slow  { animation: floatSlow 9s ease-in-out infinite; }
+.animate-float       { animation: floatMedium 6s ease-in-out infinite; }
+.animate-orb-drift   { animation: orbDrift 18s ease-in-out infinite; }
 
-/* JS-driven pressed state for immediate tactile feedback on touch - no scaling, only translateY */
-.touchable.pressed{transform:translateY(2px) !important;opacity:0.95 !important;transition:transform 120ms cubic-bezier(.2,.8,.2,1)}
+/* ============================================================
+   SHIMMER / SKELETON
+   ============================================================ */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 
-/* Card tap elevation and interactions */
-.card-glow {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.shimmer {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
-.card-glow:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15), 0 0 20px rgba(56, 189, 248, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
+
+/* ============================================================
+   PREMIUM HOVER SYSTEM
+   ============================================================ */
+.hover-lift {
+  transition: transform var(--duration-base) var(--ease-out-expo),
+              box-shadow var(--duration-base) var(--ease-smooth);
 }
-.card-glow:active {
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2),
+              0 8px 32px rgba(37, 99, 235, 0.12);
+}
+
+/* ============================================================
+   ELEVATION SYSTEM
+   ============================================================ */
+.elev-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.05);
+  transition: box-shadow 250ms var(--ease-smooth), transform 250ms var(--ease-smooth);
+}
+.elev-1:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 20px 48px rgba(0,0,0,0.07);
 }
 
-/* Pressing and hold visual states for cards (mobile) */
-.card-glow.pressing{transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,0.12)}
-.card-glow.hold{box-shadow:0 26px 70px rgba(0,0,0,0.18);transform:translateY(-4px)}
-
-/* Hero first-screen staggered animation (mobile-first) */
-.hero-animate .h-title, .hero-animate .h-sub, .hero-animate .h-cta{
-  opacity:0;transform:translateY(12px);
-}
-.hero-animate.active .h-title{
-  opacity:1;transform:translateY(0);transition:opacity 0.32s ease-out, transform 0.32s ease-out;
-}
-.hero-animate.active .h-sub{
-  opacity:1;transform:translateY(0);transition:opacity 0.28s ease-out 0.12s, transform 0.28s ease-out 0.12s;
-}
-.hero-animate.active .h-cta{
-  opacity:1;transform:translateY(0) scale(1);transition:opacity 0.28s ease-out 0.28s, transform 0.28s cubic-bezier(.2,.8,.2,1) 0.28s;transform-origin:center;
+.elev-2 {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 20px 48px rgba(0,0,0,0.07);
+  transition: box-shadow 250ms var(--ease-smooth), transform 250ms var(--ease-smooth);
 }
 
-/* Ensure CTAs are full width on small screens consistently */
-@media (max-width: 767px){
-  .force-full-mobile{width:100% !important}
-  .hero-animate .h-title{font-size:2rem}
-  .hero-animate .h-sub{font-size:1rem}
+.elev-3 {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1), 0 32px 80px rgba(0,0,0,0.08);
+  transition: box-shadow 200ms var(--ease-smooth), transform 150ms var(--ease-smooth);
 }
 
-/* Respect user preference for reduced motion */
+/* ============================================================
+   HERO STAGGER SYSTEM
+   ============================================================ */
+.hero-badge   { animation: pageEnter 0.6s var(--ease-out-expo) 0.1s both; }
+.hero-title   { animation: pageEnter 0.8s var(--ease-out-expo) 0.25s both; }
+.hero-sub     { animation: pageEnter 0.8s var(--ease-out-expo) 0.4s both; }
+.hero-cta     { animation: pageEnter 0.8s var(--ease-out-expo) 0.55s both; }
+.hero-brands  { animation: pageEnter 0.8s var(--ease-out-expo) 0.7s both; }
+
+/* ============================================================
+   NAVBAR MOTION
+   ============================================================ */
+@keyframes navbarEnter {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.navbar-enter {
+  animation: navbarEnter 0.5s var(--ease-out-expo) forwards;
+}
+
+/* ============================================================
+   CARD INTERACTIONS
+   ============================================================ */
+.card-premium {
+  transition:
+    transform 0.4s var(--ease-out-expo),
+    box-shadow 0.4s var(--ease-smooth),
+    border-color 0.3s var(--ease-smooth);
+}
+.card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.1), 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+/* ============================================================
+   FOCUS & ACCESSIBILITY
+   ============================================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(37, 99, 235, 0.6);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .hero-animate .h-title, .hero-animate .h-sub, .hero-animate .h-cta, .card-glow, .touchable {
-    transition: none !important;
-    animation: none !important;
-    transform: none !important;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .reveal-up, .reveal-scale, .reveal-left, .reveal-right {
     opacity: 1 !important;
+    transform: none !important;
   }
 }
 
-/* Subtle hero background glow animation (lightweight) */
-.hero-glow {
-  position: absolute; right: 8%; top: 8%; width: 20rem; height: 20rem; border-radius: 9999px; pointer-events: none; opacity: 0.15; mix-blend-mode: screen; will-change: transform, opacity;
-  background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 1), rgba(56, 189, 248, 0.4) 50%, transparent 70%);
-  animation: hero-glow-pulse 8s ease-in-out infinite alternate;
-}
-@keyframes hero-glow-pulse {
-  0% { transform: scale(1) translate3d(0, 0, 0); opacity: 0.12; }
-  100% { transform: scale(1.1) translate3d(-10px, -10px, 0); opacity: 0.18; }
-}
-
-/* Section separators for subtle depth */
-.section-sep{position:relative}
-.section-sep:before{content:'';position:absolute;left:0;right:0;height:1px;bottom:100%;transform:translateY(12px);background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(37,99,235,0.04), rgba(255,255,255,0.02));pointer-events:none}
-
-/* Focus glow on inputs to aid touch navigation */
-input:focus, textarea:focus, select:focus{box-shadow:0 10px 30px rgba(37,99,235,0.06);border-color:rgba(37,99,235,0.5)}
-
-/* Logo switching (public /logos) - CSS-only */
-.logo {
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.logo-dark {
-  display: none;
-}
-
-.dark .logo-light {
-  display: none;
-}
-
-.dark .logo-dark {
-  display: block;
-}
-
-/* Color-scheme guidance so native selects/options render appropriately in dark mode */
-:root{ color-scheme: light; }
-.dark, html.dark, body.dark { color-scheme: dark; }
-
-select, option {
-  color: inherit;
-  background: transparent;
-}
-
+/* ============================================================
+   OVERFLOW SAFETY
+   ============================================================ */
+img, svg, iframe, video { max-width: 100%; height: auto; }

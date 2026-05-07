@@ -1,144 +1,69 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
-
-interface PageProps {
-  theme: 'dark' | 'light';
-}
-
-const Disclaimer: React.FC<PageProps> = ({ theme }) => {
+const Disclaimer = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className={`pt-24 min-h-screen ${theme === 'dark' ? 'bg-[#0A0A0B] text-white' : 'bg-white text-slate-900'}`}>
+    <div className="pt-24 min-h-screen bg-white text-slate-900 page-enter">
       <Helmet>
         <title>Legal Disclaimer | Synckraft Technologies Private Limited</title>
-        <meta name="description" content="Legal disclaimer for Synckraft Technologies regarding professional advice, automation risks, liability limitations, and service terms." />
-        <meta name="keywords" content="legal disclaimer, liability limitation, professional advice, service disclaimer, Synckraft Technologies" />
+        <meta name="description" content="Legal disclaimer for Synckraft Technologies regarding professional advice, automation risks, and liability limitations." />
         <meta name="robots" content="noindex, follow" />
-
-        {/* Open Graph */}
         <meta property="og:title" content="Legal Disclaimer | Synckraft Technologies" />
-        <meta property="og:description" content="Important legal disclaimer regarding our enterprise services, automation solutions, and professional advice." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://synckraft.in/disclaimer" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:title" content="Legal Disclaimer | Synckraft Technologies" />
-        <meta name="twitter:description" content="Legal terms and liability disclaimer for Synckraft Technologies services." />
-
-        {/* Structured Data - WebPage */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "Legal Disclaimer",
-            "description": "Legal Disclaimer of Synckraft Technologies Private Limited",
             "url": "https://synckraft.in/disclaimer",
-            "isPartOf": {
-              "@type": "WebSite",
-              "name": "Synckraft Technologies",
-              "url": "https://synckraft.in"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Synckraft Technologies Private Limited"
-            }
+            "isPartOf": { "@type": "WebSite", "name": "Synckraft Technologies", "url": "https://synckraft.in" }
           })}
         </script>
       </Helmet>
       <main className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-8 mb-20">
-          <h1 className={`text-5xl md:text-8xl font-black mb-10 tracking-tight leading-none ${
-            theme === 'dark' ? 'text-white' : 'text-slate-900'
-          }`}>
+          <h1 className="text-5xl md:text-8xl font-black mb-10 tracking-tight leading-none text-slate-900">
             Legal <br />
             <span className="text-blue-600 italic font-light">Disclaimer.</span>
           </h1>
-          
-            <div>
-              <p className="text-blue-500 font-bold text-[2rem] uppercase tracking-widest">Synckraft Technologies Private Limited</p>
-              <p className="text-slate-500 text-sm font-mono">CIN: U62020MH2026PTC467409</p>
-            </div>
+          <div>
+            <p className="text-blue-600 font-bold text-2xl uppercase tracking-widest">Synckraft Technologies Private Limited</p>
+            <p className="text-slate-400 text-sm font-mono mt-1">CIN: U62020MH2026PTC467409</p>
+          </div>
         </div>
 
-        <div className={`max-w-4xl ml-[7rem] -mt-[8rem] mx-auto px-8 space-y-12 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'} leading-relaxed text-lg`}>
-          <section>
-            <h2 className={`text-[35px] font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>1. General Disclaimer</h2>
-            <p className="text-[20px] leading-relaxed text-blue-600 font-light">The information and services provided by Synckraft Technologies Private Limited are for general business and operational purposes only. We make no guarantees regarding:</p>
-            <ul className="list-disc pl-5 space-y-1 text-[20px] leading-relaxed text-blue-600 font-light">
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Business outcomes</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Revenue generation</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Performance improvements</li>
-            </ul>
-          </section>
+        <div className="max-w-4xl ml-[7rem] -mt-[8rem] mx-auto px-8 space-y-12 text-slate-600 leading-relaxed text-lg">
+          {[
+            { title: "1. General Disclaimer", body: "The information and services provided by Synckraft Technologies Private Limited are for general business and operational purposes only. We make no guarantees regarding business outcomes, revenue generation, or performance improvements." },
+            { title: "2. No Professional Advice", body: "Our services do not constitute legal advice, financial advice, or investment advice. Users should consult qualified professionals before making decisions." },
+            { title: "3. Automation & Technology Risks", body: "Automation tools depend on external systems and APIs. Failures, delays, or errors may occur. We are not liable for disruptions caused by third-party platforms." },
+            { title: "4. WhatsApp & Communication Disclaimer", body: "Use of WhatsApp automation is subject to Meta policies. We do not guarantee delivery rates or account safety. Any penalties or bans are beyond our control." },
+            { title: "5. Limitation of Guarantees", body: "We do not guarantee 100% uptime, error-free performance, or compatibility across all devices or platforms." },
+            { title: "6. External Links", body: "Our platform may contain links to third-party websites. We are not responsible for their content or policies." },
+            { title: "7. Use at Your Own Risk", body: "All services are used at your own risk. You assume full responsibility for business decisions and outcomes." },
+            { title: "8. Changes", body: "We reserve the right to modify this Disclaimer at any time." },
+          ].map((s, i) => (
+            <section key={i}>
+              <h2 className="text-[28px] font-bold mb-4 text-slate-900">{s.title}</h2>
+              <p className="text-[18px] leading-relaxed text-slate-600">{s.body}</p>
+            </section>
+          ))}
 
           <section>
-            <h2 className={`-mt-[8rem] text-[35px] font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>2. No Professional Advice</h2>
-            <p className="text-[20px] leading-relaxed text-blue-600 font-light">Our services do not constitute:</p>
-            <ul className="list-disc pl-5 space-y-1 text-[20px] leading-relaxed text-blue-600 font-light">
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Legal advice</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Financial advice</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Investment advice</li>
-            </ul>
-            <p className="mt-4 text-[20px] leading-relaxed text-blue-600 font-light">Users should consult qualified professionals before making decisions.</p>
-          </section>
-
-          <section>
-            <h2 className={`-mt-[8rem] text-[35px] font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>3. Automation & Technology Risks</h2>
-            <ul className="list-disc pl-5 space-y-1 text-[20px] leading-relaxed text-blue-600 font-light">
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Automation tools depend on external systems and APIs</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Failures, delays, or errors may occur</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>We are not liable for disruptions caused by third-party platforms</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className={`-mt-[8rem] text-[35px] font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>4. WhatsApp & Communication Disclaimer</h2>
-            <ul className="list-disc pl-5 space-y-1 text-[20px] leading-relaxed text-blue-600 font-light">
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Use of WhatsApp automation is subject to Meta policies</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>We do not guarantee delivery rates or account safety</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Any penalties or bans are beyond our control</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className={`-mt-[8rem] text-[35px] font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>5. Limitation of Guarantees</h2>
-            <p className="text-[20px] leading-relaxed text-blue-600 font-light">We do not guarantee:</p>
-            <ul className="list-disc pl-5 space-y-1 text-[20px] leading-relaxed text-blue-600 font-light">
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>100% uptime</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Error-free performance</li>
-              <li className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}>Compatibility across all devices or platforms</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className={`-mt-[8rem] text-[35px] font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>6. External Links</h2>
-            <p className="text-[20px] leading-relaxed text-blue-600 font-light">Our platform may contain links to third-party websites. We are not responsible for their content or policies.</p>
-          </section>
-
-          <section>
-            <h2 className={`-mt-[8rem] text-[35px] font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>7. Use at Your Own Risk</h2>
-            <p className="text-[20px] leading-relaxed text-blue-600 font-light">All services are used at your own risk. You assume full responsibility for business decisions and outcomes.</p>
-          </section>
-
-          <section>
-            <h2 className={`-mt-[8rem] text-[35px] font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>8. Changes</h2>
-            <p className="text-[20px] leading-relaxed text-blue-600 font-light">We reserve the right to modify this Disclaimer at any time.</p>
-          </section>
-
-          <section>
-            <h2 className={`-mt-[8rem] text-[35px] font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>9. Contact</h2>
-            <div className={`p-6 rounded-2xl border ${theme === 'dark' ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
-              <p className="font-bold text-blue-500 mb-2">Synckraft Technologies Private Limited</p>
-              <p className="text-[20px] leading-relaxed text-blue-600 font-light">Email: grow@synckraft.in</p>
-              <p className="text-[20px] leading-relaxed text-blue-600 font-light">Phone: +91 9867799655</p>
+            <h2 className="text-[28px] font-bold mb-4 text-slate-900">9. Contact</h2>
+            <div className="p-6 rounded-2xl border border-slate-200 bg-slate-50">
+              <p className="font-bold text-blue-600 mb-2">Synckraft Technologies Private Limited</p>
+              <p className="text-slate-600">Email: grow@synckraft.in</p>
+              <p className="text-slate-600">Phone: +91 9867799655</p>
             </div>
           </section>
         </div>
 
-        <div className="mt-20 pt-8 border-t border-white/10 text-center">
-          <p className="text-xs text-slate-500">All Rights Reserved © Synckraft Technologies Private Limited</p>
+        <div className="mt-20 pt-8 border-t border-slate-200 text-center">
+          <p className="text-xs text-slate-400">All Rights Reserved © Synckraft Technologies Private Limited</p>
         </div>
       </main>
     </div>

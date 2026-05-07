@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext } from 'react';
 
-type Theme = 'dark' | 'light';
+// Theme is locked to light — Synckraft is a premium light-mode enterprise brand
+type Theme = 'light';
 
 interface ThemeContextType {
   theme: Theme;
@@ -22,38 +23,11 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('theme') as Theme) || 'dark';
-    }
-    return 'dark';
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const body = document.body;
-
-    root.classList.toggle('dark', theme === 'dark');
-    body.classList.toggle('dark', theme === 'dark');
-
-    // Set theme classes on body
-    if (theme === 'dark') {
-      body.classList.add('bg-surface', 'text-on-surface');
-      body.classList.remove('bg-white', 'text-black');
-    } else {
-      body.classList.add('bg-white', 'text-black');
-      body.classList.remove('bg-surface', 'text-on-surface');
-    }
-
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-  };
+  // Light mode only — no toggle needed
+  const toggleTheme = () => {};
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: 'light', toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

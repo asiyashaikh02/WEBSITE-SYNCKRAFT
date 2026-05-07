@@ -1,54 +1,58 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/Button";
-import { STYLES } from "../constants/designSystem";
-import { injectPremiumAnimations } from "../utils/premiumAnimations";
 
 const Hero: React.FC = () => {
-  useEffect(() => {
-    injectPremiumAnimations();
-  }, []);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-32 bg-white">
-      {/* Premium Background Layer */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Primary gradient orbs */}
-        <div className="absolute top-[-15%] left-[-15%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-blue-50/90 to-cyan-50/70 blur-3xl animate-pulse" />
-        <div className="absolute bottom-[-15%] right-[-15%] w-[70%] h-[70%] rounded-full bg-gradient-to-tl from-slate-50/80 to-blue-50/60 blur-3xl" />
 
-        {/* Subtle floating elements */}
-        <div className="absolute top-[20%] right-[10%] w-32 h-32 rounded-full bg-blue-100/30 blur-xl animate-bounce" style={{ animationDuration: '6s' }} />
-        <div className="absolute bottom-[30%] left-[15%] w-24 h-24 rounded-full bg-cyan-100/40 blur-lg animate-bounce" style={{ animationDuration: '8s', animationDelay: '2s' }} />
+      {/* Ambient background orbs — slow drift, no bounce */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-[-20%] left-[-20%] w-[65%] h-[65%] rounded-full bg-gradient-to-br from-blue-50/80 to-cyan-50/60 blur-3xl animate-orb-drift" />
+        <div
+          className="absolute bottom-[-20%] right-[-20%] w-[70%] h-[70%] rounded-full bg-gradient-to-tl from-slate-50/70 to-blue-50/50 blur-3xl animate-orb-drift"
+          style={{ animationDelay: '-6s', animationDuration: '22s' }}
+        />
+        {/* Fine grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: 'linear-gradient(#2563eb 1px, transparent 1px), linear-gradient(90deg, #2563eb 1px, transparent 1px)',
+            backgroundSize: '80px 80px'
+          }}
+        />
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
-        {/* Premium Badge */}
-        <div data-reveal className="inline-flex items-center gap-3 rounded-full border border-blue-200/50 bg-white/80 backdrop-blur-xl px-6 py-3 text-sm font-bold uppercase tracking-widest text-blue-700 mb-10 shadow-lg shadow-blue-100/50 hover:shadow-xl hover:shadow-blue-200/50 transition-all duration-500 group">
-          <Sparkles size={16} className="text-blue-500 animate-pulse" />
-          <span>Parent Ecosystem Company</span>
-          <div className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
+
+        {/* Badge — stagger 1 */}
+        <div className="hero-badge inline-flex items-center gap-3 rounded-full border border-blue-200/60 bg-white/90 backdrop-blur-xl px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-blue-700 mb-10 shadow-lg shadow-blue-100/40">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+          Parent Ecosystem Company
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping" />
         </div>
 
-        {/* Premium Typography */}
-        <h1 data-reveal className="max-w-5xl text-5xl md:text-7xl lg:text-[80px] font-black tracking-tight text-slate-900 leading-[1.05] mb-8">
+        {/* Headline — stagger 2 */}
+        <h1 className="hero-title max-w-5xl text-5xl md:text-7xl lg:text-[82px] font-black tracking-tight text-slate-900 leading-[1.04] mb-8">
           Building the Future of
           <span className="block mt-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 animate-gradient-x">
             Institutional Infrastructure
           </span>
         </h1>
 
-        <p data-reveal className="mt-6 max-w-3xl text-xl md:text-2xl text-slate-600 font-medium leading-relaxed mb-12">
-          Synckraft builds and powers specialized modern infrastructure brands. We architect ecosystems that drive enterprise performance at scale.
+        {/* Subheading — stagger 3 */}
+        <p className="hero-sub max-w-2xl text-xl md:text-2xl text-slate-500 font-medium leading-relaxed mb-14">
+          Synckraft is the parent company behind specialized modern infrastructure brands — architecting ecosystems that drive enterprise performance at scale.
         </p>
 
-        {/* Premium Button Group */}
-        <div data-reveal className="flex w-full flex-col justify-center gap-6 sm:flex-row sm:gap-8">
+        {/* CTAs — stagger 4 */}
+        <div className="hero-cta flex w-full flex-col justify-center gap-5 sm:flex-row sm:gap-6">
           <Button
             to="/ecosystem"
             variant="primary"
             size="lg"
-            className="min-w-[240px] group"
+            className="min-w-[220px] group"
             icon={<ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />}
             iconPosition="right"
           >
@@ -56,43 +60,51 @@ const Hero: React.FC = () => {
           </Button>
 
           <Button
-            to="/company"
+            to="/about"
             variant="outline"
             size="lg"
-            className="min-w-[240px]"
+            className="min-w-[220px]"
           >
             About Synckraft
           </Button>
         </div>
 
-        {/* Subtle ecosystem hint */}
-        <div data-reveal className="mt-20 flex items-center gap-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-500">
-            <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+        {/* Ecosystem brand hints — stagger 5 */}
+        <div className="hero-brands mt-20 flex flex-wrap items-center justify-center gap-8">
+          <a
+            href="https://www.unstopr.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2.5 text-[13px] font-semibold text-slate-400 hover:text-blue-600 transition-colors duration-300"
+          >
+            <span className="w-2 h-2 rounded-full bg-blue-500 group-hover:scale-125 transition-transform duration-300" />
             UNSTOPR
-          </div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-500">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" style={{ animationDelay: '0.5s' }} />
+            <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </a>
+          <span className="w-px h-4 bg-slate-200" aria-hidden="true" />
+          <a
+            href="https://www.solveitindia.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2.5 text-[13px] font-semibold text-slate-400 hover:text-emerald-600 transition-colors duration-300"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform duration-300" style={{ animationDelay: '0.5s' }} />
             SOLVEIT INDIA
-          </div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-500">
-            <div className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" style={{ animationDelay: '1s' }} />
+            <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </a>
+          <span className="w-px h-4 bg-slate-200" aria-hidden="true" />
+          <a
+            href="https://www.solaroft.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2.5 text-[13px] font-semibold text-slate-400 hover:text-amber-600 transition-colors duration-300"
+          >
+            <span className="w-2 h-2 rounded-full bg-amber-500 group-hover:scale-125 transition-transform duration-300" style={{ animationDelay: '1s' }} />
             SOLAROFT
-          </div>
+            <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </a>
         </div>
       </div>
-
-      {/* Floating animation styles */}
-      <style jsx>{`
-        @keyframes gradient-x {
-          0%, 100% { background-size: 200% 200%; background-position: left center; }
-          50% { background-size: 200% 200%; background-position: right center; }
-        }
-        .animate-gradient-x {
-          animation: gradient-x 8s ease infinite;
-          background-size: 200% 200%;
-        }
-      `}</style>
     </section>
   );
 };
