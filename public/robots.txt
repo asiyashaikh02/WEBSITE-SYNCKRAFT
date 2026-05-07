@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# Disallow removed legacy routes
+Disallow: /products
+Disallow: /products/
+Disallow: /industries
+Disallow: /industries/
+Disallow: /services
+Disallow: /services/
+Disallow: /company
+Disallow: /blog
+Disallow: /blog/
+Disallow: /case-studies
+Disallow: /case-studies/
+Disallow: /book-demo
+Disallow: /free-audit
+Disallow: /contact-sales
+
 Sitemap: https://synckraft.in/sitemap.xml

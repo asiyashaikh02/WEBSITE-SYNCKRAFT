@@ -1,183 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- BASIC META -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- PRIMARY SEO (VERY IMPORTANT) -->
-  <title>Synckraft Technologies | AI Development & Web Solutions in India</title>
-  <meta name="description"
-    content="Synckraft Technologies builds AI-powered websites, scalable digital platforms, and modern web solutions for startups and businesses." />
+  <!-- Primary SEO — overridden per-page by React Helmet -->
+  <title>Synckraft Technologies | Enterprise Ecosystem Company</title>
+  <meta name="description" content="Synckraft Technologies is the parent ecosystem company behind UNSTOPR, SOLVEIT INDIA, and SOLAROFT — specialized infrastructure brands built for enterprise scale." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Synckraft Technologies" />
+  <meta name="theme-color" content="#ffffff" />
 
-  <!-- CANONICAL & SEO (Managed by React Helmet) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta property="og:image" content="https://synckraft.in/og-image.png" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
-  <!-- PERFORMANCE & SECURITY -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="format-detection" content="telephone=no" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Synckraft Technologies | Enterprise Ecosystem Company" />
+  <meta property="og:description" content="Parent company of UNSTOPR, SOLVEIT INDIA, and SOLAROFT — specialized infrastructure brands built for enterprise scale." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://synckraft.in" />
+  <meta property="og:image" content="https://synckraft.in/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Synckraft Technologies" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Synckraft Technologies | Enterprise Ecosystem Company" />
+  <meta name="twitter:description" content="Parent company of UNSTOPR, SOLVEIT INDIA, and SOLAROFT — specialized infrastructure brands." />
+  <meta name="twitter:image" content="https://synckraft.in/og-image.png" />
+  <meta name="twitter:site" content="@synckrafttech" />
+
+  <!-- Performance: DNS prefetch + preconnect for fonts -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
   <link rel="dns-prefetch" href="//fonts.gstatic.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- RESOURCE HINTS FOR PERFORMANCE -->
-  <link rel="preload" href="/src/index.css" as="style" />
-  <link rel="preload" href="/src/index.tsx" as="script" />
-
-  <!-- CRITICAL CSS INLINE -->
-  <style>
-    /* Critical CSS for above-the-fold content */
-    body { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    .loader { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #0f172a; }
-    .spinner { width: 40px; height: 40px; border: 4px solid #334155; border-top: 4px solid #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-  </style>
-
-  <!-- SITEMAP -->
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-
-  <!-- OPEN GRAPH (SOCIAL + GOOGLE SEO) -->
-  <meta property="og:title" content="Synckraft Technologies | AI Development & Web Solutions" />
-  <meta property="og:description"
-    content="We design and develop AI websites, scalable digital products, and high-performance web platforms." />
-  <meta property="og:type" content="website" />
-
-  <!-- TWITTER CARD -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Synckraft Technologies | AI Development & Web Solutions" />
-  <meta name="twitter:description"
-    content="AI websites, development & scalable digital solutions by Synckraft Technologies." />
-  <meta name="twitter:image" content="https://synckraft.in/og-image.png" />
-
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fonts: Inter + Sora — display=swap for performance -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
-  <!-- TAILWIND -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      content: [
-        "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx}"
-      ],
-      theme: {
-        extend: {
-          colors: {
-            synckraft: {
-              dark: '#0B0F19',
-              indigo: '#2563EB',
-              azure: '#06B6D4',
-              border: '#1F2937',
-              muted: '#9CA3B8'
-            },
-            primary: '#2563EB',
-            surface: '#0B0F19',
-            'surface-container': '#111827',
-            'on-surface': '#FFFFFF'
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            sora: ['Sora', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- PRE-RENDER THEME -->
-  <script>
-      (function () {
-        try {
-          var t = localStorage.getItem('theme') || localStorage.getItem('synckraft-theme') || 'dark';
-          document.documentElement.classList.toggle('dark', t === 'dark');
-        } catch (e) { }
-      })();
-  </script>
-
-  <!-- CUSTOM STYLES -->
+  <!-- Critical above-the-fold CSS -->
   <style>
-    :root {
-      --synckraft-blue: #2563EB;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      transition: background-color 0.3s ease, color 0.3s ease;
-      scroll-behavior: smooth;
+      margin: 0;
+      background: #ffffff;
+      color: #0f172a;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
+    /* Prevent flash of unstyled content */
+    #root { min-height: 100vh; }
+    /* Critical loader */
+    .sk-loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #ffffff;
     }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    .sk-spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid #e2e8f0;
+      border-top-color: #2563eb;
+      border-radius: 50%;
+      animation: sk-spin 0.7s linear infinite;
     }
-
-    .card-glow:hover {
-      box-shadow: 0 0 30px rgba(37, 99, 235, 0.15);
+    @keyframes sk-spin {
+      to { transform: rotate(360deg); }
     }
-
-    .glass-nav {
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .clip-path-hero {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #0A0A0B;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #1E293B;
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #2563EB;
-    }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f8fafc; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
   </style>
-
-
-
-  <!-- REACT IMPORT MAP (KEEP) -->
-  <script type="importmap">
-    {
-      "imports": {
-        "react/": "https://esm.sh/react@^19.2.4/",
-        "react": "https://esm.sh/react@^19.2.4",
-        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-        "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
-      }
-    }
-    </script>
-
-  <link rel="stylesheet" href="/src/index.css">
 </head>
 
-<body class="dark bg-surface text-on-surface">
-  <div id="root"></div>
+<body>
+  <div id="root">
+    <!-- Inline loader shown before React hydrates -->
+    <div class="sk-loader" aria-hidden="true">
+      <div class="sk-spinner"></div>
+    </div>
+  </div>
   <script type="module" src="/src/index.tsx"></script>
 </body>
-
 </html>

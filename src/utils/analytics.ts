@@ -6,9 +6,8 @@ const TRACKING_ID = 'G-XXXXXXXXXX';
 export const initAnalytics = () => {
   try {
     ReactGA.initialize(TRACKING_ID);
-    console.log("Analytics Initialized");
   } catch (error) {
-    console.error("Analytics failing to init", error);
+    // Analytics init failed silently
   }
 };
 

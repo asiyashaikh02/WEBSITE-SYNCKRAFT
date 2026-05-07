@@ -1,53 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main Pages -->
+
+  <!-- Core Pages -->
   <url>
     <loc>https://synckraft.in/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://synckraft.in/ecosystem</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://synckraft.in/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://synckraft.in/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/company</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/services</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/products</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2026-05-07</lastmod>
   </url>
 
   <!-- Legal Pages -->
@@ -55,190 +32,25 @@
     <loc>https://synckraft.in/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://synckraft.in/terms-of-service</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://synckraft.in/refund-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://synckraft.in/disclaimer</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2026-05-07</lastmod>
   </url>
 
-  <!-- Industry Pages -->
-  <url>
-    <loc>https://synckraft.in/industries/automobile</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/beauty</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/education</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/fashion</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/furniture</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/gym</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/healthcare</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/hospitality</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/jewelry</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/enterprise</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/real-estate</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/restaurant</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/retail</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/industries/supermarket</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-
-  <!-- Product Pages -->
-  <url>
-    <loc>https://synckraft.in/products/real-estate-os</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/products/restaurant-os</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/products/healthcare-os</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/products/retail-os</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/products/manufacturing-os</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/products/business-os</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-
-  <!-- Funnel Pages -->
-  <url>
-    <loc>https://synckraft.in/book-demo</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.9</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/free-audit</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/contact-sales</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-
-  <!-- Content Pages -->
-  <url>
-    <loc>https://synckraft.in/blog</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-  <url>
-    <loc>https://synckraft.in/case-studies</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <lastmod>2024-12-19</lastmod>
-  </url>
-</urlset>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://synckraft.in/company</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 </urlset>
