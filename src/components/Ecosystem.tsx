@@ -14,7 +14,7 @@ const ventures = [
     description: "Enterprise AI infrastructure, WhatsApp API, CRM, and advanced business automation systems.",
     status: "Active Infrastructure",
     isLive: true,
-    link: "https://www.unstopr.com/in",
+    link: "https://www.unstopr.com",
     icon: Cpu,
     color: "from-blue-600 to-blue-700",
     bgLight: "bg-blue-50/50",
@@ -48,7 +48,7 @@ export const Ecosystem: React.FC<ThemeProps> = () => {
   return (
     <section id="ecosystem" className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
       <div className={`${STYLES.container} relative z-10`}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20 reveal">
+        <div data-reveal className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20 reveal">
           <div className="max-w-2xl">
             <span className="text-blue-600 font-bold uppercase tracking-widest text-[10px] mb-4 inline-block px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50/50">
               Venture Ecosystem

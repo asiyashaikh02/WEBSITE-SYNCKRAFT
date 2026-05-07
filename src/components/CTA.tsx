@@ -24,7 +24,7 @@ export const CTA: React.FC<ThemeProps> = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-cyan-50/20 opacity-0 hover:opacity-100 transition-opacity duration-500" />
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-white/20 to-transparent rounded-full blur-3xl" />
 
-          <div className="relative z-10 max-w-3xl mx-auto">
+          <div data-reveal className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight leading-tight text-slate-900">
               Ready to build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 italic">future?</span>
             </h2>
@@ -32,7 +32,7 @@ export const CTA: React.FC<ThemeProps> = () => {
               Join the ecosystem. Let's engineer scalable infrastructure for your next enterprise venture.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div data-reveal className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button
                 to="/contact"
                 variant="primary"

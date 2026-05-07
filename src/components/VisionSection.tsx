@@ -14,8 +14,8 @@ export const VisionSection: React.FC<ThemeProps> = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20 reveal">
-          <span className="text-blue-600 font-bold uppercase tracking-widest text-[10px] mb-4 inline-block px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50/50">
+        <div data-reveal className="text-center max-w-3xl mx-auto mb-20">
+          <span className="text-blue-600 font-bold uppercase tracking-widest text-[10px] mb-4 inline-block px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50/50 animate-pulse">
             Our Vision
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
@@ -26,7 +26,7 @@ export const VisionSection: React.FC<ThemeProps> = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 reveal">
+        <div className="grid md:grid-cols-3 gap-8">
           {[
             {
               title: "Proprietary Ecosystem",
@@ -41,8 +41,12 @@ export const VisionSection: React.FC<ThemeProps> = () => {
               desc: "We constantly iterate on our infrastructure, ensuring our brands remain at the cutting edge of AI, automation, and operational efficiency."
             }
           ].map((item, i) => (
-            <div key={i} className="group p-8 rounded-3xl bg-slate-50/80 border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
+            <div
+              key={i}
+              data-reveal
+              className="group p-8 rounded-3xl bg-slate-50/80 border border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-500"
+            >
+              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">{item.title}</h3>
               <p className="text-slate-500 leading-relaxed text-sm">
                 {item.desc}
               </p>

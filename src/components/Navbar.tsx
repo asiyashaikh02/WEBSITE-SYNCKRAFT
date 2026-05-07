@@ -22,17 +22,16 @@ export const Navbar: React.FC<NavbarProps> = () => {
   const navLinks = [
     { name: 'Home', href: '/', external: false },
     { name: 'Ecosystem', href: '/ecosystem', external: false },
-    { name: 'Company', href: '/company', external: false },
-    { name: 'Industries', href: '/industries', external: false },
+    { name: 'About', href: '/about', external: false },
     { name: 'Contact', href: '/contact', external: false },
   ];
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 backdrop-blur-xl ${
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 backdrop-blur-xl ${
           scrolled
-            ? 'bg-white/90 border-b border-slate-200 py-3 shadow-lg shadow-slate-900/5'
+            ? 'bg-white/90 border-b border-slate-200 py-3 shadow-xl shadow-slate-900/5'
             : 'bg-white/80 py-5'
         }`}
         role="banner"
