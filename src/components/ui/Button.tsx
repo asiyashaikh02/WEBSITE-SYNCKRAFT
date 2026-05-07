@@ -14,7 +14,6 @@ interface ButtonProps {
   iconPosition?: 'left' | 'right';
   fullWidth?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  'aria-label'?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -29,89 +28,101 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   iconPosition = 'right',
   fullWidth = false,
-  type = 'button',
-  'aria-label': ariaLabel,
+  type = 'button'
 }) => {
-  const base = [
-    'inline-flex items-center justify-center gap-2.5',
-    'font-semibold rounded-full select-none',
-    'transition-all duration-200 ease-out',
-    'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
-    'disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none',
-    fullWidth ? 'w-full' : '',
-    className,
-  ].join(' ');
+  const baseClasses = `
+    inline-flex items-center justify-center gap-3 font-semibold rounded-full
+    transition-all duration-300 ease-out
+    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none
+    ${fullWidth ? 'w-full' : ''}
+    ${className}
+  `;
 
-  const sizes: Record<string, string> = {
-    sm: 'px-5 py-2.5 text-[13px] tracking-[0.01em]',
-    md: 'px-7 py-3.5 text-[14px] tracking-[0.01em]',
-    lg: 'px-9 py-4 text-[15px] tracking-[0.01em]',
+  const sizeClasses = {
+    sm: 'px-6 py-3 text-sm',
+    md: 'px-8 py-4 text-base',
+    lg: 'px-10 py-5 text-lg'
   };
 
-  const variants: Record<string, string> = {
-    primary: [
-      'bg-gradient-to-b from-blue-500 to-blue-700 text-white',
-      'shadow-[0_1px_2px_rgba(0,0,0,0.12),0_4px_16px_rgba(37,99,235,0.28)]',
-      'hover:from-blue-400 hover:to-blue-600',
-      'hover:shadow-[0_2px_4px_rgba(0,0,0,0.12),0_8px_24px_rgba(37,99,235,0.36)]',
-      'hover:-translate-y-px',
-      'active:translate-y-0 active:shadow-[0_1px_2px_rgba(0,0,0,0.12),0_2px_8px_rgba(37,99,235,0.20)] active:scale-[0.99]',
-    ].join(' '),
-
-    secondary: [
-      'bg-slate-900 text-white',
-      'shadow-[0_1px_2px_rgba(0,0,0,0.16),0_4px_16px_rgba(15,23,42,0.20)]',
-      'hover:bg-blue-600',
-      'hover:shadow-[0_2px_4px_rgba(0,0,0,0.12),0_8px_24px_rgba(37,99,235,0.28)]',
-      'hover:-translate-y-px',
-      'active:translate-y-0 active:scale-[0.99]',
-    ].join(' '),
-
-    outline: [
-      'bg-white border border-slate-200 text-slate-700',
-      'shadow-[0_1px_2px_rgba(0,0,0,0.04)]',
-      'hover:border-slate-300 hover:bg-slate-50/80',
-      'hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)]',
-      'hover:-translate-y-px',
-      'active:translate-y-0 active:scale-[0.99]',
-    ].join(' '),
-
-    ghost: [
-      'bg-transparent text-slate-600',
-      'hover:bg-slate-100/80 hover:text-slate-900',
-      'active:scale-[0.99]',
-    ].join(' '),
+  const variantClasses = {
+    primary: `
+      bg-gradient-to-r from-blue-600 to-blue-700 text-white
+      shadow-lg shadow-blue-600/25
+      hover:shadow-xl hover:shadow-blue-600/30
+      hover:-translate-y-0.5 hover:scale-[1.02]
+      active:scale-[0.98] active:translate-y-0
+    `,
+    secondary: `
+      bg-slate-900 text-white
+      shadow-lg shadow-slate-900/25
+      hover:shadow-xl hover:shadow-slate-900/30
+      hover:-translate-y-0.5 hover:scale-[1.02]
+      hover:bg-blue-600
+      active:scale-[0.98] active:translate-y-0
+    `,
+    outline: `
+      bg-white border-2 border-slate-200 text-slate-700
+      shadow-sm
+      hover:bg-slate-50 hover:border-slate-300
+      hover:shadow-md hover:-translate-y-0.5
+      active:scale-[0.98] active:translate-y-0
+    `,
+    ghost: `
+      bg-transparent text-slate-600
+      hover:bg-slate-50 hover:text-slate-900
+      hover:-translate-y-0.5
+      active:scale-[0.98] active:translate-y-0
+    `
   };
 
-  const cls = `${base} ${sizes[size]} ${variants[variant]}`;
+  const buttonClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]}`;
 
   const content = (
     <>
-      {icon && iconPosition === 'left'  && <span className="shrink-0">{icon}</span>}
-      <span>{children}</span>
-      {icon && iconPosition === 'right' && <span className="shrink-0">{icon}</span>}
+      {icon && iconPosition === 'left' && icon}
+      {children}
+      {icon && iconPosition === 'right' && icon}
     </>
   );
 
   if (to) {
-    return <Link to={to} className={cls} aria-label={ariaLabel}>{content}</Link>;
+    return (
+      <Link to={to} className={buttonClasses}>
+        {content}
+      </Link>
+    );
   }
 
   if (href) {
     return (
-      <a href={href} className={cls} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel}>
+      <a href={href} className={buttonClasses} target="_blank" rel="noopener noreferrer">
         {content}
       </a>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={cls} aria-label={ariaLabel}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={buttonClasses}
+    >
       {content}
     </button>
   );
 };
 
-export const PrimaryButton:   React.FC<Omit<ButtonProps, 'variant'>> = (p) => <Button {...p} variant="primary" />;
-export const SecondaryButton: React.FC<Omit<ButtonProps, 'variant'>> = (p) => <Button {...p} variant="secondary" />;
-export const OutlineButton:   React.FC<Omit<ButtonProps, 'variant'>> = (p) => <Button {...p} variant="outline" />;
+// Legacy button components for backward compatibility
+export const PrimaryButton: React.FC<Omit<ButtonProps, 'variant'>> = (props) => (
+  <Button {...props} variant="primary" />
+);
+
+export const SecondaryButton: React.FC<Omit<ButtonProps, 'variant'>> = (props) => (
+  <Button {...props} variant="secondary" />
+);
+
+export const OutlineButton: React.FC<Omit<ButtonProps, 'variant'>> = (props) => (
+  <Button {...props} variant="outline" />
+);

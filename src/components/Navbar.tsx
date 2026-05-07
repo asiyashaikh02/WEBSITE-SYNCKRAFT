@@ -3,7 +3,12 @@ import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from "./ui/Button";
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  theme?: 'dark' | 'light';
+  toggleTheme?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -15,6 +20,7 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
   useEffect(() => {
     if (prevPathRef.current !== location.pathname) {
       setIsOpen(false);
@@ -22,6 +28,7 @@ export const Navbar: React.FC = () => {
     }
   }, [location.pathname]);
 
+  // Prevent body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -49,6 +56,7 @@ export const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
 
+          {/* Logo */}
           <Link
             to="/"
             aria-label="Synckraft Technologies — Home"
@@ -57,15 +65,20 @@ export const Navbar: React.FC = () => {
             <img
               src="/logos/synckraft-light.png"
               alt="Synckraft Technologies"
-              className="w-[148px] sm:w-[168px] h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+              className="w-[160px] sm:w-[180px] h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
               loading="eager"
-              width="168"
-              height="44"
+              width="180"
+              height="46"
             />
           </Link>
 
-          <div className="flex items-center gap-6">
-            <nav className="hidden lg:flex items-center gap-1" role="navigation" aria-label="Main navigation">
+          {/* Desktop nav + CTA */}
+          <div className="flex items-center gap-8">
+            <nav
+              className="hidden lg:flex items-center gap-1"
+              role="navigation"
+              aria-label="Main navigation"
+            >
               {navLinks.map(link => (
                 <Link
                   key={link.name}
@@ -74,12 +87,12 @@ export const Navbar: React.FC = () => {
                   className={`relative px-4 py-2 text-[14px] font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     isActive(link.href)
                       ? 'text-blue-600'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50/80'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                   }`}
                 >
                   {link.name}
                   {isActive(link.href) && (
-                    <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-blue-600" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-blue-600" />
                   )}
                 </Link>
               ))}
@@ -95,42 +108,39 @@ export const Navbar: React.FC = () => {
               Partner With Us
             </Button>
 
+            {/* Mobile hamburger */}
             <button
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center text-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200 hover:bg-slate-100"
+              className="lg:hidden p-2 -mr-1 text-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 hover:bg-slate-100"
               onClick={() => setIsOpen(v => !v)}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
-              <Menu
-                size={24}
-                aria-hidden="true"
-                className={`absolute transition-all duration-300 ${isOpen ? 'opacity-0 rotate-90 scale-75' : 'opacity-100 rotate-0 scale-100'}`}
-              />
-              <X
-                size={24}
-                aria-hidden="true"
-                className={`absolute transition-all duration-300 ${isOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'}`}
-              />
+              <span className={`block transition-all duration-300 ${isOpen ? 'rotate-90 opacity-0 absolute' : 'rotate-0 opacity-100'}`}>
+                <Menu size={26} aria-hidden="true" />
+              </span>
+              <span className={`block transition-all duration-300 ${isOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0 absolute'}`}>
+                <X size={26} aria-hidden="true" />
+              </span>
             </button>
           </div>
         </div>
       </header>
 
+      {/* Height spacer */}
       <div className="h-[72px]" aria-hidden="true" />
 
-      {/* Mobile overlay */}
+      {/* Mobile menu overlay */}
       <div
         id="mobile-menu"
         role="navigation"
         aria-label="Mobile navigation"
-        aria-hidden={!isOpen}
-        className={`fixed inset-0 z-[90] lg:hidden bg-white/98 backdrop-blur-2xl transition-all duration-300 ${
+        className={`fixed inset-0 z-[90] lg:hidden flex flex-col bg-white/98 backdrop-blur-2xl transition-all duration-400 ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ paddingTop: '80px' }}
+        style={{ paddingTop: '88px' }}
       >
-        <div className="flex flex-col px-8 pt-6 gap-1">
+        <div className="flex flex-col px-8 pt-8 gap-2">
           {navLinks.map((link, i) => (
             <Link
               key={link.name}
@@ -140,18 +150,14 @@ export const Navbar: React.FC = () => {
               className={`text-2xl font-bold py-4 border-b border-slate-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-2 ${
                 isActive(link.href)
                   ? 'text-blue-600'
-                  : 'text-slate-800 hover:text-blue-600 hover:pl-4'
+                  : 'text-slate-800 hover:text-blue-600 hover:translate-x-2'
               }`}
-              style={{
-                transitionDelay: isOpen ? `${i * 40}ms` : '0ms',
-                transform: isOpen ? 'translateX(0)' : 'translateX(-8px)',
-                opacity: isOpen ? 1 : 0,
-              }}
+              style={{ transitionDelay: isOpen ? `${i * 50}ms` : '0ms' }}
             >
               {link.name}
             </Link>
           ))}
-          <div className="mt-8 pb-8">
+          <div className="mt-8">
             <Button
               to="/contact"
               variant="primary"

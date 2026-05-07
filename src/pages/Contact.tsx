@@ -2,8 +2,11 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ContactForm } from '../components/ContactForm';
 import { MapPin, Mail, Phone, Clock, MessageSquare, Globe, Briefcase, Target } from 'lucide-react';
+import { useTheme } from '../components/ThemeProvider';
 
 const ContactPage: React.FC = () => {
+  const { theme } = useTheme();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -63,7 +66,8 @@ const ContactPage: React.FC = () => {
           </h1>
           <p className="text-blue-600 font-bold mb-4 uppercase tracking-widest text-sm">Synckraft Technologies Private Limited</p>
           <p className="text-xl font-light leading-relaxed max-w-3xl text-slate-500">
-            Reach out to discuss partnerships, ecosystem ventures, or strategic collaborations. We respond to every serious inquiry.
+            We are here to assist you with automation solutions, business systems, and technology services. 
+            Reach out through any of our official channels below.
           </p>
         </section>
 
@@ -139,9 +143,9 @@ const ContactPage: React.FC = () => {
 
         {/* Contact Form Integration */}
         <div className="reveal" style={{ transitionDelay: '0.3s' }}>
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-3 text-slate-900 tracking-tight">Send a Message</h2>
-            <p className="text-slate-500 font-medium">Fill out the form and our team will respond within 24 hours.</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900">Send a Message</h2>
+            <p className="text-slate-500">Fill out the form below and our team will get back to you shortly.</p>
           </div>
           <ContactForm />
         </div>

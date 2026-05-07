@@ -80,7 +80,7 @@ const EcosystemPage: React.FC = () => {
         </div>
       </div>
 
-      <Ecosystem />
+      <Ecosystem theme="light" />
     </main>
   );
 };

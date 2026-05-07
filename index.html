@@ -86,6 +86,50 @@
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
   </style>
+
+  <!-- TAILWIND -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      content: [
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}"
+      ],
+      theme: {
+        extend: {
+          colors: {
+            synckraft: {
+              dark: '#0B0F19',
+              indigo: '#2563EB',
+              azure: '#06B6D4',
+              border: '#1F2937',
+              muted: '#9CA3B8'
+            },
+            primary: '#2563EB',
+            surface: '#0B0F19',
+            'surface-container': '#111827',
+            'on-surface': '#FFFFFF'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            sora: ['Sora', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- PRE-RENDER THEME -->
+  <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme') || localStorage.getItem('synckraft-theme') || 'light';
+          document.documentElement.classList.toggle('dark', t === 'dark');
+        } catch (e) { }
+      })();
+  </script>
 </head>
 
 <body>
