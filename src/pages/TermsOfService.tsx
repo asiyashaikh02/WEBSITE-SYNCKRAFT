@@ -12,8 +12,41 @@ const TermsOfService: React.FC<PageProps> = ({ theme }) => {
   return (
     <div className={`pt-24 min-h-screen ${theme === 'dark' ? 'bg-[#0A0A0B] text-white' : 'bg-white text-slate-900'}`}>
       <Helmet>
-        <title>Terms & Conditions | Synckraft Technologies</title>
-        <meta name="description" content="Read the Terms & Conditions of Synckraft Technologies Private Limited to understand your rights and obligations when using our services." />
+        <title>Terms of Service | Synckraft Technologies Private Limited</title>
+        <meta name="description" content="Read the Terms of Service for Synckraft Technologies. Understand your rights and obligations when using our enterprise AI infrastructure and digital transformation services." />
+        <meta name="keywords" content="terms of service, terms and conditions, service agreement, Synckraft Technologies, legal terms" />
+        <meta name="robots" content="noindex, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Terms of Service | Synckraft Technologies" />
+        <meta property="og:description" content="Legal terms and conditions for using Synckraft Technologies' enterprise services and platforms." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://synckraft.in/terms-of-service" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:title" content="Terms of Service | Synckraft Technologies" />
+        <meta name="twitter:description" content="Service terms and legal conditions for Synckraft Technologies platforms." />
+
+        {/* Structured Data - WebPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Terms of Service",
+            "description": "Terms of Service for Synckraft Technologies Private Limited",
+            "url": "https://synckraft.in/terms-of-service",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "Synckraft Technologies",
+              "url": "https://synckraft.in"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Synckraft Technologies Private Limited",
+              "legalName": "Synckraft Technologies Private Limited"
+            }
+          })}
+        </script>
       </Helmet>
       <main className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-8 mb-20">

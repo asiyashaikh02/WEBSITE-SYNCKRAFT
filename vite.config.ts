@@ -18,6 +18,73 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, './src'),
         }
+      },
+      build: {
+        // Optimize chunk splitting
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              // Vendor chunks
+              'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+              'ui-vendor': ['lucide-react', 'framer-motion'],
+              'utils-vendor': ['react-helmet-async'],
+
+              // Feature chunks
+              'pages': [
+                './src/pages/AboutPage',
+                './src/pages/Contact',
+                './src/pages/EcosystemPage',
+                './src/pages/Industries',
+                './src/pages/Products'
+              ],
+              'legal': [
+                './src/pages/PrivacyPolicy',
+                './src/pages/TermsOfService',
+                './src/pages/RefundPolicy',
+                './src/pages/Disclaimer'
+              ],
+              'funnel': [
+                './src/pages/funnel/BookDemo',
+                './src/pages/funnel/ContactSales',
+                './src/pages/funnel/FreeAudit'
+              ]
+            }
+          }
+        },
+
+        // Performance optimizations
+        minify: 'esbuild',
+        esbuild: {
+          drop: ['console', 'debugger'],
+          minifyIdentifiers: true,
+          minifySyntax: true,
+          minifyWhitespace: true
+        },
+
+        // Asset optimization
+        assetsInlineLimit: 4096, // Inline small assets
+        cssCodeSplit: true, // Split CSS for better caching
+        sourcemap: false, // Disable sourcemaps in production
+
+        // Chunk size warnings
+        chunkSizeWarningLimit: 1000
+      },
+
+      // Performance optimizations
+      optimizeDeps: {
+        include: [
+          'react',
+          'react-dom',
+          'react-router-dom',
+          'lucide-react',
+          'framer-motion',
+          'react-helmet-async'
+        ]
+      },
+
+      // CSS optimization
+      css: {
+        devSourcemap: true
       }
     };
 });

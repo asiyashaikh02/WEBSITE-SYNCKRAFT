@@ -14,8 +14,49 @@ const ContactPage: React.FC = () => {
   return (
     <div className="pt-24 min-h-screen bg-surface text-on-surface transition-colors duration-500">
       <Helmet>
-        <title>Contact Us | Synckraft Technologies Private Limited</title>
-        <meta name="description" content="Connect with Synckraft Technologies Private Limited for automation solutions, business systems, and technology services." />
+        <title>Contact Synckraft Technologies | Enterprise Solutions & Support</title>
+        <meta name="description" content="Get in touch with Synckraft Technologies for enterprise AI solutions, automation systems, and digital transformation services. Contact us at grow@synckraft.in or call our Mumbai office." />
+        <meta name="keywords" content="contact Synckraft, enterprise support, AI consultation, business automation, digital transformation, Mumbai tech company" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Contact Synckraft Technologies | Enterprise Solutions" />
+        <meta property="og:description" content="Connect with our team for enterprise-grade AI infrastructure, automation systems, and digital transformation services." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://synckraft.in/contact" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:title" content="Contact Synckraft Technologies | Enterprise Support" />
+        <meta name="twitter:description" content="Get expert consultation for AI infrastructure and digital transformation solutions." />
+
+        {/* Structured Data - ContactPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact Synckraft Technologies",
+            "description": "Contact information and support channels for Synckraft Technologies",
+            "url": "https://synckraft.in/contact",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Synckraft Technologies Private Limited",
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-XXXXXXXXXX",
+                  "contactType": "customer service",
+                  "email": "grow@synckraft.in",
+                  "availableLanguage": "English"
+                }
+              ],
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "IN",
+                "addressRegion": "Maharashtra",
+                "addressLocality": "Mumbai"
+              }
+            }
+          })}
+        </script>
       </Helmet>
       
       <main className="max-w-7xl mx-auto px-8 py-20">

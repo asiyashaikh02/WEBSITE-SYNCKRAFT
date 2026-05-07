@@ -7,8 +7,45 @@ const PrivacyPolicy = ({ theme }: { theme: 'dark' | 'light' }) => {
   return (
     <div className={`pt-24 min-h-screen ${theme === 'dark' ? 'bg-[#0A0A0B] text-white' : 'bg-white text-slate-900'}`}>
       <Helmet>
-        <title>Privacy Policy | Synckraft Technologies</title>
-        <meta name="description" content="Read the Privacy Policy of Synckraft Technologies Private Limited to understand how we collect, use, and protect your personal data." />
+        <title>Privacy Policy | Synckraft Technologies Private Limited</title>
+        <meta name="description" content="Read Synckraft Technologies' Privacy Policy to understand how we collect, use, and protect your personal data. We are committed to data privacy and compliance." />
+        <meta name="keywords" content="privacy policy, data protection, GDPR compliance, personal data, Synckraft Technologies" />
+        <meta name="robots" content="noindex, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Privacy Policy | Synckraft Technologies" />
+        <meta property="og:description" content="Learn about our commitment to data privacy and how we protect your personal information." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://synckraft.in/privacy-policy" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:title" content="Privacy Policy | Synckraft Technologies" />
+        <meta name="twitter:description" content="Data privacy and protection policy for Synckraft Technologies services." />
+
+        {/* Structured Data - WebPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Privacy Policy",
+            "description": "Privacy Policy of Synckraft Technologies Private Limited",
+            "url": "https://synckraft.in/privacy-policy",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "Synckraft Technologies",
+              "url": "https://synckraft.in"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Synckraft Technologies Private Limited",
+              "legalName": "Synckraft Technologies Private Limited",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "IN"
+              }
+            }
+          })}
+        </script>
       </Helmet>
       <main className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-8 mb-20">

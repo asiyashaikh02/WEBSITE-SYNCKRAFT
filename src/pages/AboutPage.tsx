@@ -12,8 +12,75 @@ const AboutPage = () => {
       theme === 'dark' ? 'bg-[#0A0A0B]' : 'bg-white'
     }`}>
       <Helmet>
-        <title>About Us | Synckraft Technologies Private Limited</title>
-        <meta name="description" content="Discover Synckraft Technologies Private Limited - a forward-thinking technology and automation company dedicated to building intelligent systems." />
+        <title>About Synckraft | Enterprise AI & Infrastructure Company | Mumbai, India</title>
+        <meta name="description" content="Synckraft Technologies builds enterprise-grade AI infrastructure and digital platforms. Parent company of UNSTOPR, SOLVEIT INDIA, and SOLAROFT ecosystems. Based in Mumbai, India." />
+        <meta name="keywords" content="Synckraft Technologies, enterprise software company, AI infrastructure, digital transformation, Mumbai tech company, Indian technology firm" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="About Synckraft Technologies | Enterprise AI & Infrastructure" />
+        <meta property="og:description" content="Learn about Synckraft Technologies - building the future of enterprise infrastructure through AI, automation, and specialized digital platforms." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://synckraft.in/about" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:title" content="About Synckraft Technologies | Enterprise Infrastructure Company" />
+        <meta name="twitter:description" content="Building enterprise-grade AI infrastructure and digital platforms for modern businesses." />
+
+        {/* Structured Data - AboutPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About Synckraft Technologies",
+            "description": "Learn about Synckraft Technologies - enterprise AI infrastructure and digital transformation company",
+            "url": "https://synckraft.in/about",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Synckraft Technologies Private Limited",
+              "description": "Enterprise technology and infrastructure company specializing in AI, automation, and digital transformation",
+              "foundingDate": "2020",
+              "location": {
+                "@type": "Place",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressCountry": "IN",
+                  "addressRegion": "Maharashtra",
+                  "addressLocality": "Mumbai"
+                }
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Synckraft Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "AI Development & Infrastructure",
+                      "description": "Enterprise-grade AI systems and automation platforms"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Digital Platform Development",
+                      "description": "Scalable web applications and digital solutions"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Business Process Automation",
+                      "description": "Streamlining operations through intelligent automation"
+                    }
+                  }
+                ]
+              }
+            }
+          })}
+        </script>
       </Helmet>
 
       <main className="py-20 md:py-32 -mt-[100px]">

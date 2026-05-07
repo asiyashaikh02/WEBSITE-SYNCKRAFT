@@ -12,8 +12,40 @@ const Disclaimer: React.FC<PageProps> = ({ theme }) => {
   return (
     <div className={`pt-24 min-h-screen ${theme === 'dark' ? 'bg-[#0A0A0B] text-white' : 'bg-white text-slate-900'}`}>
       <Helmet>
-        <title>Disclaimer | Synckraft Technologies</title>
-        <meta name="description" content="Read the Disclaimer of Synckraft Technologies Private Limited regarding professional advice, automation risks, and liability limitations." />
+        <title>Legal Disclaimer | Synckraft Technologies Private Limited</title>
+        <meta name="description" content="Legal disclaimer for Synckraft Technologies regarding professional advice, automation risks, liability limitations, and service terms." />
+        <meta name="keywords" content="legal disclaimer, liability limitation, professional advice, service disclaimer, Synckraft Technologies" />
+        <meta name="robots" content="noindex, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Legal Disclaimer | Synckraft Technologies" />
+        <meta property="og:description" content="Important legal disclaimer regarding our enterprise services, automation solutions, and professional advice." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://synckraft.in/disclaimer" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:title" content="Legal Disclaimer | Synckraft Technologies" />
+        <meta name="twitter:description" content="Legal terms and liability disclaimer for Synckraft Technologies services." />
+
+        {/* Structured Data - WebPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Legal Disclaimer",
+            "description": "Legal Disclaimer of Synckraft Technologies Private Limited",
+            "url": "https://synckraft.in/disclaimer",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "Synckraft Technologies",
+              "url": "https://synckraft.in"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Synckraft Technologies Private Limited"
+            }
+          })}
+        </script>
       </Helmet>
       <main className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-8 mb-20">

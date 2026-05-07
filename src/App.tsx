@@ -79,7 +79,8 @@ const NotFound = React.lazy(() => import('./pages/NotFound'));
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Smooth scroll to top on route change
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
   return null;
 };
@@ -159,7 +160,103 @@ export default function App() {
   return (
     <>
       <Helmet>
-        <title>Synckraft Technologies</title>
+        <title>Synckraft Technologies | Enterprise AI & Infrastructure Solutions</title>
+        <meta name="description" content="Synckraft Technologies builds enterprise-grade AI infrastructure, automation systems, and digital platforms. Parent company of UNSTOPR, SOLVEIT INDIA, and SOLAROFT ecosystems." />
+        <meta name="keywords" content="AI development, enterprise software, digital transformation, automation, web development, infrastructure, India tech company" />
+        <meta name="author" content="Synckraft Technologies" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href={`https://synckraft.in${location.pathname}`} />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Synckraft Technologies | Enterprise AI & Infrastructure Solutions" />
+        <meta property="og:description" content="Synckraft Technologies builds enterprise-grade AI infrastructure, automation systems, and digital platforms. Parent company of UNSTOPR, SOLVEIT INDIA, and SOLAROFT ecosystems." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://synckraft.in${location.pathname}`} />
+        <meta property="og:image" content="https://synckraft.in/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Synckraft Technologies" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Synckraft Technologies | Enterprise AI & Infrastructure Solutions" />
+        <meta name="twitter:description" content="Synckraft Technologies builds enterprise-grade AI infrastructure, automation systems, and digital platforms." />
+        <meta name="twitter:image" content="https://synckraft.in/og-image.png" />
+        <meta name="twitter:site" content="@synckraft" />
+        <meta name="twitter:creator" content="@synckraft" />
+
+        {/* Additional SEO */}
+        <meta name="theme-color" content="#0f172a" />
+        <meta name="msapplication-TileColor" content="#0f172a" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        {/* Structured Data - Organization */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Synckraft Technologies",
+            "url": "https://synckraft.in",
+            "logo": "https://synckraft.in/logo.png",
+            "description": "Enterprise AI infrastructure and digital transformation company",
+            "foundingDate": "2020",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-XXXXXXXXXX",
+              "contactType": "customer service",
+              "email": "grow@synckraft.in"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/synckraft",
+              "https://twitter.com/synckraft",
+              "https://www.unstopr.com/in",
+              "https://www.solveitindia.com",
+              "https://www.solaroft.com"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "IN",
+              "addressRegion": "Maharashtra",
+              "addressLocality": "Mumbai"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Synckraft Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "AI Development",
+                    "description": "Enterprise AI infrastructure and automation systems"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Web Development",
+                    "description": "Scalable digital platforms and modern web solutions"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                  "name": "Digital Transformation",
+                  "description": "Complete business automation and infrastructure solutions"
+                  }
+                }
+              ]
+            }
+          })}
+        </script>
       </Helmet>
 
       <ScrollToTop />

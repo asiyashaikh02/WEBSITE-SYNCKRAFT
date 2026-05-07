@@ -12,8 +12,40 @@ const RefundPolicy: React.FC<PageProps> = ({ theme }) => {
   return (
     <div className={`pt-24 min-h-screen ${theme === 'dark' ? 'bg-[#0A0A0B] text-white' : 'bg-white text-slate-900'}`}>
       <Helmet>
-        <title>Refund Policy | Synckraft Technologies</title>
-        <meta name="description" content="Read the Refund Policy of Synckraft Technologies Private Limited to understand our terms regarding non-refundability and service-based work." />
+        <title>Refund Policy | Synckraft Technologies Private Limited</title>
+        <meta name="description" content="Understand Synckraft Technologies' refund policy for enterprise services, custom development, and infrastructure solutions. All services are non-refundable." />
+        <meta name="keywords" content="refund policy, service terms, non-refundable services, Synckraft Technologies" />
+        <meta name="robots" content="noindex, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Refund Policy | Synckraft Technologies" />
+        <meta property="og:description" content="Refund terms and conditions for Synckraft Technologies enterprise services and solutions." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://synckraft.in/refund-policy" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:title" content="Refund Policy | Synckraft Technologies" />
+        <meta name="twitter:description" content="Service refund terms for enterprise infrastructure and development services." />
+
+        {/* Structured Data - WebPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Refund Policy",
+            "description": "Refund Policy of Synckraft Technologies Private Limited",
+            "url": "https://synckraft.in/refund-policy",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "Synckraft Technologies",
+              "url": "https://synckraft.in"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Synckraft Technologies Private Limited"
+            }
+          })}
+        </script>
       </Helmet>
       <main className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-8 mb-20">
