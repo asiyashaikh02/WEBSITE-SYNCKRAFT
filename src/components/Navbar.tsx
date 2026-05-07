@@ -49,8 +49,8 @@ export const Navbar: React.FC<NavbarProps> = () => {
       <header
         className={`navbar-enter fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-2xl border-b border-slate-200/80 py-3 shadow-lg shadow-slate-900/[0.04]'
-            : 'bg-white/80 backdrop-blur-xl py-5'
+            ? 'bg-white/95 backdrop-blur-2xl border-b border-slate-200/80 py-4 shadow-lg shadow-slate-900/[0.04]'
+            : 'bg-white/80 backdrop-blur-xl py-6'
         }`}
         role="banner"
       >
@@ -65,10 +65,10 @@ export const Navbar: React.FC<NavbarProps> = () => {
             <img
               src="/logos/synckraft-light.png"
               alt="Synckraft Technologies"
-              className="w-[160px] sm:w-[180px] h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+              className="w-[180px] md:w-[220px] h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
               loading="eager"
-              width="180"
-              height="46"
+              width="220"
+              height="56"
             />
           </Link>
 

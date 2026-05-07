@@ -31,7 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button'
 }) => {
   const baseClasses = `
-    inline-flex items-center justify-center gap-3 font-semibold rounded-full
+    inline-flex items-center justify-center gap-2.5 font-semibold rounded-full
     transition-all duration-300 ease-out
     focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none
@@ -40,39 +40,39 @@ export const Button: React.FC<ButtonProps> = ({
   `;
 
   const sizeClasses = {
-    sm: 'px-6 py-3 text-sm',
-    md: 'px-8 py-4 text-base',
-    lg: 'px-10 py-5 text-lg'
+    sm: 'px-5 py-2.5 text-[13px] tracking-wide',
+    md: 'px-7 py-3.5 text-[14px]',
+    lg: 'px-9 py-4 text-[15px]'
   };
 
   const variantClasses = {
     primary: `
       bg-gradient-to-r from-blue-600 to-blue-700 text-white
-      shadow-lg shadow-blue-600/25
-      hover:shadow-xl hover:shadow-blue-600/30
-      hover:-translate-y-0.5 hover:scale-[1.02]
-      active:scale-[0.98] active:translate-y-0
+      shadow-md shadow-blue-600/20
+      hover:shadow-lg hover:shadow-blue-600/30
+      hover:-translate-y-[1px]
+      active:scale-[0.99] active:translate-y-0
     `,
     secondary: `
       bg-slate-900 text-white
-      shadow-lg shadow-slate-900/25
-      hover:shadow-xl hover:shadow-slate-900/30
-      hover:-translate-y-0.5 hover:scale-[1.02]
+      shadow-md shadow-slate-900/20
+      hover:shadow-lg hover:shadow-slate-900/30
+      hover:-translate-y-[1px]
       hover:bg-blue-600
-      active:scale-[0.98] active:translate-y-0
+      active:scale-[0.99] active:translate-y-0
     `,
     outline: `
-      bg-white border-2 border-slate-200 text-slate-700
+      bg-white border border-slate-200 text-slate-700
       shadow-sm
       hover:bg-slate-50 hover:border-slate-300
-      hover:shadow-md hover:-translate-y-0.5
-      active:scale-[0.98] active:translate-y-0
+      hover:shadow-md hover:-translate-y-[1px]
+      active:scale-[0.99] active:translate-y-0
     `,
     ghost: `
       bg-transparent text-slate-600
       hover:bg-slate-50 hover:text-slate-900
-      hover:-translate-y-0.5
-      active:scale-[0.98] active:translate-y-0
+      hover:-translate-y-[1px]
+      active:scale-[0.99] active:translate-y-0
     `
   };
 

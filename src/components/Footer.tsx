@@ -34,10 +34,10 @@ export const Footer: React.FC<ThemeProps> = () => {
               <img
                 src="/logos/synckraft-light.png"
                 alt="Synckraft Technologies"
-                className="w-44 h-auto object-contain"
+                className="w-[180px] md:w-[220px] h-auto object-contain"
                 loading="lazy"
-                width="176"
-                height="44"
+                width="220"
+                height="56"
               />
             </Link>
             <p className="text-slate-500 text-[15px] leading-relaxed max-w-sm mb-8 font-medium">
