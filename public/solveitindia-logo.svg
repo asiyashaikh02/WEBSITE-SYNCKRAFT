@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 100" fill="none">
+  <!-- SolveIt India Logo Mark -->
+  <g fill="#10B981">
+    <path d="M 40 15 L 75 30 L 75 60 C 75 78 58 87 40 90 C 22 87 5 78 5 60 L 5 30 Z" opacity="0.15" />
+    <path d="M 40 22 L 67 34 L 67 58 C 67 72 54 80 40 83 C 26 80 13 72 13 58 L 13 34 Z" stroke="#10B981" stroke-width="6" stroke-linejoin="round" />
+    <path d="M 28 48 L 36 56 L 52 38" stroke="#10B981" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <!-- Brand Text -->
+  <text x="100" y="68" font-family="'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif" font-weight="800" font-size="52" letter-spacing="-1.5" fill="#080D1A">SolveIt India</text>
+</svg>

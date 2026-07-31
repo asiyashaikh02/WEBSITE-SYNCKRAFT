@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <defs>
+    <!-- Premium Gradient for the Mark -->
+    <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0052FF" />
+      <stop offset="50%" stop-color="#1D63FF" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Logo Mark Container (with a rounded corner rect) -->
+  <rect x="6" y="6" width="48" height="48" rx="14" fill="url(#logoGrad)" />
+
+  <!-- Connector nodes & sleek S shape -->
+  <path d="M35 22C35 18.6863 32.3137 16 29 16C25.6863 16 23 18.6863 23 22C23 25.3137 25.6863 28 29 28C32.3137 28 35 30.6863 35 34C35 37.3137 32.3137 40 29 40C25.6863 40 23 37.3137 23 34" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="35" cy="22" r="2" fill="white" />
+  <circle cx="23" cy="34" r="2" fill="white" />
+
+  <!-- Logo Text -->
+  <text x="68" y="38" fill="#0F172A" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" letter-spacing="-0.03em">Synckraft</text>
+</svg>
