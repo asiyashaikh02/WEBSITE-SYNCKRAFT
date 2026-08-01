@@ -4,7 +4,7 @@ import { CheckCircle2, Home, ArrowRight, Calendar } from 'lucide-react';
 
 interface ThankYouPageProps {
   onNavigate: (page: PageId) => void;
-  onOpenBookModal: () => void;
+  onOpenBookModal: (ctaName?: string) => void;
 }
 
 export const ThankYouPage: React.FC<ThankYouPageProps> = ({
@@ -59,7 +59,7 @@ export const ThankYouPage: React.FC<ThankYouPageProps> = ({
         </button>
 
         <button
-          onClick={onOpenBookModal}
+          onClick={() => onOpenBookModal()}
           className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 px-8 py-3.5 rounded-full font-bold text-sm inline-flex items-center gap-2 transition-all shadow-2xs cursor-pointer"
         >
           <Calendar className="w-4 h-4 text-blue-600" />

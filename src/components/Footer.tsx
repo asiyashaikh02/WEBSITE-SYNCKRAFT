@@ -12,6 +12,7 @@ import {
   Mail,
   Phone,
   MapPin,
+  Shield,
 } from 'lucide-react';
 import { SynckraftLogo } from './ui/SynckraftLogo';
 
@@ -36,8 +37,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email.trim().toLowerCase() }),
         });
-      } catch (err) {
-        console.error(err);
+      } catch {
+        // Ignore local/offline failures so the footer remains quiet in development.
       }
 
       setSubscribed(true);
@@ -48,6 +49,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   return (
     <footer className="bg-slate-50/80 border-t border-slate-200/80 pt-16 pb-8 text-slate-600 relative z-10">
+      <button
+        type="button"
+        onClick={() => onNavigate('admin')}
+        title="Admin Login"
+        aria-label="Admin Login"
+        className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/80 bg-white/80 text-slate-500 shadow-xs transition-all hover:text-[#1D63FF] hover:border-blue-300 hover:shadow-sm"
+      >
+        <Shield className="h-4 w-4" />
+      </button>
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-200/80">
           {/* Brand Info */}
@@ -64,6 +74,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               Engineering business systems that drive growth, automation and
               digital transformation.
             </p>
+
+            <div className="space-y-2.5 pt-1">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                Recognized By
+              </p>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                <img
+                  src="/DPIIT-header.png"
+                  alt="DPIIT Recognition"
+                  className="h-8 sm:h-9 md:h-10 w-auto max-w-[112px] object-contain"
+                />
+                <img
+                  src="/startupindia-logo.jpeg"
+                  alt="Startup India"
+                  className="h-8 sm:h-9 md:h-10 w-auto max-w-[112px] object-contain"
+                />
+              </div>
+            </div>
 
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-1">

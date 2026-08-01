@@ -10,7 +10,7 @@ import { IconWrapper } from '../components/icons/IconWrapper';
 
 interface ProductsPageProps {
   onNavigate: (page: PageId) => void;
-  onOpenBookModal: () => void;
+  onOpenBookModal: (ctaName?: string) => void;
   onSelectProduct: (product: ProductItem) => void;
 }
 
@@ -36,7 +36,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
         </p>
 
         <div className="pt-2">
-          <PrimaryButton onClick={onOpenBookModal}>
+          <PrimaryButton onClick={() => onOpenBookModal()}>
             Book a Strategy Call
           </PrimaryButton>
         </div>

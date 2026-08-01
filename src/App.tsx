@@ -45,6 +45,15 @@ function AppContent() {
     const initAnalytics = async () => {
       try {
         const res = await fetch('/api/admin/settings');
+        if (!res.ok) {
+          return;
+        }
+
+        const contentType = res.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          return;
+        }
+
         const json = await res.json();
         if (json.success && json.data) {
           analytics.configure({
@@ -56,8 +65,8 @@ function AppContent() {
             debugMode: process.env.NODE_ENV !== 'production',
           });
         }
-      } catch (err) {
-        console.error('Failed to configure analytics', err);
+      } catch {
+        // Ignore analytics bootstrap failures when the local API is unavailable.
       }
     };
     initAnalytics();
@@ -153,6 +162,8 @@ function AppContent() {
           <HomePage
             onNavigate={handleNavigate}
             onOpenBookModal={(cta) => handleOpenBookModal(typeof cta === 'string' ? cta : 'Book Strategy Call')}
+            onSelectProduct={(p) => setSelectedProduct(p)}
+            onSelectProject={(proj) => setSelectedProject(proj)}
           />
         );
       case 'products':

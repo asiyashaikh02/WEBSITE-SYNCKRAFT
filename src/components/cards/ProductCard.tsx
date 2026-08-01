@@ -123,9 +123,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               onClick={(e) => {
                 e.stopPropagation();
                 openLeadModal({
-                  ctaName: `Request Demo: ${product.title}`,
+                  ctaName: `Request Demo: ${product.name}`,
                   formVariant: 'demo',
-                  defaultProduct: product.title,
+                  defaultProduct: product.name,
                 });
               }}
               className="text-xs font-bold text-slate-600 hover:text-[#1D63FF] cursor-pointer"
@@ -268,9 +268,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             onClick={(e) => {
               e.stopPropagation();
               openLeadModal({
-                ctaName: `Request Demo: ${product.title}`,
+                ctaName: `Request Demo: ${product.name}`,
                 formVariant: 'demo',
-                defaultProduct: product.title,
+                defaultProduct: product.name,
               });
             }}
             className="text-xs font-bold text-slate-600 hover:text-[#1D63FF] cursor-pointer"

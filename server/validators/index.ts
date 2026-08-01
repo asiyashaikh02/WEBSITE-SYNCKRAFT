@@ -7,7 +7,8 @@ export const sanitizeString = (str: any): string => {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#x27;')
-    .replace(/\//g, '&#x2F;');
+    .replace(/\//g, '&#x2F;')
+    .slice(0, 4000);
 };
 
 export const isValidEmail = (email: string): boolean => {

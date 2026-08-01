@@ -35,7 +35,9 @@ type TabId =
   | 'blogs'
   | 'careers'
   | 'media'
-  | 'settings';
+  | 'settings'
+  | 'team'
+  | 'products';
 
 interface User {
   id: string;

@@ -215,9 +215,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     onClick={() => {
                       onClose();
                       openLeadModal({
-                        ctaName: `Request Demo: ${product.title}`,
+                        ctaName: `Request Demo: ${product.name}`,
                         formVariant: 'demo',
-                        defaultProduct: product.title,
+                        defaultProduct: product.name,
                       });
                     }}
                     className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-purple-600 text-white font-bold text-xs hover:bg-purple-700 transition-all cursor-pointer shadow-xs"
@@ -240,9 +240,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             onClick={() => {
               onClose();
               openLeadModal({
-                ctaName: `Schedule Demo: ${product.title}`,
+                ctaName: `Schedule Demo: ${product.name}`,
                 formVariant: 'demo',
-                defaultProduct: product.title,
+                defaultProduct: product.name,
               });
             }}
             size="sm"

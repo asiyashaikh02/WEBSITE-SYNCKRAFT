@@ -18,7 +18,7 @@ export const ComingSoonProductCard: React.FC<ComingSoonProductCardProps> = ({
   if (compact) {
     return (
       <div
-        onClick={onOpenBookModal}
+        onClick={() => onOpenBookModal()}
         className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-7 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer h-full relative overflow-hidden"
       >
         <div className="space-y-3.5">
@@ -104,7 +104,7 @@ export const ComingSoonProductCard: React.FC<ComingSoonProductCardProps> = ({
 
   return (
     <div
-      onClick={onOpenBookModal}
+      onClick={() => onOpenBookModal()}
       className="bg-white border border-slate-200/80 rounded-3xl p-7 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer h-full relative overflow-hidden"
     >
       <div className="space-y-4">

@@ -27,7 +27,7 @@ import {
 
 interface CompanyPageProps {
   onNavigate: (page: PageId) => void;
-  onOpenBookModal: () => void;
+  onOpenBookModal: (ctaName?: string) => void;
 }
 
 export const CompanyPage: React.FC<CompanyPageProps> = ({

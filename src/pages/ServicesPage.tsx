@@ -11,7 +11,7 @@ import { PrimaryButton } from '../components/ui/Button';
 
 interface ServicesPageProps {
   onNavigate: (page: PageId) => void;
-  onOpenBookModal: () => void;
+  onOpenBookModal: (ctaName?: string) => void;
   onSelectService?: (service: ServiceItem) => void;
 }
 
@@ -37,7 +37,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
         </p>
 
         <div className="pt-2">
-          <PrimaryButton onClick={onOpenBookModal}>
+          <PrimaryButton onClick={() => onOpenBookModal()}>
             Book a Strategy Call
           </PrimaryButton>
         </div>

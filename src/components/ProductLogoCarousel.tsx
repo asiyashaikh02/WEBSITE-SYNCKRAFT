@@ -21,7 +21,7 @@ export interface ProductCarouselItem {
   accentBg: string;
   logoLetter: string;
   logoUrl?: string;
-  icon: React.ReactNode;
+  icon: React.ReactElement<{ className?: string }>;
 }
 
 const CAROUSEL_PRODUCTS: ProductCarouselItem[] = [
@@ -300,7 +300,7 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
                           className="w-full h-full object-contain"
                         />
                       ) : (
-                        React.cloneElement(product.icon as React.ReactElement, { className: 'w-6 h-6' })
+                        React.cloneElement(product.icon as React.ReactElement<{ className?: string }>, { className: 'w-6 h-6' })
                       )}
                     </div>
 

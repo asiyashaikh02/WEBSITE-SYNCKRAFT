@@ -9,7 +9,7 @@ import { updateBlogPostSeo, updatePageSeo } from '../utils/seo';
 
 interface BlogPageProps {
   onNavigate: (page: PageId) => void;
-  onOpenBookModal?: () => void;
+  onOpenBookModal?: (ctaName?: string) => void;
 }
 
 export const BlogPage: React.FC<BlogPageProps> = ({

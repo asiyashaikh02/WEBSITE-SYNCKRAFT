@@ -18,7 +18,7 @@ import {
 
 interface ContactPageProps {
   onNavigate: (page: PageId) => void;
-  onOpenBookModal: () => void;
+  onOpenBookModal: (ctaName?: string) => void;
   onSuccessRedirect?: () => void;
 }
 
@@ -105,7 +105,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
         </p>
 
         <div className="pt-2">
-          <PrimaryButton onClick={onOpenBookModal}>
+          <PrimaryButton onClick={() => onOpenBookModal()}>
             Book a Strategy Call
           </PrimaryButton>
         </div>

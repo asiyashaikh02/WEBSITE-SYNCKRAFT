@@ -11,6 +11,7 @@ export const handleContactSubmit = async (
 ): Promise<void> => {
   try {
     const { errors, sanitized } = validateContactInput(req.body);
+    const safeName = sanitized.name.replace(/<[^>]*>/g, '').trim();
 
     if (errors.length > 0) {
       res.status(400).json({
@@ -28,10 +29,10 @@ export const handleContactSubmit = async (
     const alertPhones = settings.phoneNumbers || ['+91-98677-99655'];
 
     // 1. Trigger Email alert
-    const emailSubject = `[Synckraft Contact Alert] New Enquiry from ${sanitized.name}`;
+    const emailSubject = `[Synckraft Contact Alert] New Enquiry from ${safeName}`;
     const emailBody = `
       <h3>New Enquiry Received</h3>
-      <p><strong>Name:</strong> ${sanitized.name}</p>
+      <p><strong>Name:</strong> ${safeName}</p>
       <p><strong>Company:</strong> ${sanitized.company || 'N/A'}</p>
       <p><strong>Email:</strong> ${sanitized.email}</p>
       <p><strong>Phone:</strong> ${sanitized.phone || 'N/A'}</p>
@@ -42,7 +43,7 @@ export const handleContactSubmit = async (
     await NotificationService.sendEmailNotification(adminEmail, emailSubject, emailBody);
 
     // 2. Trigger WhatsApp alert (to all registered numbers)
-    const whatsAppMessage = `🚨 *New Synckraft Enquiry* 🚨\n\n👤 *Name:* ${sanitized.name}\n🏢 *Company:* ${sanitized.company || 'N/A'}\n✉️ *Email:* ${sanitized.email}\n📞 *Phone:* ${sanitized.phone || 'N/A'}\n💬 *Message:* ${sanitized.message || 'N/A'}`;
+    const whatsAppMessage = `🚨 *New Synckraft Enquiry* 🚨\n\n👤 *Name:* ${safeName}\n🏢 *Company:* ${sanitized.company || 'N/A'}\n✉️ *Email:* ${sanitized.email}\n📞 *Phone:* ${sanitized.phone || 'N/A'}\n💬 *Message:* ${sanitized.message || 'N/A'}`;
     for (const phone of alertPhones) {
       await NotificationService.sendWhatsAppNotification(phone, whatsAppMessage);
     }

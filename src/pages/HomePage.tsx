@@ -15,7 +15,7 @@ import { ArrowRight } from 'lucide-react';
 
 interface HomePageProps {
   onNavigate: (page: PageId) => void;
-  onOpenBookModal: () => void;
+  onOpenBookModal: (ctaName?: string) => void;
   onSelectProduct: (product: ProductItem) => void;
   onSelectProject: (project: ProjectItem) => void;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { Quote as QuoteIcon } from 'lucide-react';
 
 export interface QuoteOverlayProps {
@@ -37,7 +37,7 @@ export const QuoteOverlay: React.FC<QuoteOverlayProps> = ({
     return author;
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -48,7 +48,7 @@ export const QuoteOverlay: React.FC<QuoteOverlayProps> = ({
     },
   };
 
-  const iconVariants = {
+  const iconVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 0.45,
@@ -57,16 +57,16 @@ export const QuoteOverlay: React.FC<QuoteOverlayProps> = ({
     },
   };
 
-  const quoteVariants = {
+  const quoteVariants: Variants = {
     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
-  const authorVariants = {
+  const authorVariants: Variants = {
     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 10 },
     visible: {
       opacity: 1,

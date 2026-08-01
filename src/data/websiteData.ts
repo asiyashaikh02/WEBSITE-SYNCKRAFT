@@ -1054,7 +1054,7 @@ export const ENGINEERING_MEMBERS: TeamMember[] = [
     name: 'Aryan Pande',
     role: 'Full Stack Developer',
     description: 'Building innovative, scalable web applications with clean code and exceptional user experiences.',
-    image: "/team/aryan'.jpeg",
+    image: '/team/aryan.jpeg',
     linkedIn: 'https://linkedin.com',
   },
   {
@@ -1127,7 +1127,7 @@ export const SALES_MEMBERS: TeamMember[] = [
     name: 'Shraddha Murai',
     role: 'Sales Team Lead',
     description: 'Leading the sales team to build client relationships and drive sustainable business growth.',
-    image: '/team/shraddha 2.jpeg',
+    image: '/team/shraddha2.jpeg',
     linkedIn: 'https://linkedin.com',
   },
 ];

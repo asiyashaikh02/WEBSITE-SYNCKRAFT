@@ -24393,7 +24393,7 @@ var DbService = class {
 // server/validators/index.ts
 var sanitizeString = (str) => {
   if (typeof str !== "string") return "";
-  return str.trim().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#x27;").replace(/\//g, "&#x2F;");
+  return str.trim().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#x27;").replace(/\//g, "&#x2F;").slice(0, 4e3);
 };
 var isValidEmail = (email) => {
   const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -24604,6 +24604,7 @@ var NotificationService = class {
 var handleContactSubmit = async (req, res, next) => {
   try {
     const { errors, sanitized } = validateContactInput(req.body);
+    const safeName = sanitized.name.replace(/<[^>]*>/g, "").trim();
     if (errors.length > 0) {
       res.status(400).json({
         success: false,
@@ -24616,10 +24617,10 @@ var handleContactSubmit = async (req, res, next) => {
     const settings = settingsList[0] || {};
     const adminEmail = settings.email || "grow@synckraft.in";
     const alertPhones = settings.phoneNumbers || ["+91-98677-99655"];
-    const emailSubject = `[Synckraft Contact Alert] New Enquiry from ${sanitized.name}`;
+    const emailSubject = `[Synckraft Contact Alert] New Enquiry from ${safeName}`;
     const emailBody = `
       <h3>New Enquiry Received</h3>
-      <p><strong>Name:</strong> ${sanitized.name}</p>
+      <p><strong>Name:</strong> ${safeName}</p>
       <p><strong>Company:</strong> ${sanitized.company || "N/A"}</p>
       <p><strong>Email:</strong> ${sanitized.email}</p>
       <p><strong>Phone:</strong> ${sanitized.phone || "N/A"}</p>
@@ -24630,7 +24631,7 @@ var handleContactSubmit = async (req, res, next) => {
     await NotificationService.sendEmailNotification(adminEmail, emailSubject, emailBody);
     const whatsAppMessage = `\u{1F6A8} *New Synckraft Enquiry* \u{1F6A8}
 
-\u{1F464} *Name:* ${sanitized.name}
+\u{1F464} *Name:* ${safeName}
 \u{1F3E2} *Company:* ${sanitized.company || "N/A"}
 \u2709\uFE0F *Email:* ${sanitized.email}
 \u{1F4DE} *Phone:* ${sanitized.phone || "N/A"}

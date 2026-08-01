@@ -45,10 +45,7 @@ class AnalyticsManager {
    */
   public configure(config: AnalyticsConfig) {
     this.config = { ...this.config, ...config };
-    if (this.config.debugMode) {
-      console.log('📊 [Analytics] Configured:', this.config);
-    }
-    
+
     // Load tracking scripts if consent was already accepted
     if (this.consentStatus === 'accepted') {
       this.loadScripts();
@@ -61,10 +58,6 @@ class AnalyticsManager {
   public setConsent(status: CookieConsentStatus) {
     this.consentStatus = status;
     localStorage.setItem('synckraft_cookie_consent', status);
-    
-    if (this.config.debugMode) {
-      console.log(`📊 [Analytics] Consent updated: ${status}`);
-    }
 
     if (status === 'accepted') {
       this.loadScripts();
@@ -91,10 +84,6 @@ class AnalyticsManager {
       metadata: this.metadata,
       data: eventData,
     };
-
-    if (this.config.debugMode) {
-      console.log(`📊 [Analytics Debug] Event "${eventName}":`, fullPayload);
-    }
 
     // Call local database event tracker API (Phase 1 local logs)
     this.logToLocalServer(eventName, eventData);
