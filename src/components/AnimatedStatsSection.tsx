@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 import { Rocket, Users, Globe2, ThumbsUp } from 'lucide-react';
 
 interface StatMetric {
@@ -60,6 +60,7 @@ const StatCard: React.FC<{
   const [isHovered, setIsHovered] = useState(false);
   const startedRef = useRef(false);
   const valueRef = useRef<HTMLSpanElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!inView || startedRef.current) return;
@@ -106,14 +107,16 @@ const StatCard: React.FC<{
       initial={{ opacity: 0, y: 15, scale: 0.96 }}
       animate={
         inView
-          ? {
-              opacity: 1,
-              y: isHovered ? -6 : 0,
-              scale: isHovered ? 1.02 : 1,
-            }
+          ? shouldReduceMotion
+            ? { opacity: 1, y: 0, scale: 1 }
+            : {
+                opacity: 1,
+                y: isHovered ? -6 : 0,
+                scale: isHovered ? 1.02 : 1,
+              }
           : { opacity: 0, y: 15, scale: 0.96 }
       }
-      transition={{
+      transition={shouldReduceMotion ? { duration: 0 } : {
         duration: 0.7,
         delay: stat.delay / 1000,
         ease: [0.16, 1, 0.3, 1], // Custom smooth ease-out curve
@@ -132,14 +135,16 @@ const StatCard: React.FC<{
         initial={{ opacity: 0, scale: 0.8, rotate: -4 }}
         animate={
           inView
-            ? {
-                opacity: 1,
-                scale: isHovered ? 1.08 : 1,
-                rotate: 0,
-              }
+            ? shouldReduceMotion
+              ? { opacity: 1, scale: 1, rotate: 0 }
+              : {
+                  opacity: 1,
+                  scale: isHovered ? 1.08 : 1,
+                  rotate: 0,
+                }
             : { opacity: 0, scale: 0.8, rotate: -4 }
         }
-        transition={{
+        transition={shouldReduceMotion ? { duration: 0 } : {
           duration: 0.5,
           delay: stat.delay / 1000 + 0.1,
           type: 'spring',
@@ -150,10 +155,10 @@ const StatCard: React.FC<{
         className="shrink-0"
       >
         <motion.div
-          animate={{
+          animate={shouldReduceMotion ? { y: 0 } : {
             y: [-1.5, 1.5, -1.5],
           }}
-          transition={{
+          transition={shouldReduceMotion ? { duration: 0 } : {
             duration: 4.2,
             repeat: Infinity,
             ease: 'easeInOut',

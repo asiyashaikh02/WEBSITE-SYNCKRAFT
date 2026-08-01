@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { QuoteOverlay } from '../ui/QuoteOverlay';
@@ -90,13 +90,26 @@ export const TeamCultureCarousel: React.FC = () => {
   };
 
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
+    if (isPaused || document.hidden) return;
+    const interval = window.setInterval(() => {
       nextSlide();
     }, 3500);
 
-    return () => clearInterval(interval);
+    return () => window.clearInterval(interval);
   }, [isPaused, nextSlide]);
+
+  const slide = useMemo(() => TEAM_SLIDES[currentIndex], [currentIndex]);
+  const nextIdx = useMemo(() => (currentIndex + 1) % TEAM_SLIDES.length, [currentIndex]);
+  const prevIdx = useMemo(() => (currentIndex - 1 + TEAM_SLIDES.length) % TEAM_SLIDES.length, [currentIndex]);
+
+  useEffect(() => {
+    const preloadImages = [TEAM_SLIDES[currentIndex].url, TEAM_SLIDES[nextIdx].url, TEAM_SLIDES[prevIdx].url];
+    preloadImages.forEach((src) => {
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = src;
+    });
+  }, [currentIndex, nextIdx, prevIdx]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setIsPaused(true);
@@ -129,10 +142,6 @@ export const TeamCultureCarousel: React.FC = () => {
       nextSlide();
     }
   };
-
-  const slide = TEAM_SLIDES[currentIndex];
-  const nextIdx = (currentIndex + 1) % TEAM_SLIDES.length;
-  const prevIdx = (currentIndex - 1 + TEAM_SLIDES.length) % TEAM_SLIDES.length;
 
   return (
     <div className="space-y-4">
@@ -168,7 +177,9 @@ export const TeamCultureCarousel: React.FC = () => {
               <img
                 src={slide.url}
                 alt={slide.caption}
-                loading="eager"
+                loading={currentIndex === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                fetchPriority={currentIndex === 0 ? 'high' : 'auto'}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
               />

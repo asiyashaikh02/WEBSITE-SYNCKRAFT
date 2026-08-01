@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, lazy, Suspense } from 'react';
 import { PageId, ProductItem, ProjectItem } from './types';
 import { BackgroundEffects } from './components/BackgroundEffects';
 import { ScrollProgress } from './components/ScrollProgress';
@@ -12,21 +12,21 @@ import { GlobalLeadModal } from './components/modals/GlobalLeadModal';
 import { LeadModalProvider, useLeadModal } from './context/LeadModalContext';
 import { FormVariant } from './types/lead';
 
-import { HomePage } from './pages/HomePage';
-import { ProductsPage } from './pages/ProductsPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { WorkPage } from './pages/WorkPage';
-import { CompanyPage } from './pages/CompanyPage';
-import { ContactPage } from './pages/ContactPage';
-import { BlogPage } from './pages/BlogPage';
-import { CareersPage } from './pages/CareersPage';
-import { PrivacyPage } from './pages/PrivacyPage';
-import { TermsPage } from './pages/TermsPage';
-import { RefundPage } from './pages/RefundPage';
-import { DisclaimerPage } from './pages/DisclaimerPage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { ThankYouPage } from './pages/ThankYouPage';
-import { AdminPage } from './pages/AdminPage';
+const HomePage = lazy(() => import('./pages/HomePage').then((module) => ({ default: module.HomePage })));
+const ProductsPage = lazy(() => import('./pages/ProductsPage').then((module) => ({ default: module.ProductsPage })));
+const ServicesPage = lazy(() => import('./pages/ServicesPage').then((module) => ({ default: module.ServicesPage })));
+const WorkPage = lazy(() => import('./pages/WorkPage').then((module) => ({ default: module.WorkPage })));
+const CompanyPage = lazy(() => import('./pages/CompanyPage').then((module) => ({ default: module.CompanyPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then((module) => ({ default: module.ContactPage })));
+const BlogPage = lazy(() => import('./pages/BlogPage').then((module) => ({ default: module.BlogPage })));
+const CareersPage = lazy(() => import('./pages/CareersPage').then((module) => ({ default: module.CareersPage })));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then((module) => ({ default: module.PrivacyPage })));
+const TermsPage = lazy(() => import('./pages/TermsPage').then((module) => ({ default: module.TermsPage })));
+const RefundPage = lazy(() => import('./pages/RefundPage').then((module) => ({ default: module.RefundPage })));
+const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage').then((module) => ({ default: module.DisclaimerPage })));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((module) => ({ default: module.NotFoundPage })));
+const ThankYouPage = lazy(() => import('./pages/ThankYouPage').then((module) => ({ default: module.ThankYouPage })));
+const AdminPage = lazy(() => import('./pages/AdminPage').then((module) => ({ default: module.AdminPage })));
 
 import { motion, AnimatePresence } from 'motion/react';
 import { updatePageSeo } from './utils/seo';
@@ -124,13 +124,16 @@ function AppContent() {
     trackPageView(window.location.hash || '#home', document.title);
   }, [currentPage, setCurrentPageName]);
 
-  const handleNavigate = (page: PageId) => {
+  const handleNavigate = useCallback((page: PageId) => {
     setCurrentPage(page);
     window.location.hash = page;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    });
+  }, []);
 
-  const handleOpenBookModal = (
+  const handleOpenBookModal = useCallback((
     ctaName?: unknown,
     variant?: FormVariant,
     defaultProduct?: string
@@ -141,9 +144,9 @@ function AppContent() {
       formVariant: typeof variant === 'string' ? variant : undefined,
       defaultProduct: typeof defaultProduct === 'string' ? defaultProduct : undefined,
     });
-  };
+  }, [openLeadModal]);
 
-  const renderPage = () => {
+  const renderPage = useMemo(() => {
     switch (currentPage) {
       case 'home':
         return (
@@ -222,7 +225,7 @@ function AppContent() {
       default:
         return <NotFoundPage onNavigate={handleNavigate} />;
     }
-  };
+  }, [currentPage, handleNavigate, handleOpenBookModal]);
 
   const showCTABanner = [
     'home',
@@ -236,7 +239,11 @@ function AppContent() {
   ].includes(currentPage);
 
   if (currentPage === 'admin') {
-    return <AdminPage onNavigate={handleNavigate} />;
+    return (
+      <Suspense fallback={null}>
+        <AdminPage onNavigate={handleNavigate} />
+      </Suspense>
+    );
   }
 
   return (
@@ -263,9 +270,9 @@ function AppContent() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              transition={{ duration: 0.2, ease: 'easeInOut' }}
             >
-              {renderPage()}
+              <Suspense fallback={null}>{renderPage}</Suspense>
             </motion.div>
           </AnimatePresence>
 

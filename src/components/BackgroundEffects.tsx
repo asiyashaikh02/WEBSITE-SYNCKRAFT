@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
 export const BackgroundEffects: React.FC = React.memo(() => {
   // Smooth parallax tracking using requestAnimationFrame lerp directly on DOM nodes
+  const shouldReduceMotion = useReducedMotion();
   const targetPos = useRef({ x: 0, y: 0 });
   const currentPos = useRef({ x: 0, y: 0 });
   const blobRef = useRef<HTMLDivElement>(null);
@@ -72,13 +73,13 @@ export const BackgroundEffects: React.FC = React.memo(() => {
       >
         {/* Top Center-Left Sky Blue Glow */}
         <motion.div
-          animate={{
+          animate={shouldReduceMotion ? { scale: 1, opacity: 0.65, x: 0, y: 0 } : {
             scale: [1, 1.15, 1],
             opacity: [0.65, 0.85, 0.65],
             x: [0, 30, 0],
             y: [0, -20, 0],
           }}
-          transition={{
+          transition={shouldReduceMotion ? { duration: 0 } : {
             duration: 16,
             repeat: Infinity,
             ease: 'easeInOut',
@@ -89,13 +90,13 @@ export const BackgroundEffects: React.FC = React.memo(() => {
 
         {/* Top Right Royal Blue Glow */}
         <motion.div
-          animate={{
+          animate={shouldReduceMotion ? { scale: 1, opacity: 0.55, x: 0, y: 0 } : {
             scale: [1, 1.2, 1],
             opacity: [0.55, 0.75, 0.55],
             x: [0, -40, 0],
             y: [0, 25, 0],
           }}
-          transition={{
+          transition={shouldReduceMotion ? { duration: 0 } : {
             duration: 20,
             repeat: Infinity,
             ease: 'easeInOut',
@@ -106,12 +107,12 @@ export const BackgroundEffects: React.FC = React.memo(() => {
 
         {/* Mid-Left Soft Violet Accent Glow */}
         <motion.div
-          animate={{
+          animate={shouldReduceMotion ? { scale: 1, opacity: 0.35, y: 0 } : {
             scale: [1, 1.1, 1],
             opacity: [0.35, 0.55, 0.35],
             y: [0, 35, 0],
           }}
-          transition={{
+          transition={shouldReduceMotion ? { duration: 0 } : {
             duration: 22,
             repeat: Infinity,
             ease: 'easeInOut',
@@ -122,12 +123,12 @@ export const BackgroundEffects: React.FC = React.memo(() => {
 
         {/* Mid-Right Cyan Vibrant Glow */}
         <motion.div
-          animate={{
+          animate={shouldReduceMotion ? { scale: 1, opacity: 0.4, x: 0 } : {
             scale: [1, 1.25, 1],
             opacity: [0.4, 0.6, 0.4],
             x: [0, -25, 0],
           }}
-          transition={{
+          transition={shouldReduceMotion ? { duration: 0 } : {
             duration: 18,
             repeat: Infinity,
             ease: 'easeInOut',

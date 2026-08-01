@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import {
   Bot,
   Building2,
@@ -10,6 +10,7 @@ import {
   Sparkles,
   ArrowRight,
 } from 'lucide-react';
+import { useReducedMotion } from 'motion/react';
 
 interface ProductMarqueeProps {
   onNavigateProducts: () => void;
@@ -143,17 +144,18 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = React.memo(({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   const startXRef = useRef(0);
   const startScrollLeftRef = useRef(0);
   const hasDraggedRef = useRef(false);
 
   // Four sets of items to guarantee smooth continuous infinite wrapping in both directions
-  const repeatedProducts = [
+  const repeatedProducts = useMemo(() => [
     ...PRODUCTS_LIST,
     ...PRODUCTS_LIST,
     ...PRODUCTS_LIST,
     ...PRODUCTS_LIST,
-  ];
+  ], []);
 
   useEffect(() => {
     let animId: number | null = null;
@@ -164,7 +166,7 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = React.memo(({
       lastTime = time;
 
       const el = scrollRef.current;
-      if (el && !isPaused && !isDragging) {
+      if (el && !isPaused && !isDragging && !shouldReduceMotion && !document.hidden) {
         // Compute speed so 1 single loop set (7 items) completes in ~30 seconds (25-35s requirement)
         const singleSetWidth = el.scrollWidth / 4;
         if (singleSetWidth > 0) {
@@ -180,14 +182,14 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = React.memo(({
         }
       }
 
-      if (!isPaused && !isDragging) {
+      if (!isPaused && !isDragging && !shouldReduceMotion && !document.hidden) {
         animId = requestAnimationFrame(step);
       } else {
         animId = null;
       }
     };
 
-    if (!isPaused && !isDragging) {
+    if (!isPaused && !isDragging && !shouldReduceMotion && !document.hidden) {
       animId = requestAnimationFrame(step);
     }
 
@@ -196,7 +198,7 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = React.memo(({
         cancelAnimationFrame(animId);
       }
     };
-  }, [isPaused, isDragging]);
+  }, [isPaused, isDragging, shouldReduceMotion]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
@@ -322,7 +324,7 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = React.memo(({
           onTouchEnd={handleTouchEnd}
           onScroll={handleScroll}
           className="overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', overscrollBehavior: 'contain', touchAction: 'pan-x', willChange: 'scroll-position' }}
         >
           <div className="flex items-center gap-6 py-3 px-4 w-max">
             {repeatedProducts.map((p, idx) => (

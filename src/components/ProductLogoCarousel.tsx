@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import {
   ExternalLink,
   Sparkles,
@@ -10,8 +10,7 @@ import {
   Boxes,
   Dumbbell,
   CheckCircle2,
-} from 'lucide-react';
-
+} from 'lucide-react';import { useReducedMotion } from 'motion/react';
 export interface ProductCarouselItem {
   id: string;
   name: string;
@@ -103,6 +102,7 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const shouldReduceMotion = useReducedMotion();
   const hoveredIdRef = useRef<string | null>(null);
   hoveredIdRef.current = hoveredId;
 
@@ -110,9 +110,9 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
   const containerWidthRef = useRef<number>(1200);
 
   // Repeat the 6 products 5 times to ensure seamless infinite looping without gaps
-  const itemsList = useRef<ProductCarouselItem[]>(
-    Array(5).fill(CAROUSEL_PRODUCTS).flat()
-  );
+  const itemsList = useMemo(() => Array(5).fill(CAROUSEL_PRODUCTS).flat(), []);
+  const itemsListRef = useRef<ProductCarouselItem[]>([]);
+  itemsListRef.current = itemsList;
 
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -141,15 +141,15 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
 
   // Continuous infinite RAF animation loop driving direct DOM transforms (0 React re-renders/sec)
   useEffect(() => {
-    const speed = 1.18; // ~45% speed increase for dynamic, smooth scrolling
+    const speed = shouldReduceMotion ? 0.35 : 1.18;
 
     const updateDOM = () => {
       const cWidth = containerWidthRef.current;
       const containerCenter = cWidth / 2;
-      const maxTrackWidth = itemsList.current.length * itemStep;
+      const maxTrackWidth = itemsListRef.current.length * itemStep;
       const maxDist = Math.max(cWidth * 0.38, 260);
 
-      itemsList.current.forEach((product, idx) => {
+      itemsListRef.current.forEach((product, idx) => {
         const el = itemRefs.current[idx];
         if (!el) return;
 
@@ -190,6 +190,11 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
     };
 
     const step = () => {
+      if (document.hidden) {
+        animFrameRef.current = 0;
+        return;
+      }
+
       offsetRef.current = (offsetRef.current + speed) % setWidth;
       updateDOM();
       animFrameRef.current = requestAnimationFrame(step);
@@ -202,7 +207,7 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
         cancelAnimationFrame(animFrameRef.current);
       }
     };
-  }, [setWidth]);
+  }, [setWidth, shouldReduceMotion]);
 
   const handleCardClick = (product: ProductCarouselItem) => {
     if (product.url) {
@@ -241,7 +246,7 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
 
         {/* Carousel Track */}
         <div className="relative w-full h-full flex items-center">
-          {itemsList.current.map((product, idx) => {
+          {itemsList.map((product, idx) => {
             const isHovered = hoveredId === `${product.id}-${idx}`;
 
             return (
