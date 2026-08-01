@@ -9,7 +9,7 @@ const PHRASES = [
   'Digital Operation',
 ];
 
-export const TypewriterHeroTitle: React.FC = () => {
+export const TypewriterHeroTitle: React.FC = React.memo(() => {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -57,4 +57,7 @@ export const TypewriterHeroTitle: React.FC = () => {
       </div>
     </div>
   );
-};
+});
+
+TypewriterHeroTitle.displayName = 'TypewriterHeroTitle';
+

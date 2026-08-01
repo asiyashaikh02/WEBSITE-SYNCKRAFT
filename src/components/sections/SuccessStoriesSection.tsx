@@ -102,18 +102,14 @@ export const SuccessStoriesSection: React.FC<SuccessStoriesSectionProps> = ({
                 Client Partner
               </span>
               <div className="flex items-center gap-3">
-                {activeStory.avatar ? (
-                  <img
-                    src={activeStory.avatar}
-                    alt={activeStory.clientName}
-                    className="w-14 h-14 rounded-2xl object-cover shrink-0 shadow-md border border-slate-200"
-                    referrerPolicy="no-referrer"
-                  />
-                ) : (
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1D63FF] to-blue-700 text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-md border border-blue-400/30">
-                    {activeStory.company.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase()}
-                  </div>
-                )}
+                <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#0052FF] via-[#1D63FF] to-[#3B82F6] text-white font-extrabold text-lg flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 border border-blue-400/30">
+                  {(() => {
+                    const words = (activeStory.company || '').trim().split(/\s+/);
+                    return words.length >= 2
+                      ? (words[0][0] + words[words.length - 1][0]).toUpperCase()
+                      : (activeStory.company || '').slice(0, 2).toUpperCase();
+                  })()}
+                </div>
                 <div>
                   <h3 className="text-base font-extrabold text-slate-900 leading-snug">
                     {activeStory.clientName}

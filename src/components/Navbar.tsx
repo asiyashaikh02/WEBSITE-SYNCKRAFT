@@ -9,7 +9,7 @@ interface NavbarProps {
   onOpenBookModal: (ctaName?: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
+export const Navbar: React.FC<NavbarProps> = React.memo(({
   currentPage,
   onNavigate,
   onOpenBookModal,
@@ -92,5 +92,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
     </header>
   );
-};
+});
+
+Navbar.displayName = 'Navbar';
+
 

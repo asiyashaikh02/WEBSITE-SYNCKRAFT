@@ -8,7 +8,7 @@ interface ServicesHorizontalScrollProps {
   onOpenBookModal: () => void;
 }
 
-export const ServicesHorizontalScroll: React.FC<ServicesHorizontalScrollProps> = ({
+export const ServicesHorizontalScroll: React.FC<ServicesHorizontalScrollProps> = React.memo(({
   services,
   onOpenBookModal,
 }) => {
@@ -16,17 +16,23 @@ export const ServicesHorizontalScroll: React.FC<ServicesHorizontalScrollProps> =
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
+  const rafIdRef = useRef<number | null>(null);
 
   const checkScroll = () => {
-    if (!scrollRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    setCanScrollLeft(scrollLeft > 10);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    if (rafIdRef.current) return;
 
-    // Calculate approximate active index
-    const cardWidth = clientWidth > 1024 ? clientWidth / 3 : clientWidth > 640 ? clientWidth / 2 : clientWidth;
-    const index = Math.round(scrollLeft / cardWidth);
-    setActiveIndex(Math.min(Math.max(0, index), services.length - 1));
+    rafIdRef.current = requestAnimationFrame(() => {
+      rafIdRef.current = null;
+      if (!scrollRef.current) return;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+
+      // Calculate approximate active index
+      const cardWidth = clientWidth > 1024 ? clientWidth / 3 : clientWidth > 640 ? clientWidth / 2 : clientWidth;
+      const index = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(Math.max(0, index), services.length - 1));
+    });
   };
 
   useEffect(() => {
@@ -61,6 +67,9 @@ export const ServicesHorizontalScroll: React.FC<ServicesHorizontalScrollProps> =
         el.removeEventListener('wheel', handleWheelEvent);
       }
       window.removeEventListener('resize', checkScroll);
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
     };
   }, [services.length]);
 
@@ -166,4 +175,7 @@ export const ServicesHorizontalScroll: React.FC<ServicesHorizontalScrollProps> =
       </div>
     </div>
   );
-};
+});
+
+ServicesHorizontalScroll.displayName = 'ServicesHorizontalScroll';
+

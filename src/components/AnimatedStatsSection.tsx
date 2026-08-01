@@ -55,11 +55,11 @@ const STATS_DATA: StatMetric[] = [
 const StatCard: React.FC<{
   stat: StatMetric;
   inView: boolean;
-}> = ({ stat, inView }) => {
-  const [currentValue, setCurrentValue] = useState(0);
+}> = React.memo(({ stat, inView }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const startedRef = useRef(false);
+  const valueRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (!inView || startedRef.current) return;
@@ -78,12 +78,16 @@ const StatCard: React.FC<{
         const easeOut = 1 - Math.pow(1 - progress, 3);
         const val = Math.floor(easeOut * stat.endValue);
 
-        setCurrentValue(val);
+        if (valueRef.current) {
+          valueRef.current.textContent = `${val}`;
+        }
 
         if (progress < 1) {
           animFrame = requestAnimationFrame(step);
         } else {
-          setCurrentValue(stat.endValue);
+          if (valueRef.current) {
+            valueRef.current.textContent = `${stat.endValue}`;
+          }
           setIsCompleted(true);
         }
       };
@@ -114,6 +118,7 @@ const StatCard: React.FC<{
         delay: stat.delay / 1000,
         ease: [0.16, 1, 0.3, 1], // Custom smooth ease-out curve
       }}
+      style={{ willChange: 'transform, opacity' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`flex items-center gap-4 p-4 rounded-2xl transition-all duration-250 cursor-default ${
@@ -141,6 +146,7 @@ const StatCard: React.FC<{
           stiffness: 200,
           damping: 15,
         }}
+        style={{ willChange: 'transform, opacity' }}
         className="shrink-0"
       >
         <motion.div
@@ -152,6 +158,7 @@ const StatCard: React.FC<{
             repeat: Infinity,
             ease: 'easeInOut',
           }}
+          style={{ willChange: 'transform' }}
           className="w-12 h-12 rounded-2xl bg-blue-50 text-[#1D63FF] flex items-center justify-center shadow-2xs border border-blue-100/80"
         >
           {stat.icon}
@@ -168,9 +175,10 @@ const StatCard: React.FC<{
             duration: 0.25,
             ease: 'easeOut',
           }}
+          style={{ willChange: 'transform' }}
           className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center"
         >
-          <span>{currentValue}</span>
+          <span ref={valueRef}>0</span>
           <span className="text-[#1D63FF]">{stat.suffix}</span>
         </motion.div>
         <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">
@@ -179,9 +187,11 @@ const StatCard: React.FC<{
       </div>
     </motion.div>
   );
-};
+});
 
-export const AnimatedStatsSection: React.FC = () => {
+StatCard.displayName = 'StatCard';
+
+export const AnimatedStatsSection: React.FC = React.memo(() => {
   const sectionRef = useRef<HTMLDivElement>(null);
   // Trigger ONLY ONCE when entering viewport
   const inView = useInView(sectionRef, { once: true, margin: '-50px' });
@@ -202,4 +212,7 @@ export const AnimatedStatsSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+AnimatedStatsSection.displayName = 'AnimatedStatsSection';
+

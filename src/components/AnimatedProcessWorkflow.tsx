@@ -9,9 +9,9 @@ interface AnimatedProcessWorkflowProps {
   title?: React.ReactNode;
 }
 
-export const AnimatedProcessWorkflow: React.FC<AnimatedProcessWorkflowProps> = ({
+export const AnimatedProcessWorkflow: React.FC<AnimatedProcessWorkflowProps> = React.memo(({
   badge = 'HOW WE WORK',
-  title = 'HUMANS OF SYNCKRAFT',
+  title = 'Our Proven 5-Step Delivery Process',
 }) => {
   const [glowingIndex, setGlowingIndex] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -202,5 +202,8 @@ export const AnimatedProcessWorkflow: React.FC<AnimatedProcessWorkflowProps> = (
       </div>
     </section>
   );
-};
+});
+
+AnimatedProcessWorkflow.displayName = 'AnimatedProcessWorkflow';
+
 

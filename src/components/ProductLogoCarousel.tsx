@@ -98,17 +98,23 @@ const CAROUSEL_PRODUCTS: ProductCarouselItem[] = [
   },
 ];
 
-export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }> = ({
+export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }> = React.memo(({
   onNavigateToProducts,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const hoveredIdRef = useRef<string | null>(null);
+  hoveredIdRef.current = hoveredId;
+
   const [containerWidth, setContainerWidth] = useState<number>(1200);
+  const containerWidthRef = useRef<number>(1200);
 
   // Repeat the 6 products 5 times to ensure seamless infinite looping without gaps
   const itemsList = useRef<ProductCarouselItem[]>(
     Array(5).fill(CAROUSEL_PRODUCTS).flat()
   );
+
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Compact card width (180px) and gap (30px) -> step = 210px
   const cardWidth = 180;
@@ -118,13 +124,14 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
 
   const offsetRef = useRef<number>(0);
   const animFrameRef = useRef<number>(0);
-  const [offset, setOffset] = useState<number>(0);
 
   // Track window/container size
   useEffect(() => {
     const updateDimensions = () => {
       if (containerRef.current) {
-        setContainerWidth(containerRef.current.clientWidth);
+        const w = containerRef.current.clientWidth;
+        setContainerWidth(w);
+        containerWidthRef.current = w;
       }
     };
     updateDimensions();
@@ -132,13 +139,59 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Continuous infinite RAF animation loop (approx 13-15s per full loop at 1.18px/frame)
+  // Continuous infinite RAF animation loop driving direct DOM transforms (0 React re-renders/sec)
   useEffect(() => {
     const speed = 1.18; // ~45% speed increase for dynamic, smooth scrolling
 
+    const updateDOM = () => {
+      const cWidth = containerWidthRef.current;
+      const containerCenter = cWidth / 2;
+      const maxTrackWidth = itemsList.current.length * itemStep;
+      const maxDist = Math.max(cWidth * 0.38, 260);
+
+      itemsList.current.forEach((product, idx) => {
+        const el = itemRefs.current[idx];
+        if (!el) return;
+
+        const rawX = idx * itemStep - offsetRef.current;
+        let currentX = rawX;
+        while (currentX < -cardWidth * 2) {
+          currentX += maxTrackWidth;
+        }
+        while (currentX > cWidth + cardWidth) {
+          currentX -= maxTrackWidth;
+        }
+
+        const itemCenter = currentX + cardWidth / 2;
+        const distFromCenter = Math.abs(itemCenter - containerCenter);
+        const normDist = Math.min(distFromCenter / maxDist, 1);
+
+        const isHovered = hoveredIdRef.current === `${product.id}-${idx}`;
+
+        let scale = 1 - normDist * 0.16;
+        let opacity = 1 - normDist * 0.70;
+        let blur = normDist * 9.5;
+        let translateZ = (1 - normDist) * 25;
+        let zIndex = Math.round((1 - normDist) * 40);
+
+        if (isHovered) {
+          scale = 1.04;
+          opacity = 1;
+          blur = 0;
+          translateZ = 35;
+          zIndex = 50;
+        }
+
+        el.style.transform = `translate3d(${currentX}px, -50%, ${translateZ}px) scale(${scale})`;
+        el.style.opacity = `${opacity}`;
+        el.style.filter = `blur(${blur}px)`;
+        el.style.zIndex = `${zIndex}`;
+      });
+    };
+
     const step = () => {
       offsetRef.current = (offsetRef.current + speed) % setWidth;
-      setOffset(offsetRef.current);
+      updateDOM();
       animFrameRef.current = requestAnimationFrame(step);
     };
 
@@ -189,68 +242,28 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
         {/* Carousel Track */}
         <div className="relative w-full h-full flex items-center">
           {itemsList.current.map((product, idx) => {
-            // Position on screen relative to offset
-            const rawX = idx * itemStep - offset;
-            
-            // Adjust rawX so items wrap around seamlessly within container range
-            const maxTrackWidth = itemsList.current.length * itemStep;
-            let currentX = rawX;
-            while (currentX < -cardWidth * 2) {
-              currentX += maxTrackWidth;
-            }
-            while (currentX > containerWidth + cardWidth) {
-              currentX -= maxTrackWidth;
-            }
-
-            const itemCenter = currentX + cardWidth / 2;
-            const distFromCenter = Math.abs(itemCenter - containerCenter);
-            
-            // Normalize distance: 0 at center, 1 at ~40% of container width
-            const maxDist = Math.max(containerWidth * 0.38, 260);
-            const normDist = Math.min(distFromCenter / maxDist, 1);
-
             const isHovered = hoveredId === `${product.id}-${idx}`;
-
-            // Style calculations based on distance from viewport center:
-            // Center (0): scale 1.0, opacity 100%, blur 0px, translateZ 25px, zIndex 40
-            // Near center (0.4): scale 0.92, opacity 70%, blur 2.5px, translateZ 10px, zIndex 25
-            // Far (1.0): scale 0.84, opacity 30%, blur 9px, translateZ 0px, zIndex 10
-            let scale = 1 - normDist * 0.16;
-            let opacity = 1 - normDist * 0.70;
-            let blur = normDist * 9.5;
-            let translateZ = (1 - normDist) * 25;
-            let zIndex = Math.round((1 - normDist) * 40);
-
-            if (isHovered) {
-              scale = 1.04;
-              opacity = 1;
-              blur = 0;
-              translateZ = 35;
-              zIndex = 50;
-            }
-
-            const isCenterCard = normDist < 0.22;
 
             return (
               <div
                 key={`${product.id}-${idx}`}
+                ref={(el) => {
+                  itemRefs.current[idx] = el;
+                }}
                 onClick={() => handleCardClick(product)}
                 onMouseEnter={() => setHoveredId(`${product.id}-${idx}`)}
                 onMouseLeave={() => setHoveredId(null)}
                 className="absolute top-1/2 left-0 cursor-pointer"
                 style={{
                   width: `${cardWidth}px`,
-                  transform: `translate3d(${currentX}px, -50%, ${translateZ}px) scale(${scale})`,
-                  opacity: opacity,
-                  filter: `blur(${blur}px)`,
-                  zIndex: zIndex,
+                  transform: 'translate3d(0px, -50%, 0px) scale(1)',
                   willChange: 'transform, opacity, filter',
                   transformStyle: 'preserve-3d',
                 }}
               >
                 <div
                   className={`bg-white/95 backdrop-blur-md border rounded-xl p-3.5 flex flex-col justify-between h-[115px] transition-all duration-300 relative group overflow-hidden ${
-                    isCenterCard || isHovered
+                    isHovered
                       ? 'border-blue-400/90 shadow-[0_10px_28px_rgba(29,99,255,0.22)] ring-2 ring-blue-500/15'
                       : 'border-slate-200/80 shadow-sm'
                   }`}
@@ -260,7 +273,7 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
                     className="absolute top-0 inset-x-0 h-1 transition-opacity duration-300"
                     style={{
                       backgroundColor: product.brandColor,
-                      opacity: isCenterCard || isHovered ? 1 : 0.5,
+                      opacity: isHovered ? 1 : 0.5,
                     }}
                   />
 
@@ -276,6 +289,8 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
                         <img
                           src={product.logoUrl}
                           alt={product.name}
+                          decoding="async"
+                          loading="lazy"
                           referrerPolicy="no-referrer"
                           className="w-full h-full object-contain"
                         />
@@ -327,4 +342,7 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
       </div>
     </section>
   );
-};
+});
+
+ProductLogoCarousel.displayName = 'ProductLogoCarousel';
+

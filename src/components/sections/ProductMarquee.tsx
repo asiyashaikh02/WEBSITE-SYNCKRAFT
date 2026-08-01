@@ -137,7 +137,7 @@ const PRODUCTS_LIST: MarqueeProduct[] = [
   },
 ];
 
-export const ProductMarquee: React.FC<ProductMarqueeProps> = ({
+export const ProductMarquee: React.FC<ProductMarqueeProps> = React.memo(({
   onNavigateProducts,
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -156,7 +156,7 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = ({
   ];
 
   useEffect(() => {
-    let animId: number;
+    let animId: number | null = null;
     let lastTime = performance.now();
 
     const step = (time: number) => {
@@ -179,13 +179,22 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = ({
           }
         }
       }
-      animId = requestAnimationFrame(step);
+
+      if (!isPaused && !isDragging) {
+        animId = requestAnimationFrame(step);
+      } else {
+        animId = null;
+      }
     };
 
-    animId = requestAnimationFrame(step);
+    if (!isPaused && !isDragging) {
+      animId = requestAnimationFrame(step);
+    }
 
     return () => {
-      cancelAnimationFrame(animId);
+      if (animId) {
+        cancelAnimationFrame(animId);
+      }
     };
   }, [isPaused, isDragging]);
 
@@ -324,20 +333,14 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = ({
                 style={{
                   boxShadow: '0 2px 6px -1px rgba(0, 0, 0, 0.06)',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = p.brandColor;
-                  e.currentTarget.style.boxShadow = `0 14px 28px -6px ${p.brandColor}35, 0 4px 12px -2px ${p.brandColor}20`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(226, 232, 240, 0.9)';
-                  e.currentTarget.style.boxShadow = '0 2px 6px -1px rgba(0, 0, 0, 0.06)';
-                }}
               >
                 {p.logoUrl ? (
                   <div className="h-16 sm:h-20 px-3 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
                     <img
                       src={p.logoUrl}
                       alt={p.name}
+                      decoding="async"
+                      loading="lazy"
                       referrerPolicy="no-referrer"
                       className="h-14 sm:h-16 w-auto max-w-[280px] object-contain"
                     />
@@ -368,4 +371,7 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = ({
       </div>
     </div>
   );
-};
+});
+
+ProductMarquee.displayName = 'ProductMarquee';
+

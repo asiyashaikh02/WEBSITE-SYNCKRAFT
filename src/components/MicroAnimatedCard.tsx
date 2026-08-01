@@ -18,7 +18,7 @@ interface MicroAnimatedCardProps {
   onClick?: () => void;
 }
 
-export const MicroAnimatedCard: React.FC<MicroAnimatedCardProps> = ({
+export const MicroAnimatedCard: React.FC<MicroAnimatedCardProps> = React.memo(({
   children,
   index = 0,
   className = '',
@@ -46,6 +46,7 @@ export const MicroAnimatedCard: React.FC<MicroAnimatedCardProps> = ({
           delay: index * 0.08,
           ease: [0.16, 1, 0.3, 1],
         }}
+        style={{ willChange: 'transform, opacity' }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={onClick}
@@ -59,7 +60,9 @@ export const MicroAnimatedCard: React.FC<MicroAnimatedCardProps> = ({
       </motion.div>
     </CardAnimationContext.Provider>
   );
-};
+});
+
+MicroAnimatedCard.displayName = 'MicroAnimatedCard';
 
 interface MicroAnimatedIconProps {
   type?: string;
@@ -69,7 +72,7 @@ interface MicroAnimatedIconProps {
   className?: string;
 }
 
-export const MicroAnimatedIcon: React.FC<MicroAnimatedIconProps> = ({
+export const MicroAnimatedIcon: React.FC<MicroAnimatedIconProps> = React.memo(({
   type = 'default',
   children,
   cardHovered: cardHoveredProp,
@@ -320,6 +323,7 @@ export const MicroAnimatedIcon: React.FC<MicroAnimatedIconProps> = ({
         duration: 0.9,
         ease: [0.16, 1, 0.3, 1],
       }}
+      style={{ willChange: 'transform, opacity' }}
       onMouseEnter={handleMouseEnter}
       className={`relative inline-flex items-center justify-center transition-all duration-300 ${
         cardHovered ? 'drop-shadow-[0_0_12px_rgba(29,99,255,0.45)]' : ''
@@ -328,4 +332,7 @@ export const MicroAnimatedIcon: React.FC<MicroAnimatedIconProps> = ({
       {children}
     </motion.div>
   );
-};
+});
+
+MicroAnimatedIcon.displayName = 'MicroAnimatedIcon';
+

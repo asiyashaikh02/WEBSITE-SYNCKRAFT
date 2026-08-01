@@ -14,22 +14,13 @@ const ROTATING_WORDS = [
   'Momentum',
 ];
 
-export const HeroDynamicKeyword: React.FC = () => {
+export const HeroDynamicKeyword: React.FC = React.memo(() => {
   const [wordIndex, setWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState(ROTATING_WORDS[0]);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isCompletedHighlight, setIsCompletedHighlight] = useState(false);
-  const [showCursor, setShowCursor] = useState(true);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Blink cursor
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, 500);
-    return () => clearInterval(cursorInterval);
-  }, []);
 
   useEffect(() => {
     const currentWord = ROTATING_WORDS[wordIndex];
@@ -108,19 +99,22 @@ export const HeroDynamicKeyword: React.FC = () => {
           }}
           transition={{ duration: 0.25, ease: 'easeInOut' }}
           className="inline-block"
+          style={{ willChange: 'transform' }}
         >
           {displayedText}
         </motion.span>
 
-        {/* Blinking Cursor */}
+        {/* Blinking Cursor (100% CSS animated) */}
         <span
-          className={`inline-block w-[3px] h-[0.75em] ml-1 bg-[#1D63FF] align-middle rounded-full transition-opacity duration-150 ${
-            showCursor ? 'opacity-100' : 'opacity-0'
-          }`}
+          className="inline-block w-[3px] h-[0.75em] ml-1 bg-[#1D63FF] align-middle rounded-full animate-pulse"
+          style={{ animationDuration: '800ms' }}
         />
         <span>.</span>
       </span>
     </span>
   );
-};
+});
+
+HeroDynamicKeyword.displayName = 'HeroDynamicKeyword';
+
 

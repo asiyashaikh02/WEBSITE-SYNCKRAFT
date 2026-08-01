@@ -566,8 +566,13 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
 
                 <div className="flex items-center justify-between border-t border-slate-100 pt-4 flex-wrap gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1D63FF] to-blue-700 text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-xs border border-blue-400/20">
-                      {activeTestimonial.name.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase()}
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0052FF] via-[#1D63FF] to-[#3B82F6] text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 border border-blue-400/30">
+                      {(() => {
+                        const words = (activeTestimonial.name || '').trim().split(/\s+/);
+                        return words.length >= 2
+                          ? (words[0][0] + words[words.length - 1][0]).toUpperCase()
+                          : (activeTestimonial.name || '').slice(0, 2).toUpperCase();
+                      })()}
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-slate-900">{activeTestimonial.name}</h4>
@@ -615,8 +620,13 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
                 </p>
 
                 <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
-                  <div className="w-10 h-10 rounded-lg bg-slate-900 text-white font-extrabold text-xs flex items-center justify-center shrink-0 border border-slate-800">
-                    {t.name.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase()}
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#0052FF] via-[#1D63FF] to-[#3B82F6] text-white font-extrabold text-xs flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 border border-blue-400/30">
+                    {(() => {
+                      const words = (t.name || '').trim().split(/\s+/);
+                      return words.length >= 2
+                        ? (words[0][0] + words[words.length - 1][0]).toUpperCase()
+                        : (t.name || '').slice(0, 2).toUpperCase();
+                    })()}
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-900">{t.name}</h4>

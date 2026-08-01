@@ -1,22 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 
-export const BackgroundEffects: React.FC = () => {
+export const BackgroundEffects: React.FC = React.memo(() => {
   // Smooth parallax tracking using requestAnimationFrame lerp directly on DOM nodes
   const targetPos = useRef({ x: 0, y: 0 });
   const currentPos = useRef({ x: 0, y: 0 });
   const blobRef = useRef<HTMLDivElement>(null);
   const waveRef = useRef<HTMLDivElement>(null);
+  const isAnimating = useRef(false);
 
   useEffect(() => {
-    const handlePointerMove = (e: PointerEvent) => {
-      // Normalize mouse coordinates from -1 to 1 relative to window center
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
-      targetPos.current = { x, y };
-    };
-
-    let animationFrameId: number;
+    let animationFrameId: number | null = null;
 
     const updateParallax = () => {
       // Linear interpolation (lerp) for weightless, smooth movement
@@ -33,17 +27,32 @@ export const BackgroundEffects: React.FC = () => {
         if (waveRef.current) {
           waveRef.current.style.transform = `translate3d(${currentPos.current.x * 4}px, ${currentPos.current.y * 4}px, 0)`;
         }
+        animationFrameId = requestAnimationFrame(updateParallax);
+      } else {
+        isAnimating.current = false;
+        animationFrameId = null;
       }
+    };
 
-      animationFrameId = requestAnimationFrame(updateParallax);
+    const handlePointerMove = (e: PointerEvent) => {
+      // Normalize mouse coordinates from -1 to 1 relative to window center
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      targetPos.current = { x, y };
+
+      if (!isAnimating.current) {
+        isAnimating.current = true;
+        animationFrameId = requestAnimationFrame(updateParallax);
+      }
     };
 
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
-    animationFrameId = requestAnimationFrame(updateParallax);
 
     return () => {
       window.removeEventListener('pointermove', handlePointerMove);
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, []);
 
@@ -55,9 +64,10 @@ export const BackgroundEffects: React.FC = () => {
       {/* 2. Floating Animated Aesthetic Gradient Mesh Blobs (Hero & Mid-page Ambient Blurs) */}
       <div
         ref={blobRef}
-        className="absolute inset-0 transition-transform duration-500 ease-out"
+        className="absolute inset-0"
         style={{
           transform: 'translate3d(0px, 0px, 0)',
+          willChange: 'transform',
         }}
       >
         {/* Top Center-Left Sky Blue Glow */}
@@ -73,6 +83,7 @@ export const BackgroundEffects: React.FC = () => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
+          style={{ willChange: 'transform, opacity' }}
           className="absolute -top-[10%] left-[12%] w-[550px] h-[550px] sm:w-[750px] sm:h-[750px] rounded-full bg-gradient-to-tr from-[#00A3E0]/20 via-[#38BDF8]/25 to-blue-400/10 blur-[110px]"
         />
 
@@ -89,6 +100,7 @@ export const BackgroundEffects: React.FC = () => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
+          style={{ willChange: 'transform, opacity' }}
           className="absolute -top-[5%] right-[8%] w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-gradient-to-bl from-[#1D63FF]/20 via-[#60A5FA]/20 to-indigo-500/15 blur-[120px]"
         />
 
@@ -104,6 +116,7 @@ export const BackgroundEffects: React.FC = () => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
+          style={{ willChange: 'transform, opacity' }}
           className="absolute top-[35%] -left-[10%] w-[450px] h-[450px] sm:w-[600px] sm:h-[600px] rounded-full bg-gradient-to-r from-sky-300/15 via-indigo-300/15 to-blue-500/10 blur-[130px]"
         />
 
@@ -119,6 +132,7 @@ export const BackgroundEffects: React.FC = () => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
+          style={{ willChange: 'transform, opacity' }}
           className="absolute top-[50%] -right-[8%] w-[500px] h-[500px] sm:w-[650px] sm:h-[650px] rounded-full bg-gradient-to-l from-[#00A3E0]/20 via-sky-400/15 to-transparent blur-[125px]"
         />
       </div>
@@ -137,9 +151,10 @@ export const BackgroundEffects: React.FC = () => {
       {/* 4. ANIMATED FLOWING WAVE LINES - Minimal, elegant signature wave feature */}
       <div
         ref={waveRef}
-        className="absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-out"
+        className="absolute inset-0 flex items-center justify-center"
         style={{
           transform: 'translate3d(0px, 0px, 0)',
+          willChange: 'transform',
         }}
       >
         <svg
@@ -205,4 +220,7 @@ export const BackgroundEffects: React.FC = () => {
       </div>
     </div>
   );
-};
+});
+
+BackgroundEffects.displayName = 'BackgroundEffects';
+

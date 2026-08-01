@@ -13,7 +13,7 @@ interface SynckraftLogoProps {
 const PRIMARY_LOGO_URL = '/synckraft-logo.svg';
 const SECONDARY_LOGO_URL = '/synckraft-logo.svg';
 
-export const SynckraftLogo: React.FC<SynckraftLogoProps> = ({
+export const SynckraftLogo: React.FC<SynckraftLogoProps> = React.memo(({
   className = '',
   imageClassName = '',
   textClassName = '',
@@ -46,6 +46,7 @@ export const SynckraftLogo: React.FC<SynckraftLogoProps> = ({
         <img
           src={imgSrc}
           alt="Synckraft Logo"
+          decoding="async"
           onError={handleImageError}
           referrerPolicy="no-referrer"
           className={`object-contain transition-transform duration-300 ${sizeClasses[size]} ${imageClassName}`}
@@ -80,4 +81,7 @@ export const SynckraftLogo: React.FC<SynckraftLogoProps> = ({
       )}
     </div>
   );
-};
+});
+
+SynckraftLogo.displayName = 'SynckraftLogo';
+

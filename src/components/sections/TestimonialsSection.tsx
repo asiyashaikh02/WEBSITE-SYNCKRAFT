@@ -130,8 +130,13 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
               className="flex items-center gap-3.5 w-full"
             >
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1D63FF] to-blue-700 text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-md border border-blue-400/30">
-                {item.companyName.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase()}
+              <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0052FF] via-[#1D63FF] to-[#3B82F6] text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 border border-blue-400/30">
+                {(() => {
+                  const words = (item.companyName || '').trim().split(/\s+/);
+                  return words.length >= 2
+                    ? (words[0][0] + words[words.length - 1][0]).toUpperCase()
+                    : (item.companyName || '').slice(0, 2).toUpperCase();
+                })()}
               </div>
               <div>
                 <h4 className="text-sm font-bold text-slate-900 leading-snug">

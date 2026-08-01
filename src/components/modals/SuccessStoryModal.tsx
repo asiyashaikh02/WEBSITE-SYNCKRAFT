@@ -98,18 +98,14 @@ export const SuccessStoryModal: React.FC<SuccessStoryModalProps> = ({
           </p>
 
           <div className="flex items-center gap-4 pt-2">
-            {story.avatar ? (
-              <img
-                src={story.avatar}
-                alt={story.clientName}
-                className="w-12 h-12 rounded-xl object-cover shrink-0 shadow-md border border-slate-200"
-                referrerPolicy="no-referrer"
-              />
-            ) : (
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1D63FF] to-blue-700 text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-md border border-blue-400/30">
-                {story.company.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase()}
-              </div>
-            )}
+            <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0052FF] via-[#1D63FF] to-[#3B82F6] text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 border border-blue-400/30">
+              {(() => {
+                const words = (story.company || '').trim().split(/\s+/);
+                return words.length >= 2
+                  ? (words[0][0] + words[words.length - 1][0]).toUpperCase()
+                  : (story.company || '').slice(0, 2).toUpperCase();
+              })()}
+            </div>
             <div>
               <h4 className="text-sm font-extrabold text-slate-900">
                 {story.clientName}

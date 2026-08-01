@@ -8,11 +8,12 @@ interface FadeUpProps extends MotionProps {
   className?: string;
 }
 
-export const FadeUp: React.FC<FadeUpProps> = ({
+export const FadeUp: React.FC<FadeUpProps> = React.memo(({
   children,
   delay = 0,
   duration = 0.6,
   className = '',
+  style,
   ...rest
 }) => (
   <motion.div
@@ -21,17 +22,21 @@ export const FadeUp: React.FC<FadeUpProps> = ({
     viewport={{ once: true, margin: '-40px' }}
     transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
     className={className}
+    style={{ willChange: 'transform, opacity', ...style }}
     {...rest}
   >
     {children}
   </motion.div>
-);
+));
 
-export const ScaleIn: React.FC<FadeUpProps> = ({
+FadeUp.displayName = 'FadeUp';
+
+export const ScaleIn: React.FC<FadeUpProps> = React.memo(({
   children,
   delay = 0,
   duration = 0.5,
   className = '',
+  style,
   ...rest
 }) => (
   <motion.div
@@ -40,21 +45,29 @@ export const ScaleIn: React.FC<FadeUpProps> = ({
     viewport={{ once: true, margin: '-40px' }}
     transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
     className={className}
+    style={{ willChange: 'transform, opacity', ...style }}
     {...rest}
   >
     {children}
   </motion.div>
-);
+));
 
-export const HoverLift: React.FC<{ children: React.ReactNode; className?: string }> = ({
+ScaleIn.displayName = 'ScaleIn';
+
+export const HoverLift: React.FC<{ children: React.ReactNode; className?: string; style?: React.CSSProperties }> = React.memo(({
   children,
   className = '',
+  style,
 }) => (
   <motion.div
     whileHover={{ y: -4, scale: 1.01 }}
     transition={{ duration: 0.2, ease: 'easeOut' }}
     className={className}
+    style={{ willChange: 'transform', ...style }}
   >
     {children}
   </motion.div>
-);
+));
+
+HoverLift.displayName = 'HoverLift';
+

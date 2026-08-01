@@ -56,13 +56,13 @@ const TIMELINE_DATA: TimelineItem[] = [
   },
 ];
 
-export const WhyChooseTimelineSection: React.FC = () => {
+export const WhyChooseTimelineSection: React.FC = React.memo(() => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const sectionRef = useRef<HTMLDivElement>(null);
+  const flowDotRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: '-60px' });
   const startTimeRef = useRef<number | null>(null);
 
@@ -77,11 +77,16 @@ export const WhyChooseTimelineSection: React.FC = () => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
       const elapsed = (timestamp - startTimeRef.current) % cycleDuration;
       const p = elapsed / cycleDuration;
-      setProgress(p);
+
+      if (flowDotRef.current) {
+        flowDotRef.current.style.top = `${p * 100}%`;
+        const op = p < 0.05 ? p / 0.05 : p > 0.92 ? (1 - p) / 0.08 : 1;
+        flowDotRef.current.style.opacity = `${op}`;
+      }
 
       // Determine active node index based on progress (5 items mapped across line)
       const calculatedIndex = Math.min(4, Math.max(0, Math.round(p * 4)));
-      setActiveIndex(calculatedIndex);
+      setActiveIndex((prev) => (prev !== calculatedIndex ? calculatedIndex : prev));
 
       animFrameId = requestAnimationFrame(animate);
     };
@@ -147,16 +152,13 @@ export const WhyChooseTimelineSection: React.FC = () => {
 
           {/* Tiny Glowing Blue Data Flow Dot (6-8px) */}
           <div
+            ref={flowDotRef}
             className="absolute -left-[3px] w-2 h-2 rounded-full bg-[#1D63FF] shadow-[0_0_8px_#1D63FF] transition-opacity duration-300"
             style={{
-              top: `${progress * 100}%`,
-              opacity:
-                progress < 0.05
-                  ? progress / 0.05
-                  : progress > 0.92
-                  ? (1 - progress) / 0.08
-                  : 1,
+              top: '0%',
+              opacity: 1,
               transform: 'translateY(-50%)',
+              willChange: 'top, opacity',
             }}
           >
             {/* Low opacity outer glow */}
@@ -301,4 +303,7 @@ export const WhyChooseTimelineSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+WhyChooseTimelineSection.displayName = 'WhyChooseTimelineSection';
+
