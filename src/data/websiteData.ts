@@ -666,7 +666,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
   {
     id: 'syncfyre',
     name: 'SyncFyre',
-    logoUrl: '/syncfyre-logoo.png',
+    logoUrl: '/syncfyre-logo.png',
     tagline: 'Gym Management System',
     description:
       'All-in-one Gym Management Software for memberships, attendance, biometric access, billing, trainers, workout plans, and WhatsApp reminders.',

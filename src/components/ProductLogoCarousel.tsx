@@ -92,7 +92,7 @@ const CAROUSEL_PRODUCTS: ProductCarouselItem[] = [
     brandColor: '#E11D48',
     accentBg: '#FFF1F2',
     logoLetter: 'S',
-    logoUrl: '/syncfyre-logoo.png',
+    logoUrl: '/syncfyre-logo.png',
     icon: <Dumbbell className="w-5 h-5 text-[#E11D48]" />,
   },
 ];

@@ -110,14 +110,14 @@ export const updatePageSeo = (pageId: PageId) => {
   updateMetaTag('property', 'og:description', config.description);
   updateMetaTag('property', 'og:url', canonicalUrl);
   updateMetaTag('property', 'og:type', 'website');
-  updateMetaTag('property', 'og:image', 'https://synckraft.in/synckraft-logo.svg');
+  updateMetaTag('property', 'og:image', 'https://synckraft.in/Synckraft-logo.png');
 
   // 5. Twitter Card
   updateMetaTag('property', 'twitter:card', 'summary_large_image');
   updateMetaTag('property', 'twitter:url', canonicalUrl);
   updateMetaTag('property', 'twitter:title', config.title);
   updateMetaTag('property', 'twitter:description', config.description);
-  updateMetaTag('property', 'twitter:image', 'https://synckraft.in/synckraft-logo.svg');
+  updateMetaTag('property', 'twitter:image', 'https://synckraft.in/Synckraft-logo.png');
 
   // 6. JSON-LD Structured Data
   updateJsonLd(pageId);
@@ -145,14 +145,14 @@ export const updateBlogPostSeo = (post: BlogPost) => {
   updateMetaTag('property', 'og:description', post.excerpt);
   updateMetaTag('property', 'og:url', canonicalUrl);
   updateMetaTag('property', 'og:type', 'article');
-  updateMetaTag('property', 'og:image', post.coverImage || 'https://synckraft.in/synckraft-logo.svg');
+  updateMetaTag('property', 'og:image', post.coverImage || 'https://synckraft.in/Synckraft-logo.png');
 
   // Twitter
   updateMetaTag('property', 'twitter:card', 'summary_large_image');
   updateMetaTag('property', 'twitter:url', canonicalUrl);
   updateMetaTag('property', 'twitter:title', title);
   updateMetaTag('property', 'twitter:description', post.excerpt);
-  updateMetaTag('property', 'twitter:image', post.coverImage || 'https://synckraft.in/synckraft-logo.svg');
+  updateMetaTag('property', 'twitter:image', post.coverImage || 'https://synckraft.in/Synckraft-logo.png');
 
   // JSON-LD dynamic injection: Article/BlogPosting
   const schemas = [
@@ -173,7 +173,7 @@ export const updateBlogPostSeo = (post: BlogPost) => {
         'name': 'Synckraft Technologies Private Limited',
         'logo': {
           '@type': 'ImageObject',
-          'url': 'https://synckraft.in/synckraft-logo.svg'
+          'url': 'https://synckraft.in/Synckraft-logo.png'
         }
       },
       'mainEntityOfPage': {
@@ -216,14 +216,14 @@ export const updateJobPostingSeo = (job: JobListing) => {
   updateMetaTag('property', 'og:description', desc);
   updateMetaTag('property', 'og:url', canonicalUrl);
   updateMetaTag('property', 'og:type', 'website');
-  updateMetaTag('property', 'og:image', 'https://synckraft.in/synckraft-logo.svg');
+  updateMetaTag('property', 'og:image', 'https://synckraft.in/Synckraft-logo.png');
 
   // Twitter
   updateMetaTag('property', 'twitter:card', 'summary_large_image');
   updateMetaTag('property', 'twitter:url', canonicalUrl);
   updateMetaTag('property', 'twitter:title', title);
   updateMetaTag('property', 'twitter:description', desc);
-  updateMetaTag('property', 'twitter:image', 'https://synckraft.in/synckraft-logo.svg');
+  updateMetaTag('property', 'twitter:image', 'https://synckraft.in/Synckraft-logo.png');
 
   // JSON-LD dynamic injection: JobPosting
   const schemas = [
@@ -239,7 +239,7 @@ export const updateJobPostingSeo = (job: JobListing) => {
         '@type': 'Organization',
         'name': 'Synckraft Technologies Private Limited',
         'sameAs': 'https://synckraft.in',
-        'logo': 'https://synckraft.in/synckraft-logo.svg'
+        'logo': 'https://synckraft.in/Synckraft-logo.png'
       },
       'jobLocation': {
         '@type': 'Place',
@@ -283,7 +283,7 @@ const updateJsonLd = (pageId: PageId) => {
       '@id': 'https://synckraft.in/#organization',
       'name': 'Synckraft Technologies Private Limited',
       'url': 'https://synckraft.in',
-      'logo': 'https://synckraft.in/synckraft-logo.svg',
+      'logo': 'https://synckraft.in/Synckraft-logo.png',
       'sameAs': [
         'https://www.linkedin.com/company/synckraft-technologies-private-limited/',
         'https://www.facebook.com/SynckraftTechnologies/',
@@ -313,7 +313,7 @@ const updateJsonLd = (pageId: PageId) => {
       '@type': 'LocalBusiness',
       '@id': 'https://synckraft.in/#localbusiness',
       'name': 'Synckraft Technologies',
-      'image': 'https://synckraft.in/synckraft-logo.svg',
+      'image': 'https://synckraft.in/Synckraft-logo.png',
       'telephone': '+91-98677-99655',
       'email': 'grow@synckraft.in',
       'address': {

@@ -75,7 +75,7 @@ const PRODUCTS_LIST: MarqueeProduct[] = [
     name: 'SyncFyre',
     website: SYNCFYRE_WEBSITE_URL,
     brandColor: '#E11D48',
-    logoUrl: '/syncfyre-logoo.png',
+    logoUrl: '/syncfyre-logo.png',
     icon: <Dumbbell className="w-7 h-7" />,
   },
   {

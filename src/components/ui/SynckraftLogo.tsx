@@ -12,7 +12,7 @@ interface SynckraftLogoProps {
 
 // Local primary logo link
 const PRIMARY_LOGO_URL = '/Synckraft-logo.png';
-const SECONDARY_LOGO_URL = '/Synckraft-logo.png';
+const SECONDARY_LOGO_URL = PRIMARY_LOGO_URL;
 
 export const SynckraftLogo: React.FC<SynckraftLogoProps> = React.memo(({
   className = '',
