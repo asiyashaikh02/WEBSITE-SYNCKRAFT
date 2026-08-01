@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PageId } from '../types';
+import { trackNewsletterSignup } from '../utils/analytics/events';
 import {
   Linkedin,
   Facebook,
@@ -22,9 +23,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
+      try {
+        // Trigger analytics
+        trackNewsletterSignup(email);
+
+        // Notify backend database
+        await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email.trim().toLowerCase() }),
+        });
+      } catch (err) {
+        console.error(err);
+      }
+
       setSubscribed(true);
       setTimeout(() => setSubscribed(false), 4000);
       setEmail('');

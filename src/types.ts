@@ -12,7 +12,8 @@ export type PageId =
   | '404'
   | 'thank-you'
   | 'blog'
-  | 'careers';
+  | 'careers'
+  | 'admin';
 
 export interface BlogAuthor {
   name: string;

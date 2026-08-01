@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { PageId, JobListing } from '../types';
 import { useLeadModal } from '../context/LeadModalContext';
+import { updateJobPostingSeo, updatePageSeo } from '../utils/seo';
 import {
   CAREER_DEPARTMENTS,
   LIFE_AT_SYNCKRAFT_HIGHLIGHTS,
@@ -49,6 +50,14 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const [activeJobForDetail, setActiveJobForDetail] = useState<JobListing | null>(null);
+
+  useEffect(() => {
+    if (activeJobForDetail) {
+      updateJobPostingSeo(activeJobForDetail);
+    } else {
+      updatePageSeo('careers');
+    }
+  }, [activeJobForDetail]);
 
   // Auto-rotating testimonials state
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);

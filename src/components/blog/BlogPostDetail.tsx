@@ -186,7 +186,7 @@ export const BlogPostDetail: React.FC<BlogPostDetailProps> = ({
               <a
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#1D63FF] hover:border-blue-300 transition-all cursor-pointer"
                 title="Share on LinkedIn"
               >
@@ -195,7 +195,7 @@ export const BlogPostDetail: React.FC<BlogPostDetailProps> = ({
               <a
                 href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(post.title)}`}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#1D63FF] hover:border-blue-300 transition-all cursor-pointer"
                 title="Share on Twitter"
               >
@@ -204,7 +204,7 @@ export const BlogPostDetail: React.FC<BlogPostDetailProps> = ({
               <a
                 href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + ' ' + window.location.href)}`}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#1D63FF] hover:border-blue-300 transition-all cursor-pointer"
                 title="Share on WhatsApp"
               >

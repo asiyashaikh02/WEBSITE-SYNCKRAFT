@@ -305,8 +305,8 @@ export const SUCCESS_STORIES_DATA: SuccessStory[] = [
     id: 'story-7',
     company: 'Synckraft Technologies',
     industry: 'Software Engineering & IT',
-    clientName: 'Talal Mohammad Adeel',
-    designation: 'Founder & CEO',
+    clientName: 'Shaan Solanki',
+    designation: 'Principal Architect',
     avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&auto=format&fit=crop&q=80',
     rating: 5,
     review:
@@ -476,8 +476,8 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
   },
   {
     id: 'test-7',
-    clientName: 'Talal Mohammad Adeel',
-    clientRole: 'Founder & CEO',
+    clientName: 'Shaan Solanki',
+    clientRole: 'Principal Architect',
     companyName: 'Synckraft Technologies',
     review:
       'Our internal CRM and business operations platform centralized project tracking, invoicing, and team handoffs, keeping all engineering deliverables on schedule.',
@@ -1030,24 +1030,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
   },
 ];
 
-export const LEADERSHIP_MEMBERS: TeamMember[] = [
-  {
-    id: 'talal-adeel',
-    name: 'Talal Mohammad Adeel',
-    role: 'Founder & CEO',
-    description: 'Building scalable software systems that empower businesses through automation, AI and digital transformation.',
-    image: '/team/talal-adeel.jpg',
-    linkedIn: 'https://linkedin.com/in/talal-adeel',
-  },
-  {
-    id: 'asiya-shaikh',
-    name: 'Asiya Shaikh',
-    role: 'Co-Founder & COO',
-    description: 'Driving operations, execution and customer success while ensuring every project is delivered with excellence.',
-    image: '/team/asiya-shaikh.jpg',
-    linkedIn: 'https://linkedin.com/in/asiya-shaikh',
-  },
-];
+
 
 export const ENGINEERING_MEMBERS: TeamMember[] = [
   {
@@ -1147,18 +1130,9 @@ export const SALES_MEMBERS: TeamMember[] = [
     image: '/team/shraddha-murai.jpg',
     linkedIn: 'https://linkedin.com',
   },
-  {
-    id: 'tanu-ingale',
-    name: 'Tanu Ingale',
-    role: 'Sales Associate',
-    description: 'Helping convert qualified leads into long-term customers through meaningful conversations.',
-    image: '/team/tanu-ingale.jpg',
-    linkedIn: 'https://linkedin.com',
-  },
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
-  ...LEADERSHIP_MEMBERS,
   ...ENGINEERING_MEMBERS,
   ...MARKETING_MEMBERS,
   ...HR_MEMBERS,

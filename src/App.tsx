@@ -26,8 +26,12 @@ import { RefundPage } from './pages/RefundPage';
 import { DisclaimerPage } from './pages/DisclaimerPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ThankYouPage } from './pages/ThankYouPage';
+import { AdminPage } from './pages/AdminPage';
 
 import { motion, AnimatePresence } from 'motion/react';
+import { updatePageSeo } from './utils/seo';
+import { analytics } from './utils/analytics/analytics';
+import { trackPageView } from './utils/analytics/events';
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -35,6 +39,29 @@ function AppContent() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   const { openLeadModal, setCurrentPageName } = useLeadModal();
+
+  // Load settings configurations and configure analytics engine
+  useEffect(() => {
+    const initAnalytics = async () => {
+      try {
+        const res = await fetch('/api/admin/settings');
+        const json = await res.json();
+        if (json.success && json.data) {
+          analytics.configure({
+            gtmId: json.data.gtmId,
+            ga4Id: json.data.googleAnalyticsId || json.data.ga4Id,
+            metaPixelId: json.data.metaPixelId,
+            linkedinInsightId: json.data.linkedinInsightId,
+            clarityProjectId: json.data.clarityProjectId,
+            debugMode: process.env.NODE_ENV !== 'production',
+          });
+        }
+      } catch (err) {
+        console.error('Failed to configure analytics', err);
+      }
+    };
+    initAnalytics();
+  }, []);
 
   // Sync hash routing & page name
   useEffect(() => {
@@ -79,6 +106,7 @@ function AppContent() {
       contact: 'Contact Us',
       blog: 'Blog & Insights',
       careers: 'Careers',
+      admin: 'Admin Panel',
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
       refund: 'Refund Policy',
@@ -89,6 +117,11 @@ function AppContent() {
     if (pageNameMap[currentPage]) {
       setCurrentPageName(pageNameMap[currentPage]);
     }
+    // Dynamically update page SEO and JSON-LD Structured Data
+    updatePageSeo(currentPage);
+
+    // Dynamic Analytics PageView Tracking
+    trackPageView(window.location.hash || '#home', document.title);
   }, [currentPage, setCurrentPageName]);
 
   const handleNavigate = (page: PageId) => {
@@ -201,6 +234,10 @@ function AppContent() {
     'blog',
     'careers',
   ].includes(currentPage);
+
+  if (currentPage === 'admin') {
+    return <AdminPage onNavigate={handleNavigate} />;
+  }
 
   return (
     <div className="min-h-screen font-sans bg-transparent text-slate-900 selection:bg-blue-100 selection:text-blue-700 relative overflow-x-hidden flex flex-col justify-between">

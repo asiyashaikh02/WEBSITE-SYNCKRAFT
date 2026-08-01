@@ -1,0 +1,19 @@
+{
+  "name": "Synckraft Technologies",
+  "short_name": "Synckraft",
+  "description": "Enterprise Software, CRM Systems & AI Automation",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0052FF",
+  "orientation": "any",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/synckraft-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

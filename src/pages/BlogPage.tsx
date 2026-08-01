@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { PageId, BlogPost } from '../types';
 import { BLOG_POSTS, BLOG_CATEGORIES } from '../data/blogData';
 import { BlogSearchAndFilter } from '../components/blog/BlogSearchAndFilter';
 import { BlogCard } from '../components/blog/BlogCard';
 import { BlogPostDetail } from '../components/blog/BlogPostDetail';
 import { BookOpen, Sparkles, Rss, ArrowRight } from 'lucide-react';
+import { updateBlogPostSeo, updatePageSeo } from '../utils/seo';
 
 interface BlogPageProps {
   onNavigate: (page: PageId) => void;
@@ -16,6 +17,15 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   onOpenBookModal,
 }) => {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+
+  useEffect(() => {
+    if (selectedPost) {
+      updateBlogPostSeo(selectedPost);
+    } else {
+      updatePageSeo('blog');
+    }
+  }, [selectedPost]);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedSubCategory, setSelectedSubCategory] = useState('');

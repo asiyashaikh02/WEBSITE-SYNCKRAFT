@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PageId, ContactFormData } from '../types';
+import { trackContactFormSubmitted } from '../utils/analytics/events';
 import { FAQS_DATA, OFFICE_LOCATIONS } from '../data/websiteData';
 import { OfficeLocationCard } from '../components/cards/OfficeLocationCard';
 import { FaqAccordion } from '../components/ui/FaqAccordion';
@@ -39,9 +40,31 @@ export const ContactPage: React.FC<ContactPageProps> = ({
   const [openFaq, setOpenFaq] = useState<string | null>('faq-1');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.agreeToPrivacy) {
+      try {
+        // Dispatch analytics
+        trackContactFormSubmitted(formData.service, formData.companyName);
+
+        // Notify backend notifications endpoint
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            company: formData.companyName,
+            phone: formData.phoneNumber,
+            service: formData.service,
+            message: formData.projectDetails,
+            source: 'Contact Page Form'
+          })
+        });
+      } catch (err) {
+        console.error(err);
+      }
+
       setSubmitted(true);
       setTimeout(() => {
         if (onSuccessRedirect) onSuccessRedirect();

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
+    "build:frontend": "vite build",
+    "build:server": "esbuild server/index.ts --bundle --platform=node --target=node20 --outfile=server.js",
+    "build": "npm run build:frontend && npm run build:server",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"

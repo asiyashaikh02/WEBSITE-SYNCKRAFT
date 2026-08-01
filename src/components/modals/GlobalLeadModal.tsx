@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal } from '../ui/Modal';
 import { PrimaryButton } from '../ui/Button';
 import { useLeadModal } from '../../context/LeadModalContext';
+import { trackBookConsultation } from '../../utils/analytics/events';
 import {
   BusinessFormData,
   CareersFormData,
@@ -107,11 +108,34 @@ export const GlobalLeadModal: React.FC = () => {
   }, [modalOptions.defaultProduct]);
 
   // Handle Business Submit
-  const handleBusinessSubmit = (e: React.FormEvent) => {
+  const handleBusinessSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formattedMsg = formatBusinessEnquiryWhatsApp(businessData, modalOptions);
     setSubmittedMessage(formattedMsg);
     setSubmitted(true);
+
+    try {
+      // Dispatch analytics event
+      trackBookConsultation(businessData.timeline, businessData.budget);
+
+      // Trigger backend alert system
+      await fetch('/api/book-consultation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: businessData.fullName,
+          company: businessData.companyName,
+          email: businessData.email,
+          phone: businessData.mobile,
+          preferredDate: businessData.timeline,
+          preferredTime: 'Anytime',
+          businessType: businessData.industry,
+          message: `${businessData.message} | Budget: ${businessData.budget} | Timeline: ${businessData.timeline}`
+        })
+      });
+    } catch (err) {
+      console.error(err);
+    }
 
     // Auto redirect to WhatsApp after 1.2s
     setTimeout(() => {
@@ -120,11 +144,18 @@ export const GlobalLeadModal: React.FC = () => {
   };
 
   // Handle Careers Submit
-  const handleCareersSubmit = (e: React.FormEvent) => {
+  const handleCareersSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formattedMsg = formatCareersWhatsApp(careersData, modalOptions);
     setSubmittedMessage(formattedMsg);
     setSubmitted(true);
+
+    try {
+      // Trigger analytics
+      trackBookConsultation('Careers Application', careersData.position || 'Any');
+    } catch (err) {
+      console.error(err);
+    }
 
     setTimeout(() => {
       openWhatsAppLink(formattedMsg);
@@ -132,11 +163,18 @@ export const GlobalLeadModal: React.FC = () => {
   };
 
   // Handle Demo Submit
-  const handleDemoSubmit = (e: React.FormEvent) => {
+  const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formattedMsg = formatDemoWhatsApp(demoData, modalOptions);
     setSubmittedMessage(formattedMsg);
     setSubmitted(true);
+
+    try {
+      // Trigger analytics
+      trackBookConsultation('Demo Request', demoData.interestedProduct);
+    } catch (err) {
+      console.error(err);
+    }
 
     setTimeout(() => {
       openWhatsAppLink(formattedMsg);

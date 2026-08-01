@@ -6,7 +6,7 @@ interface TeamMemberCardProps {
   variant?: 'large' | 'standard';
 }
 
-const DEFAULT_AVATAR_PATH = '/team/default-avatar.webp';
+const DEFAULT_AVATAR_PATH = '/team/default-avatar.svg';
 
 export const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
   member,
