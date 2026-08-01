@@ -35,7 +35,7 @@ const CAROUSEL_PRODUCTS: ProductCarouselItem[] = [
     brandColor: '#2563EB',
     accentBg: '#EFF6FF',
     logoLetter: 'U',
-    logoUrl: '/unstopr-logo.svg',
+    logoUrl: '/unstopr-logo.png',
     icon: <Sparkles className="w-5 h-5 text-[#2563EB]" />,
   },
   {
@@ -47,7 +47,7 @@ const CAROUSEL_PRODUCTS: ProductCarouselItem[] = [
     brandColor: '#10B981',
     accentBg: '#ECFDF5',
     logoLetter: 'S',
-    logoUrl: '/solveitindia-logo.svg',
+    logoUrl: '/solveitindia-logo.png',
     icon: <ShieldCheck className="w-5 h-5 text-[#10B981]" />,
   },
   {
@@ -59,7 +59,7 @@ const CAROUSEL_PRODUCTS: ProductCarouselItem[] = [
     brandColor: '#F97316',
     accentBg: '#FFF7ED',
     logoLetter: 'O',
-    logoUrl: '/ordrji-logo.svg',
+    logoUrl: '/ordrji-logo.png',
     icon: <Utensils className="w-5 h-5 text-[#F97316]" />,
   },
   {
@@ -71,7 +71,7 @@ const CAROUSEL_PRODUCTS: ProductCarouselItem[] = [
     brandColor: '#EAB308',
     accentBg: '#FEFCE8',
     logoLetter: 'S',
-    logoUrl: '/solaroft-logo.svg',
+    logoUrl: '/solaroft-logo.png',
     icon: <Boxes className="w-5 h-5 text-[#EAB308]" />,
   },
   {
@@ -82,7 +82,7 @@ const CAROUSEL_PRODUCTS: ProductCarouselItem[] = [
     brandColor: '#14B8A6',
     accentBg: '#CCFBF1',
     logoLetter: 'R',
-    logoUrl: '/runtilldone-logo.svg',
+    logoUrl: '/runtilldone-logo.png',
     icon: <Zap className="w-5 h-5 text-[#14B8A6]" />,
   },
   {
@@ -93,7 +93,7 @@ const CAROUSEL_PRODUCTS: ProductCarouselItem[] = [
     brandColor: '#E11D48',
     accentBg: '#FFF1F2',
     logoLetter: 'S',
-    logoUrl: '/syncfyre-logo.svg',
+    logoUrl: '/syncfyre-logoo.png',
     icon: <Dumbbell className="w-5 h-5 text-[#E11D48]" />,
   },
 ];

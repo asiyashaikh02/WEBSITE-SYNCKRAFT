@@ -491,7 +491,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
   {
     id: 'unstopr',
     name: 'Unstopr',
-    logoUrl: '/unstopr-logo.svg',
+    logoUrl: '/unstopr-logo.png',
     tagline: 'AI Voice Agents & Sales Automation',
     description:
       'AI Voice Agents, WhatsApp Automation, CRM, Lead Management, and Sales Automation built to scale revenue.',
@@ -526,7 +526,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
   {
     id: 'runtilldone',
     name: 'RunTillDone',
-    logoUrl: '/runtilldone-logo.svg',
+    logoUrl: '/runtilldone-logo.png',
     tagline: 'Real Estate & Builder Operating System',
     description:
       'Real Estate CRM, Builder & Broker management, automated sales pipelines, and targeted marketing campaigns.',
@@ -561,7 +561,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
   {
     id: 'ordrji',
     name: 'Ordrji',
-    logoUrl: '/ordrji-logo.svg',
+    logoUrl: '/ordrji-logo.png',
     tagline: 'Restaurant POS & Kitchen ERP Suite',
     description:
       'End-to-end cloud POS, instant billing, inventory depletion, Kitchen Display System (KDS) & multi-outlet ERP.',
@@ -596,7 +596,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
   {
     id: 'solaroft',
     name: 'Solaroft',
-    logoUrl: '/solaroft-logo.svg',
+    logoUrl: '/solaroft-logo.png',
     tagline: 'Solar ERP & Field Maintenance OS',
     description:
       'Solar operations ERP for installation tracking, AMC maintenance, employee GPS tracking, and commissions.',
@@ -631,7 +631,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
   {
     id: 'solveit-india',
     name: 'SolveIt India',
-    logoUrl: '/solveitindia-logo.svg',
+    logoUrl: '/solveitindia-logo.png',
     tagline: 'CA & Legal Practice OS',
     description:
       'All-in-one software suite for Chartered Accountants, Lawyers, Tax Consultants & Compliance Professionals.',
@@ -666,7 +666,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
   {
     id: 'syncfyre',
     name: 'SyncFyre',
-    logoUrl: '/syncfyre-logo.svg',
+    logoUrl: '/syncfyre-logoo.png',
     tagline: 'Gym Management System',
     description:
       'All-in-one Gym Management Software for memberships, attendance, biometric access, billing, trainers, workout plans, and WhatsApp reminders.',
@@ -1038,7 +1038,7 @@ export const ENGINEERING_MEMBERS: TeamMember[] = [
     name: 'Shaan Solanki',
     role: 'Team Lead',
     description: 'Leading development teams and delivering intelligent automation solutions.',
-    image: '/team/shaan-solanki.jpg',
+    image: '/team/shaan.jpeg',
     linkedIn: 'https://linkedin.com',
   },
   {
@@ -1046,7 +1046,7 @@ export const ENGINEERING_MEMBERS: TeamMember[] = [
     name: 'Chinmey Dipke',
     role: 'AI Automation Specialist',
     description: 'Crafting intelligent products with purpose through AI and workflow automation.',
-    image: '/team/chinmey-dipke.jpg',
+    image: '/team/chinmey.jpeg',
     linkedIn: 'https://linkedin.com',
   },
   {
@@ -1054,7 +1054,7 @@ export const ENGINEERING_MEMBERS: TeamMember[] = [
     name: 'Aryan Pande',
     role: 'Full Stack Developer',
     description: 'Building innovative, scalable web applications with clean code and exceptional user experiences.',
-    image: '/team/aryan-pande.jpg',
+    image: "/team/aryan'.jpeg",
     linkedIn: 'https://linkedin.com',
   },
   {
@@ -1062,7 +1062,7 @@ export const ENGINEERING_MEMBERS: TeamMember[] = [
     name: 'Kalashsingh Solanke',
     role: 'Software Developer',
     description: 'Turning innovative ideas into reliable software solutions.',
-    image: '/team/kalashsingh-solanke.jpg',
+    image: '/team/kalash.jpeg',
     linkedIn: 'https://linkedin.com',
   },
   {
@@ -1070,7 +1070,7 @@ export const ENGINEERING_MEMBERS: TeamMember[] = [
     name: 'Astha Jaiswal',
     role: 'Full Stack Developer',
     description: 'Designing, developing and continuously improving modern web applications.',
-    image: '/team/astha-jaiswal.jpg',
+    image: '/team/astha.jpeg',
     linkedIn: 'https://linkedin.com',
   },
   {
@@ -1078,7 +1078,7 @@ export const ENGINEERING_MEMBERS: TeamMember[] = [
     name: 'Vansh G. Bhagat',
     role: 'Full Stack Developer & QA Tester',
     description: 'Building reliable software features and ensuring quality through comprehensive testing.',
-    image: '/team/vansh-bhagat.jpg',
+    image: '/team/vansh.jpeg',
     linkedIn: 'https://linkedin.com',
   },
   {
@@ -1086,7 +1086,7 @@ export const ENGINEERING_MEMBERS: TeamMember[] = [
     name: 'Pranav Maske',
     role: 'Full Stack Developer',
     description: 'Learning, building and delivering high-quality software solutions every day.',
-    image: '/team/pranav-maske.jpg',
+    image: '/team/pranav.jpeg',
     linkedIn: 'https://linkedin.com',
   },
   {
@@ -1094,7 +1094,7 @@ export const ENGINEERING_MEMBERS: TeamMember[] = [
     name: 'Shraddha Koturwar',
     role: 'Full Stack Developer',
     description: 'Crafting user-centric digital products from design through deployment.',
-    image: '/team/shraddha-koturwar.jpg',
+    image: '/team/shraddha.jpeg',
     linkedIn: 'https://linkedin.com',
   },
 ];
@@ -1105,7 +1105,7 @@ export const MARKETING_MEMBERS: TeamMember[] = [
     name: 'Leher Yadav',
     role: 'Marketing Executive',
     description: 'Building brand visibility through creative campaigns, content and digital marketing.',
-    image: '/team/leher-yadav.jpg',
+    image: '/team/leher.jpeg',
     linkedIn: 'https://linkedin.com',
   },
 ];
@@ -1116,7 +1116,7 @@ export const HR_MEMBERS: TeamMember[] = [
     name: 'Sharayu Yeotikar',
     role: 'HR Executive',
     description: 'I connect great talent with the right opportunities.',
-    image: '/team/sharayu-yeotikar.jpg',
+    image: '/team/sharayu.jpeg',
     linkedIn: 'https://linkedin.com',
   },
 ];
@@ -1127,7 +1127,7 @@ export const SALES_MEMBERS: TeamMember[] = [
     name: 'Shraddha Murai',
     role: 'Sales Team Lead',
     description: 'Leading the sales team to build client relationships and drive sustainable business growth.',
-    image: '/team/shraddha-murai.jpg',
+    image: '/team/shraddha 2.jpeg',
     linkedIn: 'https://linkedin.com',
   },
 ];
@@ -1184,16 +1184,8 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     title: 'India Headquarters',
     badge: 'Main Office',
     companyName: 'Synckraft Technologies Pvt. Ltd.',
-    address: 'Amravati, Maharashtra 444601',
+    address: 'Tapadiya City Centre, Amravati, Maharashtra 444601',
     country: 'India',
-    mapUrl: 'https://share.google/3kEA43BAadSyiyNvB',
-  },
-  {
-    city: 'Dubai',
-    title: 'Global Office',
-    badge: 'International',
-    address: 'Dubai Internet City, Building 8',
-    country: 'Dubai, United Arab Emirates',
     mapUrl: 'https://share.google/3kEA43BAadSyiyNvB',
   },
 ];

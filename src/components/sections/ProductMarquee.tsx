@@ -34,7 +34,7 @@ const PRODUCTS_LIST: MarqueeProduct[] = [
     name: 'Unstopr',
     website: 'https://unstopr.com',
     brandColor: '#0080FF',
-    logoUrl: '/unstopr-logo.svg',
+    logoUrl: '/unstopr-logo.png',
     icon: <Bot className="w-7 h-7" />,
   },
   {
@@ -42,7 +42,7 @@ const PRODUCTS_LIST: MarqueeProduct[] = [
     name: 'RunTillDone',
     website: 'https://runtilldone.in',
     brandColor: '#10B981',
-    logoUrl: '/runtilldone-logo.svg',
+    logoUrl: '/runtilldone-logo.png',
     icon: <Building2 className="w-7 h-7" />,
   },
   {
@@ -50,7 +50,7 @@ const PRODUCTS_LIST: MarqueeProduct[] = [
     name: 'Ordrji',
     website: 'https://www.ordrji.com',
     brandColor: '#F97316',
-    logoUrl: '/ordrji-logo.svg',
+    logoUrl: '/ordrji-logo.png',
     icon: <Utensils className="w-7 h-7" />,
   },
   {
@@ -58,7 +58,7 @@ const PRODUCTS_LIST: MarqueeProduct[] = [
     name: 'Solaroft',
     website: 'https://solaroft.com',
     brandColor: '#EAB308',
-    logoUrl: '/solaroft-logo.svg',
+    logoUrl: '/solaroft-logo.png',
     icon: <Sun className="w-7 h-7" />,
   },
   {
@@ -66,7 +66,7 @@ const PRODUCTS_LIST: MarqueeProduct[] = [
     name: 'SolveIt India',
     website: 'https://www.solveitindia.com',
     brandColor: '#4F46E5',
-    logoUrl: '/solveitindia-logo.svg',
+    logoUrl: '/solveitindia-logo.png',
     icon: <FileCheck className="w-7 h-7" />,
   },
   {
@@ -74,7 +74,7 @@ const PRODUCTS_LIST: MarqueeProduct[] = [
     name: 'SyncFyre',
     website: SYNCFYRE_WEBSITE_URL,
     brandColor: '#E11D48',
-    logoUrl: '/syncfyre-logo.svg',
+    logoUrl: '/syncfyre-logoo.png',
     icon: <Dumbbell className="w-7 h-7" />,
   },
   {

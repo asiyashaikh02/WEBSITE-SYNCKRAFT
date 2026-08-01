@@ -327,18 +327,18 @@ export const ContactPage: React.FC<ContactPageProps> = ({
         </div>
       </SectionContainer>
 
-      {/* Our Offices Section */}
+      {/* Our Office Section */}
       <SectionContainer className="space-y-10">
         <SectionHeading
-          badge="OUR OFFICES"
+          badge="OUR OFFICE"
           title={
             <>
-              We're Where You <span className="text-[#1D63FF]">Need Us</span>
+              India <span className="text-[#1D63FF]">Headquarters</span>
             </>
           }
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-2xl mx-auto">
           {OFFICE_LOCATIONS.map((office, idx) => (
             <OfficeLocationCard key={idx} office={office} />
           ))}

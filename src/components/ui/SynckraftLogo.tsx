@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 interface SynckraftLogoProps {
@@ -10,8 +11,8 @@ interface SynckraftLogoProps {
 }
 
 // Local primary logo link
-const PRIMARY_LOGO_URL = '/synckraft-logo.svg';
-const SECONDARY_LOGO_URL = '/synckraft-logo.svg';
+const PRIMARY_LOGO_URL = '/Synckraft-logo.png';
+const SECONDARY_LOGO_URL = '/Synckraft-logo.png';
 
 export const SynckraftLogo: React.FC<SynckraftLogoProps> = React.memo(({
   className = '',
@@ -32,12 +33,7 @@ export const SynckraftLogo: React.FC<SynckraftLogoProps> = React.memo(({
   };
 
   const handleImageError = () => {
-    if (imgSrc.includes('lh3.googleusercontent.com/d/')) {
-      const id = imgSrc.split('lh3.googleusercontent.com/d/')[1];
-      setImgSrc(`https://drive.google.com/uc?export=view&id=${id}`);
-    } else {
-      setHasError(true);
-    }
+    setHasError(true);
   };
 
   return (

@@ -3,19 +3,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { QuoteOverlay } from '../ui/QuoteOverlay';
 
-import img1 from '../../assets/images/regenerated_image_1785424603078.jpg';
-import img2 from '../../assets/images/regenerated_image_1785424605138.jpg';
-import img3 from '../../assets/images/regenerated_image_1785424608517.jpg';
-import img4 from '../../assets/images/regenerated_image_1785424610371.jpg';
-import img5 from '../../assets/images/regenerated_image_1785424612120.jpg';
-import img6 from '../../assets/images/regenerated_image_1785427345952.jpg';
-import img7 from '../../assets/images/regenerated_image_1785427348215.jpg';
-
 export interface SlideItem {
   id: string;
   url: string;
-  fallbackUrl: string;
-  localFallback: string;
   caption: string;
   tag: string;
 }
@@ -23,83 +13,57 @@ export interface SlideItem {
 const TEAM_SLIDES: SlideItem[] = [
   {
     id: 'synckraft-photo-1',
-    url: 'https://lh3.googleusercontent.com/d/1G9HgnYt8tHlUNIcxn4q8KCxCuGmwiz8j',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=1G9HgnYt8tHlUNIcxn4q8KCxCuGmwiz8j&sz=w1200',
-    localFallback: img1,
+    url: '/team/GP1.jpeg',
     caption: 'The Synckraft Team • Building Technology Together',
     tag: 'Group Photo',
   },
   {
     id: 'synckraft-photo-2',
-    url: 'https://lh3.googleusercontent.com/d/1T_HbbarK5hdWw9Trcf4ewiJfzLtJbetb',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=1T_HbbarK5hdWw9Trcf4ewiJfzLtJbetb&sz=w1200',
-    localFallback: img2,
+    url: '/team/GP2.jpeg',
     caption: 'Synckraft Modern Office Workspace & Tech Hub',
     tag: 'Office Workspace',
   },
   {
     id: 'synckraft-photo-3',
-    url: 'https://lh3.googleusercontent.com/d/15lil82-LhudyjNrLOFDLhFwxxkykj7DA',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=15lil82-LhudyjNrLOFDLhFwxxkykj7DA&sz=w1200',
-    localFallback: img3,
+    url: '/team/GP3.jpeg',
     caption: 'Engineers & Developers Crafting Enterprise Solutions',
     tag: 'Developers at Work',
   },
   {
     id: 'synckraft-photo-4',
-    url: 'https://lh3.googleusercontent.com/d/1bCZBjBqvARR1oV2SsI5KXfAXElNzPMaN',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=1bCZBjBqvARR1oV2SsI5KXfAXElNzPMaN&sz=w1200',
-    localFallback: img4,
+    url: '/team/GP4.jpeg',
     caption: 'Collaborative Problem-Solving & Architecture Brainstorming',
     tag: 'Team Discussions',
   },
   {
     id: 'synckraft-photo-5',
-    url: 'https://lh3.googleusercontent.com/d/1G9HgnYt8tHlUNIcxn4q8KCxCuGmwiz8j',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=1G9HgnYt8tHlUNIcxn4q8KCxCuGmwiz8j&sz=w1200',
-    localFallback: img5,
+    url: '/team/GP5.jpeg',
     caption: 'Product Strategy & Client Solution Reviews',
     tag: 'Client Strategy',
   },
   {
     id: 'synckraft-photo-6',
-    url: 'https://lh3.googleusercontent.com/d/1HDqqNfZ-Ez2vvi8-JWhE4QMwWz0oGFdQ',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=1HDqqNfZ-Ez2vvi8-JWhE4QMwWz0oGFdQ&sz=w1200',
-    localFallback: img6,
+    url: '/team/GP6.jpeg',
     caption: 'Daily Agile Standups & Life at Synckraft',
     tag: 'Daily Office Life',
   },
   {
     id: 'synckraft-photo-7',
-    url: 'https://lh3.googleusercontent.com/d/1zdKqy0-SU_7Pak0NLlv8r9bd2Hb5AosY',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=1zdKqy0-SU_7Pak0NLlv8r9bd2Hb5AosY&sz=w1200',
-    localFallback: img7,
+    url: '/team/GP7.jpeg',
     caption: 'Team Milestones, Successes & Celebrations',
     tag: 'Celebrations',
   },
   {
     id: 'synckraft-photo-8',
-    url: 'https://lh3.googleusercontent.com/d/1ya3VhtIVTlSwdse1zN0djcEgPpXegP5U',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=1ya3VhtIVTlSwdse1zN0djcEgPpXegP5U&sz=w1200',
-    localFallback: img1,
+    url: '/team/GP8.jpeg',
     caption: 'Spontaneous Moments & Culture at Synckraft',
     tag: 'Candid Moments',
   },
   {
     id: 'synckraft-photo-9',
-    url: 'https://lh3.googleusercontent.com/d/1q7u5q5PaUVFicT9VslrWbSzX14W4fo6r',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=1q7u5q5PaUVFicT9VslrWbSzX14W4fo6r&sz=w1200',
-    localFallback: img2,
+    url: '/team/GP9.jpeg',
     caption: 'Synckraft Team Culture & Shared Vision',
     tag: 'Team Culture',
-  },
-  {
-    id: 'synckraft-photo-10',
-    url: 'https://lh3.googleusercontent.com/d/1IOahpLEKmDOjFsVr8DvkFxdNVDmRKdOQ',
-    fallbackUrl: 'https://drive.google.com/thumbnail?id=1IOahpLEKmDOjFsVr8DvkFxdNVDmRKdOQ&sz=w1200',
-    localFallback: img3,
-    caption: 'Synckraft Team Collaboration & Growth',
-    tag: 'Team Moments',
   },
 ];
 
@@ -206,14 +170,6 @@ export const TeamCultureCarousel: React.FC = () => {
                 alt={slide.caption}
                 loading="eager"
                 referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (target.src === slide.url) {
-                    target.src = slide.fallbackUrl;
-                  } else if (target.src === slide.fallbackUrl) {
-                    target.src = slide.localFallback;
-                  }
-                }}
                 className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
               />
             </motion.div>
