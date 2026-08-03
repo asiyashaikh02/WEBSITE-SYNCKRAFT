@@ -133,6 +133,28 @@ function AppContent() {
     trackPageView(window.location.hash || '#home', document.title);
   }, [currentPage, setCurrentPageName]);
 
+  useEffect(() => {
+    if (typeof window.history.scrollRestoration === 'string') {
+      const previousScrollRestoration = window.history.scrollRestoration;
+      window.history.scrollRestoration = 'manual';
+
+      return () => {
+        window.history.scrollRestoration = previousScrollRestoration;
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    const resetScrollPosition = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      });
+    };
+
+    resetScrollPosition();
+  }, [currentPage]);
+
   const handleNavigate = useCallback((page: PageId) => {
     setCurrentPage(page);
     window.location.hash = page;
