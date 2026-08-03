@@ -11,8 +11,7 @@ interface SynckraftLogoProps {
 }
 
 // Local primary logo link
-const PRIMARY_LOGO_URL = '/Synckraft-logo.png';
-const SECONDARY_LOGO_URL = PRIMARY_LOGO_URL;
+const PRIMARY_LOGO_URL = '/synckraft-logo.png';
 
 export const SynckraftLogo: React.FC<SynckraftLogoProps> = React.memo(({
   className = '',
@@ -42,6 +41,8 @@ export const SynckraftLogo: React.FC<SynckraftLogoProps> = React.memo(({
         <img
           src={imgSrc}
           alt="Synckraft Logo"
+          width={781}
+          height={312}
           decoding="async"
           onError={handleImageError}
           referrerPolicy="no-referrer"

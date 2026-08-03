@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useCallback, useContext, useMemo, useState, ReactNode } from 'react';
 import { FormVariant, LeadModalOptions } from '../types/lead';
 
 interface LeadModalContextType {
@@ -52,7 +52,7 @@ export const LeadModalProvider: React.FC<{ children: ReactNode }> = ({ children 
   const [currentPageName, setCurrentPageName] = useState('Homepage');
   const [modalOptions, setModalOptions] = useState<LeadModalOptions>(defaultOptions);
 
-  const openLeadModal = (options?: Partial<LeadModalOptions> | unknown) => {
+  const openLeadModal = useCallback((options?: Partial<LeadModalOptions> | unknown) => {
     let opts: Partial<LeadModalOptions> = {};
     if (options && typeof options === 'object' && !('nativeEvent' in options) && !('_reactName' in options)) {
       opts = options as Partial<LeadModalOptions>;
@@ -74,22 +74,24 @@ export const LeadModalProvider: React.FC<{ children: ReactNode }> = ({ children 
       customSubtitle: typeof opts.customSubtitle === 'string' ? opts.customSubtitle : undefined,
     });
     setIsOpen(true);
-  };
+  }, [currentPageName]);
 
-  const closeLeadModal = () => {
+  const closeLeadModal = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
+
+  const contextValue = useMemo<LeadModalContextType>(() => ({
+    isOpen,
+    modalOptions,
+    openLeadModal,
+    closeLeadModal,
+    currentPageName,
+    setCurrentPageName,
+  }), [isOpen, modalOptions, openLeadModal, closeLeadModal, currentPageName]);
 
   return (
     <LeadModalContext.Provider
-      value={{
-        isOpen,
-        modalOptions,
-        openLeadModal,
-        closeLeadModal,
-        currentPageName,
-        setCurrentPageName,
-      }}
+      value={contextValue}
     >
       {children}
     </LeadModalContext.Provider>

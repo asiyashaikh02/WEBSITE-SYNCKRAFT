@@ -2,7 +2,7 @@
 <browserconfig>
   <msapplication>
     <tile>
-      <square150x150logo src="/Synckraft-logo.png"/>
+      <square150x150logo src="/synckraft-logo.png"/>
       <TileColor>#0052FF</TileColor>
     </tile>
   </msapplication>

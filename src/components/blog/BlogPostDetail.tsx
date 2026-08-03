@@ -161,6 +161,8 @@ export const BlogPostDetail: React.FC<BlogPostDetailProps> = ({
         <img
           src={post.coverImage}
           alt={post.title}
+          decoding="async"
+          fetchPriority="high"
           className="w-full h-full object-cover"
         />
       </div>

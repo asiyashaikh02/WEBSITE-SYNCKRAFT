@@ -5,10 +5,6 @@ import { ScrollProgress } from './components/ScrollProgress';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CTABanner } from './components/CTABanner';
-import { StrategyCallModal } from './components/StrategyCallModal';
-import { ProductDetailModal } from './components/ProductDetailModal';
-import { CaseStudyModal } from './components/CaseStudyModal';
-import { GlobalLeadModal } from './components/modals/GlobalLeadModal';
 import { LeadModalProvider, useLeadModal } from './context/LeadModalContext';
 import { FormVariant } from './types/lead';
 
@@ -27,6 +23,9 @@ const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage').then((module)
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((module) => ({ default: module.NotFoundPage })));
 const ThankYouPage = lazy(() => import('./pages/ThankYouPage').then((module) => ({ default: module.ThankYouPage })));
 const AdminPage = lazy(() => import('./pages/AdminPage').then((module) => ({ default: module.AdminPage })));
+const ProductDetailModal = lazy(() => import('./components/ProductDetailModal').then((module) => ({ default: module.ProductDetailModal })));
+const CaseStudyModal = lazy(() => import('./components/CaseStudyModal').then((module) => ({ default: module.CaseStudyModal })));
+const GlobalLeadModal = lazy(() => import('./components/modals/GlobalLeadModal').then((module) => ({ default: module.GlobalLeadModal })));
 
 import { motion, AnimatePresence } from 'motion/react';
 import { updatePageSeo } from './utils/seo';
@@ -38,7 +37,7 @@ function AppContent() {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
-  const { openLeadModal, setCurrentPageName } = useLeadModal();
+  const { isOpen: isLeadModalOpen, openLeadModal, setCurrentPageName } = useLeadModal();
 
   // Load settings configurations and configure analytics engine
   useEffect(() => {
@@ -321,19 +320,31 @@ function AppContent() {
       </div>
 
       {/* Unified Global Lead Capture Modal */}
-      <GlobalLeadModal />
+      {isLeadModalOpen && (
+        <Suspense fallback={null}>
+          <GlobalLeadModal />
+        </Suspense>
+      )}
 
-      <ProductDetailModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-        onOpenBookModal={(cta) => handleOpenBookModal(typeof cta === 'string' ? cta : 'Schedule Product Demo', 'demo')}
-      />
+      {selectedProduct && (
+        <Suspense fallback={null}>
+          <ProductDetailModal
+            product={selectedProduct}
+            onClose={() => setSelectedProduct(null)}
+            onOpenBookModal={(cta) => handleOpenBookModal(typeof cta === 'string' ? cta : 'Schedule Product Demo', 'demo')}
+          />
+        </Suspense>
+      )}
 
-      <CaseStudyModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-        onOpenBookModal={(cta) => handleOpenBookModal(typeof cta === 'string' ? cta : 'Start Project', 'business')}
-      />
+      {selectedProject && (
+        <Suspense fallback={null}>
+          <CaseStudyModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+            onOpenBookModal={(cta) => handleOpenBookModal(typeof cta === 'string' ? cta : 'Start Project', 'business')}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

@@ -71,6 +71,8 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           <img
             src={post.coverImage}
             alt={post.title}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent pointer-events-none" />
@@ -90,6 +92,8 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           <img
             src={post.coverImage}
             alt={post.title}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200/80 text-[11px] font-bold text-slate-800 shadow-2xs">

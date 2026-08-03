@@ -22,14 +22,21 @@ export default defineConfig(() => {
       rollupOptions: {
         output: {
           manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('motion') || id.includes('framer-motion')) {
-                return 'vendor-core';
-              }
-              if (id.includes('lucide-react')) {
-                return 'vendor-icons';
-              }
-              return 'vendor-helpers';
+            const normalizedId = id.replace(/\\/g, '/');
+            if (normalizedId.includes('/node_modules/react/') ||
+                normalizedId.includes('/node_modules/react-dom/') ||
+                normalizedId.includes('/node_modules/scheduler/')) {
+              return 'vendor-react';
+            }
+            if (normalizedId.includes('/node_modules/motion-dom/') ||
+                normalizedId.includes('/node_modules/motion-utils/')) {
+              return 'vendor-motion-runtime';
+            }
+            if (normalizedId.includes('/node_modules/motion/')) {
+              return 'vendor-motion';
+            }
+            if (normalizedId.includes('/node_modules/lucide-react/')) {
+              return 'vendor-icons';
             }
           },
         },

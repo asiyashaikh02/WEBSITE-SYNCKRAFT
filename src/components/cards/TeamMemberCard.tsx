@@ -40,6 +40,7 @@ export const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             src={imgSrc}
             alt={member.name}
             loading="lazy"
+            decoding="async"
             onError={handleImageError}
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"

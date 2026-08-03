@@ -4,7 +4,6 @@ import { trackNewsletterSignup } from '../utils/analytics/events';
 import {
   Linkedin,
   Facebook,
-  Twitter,
   Instagram,
   Youtube,
   ArrowRight,
@@ -20,7 +19,7 @@ interface FooterProps {
   onNavigate: (page: PageId) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+export const Footer: React.FC<FooterProps> = React.memo(({ onNavigate }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -83,11 +82,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <img
                   src="/DPIIT-header.png"
                   alt="DPIIT Recognition"
+                  width={600}
+                  height={200}
+                  loading="lazy"
+                  decoding="async"
                   className="h-8 sm:h-9 md:h-10 w-auto max-w-[112px] object-contain"
                 />
                 <img
                   src="/startupindia-logo.jpeg"
                   alt="Startup India"
+                  width={1024}
+                  height={768}
+                  loading="lazy"
+                  decoding="async"
                   className="h-8 sm:h-9 md:h-10 w-auto max-w-[112px] object-contain"
                 />
               </div>
@@ -367,4 +374,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';

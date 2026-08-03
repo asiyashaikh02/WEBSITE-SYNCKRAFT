@@ -124,6 +124,22 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
 
   const offsetRef = useRef<number>(0);
   const animFrameRef = useRef<number>(0);
+  const isInViewportRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || typeof IntersectionObserver === 'undefined') {
+      isInViewportRef.current = true;
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isInViewportRef.current = entry.isIntersecting;
+    }, { rootMargin: '120px 0px' });
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   // Track window/container size
   useEffect(() => {
@@ -190,8 +206,8 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
     };
 
     const step = () => {
-      if (document.hidden) {
-        animFrameRef.current = 0;
+      if (document.hidden || !isInViewportRef.current) {
+        animFrameRef.current = requestAnimationFrame(step);
         return;
       }
 
