@@ -137,7 +137,7 @@ export const BLOG_POSTS: BlogPost[] = [
     seo: {
       metaTitle: 'Building Sub-300ms AI Voice Agents | Synckraft Engineering',
       metaDescription: 'Learn how to build low latency conversational AI voice callers for enterprise call centers with WebSockets and real-time audio synthesis.',
-      canonicalUrl: 'https://synckraft.com/blog/building-sub-300ms-ai-voice-agents-for-enterprise',
+      canonicalUrl: 'https://synckraft.in/blog/building-sub-300ms-ai-voice-agents-for-enterprise',
       keywords: ['AI Voice Agents', 'Conversational AI', 'Sub-300ms Latency', 'Enterprise Voice AI', 'Synckraft Voice Bot'],
       ogImage: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?w=1200&auto=format&fit=crop&q=80',
     },
@@ -222,7 +222,7 @@ Our R&D team is currently expanding this pipeline to support regional Indian lan
     seo: {
       metaTitle: 'PropTech Real Estate Automation | Synckraft Blog',
       metaDescription: 'Learn how automated WhatsApp drips, interactive floor plans, and site-visit tracking boost real estate builder sales efficiency by 120%.',
-      canonicalUrl: 'https://synckraft.com/blog/proptech-crm-automating-real-estate-lead-nurturing',
+      canonicalUrl: 'https://synckraft.in/blog/proptech-crm-automating-real-estate-lead-nurturing',
       keywords: ['Real Estate CRM', 'PropTech Automation', 'WhatsApp Builder Bot', 'Site Visit Tracker'],
       ogImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&auto=format&fit=crop&q=80',
     },
@@ -281,7 +281,7 @@ A tier-1 luxury residential builder in Bengaluru deployed Synckraft PropTech CRM
     seo: {
       metaTitle: 'Multi-Outlet Restaurant Cloud POS & KDS | Synckraft',
       metaDescription: 'Discover how cloud POS and Kitchen Display Systems streamline restaurant operations, prevent order leakage, and auto-sync inventory.',
-      canonicalUrl: 'https://synckraft.com/blog/scaling-multi-outlet-restaurant-pos-and-kds-systems',
+      canonicalUrl: 'https://synckraft.in/blog/scaling-multi-outlet-restaurant-pos-and-kds-systems',
       keywords: ['Restaurant POS', 'Kitchen Display System', 'Cloud POS', 'Multi-Outlet ERP'],
       ogImage: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=120&auto=format&fit=crop&q=80',
     },

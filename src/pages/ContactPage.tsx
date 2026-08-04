@@ -48,7 +48,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
         trackContactFormSubmitted(formData.service, formData.companyName);
 
         // Notify backend notifications endpoint
-        await fetch('/api/contact', {
+        const response = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -61,8 +61,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({
             source: 'Contact Page Form'
           })
         });
+        if (!response.ok) throw new Error('Contact form submission failed');
       } catch (err) {
         console.error(err);
+        return;
       }
 
       setSubmitted(true);
@@ -142,6 +144,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormInput
                     type="text"
+                    aria-label="Your name"
                     required
                     placeholder="Your Name"
                     value={formData.name}
@@ -152,6 +155,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
                   <FormInput
                     type="email"
+                    aria-label="Your email"
                     required
                     placeholder="Your Email"
                     value={formData.email}
@@ -164,6 +168,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormInput
                     type="text"
+                    aria-label="Company name"
                     placeholder="Company Name"
                     value={formData.companyName}
                     onChange={(e) =>
@@ -173,6 +178,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
                   <FormInput
                     type="tel"
+                    aria-label="Phone number"
                     placeholder="Phone Number"
                     value={formData.phoneNumber}
                     onChange={(e) =>
@@ -182,6 +188,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                 </div>
 
                 <FormSelect
+                  aria-label="Service"
                   options={serviceOptions}
                   value={formData.service}
                   onChange={(e) =>
@@ -190,6 +197,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                 />
 
                 <FormTextarea
+                  aria-label="Project details"
                   rows={4}
                   required
                   placeholder="Tell us about your project..."

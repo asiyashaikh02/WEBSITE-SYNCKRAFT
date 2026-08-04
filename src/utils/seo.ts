@@ -158,7 +158,7 @@ function baseSchemas(pageId: PageId, canonicalUrl: string): Record<string, unkno
       name: 'Synckraft Technologies Private Limited', alternateName: 'Synckraft Technologies',
       url: `${SITE_URL}/`, logo: { '@type': 'ImageObject', url: BRAND_IMAGE, width: 781, height: 312 },
       email: 'grow@synckraft.in', telephone: '+91-98677-99655',
-      address: { '@type': 'PostalAddress', streetAddress: 'Tapadiya City Centre', addressLocality: 'Amravati', addressRegion: 'Maharashtra', postalCode: '444601', addressCountry: 'IN' },
+      address: { '@type': 'PostalAddress', streetAddress: 'Daga Plaza, In Front of D-Mart, Biyani Square Camp', addressLocality: 'Amravati', addressRegion: 'Maharashtra', postalCode: '444602', addressCountry: 'IN' },
       contactPoint: [
         { '@type': 'ContactPoint', telephone: '+91-98677-99655', email: 'grow@synckraft.in', contactType: 'customer support', areaServed: 'IN', availableLanguage: ['English', 'Hindi', 'Marathi'] },
         { '@type': 'ContactPoint', telephone: '+91-99871-55988', contactType: 'sales', areaServed: 'IN', availableLanguage: ['English', 'Hindi', 'Marathi'] },
@@ -193,10 +193,10 @@ async function pageSpecificSchemas(pageId: PageId, canonicalUrl: string): Promis
       name: 'Synckraft Technologies Private Limited', url: `${SITE_URL}/`, image: BRAND_IMAGE,
       email: 'grow@synckraft.in', telephone: '+91-98677-99655', priceRange: '$$',
       parentOrganization: { '@id': ORGANIZATION_ID },
-      address: { '@type': 'PostalAddress', streetAddress: 'Tapadiya City Centre', addressLocality: 'Amravati', addressRegion: 'Maharashtra', postalCode: '444601', addressCountry: 'IN' },
+      address: { '@type': 'PostalAddress', streetAddress: 'Daga Plaza, In Front of D-Mart, Biyani Square Camp', addressLocality: 'Amravati', addressRegion: 'Maharashtra', postalCode: '444602', addressCountry: 'IN' },
       geo: { '@type': 'GeoCoordinates', latitude: 20.932, longitude: 77.7523 },
       openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '19:00' },
-    }, ...(pageId === 'home' ? [{
+    }, ...(pageId === 'contact' ? [{
       '@type': 'FAQPage', '@id': `${canonicalUrl}#faq`,
       mainEntity: FAQS_DATA.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })),
     }] : [])];
@@ -279,6 +279,6 @@ export const updateJobPostingSeo = (job: JobListing): void => {
     datePosted: '2026-07-30', validThrough: '2026-12-31T23:59:59+05:30',
     employmentType: job.employmentType === 'Full-time' ? 'FULL_TIME' : job.employmentType === 'Part-time' ? 'PART_TIME' : job.employmentType === 'Contract' ? 'CONTRACTOR' : 'INTERN',
     hiringOrganization: { '@id': ORGANIZATION_ID },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', streetAddress: 'Tapadiya City Centre', addressLocality: 'Amravati', addressRegion: 'Maharashtra', postalCode: '444601', addressCountry: 'IN' } },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', streetAddress: 'Daga Plaza, In Front of D-Mart, Biyani Square Camp', addressLocality: 'Amravati', addressRegion: 'Maharashtra', postalCode: '444602', addressCountry: 'IN' } },
   }]);
 };

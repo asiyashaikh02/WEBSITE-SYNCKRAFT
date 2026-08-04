@@ -17,6 +17,12 @@ export const BlogCard: React.FC<BlogCardProps> = ({
     return (
       <div
         onClick={() => onSelectPost(post)}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') onSelectPost(post);
+        }}
+        role="link"
+        tabIndex={0}
+        aria-label={`Read ${post.title}`}
         className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 group cursor-pointer grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center overflow-hidden"
       >
         <div className="lg:col-span-7 space-y-4">
@@ -86,6 +92,12 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <div
       onClick={() => onSelectPost(post)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') onSelectPost(post);
+      }}
+      role="link"
+      tabIndex={0}
+      aria-label={`Read ${post.title}`}
       className="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer h-full overflow-hidden"
     >
       <div className="space-y-4">

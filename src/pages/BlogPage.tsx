@@ -210,6 +210,12 @@ export const BlogPage: React.FC<BlogPageProps> = ({
               <div
                 key={pPost.id}
                 onClick={() => openPost(pPost)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') openPost(pPost);
+                }}
+                role="link"
+                tabIndex={0}
+                aria-label={`Read ${pPost.title}`}
                 className="bg-white border border-slate-200/80 rounded-2xl p-5 hover:shadow-lg transition-all cursor-pointer space-y-3 group"
               >
                 <div className="flex items-center justify-between text-[11px] font-bold text-slate-400">

@@ -11,7 +11,7 @@ export const DisclaimerPage: React.FC<LegalPageProps> = ({ onNavigate }) => {
   return (
     <LegalPageLayout
       title="Disclaimer"
-      lastUpdated="Synckraft Technologies Pvt. Ltd."
+      lastUpdated="Last Updated: August 4, 2026"
       icon={<AlertCircle className="w-6 h-6" />}
       onNavigate={onNavigate}
     >

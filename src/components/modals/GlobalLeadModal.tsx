@@ -119,7 +119,7 @@ export const GlobalLeadModal: React.FC = () => {
       trackBookConsultation(businessData.timeline, businessData.budget);
 
       // Trigger backend alert system
-      await fetch('/api/book-consultation', {
+      const response = await fetch('/api/book-consultation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -133,6 +133,7 @@ export const GlobalLeadModal: React.FC = () => {
           message: `${businessData.message} | Budget: ${businessData.budget} | Timeline: ${businessData.timeline}`
         })
       });
+      if (!response.ok) throw new Error('Consultation request failed');
     } catch (err) {
       console.error(err);
     }

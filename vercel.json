@@ -2,6 +2,12 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.synckraft.in" }],
+      "destination": "https://synckraft.in/:path*",
+      "statusCode": 301
+    },
     { "source": "/industries/index.html", "destination": "/services", "statusCode": 301 },
     { "source": "/industries/manufacturing", "destination": "/services", "statusCode": 301 },
     { "source": "/industries/real-estate", "destination": "/services", "statusCode": 301 },

@@ -14,9 +14,9 @@ import {
 export const SUCCESS_STORIES_DATA: SuccessStory[] = [
   {
     id: 'story-1',
-    company: 'CA Harish Sarda',
+    company: 'CA Dhiraj Sarda',
     industry: 'Accounting & Payroll',
-    clientName: 'CA Harish Sarda',
+    clientName: 'CA Dhiraj Sarda',
     designation: 'Principal CA & Founder',
     avatar: clientPortraitImg,
     rating: 5,
@@ -399,14 +399,14 @@ export const WHAT_WE_BUILD_PILLARS: WhatWeBuildItem[] = [
 export const TESTIMONIALS_DATA: TestimonialItem[] = [
   {
     id: 'test-1',
-    clientName: 'CA Harish Sarda',
+    clientName: 'CA Dhiraj Sarda',
     clientRole: 'Principal CA & Founder',
-    companyName: 'CA Harish Sarda',
+    companyName: 'CA Dhiraj Sarda',
     review:
       'Synckraft delivered a seamless Payroll Management System that completely eliminated manual salary calculation errors and simplified our monthly payroll processing.',
     rating: 5,
     avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80',
-    companyLogoText: 'CA HARISH SARDA',
+    companyLogoText: 'CA DHIRAJ SARDA',
   },
   {
     id: 'test-2',
@@ -819,13 +819,13 @@ export const SERVICES_DATA: ServiceItem[] = [
 
 export const PROJECTS_DATA: ProjectItem[] = [
   {
-    id: 'ca-harish-sarda-project',
-    title: 'CA Harish Sarda – Payroll Management System',
+    id: 'ca-dhiraj-sarda-project',
+    title: 'CA Dhiraj Sarda – Payroll Management System',
     subtitle: 'Automated Salary & Tax Processing',
     description:
       'A dedicated Payroll Management System designed to handle employee salary calculations, tax deductions, attendance tracking, and instant pay slip generation.',
     category: 'Accounting & Payroll',
-    client: 'CA Harish Sarda',
+    client: 'CA Dhiraj Sarda',
     gradientBg: 'from-blue-600/10 via-indigo-500/10 to-blue-50/50',
     problemStatement:
       'Complex manual calculations for payroll processing, employee tax deductions, and month-end salary slip generation.',
@@ -1183,15 +1183,15 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     city: 'India Headquarters',
     title: 'India Headquarters',
     badge: 'Main Office',
-    companyName: 'Synckraft Technologies Pvt. Ltd.',
-    address: 'Tapadiya City Centre, Amravati, Maharashtra 444601',
+    companyName: 'Synckraft Technologies Private Limited',
+    address: 'Daga Plaza, In Front of D-Mart, Biyani Square Camp, Amravati, Maharashtra – 444602',
     country: 'India',
     mapUrl: 'https://share.google/3kEA43BAadSyiyNvB',
   },
 ];
 
 export const BRAND_LOGOS = [
-  { name: 'CA HARISH SARDA', font: 'font-semibold tracking-wider' },
+  { name: 'CA DHIRAJ SARDA', font: 'font-semibold tracking-wider' },
   { name: 'CA MEHER PAWAR', font: 'font-bold tracking-wider' },
   { name: 'DR. MOHAMMAD IMRAN SHAIKH', font: 'font-serif font-bold tracking-tight' },
   { name: 'DR. HARISH KAMARAJ', font: 'font-serif font-bold tracking-wide' },

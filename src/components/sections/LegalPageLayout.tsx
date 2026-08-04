@@ -35,7 +35,7 @@ export const LegalPageLayout: React.FC<LegalPageLayoutProps> = ({
           <div>
             <h1 className="text-3xl font-extrabold text-slate-900">{title}</h1>
             <p className="text-xs text-slate-500 font-semibold mt-1">
-              {lastUpdated} | Synckraft Technologies Pvt. Ltd.
+              {lastUpdated} | Synckraft Technologies Private Limited
             </p>
           </div>
         </div>

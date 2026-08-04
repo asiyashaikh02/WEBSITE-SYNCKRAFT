@@ -39,7 +39,7 @@ export const TermsPage: React.FC<LegalPageProps> = ({ onNavigate }) => {
       <section className="space-y-2">
         <h2 className="text-lg font-bold text-slate-900">4. Limitation of Liability</h2>
         <p>
-          Synckraft Technologies Pvt. Ltd. shall not be liable for indirect, incidental, or consequential damages resulting from third-party server downtime, data loss caused by unauthorized client credential exposure, or external API outages.
+          Synckraft Technologies Private Limited shall not be liable for indirect, incidental, or consequential damages resulting from third-party server downtime, data loss caused by unauthorized client credential exposure, or external API outages.
         </p>
       </section>
 

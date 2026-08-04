@@ -31,13 +31,15 @@ export const Footer: React.FC<FooterProps> = React.memo(({ onNavigate }) => {
         trackNewsletterSignup(email);
 
         // Notify backend database
-        await fetch('/api/newsletter', {
+        const response = await fetch('/api/newsletter', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email.trim().toLowerCase() }),
         });
+        if (!response.ok) throw new Error('Newsletter subscription failed');
       } catch {
         // Ignore local/offline failures so the footer remains quiet in development.
+        return;
       }
 
       setSubscribed(true);
@@ -266,7 +268,7 @@ export const Footer: React.FC<FooterProps> = React.memo(({ onNavigate }) => {
                     rel="noopener noreferrer"
                     className="text-slate-700 hover:text-[#1D63FF] transition-colors font-semibold hover:underline inline-flex items-center gap-1"
                   >
-                    Amravati, Maharashtra, India
+                    Synckraft Technologies Private Limited, Daga Plaza, In Front of D-Mart, Biyani Square Camp, Amravati, Maharashtra – 444602, India
                   </a>
                 </div>
               </li>
@@ -335,6 +337,7 @@ export const Footer: React.FC<FooterProps> = React.memo(({ onNavigate }) => {
               <div className="flex items-center gap-1.5">
                 <input
                   type="email"
+                  aria-label="Email address for newsletter subscription"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
@@ -361,7 +364,7 @@ export const Footer: React.FC<FooterProps> = React.memo(({ onNavigate }) => {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© 2025 Synckraft Technologies Pvt. Ltd. All rights reserved.</p>
+          <p>© 2026 Synckraft Technologies Private Limited. All rights reserved.</p>
           <div className="flex items-center gap-5">
             <SynckraftLogo imageClassName="h-10 sm:h-12 w-auto max-w-[260px]" />
             <div className="flex items-center gap-1">

@@ -180,15 +180,13 @@ export const handleForgotPassword = async (
 
     logger.info(`Password reset token generated for user: ${cleanEmail}`);
     
-    // In a real email server, we would send this link:
-    // https://synckraft.in/#admin?resetToken=${resetToken}
-    // We will log it and return it in response for simulation/demo validation.
+    const appUrl = (process.env.APP_URL || 'https://synckraft.in').replace(/\/$/, '');
     res.status(200).json({
       success: true,
       message: 'Password reset token generated.',
       data: {
         resetToken,
-        resetLink: `http://localhost:3000/#admin?resetToken=${resetToken}`,
+        resetLink: `${appUrl}/admin?resetToken=${encodeURIComponent(resetToken)}`,
       },
     });
   } catch (error) {

@@ -16,7 +16,7 @@ export const securityHeaders = (req: Request, res: Response, next: NextFunction)
   // Content-Security-Policy (CSP) Header
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://synckraft.in https://*.googleusercontent.com; connect-src 'self' ws://localhost:* wss://localhost:* https://www.google-analytics.com; frame-src 'self';"
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.clarity.ms https://connect.facebook.net https://snap.licdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://synckraft.in https://images.unsplash.com https://*.googleusercontent.com https://www.facebook.com https://px.ads.linkedin.com https://www.google-analytics.com; connect-src 'self' ws://localhost:* wss://localhost:* https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://*.clarity.ms https://graph.facebook.com https://px.ads.linkedin.com; frame-src 'self';"
   );
 
   // HSTS (Strict-Transport-Security) - only in production

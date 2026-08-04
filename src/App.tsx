@@ -32,7 +32,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { updatePageSeo } from './utils/seo';
 import { analytics } from './utils/analytics/analytics';
 import { trackPageView } from './utils/analytics/events';
-import { getPageFromLocation, PAGE_PATHS } from './utils/routes';
+import { getLegacyHashPage, getPageFromLocation, PAGE_PATHS } from './utils/routes';
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<PageId>(() => getPageFromLocation());
@@ -75,15 +75,22 @@ function AppContent() {
 
   // Sync clean URL routing and migrate legacy hash URLs without a reload.
   useEffect(() => {
-    const legacyPage = window.location.hash.replace('#', '') as PageId;
-    if (legacyPage && PAGE_PATHS[legacyPage]) {
-      window.history.replaceState({}, '', PAGE_PATHS[legacyPage]);
+    const handleLocationChange = () => {
+      const legacyPage = getLegacyHashPage();
+      if (legacyPage) {
+        window.history.replaceState({}, '', PAGE_PATHS[legacyPage]);
+        setCurrentPage(legacyPage);
+        return;
+      }
+      setCurrentPage(getPageFromLocation());
     };
-
-    const handleLocationChange = () => setCurrentPage(getPageFromLocation());
     handleLocationChange();
     window.addEventListener('popstate', handleLocationChange);
-    return () => window.removeEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
   }, []);
 
   useEffect(() => {

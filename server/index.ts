@@ -19,6 +19,15 @@ const PORT = process.env.PORT || 5000;
 app.use(securityHeaders);
 app.use(corsMiddleware);
 
+// Consolidate the production hostname to the canonical non-www origin.
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV === 'production' && req.hostname === 'www.synckraft.in') {
+    res.redirect(301, `https://synckraft.in${req.originalUrl}`);
+    return;
+  }
+  next();
+});
+
 // Request parsing (Limit increased to 10MB to accommodate base64 image uploads)
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
@@ -72,7 +81,13 @@ app.get('/blog/:slug([a-z0-9-]+)', (req, res) => {
   });
 });
 
-// Serve hashed assets and other public build output after exact clean routes.
+// Cache content-hashed build assets aggressively; filenames change on updates.
+app.use('/assets', express.static(path.join(DIST_PATH, 'assets'), {
+  maxAge: '1y',
+  immutable: true,
+}));
+
+// Serve other public build output after exact clean routes.
 app.use(express.static(DIST_PATH));
 
 // Unknown document routes render the 404 view with a real 404 HTTP status.

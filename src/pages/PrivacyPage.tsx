@@ -18,7 +18,7 @@ export const PrivacyPage: React.FC<LegalPageProps> = ({ onNavigate }) => {
       <section className="space-y-2">
         <h2 className="text-lg font-bold text-slate-900">1. Information We Collect</h2>
         <p>
-          Synckraft Technologies Pvt. Ltd. ("Synckraft", "we", "us", or "our") respects your privacy. We collect information that you directly provide when filling out forms, booking strategy sessions, or communicating with us. This includes your name, business email, phone number, company details, and project notes.
+          Synckraft Technologies Private Limited ("Synckraft", "we", "us", or "our") respects your privacy. We collect information that you directly provide when filling out forms, booking strategy sessions, or communicating with us. This includes your name, business email, phone number, company details, and project notes.
         </p>
       </section>
 

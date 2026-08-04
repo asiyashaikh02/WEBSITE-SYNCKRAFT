@@ -91,7 +91,7 @@ export const getSettings = async (req: Request, res: Response, next: NextFunctio
       companyName: 'Synckraft Technologies Private Limited',
       email: 'grow@synckraft.in',
       phoneNumbers: ['+91-98677-99655'],
-      address: 'Tapadiya City Centre, Amravati, Maharashtra 444601',
+      address: 'Synckraft Technologies Private Limited, Daga Plaza, In Front of D-Mart, Biyani Square Camp, Amravati, Maharashtra – 444602, India',
       socialLinks: {
         linkedin: 'https://www.linkedin.com/company/synckraft-technologies-private-limited/',
         facebook: 'https://www.facebook.com/SynckraftTechnologies/',
