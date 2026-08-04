@@ -147,8 +147,8 @@ export const TeamCultureCarousel: React.FC = () => {
     <div className="space-y-4">
       {/* Hidden Preloader for smooth image transitions */}
       <div className="hidden" aria-hidden="true">
-        <img src={TEAM_SLIDES[nextIdx].url} alt="" decoding="async" referrerPolicy="no-referrer" />
-        <img src={TEAM_SLIDES[prevIdx].url} alt="" decoding="async" referrerPolicy="no-referrer" />
+        <img src={TEAM_SLIDES[nextIdx].url} alt="" width={1600} height={900} decoding="async" referrerPolicy="no-referrer" />
+        <img src={TEAM_SLIDES[prevIdx].url} alt="" width={1600} height={900} decoding="async" referrerPolicy="no-referrer" />
       </div>
 
       {/* Main Carousel Frame */}
@@ -177,6 +177,8 @@ export const TeamCultureCarousel: React.FC = () => {
               <img
                 src={slide.url}
                 alt={slide.caption}
+                width={1600}
+                height={900}
                 loading={currentIndex === 0 ? 'eager' : 'lazy'}
                 decoding="async"
                 fetchPriority={currentIndex === 0 ? 'high' : 'auto'}

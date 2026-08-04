@@ -341,6 +341,8 @@ export const ProductMarquee: React.FC<ProductMarqueeProps> = React.memo(({
                     <img
                       src={p.logoUrl}
                       alt={p.name}
+                      width={320}
+                      height={160}
                       decoding="async"
                       loading="lazy"
                       referrerPolicy="no-referrer"

@@ -16,7 +16,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   onNavigate,
   onOpenBookModal,
 }) => {
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(() => {
+    const slug = window.location.pathname.match(/^\/blog\/([^/]+)\/?$/)?.[1];
+    return slug ? BLOG_POSTS.find((post) => post.slug === decodeURIComponent(slug)) || null : null;
+  });
 
   useEffect(() => {
     if (selectedPost) {
@@ -30,6 +33,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedSubCategory, setSelectedSubCategory] = useState('');
   const [selectedTag, setSelectedTag] = useState('');
+
+  const openPost = (post: BlogPost) => {
+    setSelectedPost(post);
+    window.history.pushState({}, '', `/blog/${post.slug}`);
+  };
 
   // Filter posts dynamically
   const filteredPosts = useMemo(() => {
@@ -87,10 +95,12 @@ export const BlogPage: React.FC<BlogPageProps> = ({
         post={selectedPost}
         onBack={() => {
           setSelectedPost(null);
+          window.history.pushState({}, '', '/blog');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onSelectPost={(post) => {
           setSelectedPost(post);
+          window.history.pushState({}, '', `/blog/${post.slug}`);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onOpenBookModal={onOpenBookModal}
@@ -125,7 +135,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
               <span>Editor's Featured Spotlight</span>
             </h2>
           </div>
-          <BlogCard post={featuredPost} onSelectPost={setSelectedPost} isFeaturedCard={true} />
+          <BlogCard post={featuredPost} onSelectPost={openPost} isFeaturedCard={true} />
         </section>
       )}
 
@@ -165,7 +175,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
         {filteredPosts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredPosts.map((post) => (
-              <BlogCard key={post.id} post={post} onSelectPost={setSelectedPost} />
+              <BlogCard key={post.id} post={post} onSelectPost={openPost} />
             ))}
           </div>
         ) : (
@@ -199,7 +209,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
             {popularPosts.slice(0, 3).map((pPost) => (
               <div
                 key={pPost.id}
-                onClick={() => setSelectedPost(pPost)}
+                onClick={() => openPost(pPost)}
                 className="bg-white border border-slate-200/80 rounded-2xl p-5 hover:shadow-lg transition-all cursor-pointer space-y-3 group"
               >
                 <div className="flex items-center justify-between text-[11px] font-bold text-slate-400">

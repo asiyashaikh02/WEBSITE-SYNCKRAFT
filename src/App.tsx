@@ -35,7 +35,7 @@ import { trackPageView } from './utils/analytics/events';
 import { getPageFromLocation, PAGE_PATHS } from './utils/routes';
 
 function AppContent() {
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
+  const [currentPage, setCurrentPage] = useState<PageId>(() => getPageFromLocation());
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 

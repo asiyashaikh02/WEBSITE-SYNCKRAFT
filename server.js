@@ -25625,11 +25625,35 @@ app.use(requestLogger);
 app.use("/api", apiLimiter);
 app.use("/api", api_default);
 var DIST_PATH = import_path4.default.join(process.cwd(), "dist");
-app.use(import_express2.default.static(DIST_PATH));
 var UPLOADS_PATH = import_path4.default.join(process.cwd(), "public", "uploads");
 app.use("/uploads", import_express2.default.static(UPLOADS_PATH));
-app.get("*", (req, res) => {
-  res.sendFile(import_path4.default.join(DIST_PATH, "index.html"));
+var SEO_ROUTES = [
+  "products",
+  "services",
+  "work",
+  "company",
+  "contact",
+  "blog",
+  "careers",
+  "privacy-policy",
+  "terms",
+  "refund-policy",
+  "disclaimer"
+];
+for (const route of SEO_ROUTES) {
+  app.get(`/${route}`, (_req, res) => {
+    res.sendFile(import_path4.default.join(DIST_PATH, route, "index.html"));
+  });
+}
+app.get("/blog/:slug([a-z0-9-]+)", (req, res) => {
+  const articleDocument = import_path4.default.join(DIST_PATH, "blog", req.params.slug, "index.html");
+  res.sendFile(articleDocument, (error) => {
+    if (error && !res.headersSent) res.status(404).sendFile(import_path4.default.join(DIST_PATH, "index.html"));
+  });
+});
+app.use(import_express2.default.static(DIST_PATH));
+app.get("*", (_req, res) => {
+  res.status(404).sendFile(import_path4.default.join(DIST_PATH, "index.html"));
 });
 app.use(errorHandler);
 app.listen(PORT, async () => {

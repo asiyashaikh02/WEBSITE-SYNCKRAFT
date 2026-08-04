@@ -32,17 +32,39 @@ app.use('/api', apiLimiter);
 // Bind API routing
 app.use('/api', apiRoutes);
 
-// Serve static React production build files
+// React production build location
 const DIST_PATH = path.join(process.cwd(), 'dist');
-app.use(express.static(DIST_PATH));
 
 // Serve virtual uploads folder statically
 const UPLOADS_PATH = path.join(process.cwd(), 'public', 'uploads');
 app.use('/uploads', express.static(UPLOADS_PATH));
 
-// HTML5 routing fallback (any unmatched route renders index.html)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(DIST_PATH, 'index.html'));
+// Serve the build-time SEO document for each clean public URL without a
+// directory redirect, preserving canonical URL consistency.
+const SEO_ROUTES = [
+  'products', 'services', 'work', 'company', 'contact', 'blog', 'careers',
+  'privacy-policy', 'terms', 'refund-policy', 'disclaimer',
+];
+for (const route of SEO_ROUTES) {
+  app.get(`/${route}`, (_req, res) => {
+    res.sendFile(path.join(DIST_PATH, route, 'index.html'));
+  });
+}
+
+// Serve each generated article document without a trailing-slash redirect.
+app.get('/blog/:slug([a-z0-9-]+)', (req, res) => {
+  const articleDocument = path.join(DIST_PATH, 'blog', req.params.slug, 'index.html');
+  res.sendFile(articleDocument, (error) => {
+    if (error && !res.headersSent) res.status(404).sendFile(path.join(DIST_PATH, 'index.html'));
+  });
+});
+
+// Serve hashed assets and other public build output after exact clean routes.
+app.use(express.static(DIST_PATH));
+
+// Unknown document routes render the 404 view with a real 404 HTTP status.
+app.get('*', (_req, res) => {
+  res.status(404).sendFile(path.join(DIST_PATH, 'index.html'));
 });
 
 // Centralized error handler

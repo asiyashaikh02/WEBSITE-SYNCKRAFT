@@ -310,6 +310,8 @@ export const ProductLogoCarousel: React.FC<{ onNavigateToProducts?: () => void }
                         <img
                           src={product.logoUrl}
                           alt={product.name}
+                          width={320}
+                          height={160}
                           decoding="async"
                           loading="lazy"
                           referrerPolicy="no-referrer"

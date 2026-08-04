@@ -24,5 +24,6 @@ const PATH_PAGES = Object.fromEntries(
 
 export function getPageFromLocation(): PageId {
   const normalizedPath = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (normalizedPath.startsWith('/blog/')) return 'blog';
   return PATH_PAGES[normalizedPath] || '404';
 }

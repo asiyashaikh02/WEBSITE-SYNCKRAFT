@@ -35,7 +35,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </span>
             {product.logoUrl ? (
               <div className="h-10 flex items-center mb-1">
-                <img src={product.logoUrl} alt={product.name} className="h-9 w-auto max-w-[220px] object-contain" />
+                <img src={product.logoUrl} alt={product.name} width={320} height={160} className="h-9 w-auto max-w-[220px] object-contain" />
               </div>
             ) : (
               <h3 className="text-3xl font-extrabold tracking-tight" style={{ color: product.brandColor }}>
