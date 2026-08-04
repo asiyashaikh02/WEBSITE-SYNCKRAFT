@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { getWhatsAppUrl } from '../utils/whatsapp';
 
@@ -34,7 +35,7 @@ export const FloatingWhatsAppButton: React.FC = React.memo(() => {
     return () => window.clearTimeout(hideTimer);
   }, [showGreeting]);
 
-  return (
+  return createPortal(
     <div className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-[45] flex items-end gap-3 pointer-events-none">
       <AnimatePresence>
         {showGreeting && (
@@ -90,7 +91,8 @@ export const FloatingWhatsAppButton: React.FC = React.memo(() => {
           </svg>
         </motion.a>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 });
 
