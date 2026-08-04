@@ -7,6 +7,7 @@ import { Footer } from './components/Footer';
 import { CTABanner } from './components/CTABanner';
 import { LeadModalProvider, useLeadModal } from './context/LeadModalContext';
 import { FormVariant } from './types/lead';
+import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
 
 const HomePage = lazy(() => import('./pages/HomePage').then((module) => ({ default: module.HomePage })));
 const ProductsPage = lazy(() => import('./pages/ProductsPage').then((module) => ({ default: module.ProductsPage })));
@@ -353,6 +354,7 @@ export default function App() {
   return (
     <LeadModalProvider>
       <AppContent />
+      <FloatingWhatsAppButton />
     </LeadModalProvider>
   );
 }
