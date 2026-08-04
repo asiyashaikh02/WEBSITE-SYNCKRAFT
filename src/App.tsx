@@ -32,6 +32,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { updatePageSeo } from './utils/seo';
 import { analytics } from './utils/analytics/analytics';
 import { trackPageView } from './utils/analytics/events';
+import { getPageFromLocation, PAGE_PATHS } from './utils/routes';
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -72,37 +73,17 @@ function AppContent() {
     initAnalytics();
   }, []);
 
-  // Sync hash routing & page name
+  // Sync clean URL routing and migrate legacy hash URLs without a reload.
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '') as PageId;
-      if (
-        [
-          'home',
-          'products',
-          'services',
-          'work',
-          'company',
-          'contact',
-          'blog',
-          'careers',
-          'privacy',
-          'terms',
-          'refund',
-          'disclaimer',
-          '404',
-          'thank-you',
-        ].includes(hash)
-      ) {
-        setCurrentPage(hash);
-      } else if (!hash) {
-        setCurrentPage('home');
-      }
+    const legacyPage = window.location.hash.replace('#', '') as PageId;
+    if (legacyPage && PAGE_PATHS[legacyPage]) {
+      window.history.replaceState({}, '', PAGE_PATHS[legacyPage]);
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    const handleLocationChange = () => setCurrentPage(getPageFromLocation());
+    handleLocationChange();
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
   useEffect(() => {
@@ -130,7 +111,7 @@ function AppContent() {
     updatePageSeo(currentPage);
 
     // Dynamic Analytics PageView Tracking
-    trackPageView(window.location.hash || '#home', document.title);
+    trackPageView(window.location.pathname, document.title);
   }, [currentPage, setCurrentPageName]);
 
   useEffect(() => {
@@ -157,7 +138,7 @@ function AppContent() {
 
   const handleNavigate = useCallback((page: PageId) => {
     setCurrentPage(page);
-    window.location.hash = page;
+    window.history.pushState({}, '', PAGE_PATHS[page]);
     window.scrollTo({ top: 0, behavior: 'auto' });
     window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: 'auto' });
