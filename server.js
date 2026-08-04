@@ -1363,13 +1363,6 @@ var app = express();
 var PORT = process.env.PORT || 5e3;
 app.use(securityHeaders);
 app.use(corsMiddleware);
-app.use((req, res, next) => {
-  if (process.env.NODE_ENV === "production" && req.hostname === "www.synckraft.in") {
-    res.redirect(301, `https://synckraft.in${req.originalUrl}`);
-    return;
-  }
-  next();
-});
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(requestLogger);
