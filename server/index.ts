@@ -35,6 +35,19 @@ app.use('/api', apiRoutes);
 // React production build location
 const DIST_PATH = path.join(process.cwd(), 'dist');
 
+// Preserve authority from historical URLs with single-hop permanent redirects.
+const LEGACY_REDIRECTS: Record<string, string> = {
+  '/industries/index.html': '/services',
+  '/industries/manufacturing': '/services',
+  '/industries/real-estate': '/services',
+  '/industries/furniture': '/services',
+  '/book-demo': '/contact',
+  '/index.html': '/',
+};
+for (const [source, destination] of Object.entries(LEGACY_REDIRECTS)) {
+  app.get(source, (_req, res) => res.redirect(301, destination));
+}
+
 // Serve virtual uploads folder statically
 const UPLOADS_PATH = path.join(process.cwd(), 'public', 'uploads');
 app.use('/uploads', express.static(UPLOADS_PATH));

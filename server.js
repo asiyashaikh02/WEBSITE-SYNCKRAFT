@@ -25625,6 +25625,17 @@ app.use(requestLogger);
 app.use("/api", apiLimiter);
 app.use("/api", api_default);
 var DIST_PATH = import_path4.default.join(process.cwd(), "dist");
+var LEGACY_REDIRECTS = {
+  "/industries/index.html": "/services",
+  "/industries/manufacturing": "/services",
+  "/industries/real-estate": "/services",
+  "/industries/furniture": "/services",
+  "/book-demo": "/contact",
+  "/index.html": "/"
+};
+for (const [source, destination] of Object.entries(LEGACY_REDIRECTS)) {
+  app.get(source, (_req, res) => res.redirect(301, destination));
+}
 var UPLOADS_PATH = import_path4.default.join(process.cwd(), "public", "uploads");
 app.use("/uploads", import_express2.default.static(UPLOADS_PATH));
 var SEO_ROUTES = [

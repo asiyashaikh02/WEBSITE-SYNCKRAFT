@@ -1,6 +1,14 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/industries/index.html", "destination": "/services", "statusCode": 301 },
+    { "source": "/industries/manufacturing", "destination": "/services", "statusCode": 301 },
+    { "source": "/industries/real-estate", "destination": "/services", "statusCode": 301 },
+    { "source": "/industries/furniture", "destination": "/services", "statusCode": 301 },
+    { "source": "/book-demo", "destination": "/contact", "statusCode": 301 },
+    { "source": "/index.html", "destination": "/", "statusCode": 301 }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
